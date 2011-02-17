@@ -1,11 +1,11 @@
 # LPATH tells the linker where to find libraries
-LPATH = -Llib -lcartwheel
+LPATH = -Llib -lcartwheel -L/misc/load/linux_x86_64_opteron 
 
 # IPATH tells the compiler where to look for include files.
-IPATH = -Iinclude
+IPATH = -Iinclude -I/misc/include 
 
 # CWLIBS are the libraries necessary for Cartwheel-3d
-CWLIBS = -lode
+CWLIBS = -lode 
 
 # GLLIBS are the GLUT and OpenGL libraries needed by the linker.
 GLLIBS = -lglut -lGLU -lGL -lGLEW
@@ -31,20 +31,20 @@ CC = g++
 #	(like gdb) needs.
 # -Wall	tells the compiler to print warnings about pretty much everything.
 # -w    Hide all of the warnings because I don't like seeing them
-CFLAGS = -g -w -fPIC -DdDOUBLE
+CFLAGS = -g -w -fPIC #-DdDOUBLE
 
-all : library appmain
+all : library mainControl 
 
 library : $(OBJ_FILES)
 	$(CC) -shared -o lib/libcartwheel.so $(OBJ_FILES) 
 
 # The default way to convert .c files into .o files.
 %.o : %.cpp		
-	$(CC) $(CFLAGS) $(IPATH) -o $@ -c $<
+	$(CC) $(CFLAGS) $(IPATH) -o $@ -c $< 
 
 clean :
 	$(RM) src/*/*.o lib/libcartwheel.so
 	
-appmain : library 
-	$(CC) $(CFLAGS) $(IPATH) -o src/AppMain.o -c src/AppMain.cpp
-	$(CC) $(CFLAGS) -o bin/AppMain src/AppMain.o $(LPATH) $(LIBS)
+mainControl : library 
+	$(CC) $(CFLAGS) $(IPATH) -o src/mainControl.o -c src/mainControl.cpp
+	$(CC) $(CFLAGS) -o bin/mainControl src/mainControl.o $(LPATH) $(LIBS)
