@@ -11,7 +11,7 @@ WorldOracle::WorldOracle(void){
 }
 
 WorldOracle::~WorldOracle(void){
-    printf("Desddddddddddddddddddddddddddddddddd777777");
+    spheres.clear();
 }
 
 

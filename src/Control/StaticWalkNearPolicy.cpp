@@ -1,6 +1,8 @@
 
 #include "Control/StaticWalkNearPolicy.h"
 
+using namespace CartWheel::Math;
+
 double eucDistance(Vector3d &, Vector3d &);
 double eucDistance2d(Vector3d &, Vector3d &);
 

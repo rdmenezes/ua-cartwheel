@@ -41,6 +41,7 @@ static ConKeyWord keywords[] = {
 	{"cv", CON_CV},
 	{"loadRBFile", LOAD_RB_FILE},
 	{"loadController", LOAD_CON_FILE},
+	{"loadIKVMCController", LOAD_IKVMC_CON_FILE},
 	{"component", CON_TRAJ_COMPONENT},
 	{"/component", CON_TRAJ_COMPONENT_END},
 	{"synchronizeControllers", CON_SYNCHRONIZE_CONTROLLERS},

@@ -932,7 +932,7 @@ void SimBiController::loadFromFile(const char* fName){
 				tempState = new SimBiConState();
 				sscanf(line, "%d", &tempStateNr);
 				if (tempStateNr != (int) (stateOffset + this->states.size()))
-					throwError("Inccorect state offset specified: %d", tempStateNr);
+					throwError("Incorrect state offset specified: %d", tempStateNr);
 				states.push_back(tempState);
 				tempState->readState(f, stateOffset);
 				//now we have to resolve all the joint names (i.e. figure out which joints they apply to).

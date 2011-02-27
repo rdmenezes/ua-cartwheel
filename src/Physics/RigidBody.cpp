@@ -254,7 +254,7 @@ void RigidBody::loadFromFile(FILE* f, const char* sPath){
 				break;
 			case RB_MESH_NAME:
 				sscanf(line, "%s", meshName);
-				sprintf(sPathCache, "%s%s", sPath, meshName);
+				sprintf(sPathCache, "%s", meshName);
 				tmpMesh = OBJReader::loadOBJFile(sPathCache);
 				tmpMesh->computeNormals();
 				tmpMesh->dontUseTextureMapping();

@@ -1,6 +1,9 @@
 #include <Core/CompositeController.h>
 #include <Core/ConUtils.h>
 #include <Core/SimBiController.h>
+#include <Core/IKVMCController.h>
+#include <Core/WorldOracle.h>
+#include <Core/TurnController.h>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
@@ -8,7 +11,7 @@ using namespace CartWheel::Physics;
 using namespace CartWheel::Math;
 using namespace CartWheel::Util;
 
-CompositeController::CompositeController(Character* ch, const char* input) : Controller(ch){
+CompositeController::CompositeController(Character* ch, WorldOracle* oracle, const char* input) : Controller(ch){
 
 	synchronizeControllers = false;
 	//create space for the torques we will be using...
@@ -21,7 +24,6 @@ CompositeController::CompositeController(Character* ch, const char* input) : Con
 	FILE *f = fopen(input, "r");
 	if (f == NULL)
 		throwError("Could not open file: %s", input);
-	SimBiController* con;
 
 	//have a temporary buffer used to read the file line by line...
 	char buffer[200];
@@ -36,12 +38,25 @@ CompositeController::CompositeController(Character* ch, const char* input) : Con
 		char *line = lTrim(buffer);
 		int lineType = getConLineType(line);
 		switch (lineType) {
-			case LOAD_CON_FILE:
+			case LOAD_CON_FILE: {
 				//add a new controller
-				con = new SimBiController(character);
-				con->loadFromFile(trim(line));
-				controllers.push_back(con);
+				SimBiController* controller = new SimBiController(character);
+				controller->loadFromFile(trim(line));
+				controllers.push_back(controller);
 				break;
+			}
+			case LOAD_IKVMC_CON_FILE: {
+				//add a new controller
+				IKVMCController* controller = new IKVMCController(character);
+				controller->loadFromFile(trim(line));
+
+				BehaviourController* behaviour = new TurnController(character, controller, oracle);
+				controller->setBehaviour(behaviour);
+				behaviour->conTransitionPlan();
+
+				controllers.push_back(controller);
+				break;
+			}
 			case CON_NOT_IMPORTANT:
 				printf("Ignoring input line: \'%s\'\n", line);
 				break;
@@ -142,6 +157,12 @@ int CompositeController::advanceInTime(double dt, DynamicArray<ContactPoint> *cf
 	SimBiController* secondaryController = (secondaryControllerIndex < 0 || secondaryControllerIndex >= cCount) ? (NULL) : controllers[secondaryControllerIndex];
 	SimBiController* primaryController = (primaryControllerIndex < 0 || primaryControllerIndex >= cCount) ? (NULL) : controllers[primaryControllerIndex];
 
+	// TODO: resolve controller interpolation
+	primaryController->performPreTasks(dt, cfs);
+
+	primaryController->performPostTasks(dt, cfs);
+
+	return 0;
 	//we need the primary controller to be valid
 	if (primaryController == NULL)
 		throwError("A primary controller needs to always be selected for a composite controller!");

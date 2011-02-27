@@ -11,143 +11,105 @@
 #include <MathLib/Point3d.h>
 #include <MathLib/TransformationMatrix.h>
 
-#include <Core/TurnController.h>
-#include <Core/DuckController.h>
+#include <Core/BehaviourController.h>
 #include <Core/WorldOracle.h>
-#include <Core/IKVMCController.h>
 #include <Core/SimBiController.h>
+#include <Core/SimBiController.h>
+#include <Core/Policy.h>
+#include <Core/Human.h>
 
 #include <Physics/CollisionDetectionPrimitive.h>
 #include <Physics/CapsuleCDP.h>
-
-using std::string;
-using std::vector;
-
-using CartWheel::Core::IKVMCController;
-using CartWheel::Core::SimBiController;
-using CartWheel::Core::BehaviourController;
-using CartWheel::Core::Character;
-using CartWheel::Core::WorldOracle;
-using CartWheel::Core::SimGlobals;
-
-using CartWheel::Physics::World;
-using CartWheel::Physics::ArticulatedFigure;
-using CartWheel::Physics::RigidBody;
-
-using CartWheel::Math::Point3d;
-using CartWheel::Math::Vector3d;
-using CartWheel::Math::Quaternion;
 
 namespace CartWheel {
 
 class CartWheel3D
 {
-protected:
-    vector<IKVMCController*> _controllers;
-    vector<Character*> _characters;
+private:
 
-    string _path;
+	std::vector<Core::Human*> _humans;
+    std::string _path;
+    Physics::World* _world;
+    Core::WorldOracle* _oracle;
 
-    World* _world;
-    WorldOracle* _oracle;
-
-    void loadBehaviourController(Character* ch, IKVMCController* c, double dHeading);
-    Character* getAFtoCharacter(ArticulatedFigure* af);
+    Core::Character* getAFtoCharacter(Physics::ArticulatedFigure* af);
+    bool getHuman(std::string name, Core::Human** human);
 
 public:
-    CartWheel3D() :
-        _path(""), _world(&World::instance()), _oracle(NULL)
-    {}
 
-    CartWheel3D(const string& dataPath) :
-        _path(dataPath), _world(&World::instance()), _oracle(NULL)
-    {}
+    CartWheel3D();
+    CartWheel3D(const std::string& dataPath);
 
-    ~CartWheel3D()
-    {}
+    ~CartWheel3D();
 
     /**
      * Add a human to the simulator.
      */
-    void addHuman(const string& characterFile, const string& controllerFile, const Point3d& pos, double heading);
-    void addObject(const string& name, const string& objFile, double mass);
-    void addBox(const string& name, const Vector3d& scale, double mass);
-    void addBall(const string& name, const Vector3d& scale, double mass);
+    void addHuman(const std::string& characterFile, const std::string& controllerFile, const Math::Point3d& pos, double heading);
+    void addHuman(const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
+    		const Math::Point3d& pos, double heading);
+
+    void addObject(const std::string& name, const std::string& objFile, double mass);
+    void addBox(const std::string& name, const Math::Vector3d& scale, double mass);
+    void addBall(const std::string& name, const Math::Vector3d& scale, double mass);
 
     /**
      * Update the position, orientation, and velocity of the rigid body
      * indexed by the given name.
      */
-    void updateRB(const string& name, const Point3d& pos, const Quaternion& orientation, const Vector3d& vel)
-    {
-        RigidBody* body = _world->getRBByName(name.c_str());
-        body->setCMPosition(pos);
-        body->setOrientation(orientation);
-        body->setCMVelocity(vel);
-    }
+    void updateRB(const std::string& name, const Math::Point3d& pos, const Math::Quaternion& orientation, const Math::Vector3d& vel);
 
     /**********************************************************
      *                          GETTERS                       *
      **********************************************************/
 
-    const string& getPath() const { return _path; }
+    Core::Human* getHuman(int i) { return _humans[i]; }
+    Core::SimBiController* getController(int i) { return _humans[i]->getController(); }
+    int getHumanCount() { return _humans.size(); }
+
+    Math::Vector3d getHumanPosition(int i) { return _humans[i]->getPosition(); }
+    double getHumanHeading(int i) { return _humans[i]->getHeading(); }
+    Math::Vector3d getHumanVelocity(int i) { return _humans[i]->getVelocity(); }
+
+    const std::string& getPath() const { return _path; }
 
     // TODO: This will probably give an error because it's not const.
-    World* getWorld() { return _world; }
+    Physics::World* getWorld() { return _world; }
 
-    Character* getHuman(int i) { return _characters[i]; }
-    IKVMCController* getController(int i) { return _controllers[i]; }
-    RigidBody* getObjectByName(const string& name) { return _world->getRBByName(name.c_str()); }
-    int getHumanCount() { return _characters.size(); }
+    Physics::RigidBody* getObjectByName(const std::string& name) { return _world->getRBByName(name.c_str()); }
 
-    Vector3d getHumanPosition(int i) { return _characters[i]->getCOM(); }
-    double getHumanHeading(int i) { return _characters[i]->getHeadingAngle(); }
-    Vector3d getHumanVelocity(int i) { return _characters[i]->getCOMVelocity(); }
-
-    /**********************************************************
+    /*****************************o*****************************
      *                          SETTERS                       *
      **********************************************************/
 
-    void setPath(const string& path) { _path = path; }
+    void setController(const std::string&, int actionIndex);
+    int getController(const std::string& name);
 
-    void setHumanPosition(int i, const Point3d& pos)
+    void setPath(const std::string& path) { _path = path; }
+
+    void setHumanPosition(int i, const Math::Point3d& pos)
     {
         _world->getAF(i)->getRoot()->setCMPosition(pos);
     }
 
     void setHumanHeading(int i, double angle)
     {
-        BehaviourController* b = _controllers[i]->getBehaviour();
-        b->requestHeading(angle);
+    	_humans[i]->setHeading(angle);
     }
 
     void setHumanSpeed(int i, double speed)
     {
-        BehaviourController* b = _controllers[i]->getBehaviour();
-        b->requestVelocities(speed, 0);
+    	_humans[i]->setSpeed(speed);
     }
 
     void setHumanStepWidth(int i, double width)
     {
-        BehaviourController* b = _controllers[i]->getBehaviour();
-        b->requestCoronalStepWidth(width);
+    	_humans[i]->setStepWidth(width);
     }
 
-    void reset()
-    {
-        _controllers.clear();
-        _characters.clear();
+    void reset();
 
-        _world->destroyAllObjects();
-
-        //if(_oracle != NULL)
-        //delete _oracle;
-        //
-        //_oracle = new WorldOracle();
-        //_oracle->initializeWorld(_world);
-    }
-
-    void runStep(double dt = SimGlobals::dt);
+    void runStep(double dt = Core::SimGlobals::dt);
 };
 
 } // namespace CartWheel3D

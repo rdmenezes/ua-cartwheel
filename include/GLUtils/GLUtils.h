@@ -114,7 +114,7 @@ public:
 	*/
 	static int printOglError(const char *file, int line);
 
-	static void drawGround(double size, double spotRadius, int nbSquares, const char* sGroundPath);
+	static void drawGround(double size, double spotRadius, int nbSquares, const char* sGroundPath=NULL);
 
 };
 
