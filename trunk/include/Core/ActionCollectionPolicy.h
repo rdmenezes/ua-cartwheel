@@ -55,6 +55,9 @@ public:
 	inline void setActionIndex(int index){
 		this->actionIndex = index;
 	}
+	inline int getActionIndex(){
+		return this->actionIndex;
+	}
 
 	/**
 		this method is used to read the action list from a file. The method returns the number of actions read.

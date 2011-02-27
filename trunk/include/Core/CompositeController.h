@@ -1,6 +1,8 @@
 #pragma once
+
 #include <Core/Controller.h>
 #include <Core/SimBiController.h>
+#include <Core/WorldOracle.h>
 #include <Physics/ContactPoint.h>
 
 namespace CartWheel { namespace Core {
@@ -52,7 +54,7 @@ protected:
 public:
 	//pass as a parameter the character that the torques will be applied to, and also the file that has the list of
 	//simbicon controllers to be used
-	CompositeController(Character* ch, const char* input);
+	CompositeController(Character* ch, WorldOracle* oracle, const char* input);
 	virtual ~CompositeController(void);
 
 

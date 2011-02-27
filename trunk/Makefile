@@ -33,7 +33,7 @@ CC = g++
 # -w    Hide all of the warnings because I don't like seeing them
 CFLAGS = -g -w -fPIC -DdDOUBLE
 
-all : library mainControl 
+all : library AppMain mainControl interactControl
 
 library : $(OBJ_FILES)
 	$(CC) -shared -o lib/libcartwheel.so $(OBJ_FILES) 
@@ -44,7 +44,15 @@ library : $(OBJ_FILES)
 
 clean :
 	$(RM) src/*.o src/*/*.o lib/libcartwheel.so
+
+AppMain : library 
+	$(CC) $(CFLAGS) $(IPATH) -o src/AppMain.o -c src/AppMain.cpp
+	$(CC) $(CFLAGS) -o bin/AppMain src/AppMain.o $(LPATH) $(LIBS)
 	
 mainControl : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/mainControl.o -c src/mainControl.cpp
 	$(CC) $(CFLAGS) -o bin/mainControl src/mainControl.o $(LPATH) $(LIBS)
+
+interactControl : library 
+	$(CC) $(CFLAGS) $(IPATH) -o src/interactControl.o -c src/interactControl.cpp
+	$(CC) $(CFLAGS) -o bin/interactControl src/interactControl.o $(LPATH) $(LIBS)

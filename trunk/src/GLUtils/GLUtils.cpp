@@ -644,8 +644,14 @@ void GLUtils::drawGround(double size, double spotRadius, int nb, const char* sGr
 
 	double x, z, x1, z1;
 
-	if (groundTexture == NULL )
+	if (groundTexture == NULL ) {
+		if (NULL != sGroundPath) {
 		groundTexture = new GLTexture(sGroundPath);
+		}
+		else {
+			groundTexture = new GLTexture("data/textures/grid.bmp");
+		}
+	}
 
 	glEnable(GL_TEXTURE_2D);
 	groundTexture->activate();

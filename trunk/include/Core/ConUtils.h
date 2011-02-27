@@ -71,6 +71,7 @@ namespace CartWheel { namespace Core {
 #define CON_V_SCALE_TRAJECTORY_START	60
 #define CON_V_SCALE_TRAJECTORY_END		61
 
+#define LOAD_IKVMC_CON_FILE				62
 
 /**
 	This method is used to determine the type of a line that was used in the input file for a rigid body.

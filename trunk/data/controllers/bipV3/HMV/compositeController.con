@@ -1,0 +1,14 @@
+
+synchronizeControllers
+
+loadIKVMCController data/controllers/bipV3/Walking.sbc
+loadIKVMCController data/controllers/bipV3/HappyWalk.sbc
+loadIKVMCController data/controllers/bipV3/BackInStyle.sbc
+loadIKVMCController data/controllers/bipV3/CartoonySneak.sbc
+loadIKVMCController data/controllers/bipV3/DrunkenWalk.sbc
+loadIKVMCController data/controllers/bipV3/IronBootsWalk.sbc
+
+startingStance left
+#startingStance right
+loadCharacterState data/controllers/bipV3/WalkingState.rs
+
