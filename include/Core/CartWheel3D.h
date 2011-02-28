@@ -25,12 +25,16 @@ namespace CartWheel {
 
 class CartWheel3D
 {
+
 private:
+
+	typedef void (*BuilderFunction)(CartWheel3D*);
 
 	std::vector<Core::Human*> _humans;
     std::string _path;
     Physics::World* _world;
     Core::WorldOracle* _oracle;
+    BuilderFunction _builderFunction;
 
     Core::Character* getAFtoCharacter(Physics::ArticulatedFigure* af);
     bool getHuman(std::string name, Core::Human** human);
@@ -46,7 +50,7 @@ public:
      * Add a human to the simulator.
      */
     void addHuman(const std::string& characterFile, const std::string& controllerFile, const Math::Point3d& pos, double heading);
-    void addHuman(const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
+    void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
     		const Math::Point3d& pos, double heading);
 
     void addObject(const std::string& name, const std::string& objFile, double mass);
@@ -110,6 +114,11 @@ public:
     void reset();
 
     void runStep(double dt = Core::SimGlobals::dt);
+
+    void registerBuilder(BuilderFunction builderFunction)
+    {
+    	_builderFunction = builderFunction;
+    }
 };
 
 } // namespace CartWheel3D

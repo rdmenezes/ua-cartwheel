@@ -27,14 +27,16 @@ using namespace CartWheel::Util;
 #endif
 
 CartWheel3D::CartWheel3D() :
-    _path(""), _world(&World::instance()), _oracle(NULL)
+    _path(""), _world(&World::instance()), _oracle(NULL),
+    _builderFunction(NULL)
 {
 	_oracle = new WorldOracle();
 	_oracle->initializeWorld(_world);
 }
 
 CartWheel3D::CartWheel3D(const string& dataPath) :
-    _path(dataPath), _world(&World::instance()), _oracle(NULL)
+    _path(dataPath), _world(&World::instance()), _oracle(NULL),
+    _builderFunction(NULL)
 {
 	_oracle = new WorldOracle();
 	_oracle->initializeWorld(_world);
@@ -56,52 +58,39 @@ void CartWheel3D::addHuman(const string& characterFile, const string& controller
     ch->setHeading(heading);
     ch->setPos(pos);
 
-#if 1
-   // IKVMCController* c = new IKVMCController(ch);
-#else
-    SimBiController* c = new SimBiController(ch);
-#endif
+    IKVMCController* c = new IKVMCController(ch);
 
     sFile = _path + controllerFile;
-    //c->loadFromFile(sFile.c_str());
+    c->loadFromFile(sFile.c_str());
 
-#ifdef _SIMBICON
-	CompositeController* con = new CompositeController(ch, "data/controllers/bigBird/RL/HMV/compositeController.con");
+	BehaviourController* behaviour = new TurnController(ch, c, _oracle);
 
+	ostringstream ostr;
+	ostr << "Human" << _humans.size() + 1;
+	string name = ostr.str();
+
+	Human* human = new Human(name, ch, c, behaviour);
+
+	human->setHeading(heading);
+	human->init();
+
+    _humans.push_back(human);
+}
+
+void CartWheel3D::addHuman(const string& name, const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
+		const Math::Point3d& pos, double heading)
+{
+    string sFile = _path + characterFile;
+    _world->loadRBsFromFile(sFile.c_str(), _path.c_str());
+    Character* ch = getAFtoCharacter(_world->getAF(_world->getAFCount()-1));
+    ch->setHeading(heading);
+    ch->setPos(pos);
+
+	CompositeController* con = new CompositeController(ch, _oracle, controllerFile.c_str());
 	ActionCollectionPolicy* policy = new ActionCollectionPolicy(con);
-	policy->loadActionsFromFile("data/controllers/bigBird/RL/HMV/actions");
-
-	CompositeControllerState state;
-	state.primaryControllerIndex = 3;
-	state.secondaryControllerIndex = 4;
-	state.interpValue = 0.1;
-	state.synchronizeControllers = TRUE;
+	policy->loadActionsFromFile(actionFile.c_str());
 
 	// TODO: Hack for now
-	SimBiControllerState controllerState;
-	controllerState.stance = 1;
-	controllerState.phi = 0;
-	controllerState.FSMStateIndex = 0;
-	controllerState.bodyGroundContact = FALSE;
-
-	for(int i=0; i<12; i++)
-		state.controllerStates.push_back(controllerState);
-
-	con->setControllerState(state);
-//	SimpleStyleParameters params;
-//	params.applyStyleParameters(con);
-
-	Human* human = new Human(ch, con, policy);
-#else
-
-#if 1
-
-	CompositeController* con = new CompositeController(ch, _oracle, "data/controllers/bipV3/HMV/compositeController.con");
-	ActionCollectionPolicy* policy = new ActionCollectionPolicy(con);
-	policy->loadActionsFromFile("data/controllers/bipV3/HMV/actions");
-
-	// TODO: Hack for now
-
 	CompositeControllerState state;
 	state.primaryControllerIndex = 0;
 	state.secondaryControllerIndex = 1;
@@ -119,30 +108,18 @@ void CartWheel3D::addHuman(const string& characterFile, const string& controller
 
 	//con->setControllerState(state);
 
+/*
 	ostringstream ostr;
 	ostr << "Human" << _humans.size() + 1;
 	string name = ostr.str();
+*/
 
+	// Create a new human
 	Human* human = new Human(name, ch, con, policy);
 
-	// Select the default controller
-	human->applyAction(0);
+	// Initialize
+	human->init();
 
-#else
-
-	BehaviourController* behaviour = new TurnController(ch, c, _oracle);
-
-	Human* human = new Human(ch, c, behaviour, NULL);
-
-	human->setHeading(heading);
-
-#endif
-/*
-	BehaviourController* behaviour = new TurnController(ch, c, _oracle);
-    Human* human = new Human(ch, c, behaviour, NULL);
-   // human->setHeading(heading);
-*/
-#endif
     _humans.push_back(human);
 }
 
@@ -228,11 +205,16 @@ void CartWheel3D::updateRB(const string& name, const Point3d& pos, const Quatern
     body->setOrientation(orientation);
     body->setCMVelocity(vel);
 }
+
 void CartWheel3D::reset()
 {
 	_humans.clear();
 
     _world->destroyAllObjects();
+
+    if (NULL != _builderFunction) {
+    	_builderFunction(this);
+    }
 
 //    if(_oracle != NULL)
 //        delete _oracle;
@@ -252,6 +234,8 @@ void CartWheel3D::runStep(double dt)
 
 	DynamicArray<ContactPoint>* contactPoints = _world->getContactForces();
 
+	DynamicArray<Vector3d> humanPositions;
+
 	while (simulationTime / maxRunningTime < animationTimeToRealTimeRatio)
     {
 		simulationTime += SimGlobals::dt;
@@ -260,23 +244,23 @@ void CartWheel3D::runStep(double dt)
 	    for (unsigned int i = 0; i < _humans.size(); i++)
 	    {
 			SimBiController* c = _humans[i]->getController();
-			c->performPreTasks(dt, contactPoints);
+			if (NULL != c)
+			{
+				c->performPreTasks(dt, contactPoints);
 
-/*
-	    	CompositeController* controller = _humans[i]->getCompositeController();
-	    	if (NULL != controller)
-	    	{
-	    		int actionIndex = getController(_humans[i]->getName());
+				// Save the current position
+				humanPositions.push_back(_humans[i]->getPosition());
 
-	    		if (actionIndex != -1)
-	    		{
-					SimBiController* c = controller->getController(actionIndex);
-					c->performPreTasks(dt, contactPoints);
-    }
-	    	}
+				BehaviourController* b = _humans[i]->getBehaviour();
+				if (NULL != b)
+				{
+					if (b->shouldAbort())
+					{
 
-	    }
-*/
+					}
+				}
+			}
+
 /*
     for (unsigned int i = 0; i < _humans.size(); i++)
     {
@@ -305,7 +289,23 @@ void CartWheel3D::runStep(double dt)
     for (unsigned int i = 0; i < _humans.size(); i++)
     {
     	SimBiController* c = _humans[i]->getController();
-    	c->performPostTasks(dt, contactPoints);
+
+    	if (NULL != c)
+    	{
+        	c->performPostTasks(dt, contactPoints);
+
+			// Save the current position
+			humanPositions.push_back(_humans[i]->getPosition());
+
+			BehaviourController* b = _humans[i]->getBehaviour();
+			if (NULL != b)
+			{
+				if (b->shouldAbort())
+				{
+
+				}
+			}
+    	}
 
     	/*
     	CompositeController* controller = _humans[i]->getCompositeController();
@@ -379,11 +379,6 @@ void CartWheel3D::setController(const std::string& name, int actionIndex)
 	if (getHuman(name, &human))
 	{
 		human->applyAction(actionIndex);
-/*
-		ActionCollectionPolicy* policy = dynamic_cast<ActionCollectionPolicy*>(human->getPolicy());
-		policy->setActionIndex(actionIndex);
-		policy->applyAction();
-*/
 	}
 }
 
@@ -395,7 +390,10 @@ int CartWheel3D::getController(const std::string& name)
 	if (getHuman(name, &human))
 	{
 		ActionCollectionPolicy* policy = dynamic_cast<ActionCollectionPolicy*>(human->getPolicy());
-		actionIndex = policy->getActionIndex();
+		if (NULL != policy)
+		{
+			actionIndex = policy->getActionIndex();
+		}
 	}
 
 	return actionIndex;

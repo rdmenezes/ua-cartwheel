@@ -45,6 +45,11 @@ Human::~Human()
 	delete m_policy;
 }
 
+void Human::init()
+{
+	applyAction(0);
+}
+
 void Human::applyAction(int actionIndex)
 {
 	ActionCollectionPolicy* policy = dynamic_cast<ActionCollectionPolicy*>(m_policy);
