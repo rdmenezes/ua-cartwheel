@@ -4,6 +4,7 @@
 #include <Core/Visualization.h>
 
 #include <string>
+#include <sstream>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
@@ -14,8 +15,6 @@ using namespace std;
 static CartWheel3D* g_simulator = NULL;
 static Visualization* g_visualization = NULL;
 
-string g_simulatorPath;
-
 static int process_option(const char* option, const char* value);
 
 void render(void) {
@@ -23,8 +22,56 @@ void render(void) {
 	g_visualization->render(g_simulator);
 }
 
-int main(int argc, char** argv) { 
-	
+void makeWorld(CartWheel3D* p_simulator) {
+	p_simulator->addObject("ground", "data/objects/flatGround.rbs", 0);
+
+	Vector3d boxScale(0.1, 0.1, 0.3);
+	double boxMass = 1.0;
+	p_simulator->addBox("box1", boxScale, boxMass);
+
+	double yaw = 3.14*0;
+	Quaternion boxOrientation(yaw, Vector3d(0, 1, 0));
+
+	Point3d boxPosition(3, 0.5, -3);
+	Vector3d boxVelocity(0, 0, 0);
+
+	p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
+
+	const int nBalls = 5;
+	for (int i = 0; i < nBalls; i++)
+	{
+		Vector3d ballScale(0.2, 0.2, 0.2);
+		double ballMass = 1.0;
+
+		ostringstream ostr;
+		ostr << "ball" << i + 1;
+		string name = ostr.str();
+
+		p_simulator->addBall(name, ballScale, ballMass);
+
+		Point3d ballPosition(-5+1.5*i, 2*0.1*(i+1), -2-1.5*i);
+		Vector3d ballVelocity(0, 0, 0);
+		Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
+
+		p_simulator->updateRB(name, ballPosition, ballOrientation, ballVelocity);
+	}
+
+#if 1
+	string name = "Human1";
+	string characterFile = "data/characters/bipV3.rbs";
+	string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
+	string actionFile = "data/controllers/bipV3/HMV/actions";
+	Math::Point3d humanPosition(0.0, 1.0, 0.0);
+	double heading = 3.14;
+
+	p_simulator->addHuman(name, characterFile, controllerFile, actionFile, humanPosition, heading);
+#else
+	p_simulator->addHuman("data/characters/bipV3.rbs",  "data/controllers/bipV3/Walking.sbc", Point3d(0.0, 1.0, 0.0), 3.14);
+#endif
+}
+
+int main(int argc, char** argv)
+{
     Visualization viz(render, argc, argv, 640, 480);
     g_visualization = &viz;
     Point3d camerPos(0.0,5.0,5.0);
@@ -40,29 +87,14 @@ int main(int argc, char** argv) {
 
     CartWheel3D cw;
     g_simulator = &cw;
-	cw.setPath(g_simulatorPath);
-	cw.addObject("ground", "data/objects/flatGround.rbs", 0);
+	cw.setPath("");
+
+	cw.registerBuilder(makeWorld);
 
 	viz.setCartWheelHandle(&cw);
 
-	//cw.setDrawBB(false);
-	
-	Vector3d scale(0.1, 0.1, 0.3);
-	double mass = 1.0;
-//	cw.addBox("box1", scale, mass);
-
-	double yaw = 3.14*0.2;
-	Quaternion orientation(yaw, Vector3d(0, 1, 0));
-
-	Point3d position(0.5,0.5,-2);
-	Vector3d velocity(0, 0, 0);
-
-	//cw.updateRB("box1", position, orientation, velocity);
-#if 1
-	cw.addHuman("data/characters/bipV3.rbs",  "data/controllers/bipV3/Walking.sbc", Point3d(0.0, 1.0, 0.0), 3.14);
-#else
-	cw.addHuman("data/characters/bigBird.rbs",  "data/controllers/bigBird/RL/iWalk.sbc", Point3d(0.0, 1.0, 0.0), 0);
-#endif
+	// Build our world
+	makeWorld(&cw);
 	
 	viz.initMenu();
 	viz.initKeyboard();

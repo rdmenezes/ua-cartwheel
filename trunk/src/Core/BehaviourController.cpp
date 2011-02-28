@@ -1,11 +1,14 @@
 #include <Core/BehaviourController.h>
 #include <MathLib/Trajectory.h>
+#include<iostream>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
 using namespace CartWheel::Physics;
 using namespace CartWheel::Math;
 using namespace CartWheel::Util;
+
+using namespace std;
 
 BehaviourController::BehaviourController(Character* b, IKVMCController* llc, WorldOracle* w){
 	this->bip = b;
@@ -193,7 +196,11 @@ void BehaviourController::simStepPlan(double /* dt */){
 	adjustStepHeight();
 
 	//and see if we're really in trouble...
-//	if (shouldAbort()) onAbort();
+	if (shouldAbort())
+	{
+		cout << "aborting..." << endl;
+		onAbort();
+	}
 }
 
 void BehaviourController::requestStepTime(double stepTime){
@@ -288,6 +295,8 @@ bool BehaviourController::shouldAbort(){
 	this method is used to indicate what the behaviour of the character should be, once it decides to abort its plan.
 */
 void BehaviourController::onAbort(){
+	cout << "onAbort" << endl;
+
 	//force a premature switch to the next controller state
 	if (lowLCon->phi > 0.2){
 		lowLCon->phi = 1;

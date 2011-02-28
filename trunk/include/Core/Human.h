@@ -110,7 +110,12 @@ public:
     }
 
     /**
-     * Apply new action based on the index as prescribed in ActionCollectionPolicy
+     * Initialize everything.
+     */
+    void init();
+
+    /**
+     * Apply new action based on the index as prescribed in ActionCollectionPolicy.
      */
     void applyAction(int actionIndex);
 };
