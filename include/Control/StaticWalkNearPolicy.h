@@ -15,7 +15,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-class StaticWalkNearPolicy : Planner {
+class StaticWalkNearPolicy : public Planner {
 
 
 public:

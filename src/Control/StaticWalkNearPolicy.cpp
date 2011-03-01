@@ -8,9 +8,9 @@ using namespace CartWheel::Math;
 StaticWalkNearPolicy::StaticWalkNearPolicy(double walkSpeed, string p){
    myWalkSpeed = walkSpeed;
    myAvailableActions = new TomsAction*[4];
-   SpeedAction * temp = new SpeedAction(myWalkSpeed);
+   WalkAction * temp = new WalkAction(myWalkSpeed);
    myAvailableActions[0] = (TomsAction*) temp;
-   temp = new SpeedAction(0.0);
+   temp = new WalkAction(0.0);
    myAvailableActions[1] = (TomsAction*)temp;
    FakeTurnAction* temp2 = new FakeTurnAction(0.174); //10 degrees
    myAvailableActions[2] = (TomsAction*) temp2;

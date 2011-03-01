@@ -56,7 +56,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 		p_simulator->updateRB(name, ballPosition, ballOrientation, ballVelocity);
 	}
 
-#if 1
+#if 0
 	string name = "Human1";
 	string characterFile = "data/characters/bipV3.rbs";
 	string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
