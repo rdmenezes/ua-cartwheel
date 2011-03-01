@@ -52,26 +52,26 @@ void init_simulation(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-  StaticWalkNearPolicy pol(1.2, "0");
-  PosState ps;
-  RelationalState rs;
-  FILE* option_fp;
-
-  init_simulation(argc, argv);
-  cout << "HERE" << endl;
-  //for (int timer = 0; timer < 10000; timer++)
-  //{
-
-  std::vector<PosState*> *posStates = new std::vector<PosState*>();
-
-  for(int x = 0; x < 10; x++){
-    rs.reset(ps, simulator);
-    cout<<"relations: "<< rs.toString()<<endl;
-     ps.reset(simulator); 
-    pol.getAction(simulator)->execute(simulator, posStates);
-   }
-    //simulator->runStep(.001);
-   // cout << "human location : " << simulator->getHumanPosition(0).getX() << "  "
-     //   << simulator->getHumanPosition(0).getZ() << endl;
-  //}
+//  StaticWalkNearPolicy pol(1.2, "0");
+//  PosState ps;
+//  RelationalState rs;
+//  FILE* option_fp;
+//
+//  init_simulation(argc, argv);
+//  cout << "HERE" << endl;
+//  //for (int timer = 0; timer < 10000; timer++)
+//  //{
+//
+//  std::vector<PosState*> *posStates = new std::vector<PosState*>();
+//
+//  for(int x = 0; x < 10; x++){
+//    rs.reset(ps, simulator);
+//    cout<<"relations: "<< rs.toString()<<endl;
+//     ps.reset(simulator);
+//    pol.getAction(simulator)->execute(simulator, posStates);
+//   }
+//    //simulator->runStep(.001);
+//   // cout << "human location : " << simulator->getHumanPosition(0).getX() << "  "
+//     //   << simulator->getHumanPosition(0).getZ() << endl;
+//  //}
 }

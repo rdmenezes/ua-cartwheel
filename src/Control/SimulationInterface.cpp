@@ -15,27 +15,27 @@ void render(void)
 // TODO This will probably need a parameter for sPath
 SimulationInterface::SimulationInterface(bool visualize)
 {
-  this->visualize = visualize;
-  sPath = new char[200];
-  strcpy(sPath, "");
-  simulator = new CartWheel3D(sPath);
+  this->visualize_ = visualize;
+  sPath_ = new char[200];
+  strcpy(sPath_, "");
+  simulator_ = new CartWheel3D(sPath_);
 
   if (visualize)
   {
     int argc = 0;
     char** argv = NULL;
-    visualization = new Visualization(render, argc, argv, 640, 480);
+    visualization_ = new Visualization(render, argc, argv, 640, 480);
 
     Point3d camerPos(0.0, 5.0, 5.0);
     Point3d cameraTarget(0.0, 1.0, 0.0);
     Point3d cameraUp(0.0, 1.0, 0.0);
 
-    visualization->initGL(camerPos, cameraTarget);
-    visualization->setCameraLocation(camerPos);
-    visualization->setCameraTarget(cameraTarget);
-    visualization->setCameraUp(cameraUp);
+    visualization_->initGL(camerPos, cameraTarget);
+    visualization_->setCameraLocation(camerPos);
+    visualization_->setCameraTarget(cameraTarget);
+    visualization_->setCameraUp(cameraUp);
 
-    visualization->setRenderGround(true);
+    visualization_->setRenderGround(true);
   }
   else
   {
@@ -49,31 +49,39 @@ SimulationInterface::~SimulationInterface()
 
 void SimulationInterface::init_simulation(std::vector<double> start_state)
 {
-  simulator->addObject("ground", "data/objects/flatGround.rbs", -1);
+  positions_.clear();
+  capsules_.clear();
+
+  simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
 
   //simulator->addObject("dodgeBox", "data/objects/box.rbs", 1);
 
   string humanModel = "data/characters/bipV3.rbs";
   string humanController = "data/controllers/bipV3/Walking.sbc";
+//  string humanController2 = "data/controllers/bipV3/Walking2.sbc";
 
   Point3d p1(start_state[0], 1.0, start_state[1]);
   Point3d p2(start_state[3], 1.0, start_state[4]);
 
-  simulator->addHuman(humanModel, humanController, p1, start_state[2]);
-  simulator->addHuman("data/characters/bip2V3.rbs", humanController, p2, start_state[5]);
-  simulator->setHumanSpeed(1, 0);
+  // Add human 1
+  simulator_->addHuman(humanModel, humanController, p1, start_state[2]);
+
+  // Add human 2
+//  simulator_->addHuman("data/characters/bip2V3.rbs", humanController2, p2, start_state[5]);
+//  simulator_->setHumanSpeed(1, 0);
 }
 
-std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)
+void SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)
 {
-  double steps_per_second = 2000.0;
-  double step_size = 1 / steps_per_second;
+  int steps_per_second = 2000;
+  double step_size = 1.0 / steps_per_second;
+
+  double other_steps_per_second = 200;
+
+  int samples_per_second = 2;
+  int sampling_rate = other_steps_per_second / (samples_per_second * 20);
 
   init_simulation(start_state);
-  cout << "HERE" << endl;
-
-  // This vector will store the trajectory
-  std::vector<PosState*> *trajectory = new std::vector<PosState*>();
 
   double total_time = 0.0;
   for (std::vector<ExtendedAction*>::iterator it = actions.begin(); it != actions.end(); ++it)
@@ -85,10 +93,11 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
   // Queue up the first action
   int action_index = 0;
   ExtendedAction* curr_action = actions[action_index];
-  curr_action->executeSetup(simulator);
+  curr_action->executeSetup(simulator_);
   double prev_start = 0.0;
   // Run each action for it's duration
-  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * 200) // Not sure about this constant
+  int i = 0;
+  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * other_steps_per_second) // Not sure about this constant
   {
     if (curr_time > curr_action->getTime() + prev_start) // rename to duration
     {
@@ -99,19 +108,34 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
       cout << "SWITCHING ACTION" << endl;
       action_index++;
       curr_action = actions[action_index];
-      curr_action->executeSetup(simulator);
+      curr_action->executeSetup(simulator_);
       prev_start = curr_time;
     }
 
-    PosState* pos = new PosState(simulator);
-    trajectory->push_back(pos);
-
-    curr_action->executeStep(simulator, step_size);
-    if (visualize)
+    if (i % sampling_rate == 0)
     {
-      visualization->render(simulator);
+      PosState* pos_state = new PosState(simulator_);
+      positions_.push_back(pos_state);
+//      CapsuleState* capsule_state = new CapsuleState(simulator_);
+//      capsules_.push_back(capsule_state);
     }
-  }
 
-  return trajectory;
+    curr_action->executeStep(simulator_, step_size);
+    if (visualize_)
+    {
+      visualization_->render(simulator_);
+    }
+
+    ++i;
+  }
+}
+
+std::vector<PosState*> SimulationInterface::getPositions()
+{
+  return positions_;
+}
+
+std::vector<Capsule*> SimulationInterface::getCapsules()
+{
+  return capsules_;
 }

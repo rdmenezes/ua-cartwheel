@@ -187,7 +187,7 @@ ArticulatedFigure
 	root pelvis2
 	
 	ballInSocketJoint 1 0 0 0 0 1
-		name pelvis_lowerback2
+		name pelvis_lowerback
 		parent pelvis2
 		child lowerBack2
 		jointPPos 0 0.07 -0.015
@@ -196,7 +196,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 1 0 0 0 0 1
-		name lowerback_torso2
+		name lowerback_torso
 		parent lowerBack2
 		child torso2
 		jointPPos 0 0.05 -0.015
@@ -205,7 +205,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 1 0 0 0 0 1
-		name torso_head2
+		name torso_head
 		parent torso2
 		child head2
 		jointPPos 0 0.16 0.00
@@ -214,7 +214,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 0 0 1 1 0 0
-		name lShoulder2
+		name lShoulder
 		parent torso2
 		child lUpperArm2
 		jointPPos 0.16 0.095 0.02
@@ -223,7 +223,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 0 0 1 1 0 0
-		name rShoulder2
+		name rShoulder
 		parent torso2
 		child rUpperArm2
 		jointPPos -0.16 0.095 0.02
@@ -232,7 +232,7 @@ ArticulatedFigure
 	/Joint
 				
 	hingeJoint 0 1 0
-		name lElbow2
+		name lElbow
 		parent lUpperArm2
 		child lLowerArm2
 		jointPPos 0.11 0 0
@@ -241,7 +241,7 @@ ArticulatedFigure
 	/Joint
 
 	hingeJoint 0 -1 0
-		name rElbow2
+		name rElbow
 		parent rUpperArm2
 		child rLowerArm2
 		jointPPos -0.11 0 0
@@ -250,7 +250,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 1 0 0 0 0 1
-		name lHip2
+		name lHip
 		parent pelvis2
 		child lUpperLeg2
 		jointPPos 0.08 -0.03 -0.01
@@ -259,7 +259,7 @@ ArticulatedFigure
 	/Joint
 
 	ballInSocketJoint 1 0 0 0 0 1
-		name rHip2
+		name rHip
 		parent pelvis2
 		child rUpperLeg2
 		jointPPos -0.08 -0.03 -0.01
@@ -268,7 +268,7 @@ ArticulatedFigure
 	/Joint
 		
 	hingeJoint 1 0 0
-		name lKnee2
+		name lKnee
 		parent lUpperLeg2
 		child lLowerLeg2
 		jointPPos 0 -0.23 0
@@ -277,7 +277,7 @@ ArticulatedFigure
 	/Joint
 		
 	hingeJoint 1 0 0
-		name rKnee2
+		name rKnee
 		parent rUpperLeg2
 		child rLowerLeg2
 		jointPPos 0 -0.23 0
@@ -287,7 +287,7 @@ ArticulatedFigure
 		
 
 	universalJoint 0 0 1 1 0 0
-		name lAnkle2
+		name lAnkle
 		parent lLowerLeg2
 		child lFoot2
 		jointPPos 0.01 -0.24 0.00
@@ -296,7 +296,7 @@ ArticulatedFigure
 	/Joint
 
 	universalJoint 0 0 -1 1 0 0
-		name rAnkle2
+		name rAnkle
 		parent rLowerLeg2
 		child rFoot2
 		jointPPos -0.01 -0.24 0.00
@@ -305,7 +305,7 @@ ArticulatedFigure
 	/Joint
 		
 	hingeJoint 1 0 0
-		name lToeJoint2
+		name lToeJoint
 		parent lFoot2
 		child lToes2
 		jointPPos 0 -0.02 0.055
@@ -314,7 +314,7 @@ ArticulatedFigure
 	/Joint
 		
 	hingeJoint 1 0 0
-		name rToeJoint2
+		name rToeJoint
 		parent rFoot2
 		child rToes2
 		jointPPos 0 -0.02 0.055

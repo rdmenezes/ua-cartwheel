@@ -14,12 +14,7 @@
 #include <Control/ExtendedAction.h>
 #include <Control/RelationalState.h>
 #include <Control/PosState.h>
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <math.h>
-#include <algorithm>
+#include <Control/CapsuleState.h>
 
 class SimulationInterface
 {
@@ -27,14 +22,20 @@ public:
   SimulationInterface(bool visualize);
   virtual ~SimulationInterface();
 
-//  void render(void);
   void init_simulation(std::vector<double> start_state);
-  std::vector<PosState*>* simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
+  void simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
+
+  std::vector<PosState*> getPositions();
+  std::vector<Capsule*> getCapsules();
+
 private:
-  CartWheel3D* simulator;
-  Visualization* visualization;
-  bool visualize;
-  char* sPath;
+  CartWheel3D* simulator_;
+  Visualization* visualization_;
+  bool visualize_;
+  char* sPath_;
+
+  std::vector<PosState*> positions_;
+  std::vector<Capsule*> capsules_;
 };
 
 #endif /* SIMULATIONINTERFACE_H_ */
