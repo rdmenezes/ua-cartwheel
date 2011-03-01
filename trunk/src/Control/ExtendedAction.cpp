@@ -1,7 +1,7 @@
-#include "Control/TomsAction.h"
+#include "Control/ExtendedAction.h"
 #include <Control/PosState.h>
 
-void TomsAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory)
+void ExtendedAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory)
 {
   //time_t starter; 
 
@@ -20,7 +20,7 @@ void TomsAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory)
   }
 }
 
-void TomsAction::executeStep(CartWheel3D *cw, double step)
+void ExtendedAction::executeStep(CartWheel3D *cw, double step)
 {
   cout << "human location (0): " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
   cw->runStep(step);

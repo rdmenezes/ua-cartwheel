@@ -7,15 +7,15 @@ using namespace CartWheel::Math;
 
 StaticWalkNearPolicy::StaticWalkNearPolicy(double walkSpeed, string p){
    myWalkSpeed = walkSpeed;
-   myAvailableActions = new TomsAction*[4];
+   myAvailableActions = new ExtendedAction*[4];
    WalkAction * temp = new WalkAction(myWalkSpeed);
-   myAvailableActions[0] = (TomsAction*) temp;
+   myAvailableActions[0] = (ExtendedAction*) temp;
    temp = new WalkAction(0.0);
-   myAvailableActions[1] = (TomsAction*)temp;
-   FakeTurnAction* temp2 = new FakeTurnAction(0.174); //10 degrees
-   myAvailableActions[2] = (TomsAction*) temp2;
-   temp2 = new FakeTurnAction(-0.174);
-   myAvailableActions[3] = (TomsAction*)temp2;
+   myAvailableActions[1] = (ExtendedAction*)temp;
+   TurnAction* temp2 = new TurnAction(0.174); //10 degrees
+   myAvailableActions[2] = (ExtendedAction*) temp2;
+   temp2 = new TurnAction(-0.174);
+   myAvailableActions[3] = (ExtendedAction*)temp2;
    for(int x =0; x < 4; x++)
 	myAvailableActions[x]->setTime(0.05);
    myControllables =new string[1];
@@ -36,7 +36,7 @@ StaticWalkNearPolicy::~StaticWalkNearPolicy(){
 
 
 //TODO: We will be replacing the nearness check with a relation class once I verify this works
-TomsAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
+ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
   
   //find location of the controllable actor
         int hIndex= atoi(myControllables[0].c_str());

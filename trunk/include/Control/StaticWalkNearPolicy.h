@@ -4,9 +4,9 @@
 #include "Control/Planner.h"
 #include <string>
 #include <MathLib/Vector3d.h>
-#include<iostream>
-#include "Control/SpeedAction.h"
-#include "Control/FakeTurnAction.h"
+#include <iostream>
+#include "Control/WalkAction.h"
+#include "Control/TurnAction.h"
 #include <math.h>
 #include "Control/ControlUtils.h"
 
@@ -21,7 +21,7 @@ class StaticWalkNearPolicy : public Planner {
 public:
   StaticWalkNearPolicy(double walkSpeed, string p);
   ~StaticWalkNearPolicy();
-  TomsAction* getAction(CartWheel3D * simState);
+  ExtendedAction* getAction(CartWheel3D * simState);
 protected:
   double myWalkSpeed;  
 

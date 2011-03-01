@@ -1,13 +1,13 @@
 #ifndef _FAKETURNACTION_H_
 #define _FAKETURNACTION_H_
 
-#include "TomsAction.h"
+#include <Control/ExtendedAction.h>
 
-class FakeTurnAction : public TomsAction {
+class TurnAction : public ExtendedAction {
 
 public:
-FakeTurnAction(){myChange = 0.0;}
-FakeTurnAction(double change){myChange = change;}
+TurnAction(){myChange = 0.0;}
+TurnAction(double change){myChange = change;}
 void executeSetup(CartWheel3D * cw);
 
 virtual void setParams(std::vector<double> params);

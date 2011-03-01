@@ -13,11 +13,11 @@ using std::string;
 using namespace CartWheel;
 using namespace CartWheel::Core;
 
-class TomsAction {
+class ExtendedAction {
 
 public:
 
-TomsAction(){;};
+ExtendedAction(){;};
 
 virtual string getActor(){return actorName;};
 virtual void setActor(string s){actorName =s;};
