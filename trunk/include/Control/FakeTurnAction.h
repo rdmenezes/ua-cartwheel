@@ -8,7 +8,7 @@ class FakeTurnAction : TomsAction{
 public:
 FakeTurnAction(){myChange = 0.0;}
 FakeTurnAction(double change){myChange = change;}
-void execute(CartWheel3D * cw);
+void executeSetup(CartWheel3D * cw);
 
 
 private:

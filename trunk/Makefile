@@ -31,7 +31,7 @@ CC = g++
 #	(like gdb) needs.
 # -Wall	tells the compiler to print warnings about pretty much everything.
 # -w    Hide all of the warnings because I don't like seeing them
-CFLAGS = -g -w -fPIC -DdDOUBLE
+CFLAGS = -g -w -fPIC #-DdDOUBLE
 
 all : library AppMain mainControl interactControl
 

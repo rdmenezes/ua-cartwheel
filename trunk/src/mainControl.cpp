@@ -55,11 +55,12 @@ int main(int argc, char** argv)
 
   init_simulation(argc, argv);
   cout << "HERE" << endl;
-  for (int timer = 0; timer < 10000; timer++)
-  {
+  //for (int timer = 0; timer < 10000; timer++)
+  //{
+  for(int x = 0; x < 1000; x++)
     pol.getAction(simulator)->execute(simulator);
-    simulator->runStep(.001);
-    cout << "human location : " << simulator->getHumanPosition(0).getX() << "  "
-        << simulator->getHumanPosition(0).getZ() << endl;
-  }
+    //simulator->runStep(.001);
+   // cout << "human location : " << simulator->getHumanPosition(0).getX() << "  "
+     //   << simulator->getHumanPosition(0).getZ() << endl;
+  //}
 }
