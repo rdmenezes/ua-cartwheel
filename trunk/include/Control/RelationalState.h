@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include "Control/ControlUtils.h"
 #include "Control/Relation.h"
 #include "Control/PosState.h"

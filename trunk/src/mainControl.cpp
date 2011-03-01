@@ -64,8 +64,8 @@ int main(int argc, char** argv)
   for(int x = 0; x < 10; x++){
     rs.reset(ps, simulator);
     cout<<"relations: "<< rs.toString()<<endl;
+     ps.reset(simulator); 
     pol.getAction(simulator)->execute(simulator);
-    ps.reset(simulator);
    }
     //simulator->runStep(.001);
    // cout << "human location : " << simulator->getHumanPosition(0).getX() << "  "
