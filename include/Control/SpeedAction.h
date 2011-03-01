@@ -8,7 +8,7 @@ class SpeedAction : TomsAction{
 public:
 SpeedAction(){mySpeed = 0.0;}
 SpeedAction(double s){mySpeed = s;};
-void execute(CartWheel3D * cw);
+void executeSetup(CartWheel3D * cw);
 void setSpeed(double d){mySpeed = d;};
 
 private:

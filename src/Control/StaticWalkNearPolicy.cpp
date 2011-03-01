@@ -18,6 +18,8 @@ StaticWalkNearPolicy::StaticWalkNearPolicy(double walkSpeed, string p){
    myAvailableActions[2] = (TomsAction*) temp2;
    temp2 = new FakeTurnAction(-0.174);
    myAvailableActions[3] = (TomsAction*)temp2;
+   for(int x =0; x < 4; x++)
+	myAvailableActions[x]->setTime(0.05);
    myControllables =new string[1];
    myControllables[0] = p;
 
