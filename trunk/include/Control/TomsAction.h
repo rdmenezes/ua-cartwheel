@@ -2,8 +2,10 @@
 #define _TOMSACTION_H_
 
 #include <Core/CartWheel3D.h>
-#include<string>
+#include <Control/PosState.h>
+#include <string>
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
@@ -17,19 +19,24 @@ public:
 
 TomsAction(){;};
 
+virtual string getActor(){return actorName;};
 virtual void setActor(string s){actorName =s;};
 
-virtual string getActor(){return actorName;};
-
-virtual void execute(CartWheel3D * cw);
-
+virtual double getTime() { return myTime; }
 virtual void setTime(double l){myTime = l;}
 
+virtual double getPrior(std::vector<double> params) = 0;
+
+virtual void setParams(std::vector<double> params) = 0;
+
+virtual void execute(CartWheel3D *cw, std::vector<PosState*> *trajectory);
+void executeStep(CartWheel3D *cw, std::vector<PosState*> *trajectory, double step);
+
+virtual void executeSetup(CartWheel3D * cw) = 0;
+
 protected:
- virtual void executeSetup(CartWheel3D * cw) = 0;
  string actorName;
  double myTime;
-
 };
 
 
