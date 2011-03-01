@@ -9,7 +9,7 @@ using std::endl;
 
 int main(int argc, char** argv)
 {
-  SimulationInterface interface(false);
+  SimulationInterface interface(true);
 
   vector<double> start_state;
   start_state.push_back(0);
