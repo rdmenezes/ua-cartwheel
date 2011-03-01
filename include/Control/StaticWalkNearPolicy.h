@@ -8,6 +8,7 @@
 #include "Control/SpeedAction.h"
 #include "Control/FakeTurnAction.h"
 #include <math.h>
+#include "Control/ControlUtils.h"
 
 using CartWheel::Math::Vector3d;
 using std::string;

@@ -3,8 +3,6 @@
 
 using namespace CartWheel::Math;
 
-double eucDistance(Vector3d &, Vector3d &);
-double eucDistance2d(Vector3d &, Vector3d &);
 
 
 StaticWalkNearPolicy::StaticWalkNearPolicy(double walkSpeed, string p){
@@ -35,13 +33,6 @@ StaticWalkNearPolicy::~StaticWalkNearPolicy(){
 }
 
 
-double eucDistance(Vector3d & a, Vector3d & b){
- 	return sqrt((a -b).dotProductWith((a - b))); 
-}
-
-double eucDistance2d(Vector3d & a, Vector3d & b){
- 	return sqrt(( a.getX() - b.getX()) * ( a.getX() - b.getX()) + ( a.getZ() - b.getZ()) * ( a.getZ() - b.getZ())  ); 
-}
 
 
 //TODO: We will be replacing the nearness check with a relation class once I verify this works
@@ -54,13 +45,13 @@ TomsAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
 	//cout<<"Made the first point"<<endl;
   //target location (later might be another actor)
        //cout<<"pos: "<<simState->getObjectByName("dodgeBox")->getCMPosition().getX()<<endl;
-       Point3d pos21(simState->getObjectByName("dodgeBox")->getCMPosition());
-       Vector3d pos2(pos21.getX(), pos21.getY(), pos21.getZ());	
+       //Point3d pos21(simState->getObjectByName("dodgeBox")->getCMPosition());
+       Vector3d pos2(simState->getHumanPosition((hIndex+1)%2));   //(pos21.getX(), pos21.getY(), pos21.getZ());	
        //cout<<"Made the points"<<endl;
 
   //keep walking
-  cout<<"Box : "<<pos2.getX()<<"  "<<pos2.getY()<<"  "<<pos2.getZ()<<endl;
-  cout<<"Distance : "<<eucDistance2d(pos1, pos2)<<endl;
+  cout<<"Other Dude : "<<pos2.getX()<<"  "<<pos2.getY()<<"  "<<pos2.getZ()<<endl;
+  cout<<"Distance : "<<ControlUtils::eucDistance2d(pos1, pos2)<<endl;
   double deltaZ = pos2.getZ() - pos1.getZ();
   double deltaX = pos2.getX() - pos1.getX();
   if(fabs(atan(deltaZ / deltaX) - simState->getHumanHeading(hIndex)) > 3.14 / 4.0 ){ //a lot of leeway
@@ -68,7 +59,7 @@ TomsAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
         return myAvailableActions[2]; //someone else can do the logic on which way to turn
 
   }
-  else if(eucDistance2d(pos1, pos2) > 1.0){
+  else if(ControlUtils::eucDistance2d(pos1, pos2) > 1.0){
   	cout<<"Walking"<<endl;	
   	return myAvailableActions[0];
   }
