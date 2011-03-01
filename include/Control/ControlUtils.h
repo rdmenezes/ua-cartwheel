@@ -9,11 +9,11 @@ class ControlUtils{
 
 public:
 
-double static eucDistance(const Vector3d & a, const Vector3d & b){
+static double eucDistance(const Vector3d & a, const Vector3d & b){
         return sqrt((a -b).dotProductWith((a - b)));
 }
 
-double static eucDistance2d(const Vector3d & a, const Vector3d & b){
+static double eucDistance2d(const Vector3d & a, const Vector3d & b){
         return sqrt(( a.getX() - b.getX()) * ( a.getX() - b.getX()) + ( a.getZ() - b.getZ()) * ( a.getZ() - b.getZ())  );
 }
 

@@ -46,7 +46,7 @@ string RelationalState::toString(){
 
 void RelationalState::reset(PosState & last, CartWheel3D * cw){
   double atThresh = 1.0;
-  double changeThresh = 0.2;
+  double changeThresh = 0.01;
 
   //get each human (just doing humans now
   myRelations.clear();
@@ -64,14 +64,16 @@ void RelationalState::reset(PosState & last, CartWheel3D * cw){
 	double dist = ControlUtils::eucDistance2d(pos1, pos2);
 	string n2 = findName(j, cw);
 	double prevDist = ControlUtils::eucDistance2d(*(last.getPosition(n1)), *(last.getPosition(n2)));
-	if(dist < atThresh){
+	
+	cout<<"rel check "<<dist<<"  "<<prevDist<<endl; 
+        if(dist < atThresh){
 		addRelation(*(new Relation("At",n1,n2)));
 	}
       
-        if(dist - prevDist < changeThresh){
+        if(fabs(dist - prevDist) > changeThresh && dist - prevDist < 0 ){
            addRelation(*(new Relation("DistanceDecreasing",n1,n2))); 
 	}
-	else if(dist - prevDist > changeThresh){
+	else if(fabs(dist - prevDist) > changeThresh && dist - prevDist > 0){
 	   addRelation(*(new Relation("DistanceIncreasing",n1,n2)));
 	}
 	else{	
