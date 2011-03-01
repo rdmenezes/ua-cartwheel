@@ -66,12 +66,14 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
 
 std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_state, std::vector<TomsAction*> actions)
 {
-  double step_size = 0.0005;
+  double steps_per_second = 2000.0;
+  double step_size = 1 / steps_per_second;
 
   init_simulation(start_state);
   cout << "HERE" << endl;
 
-  std::vector<PosState*> *posStates = new std::vector<PosState*>();
+  // This vector will store the trajectory
+  std::vector<PosState*> *trajectory = new std::vector<PosState*>();
 
   double total_time = 0.0;
   for (std::vector<TomsAction*>::iterator it = actions.begin(); it != actions.end(); ++it)
@@ -86,7 +88,7 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
   curr_action->executeSetup(simulator);
   double prev_start = 0.0;
   // Run each action for it's duration
-  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * 200)
+  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * 200) // Not sure about this constant
   {
     if (curr_time > curr_action->getTime() + prev_start) // rename to duration
     {
@@ -101,12 +103,15 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
       prev_start = curr_time;
     }
 
-    curr_action->executeStep(simulator, posStates, step_size);
+    PosState* pos = new PosState(simulator);
+    trajectory->push_back(pos);
+
+    curr_action->executeStep(simulator, step_size);
     if (visualize)
     {
       visualization->render(simulator);
     }
   }
 
-  return posStates;
+  return trajectory;
 }

@@ -20,10 +20,8 @@ void TomsAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory)
   }
 }
 
-void TomsAction::executeStep(CartWheel3D *cw, std::vector<PosState*> *trajectory, double step)
+void TomsAction::executeStep(CartWheel3D *cw, double step)
 {
   cout << "human location (0): " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
-  PosState* pos = new PosState(cw);
-  trajectory->push_back(pos);
   cw->runStep(step);
 }
