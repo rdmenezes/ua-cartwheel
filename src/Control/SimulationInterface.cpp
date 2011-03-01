@@ -64,7 +64,7 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   simulator->setHumanSpeed(1, 0);
 }
 
-std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_state, std::vector<TomsAction*> actions)
+std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)
 {
   double steps_per_second = 2000.0;
   double step_size = 1 / steps_per_second;
@@ -76,7 +76,7 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
   std::vector<PosState*> *trajectory = new std::vector<PosState*>();
 
   double total_time = 0.0;
-  for (std::vector<TomsAction*>::iterator it = actions.begin(); it != actions.end(); ++it)
+  for (std::vector<ExtendedAction*>::iterator it = actions.begin(); it != actions.end(); ++it)
   {
     total_time += (*it)->getTime();
   }
@@ -84,7 +84,7 @@ std::vector<PosState*>* SimulationInterface::simulate(std::vector<double> start_
 
   // Queue up the first action
   int action_index = 0;
-  TomsAction* curr_action = actions[action_index];
+  ExtendedAction* curr_action = actions[action_index];
   curr_action->executeSetup(simulator);
   double prev_start = 0.0;
   // Run each action for it's duration

@@ -1,4 +1,4 @@
-#include "Control/SpeedAction.h"
+#include <Control/WalkAction.h>
 #include <Control/ControlUtils.h>
 
 void WalkAction::executeSetup(CartWheel3D * cw){

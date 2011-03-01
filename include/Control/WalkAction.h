@@ -1,9 +1,9 @@
 #ifndef _SPEEDACTION_H_
 #define _SPEEDACTION_H_
 
-#include <Control/TomsAction.h>
+#include <Control/ExtendedAction.h>
 
-class WalkAction : public TomsAction {
+class WalkAction : public ExtendedAction {
 
 public:
 WalkAction(){mySpeed = 0.0;}

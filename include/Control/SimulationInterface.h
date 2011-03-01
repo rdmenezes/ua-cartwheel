@@ -11,7 +11,7 @@
 #include <Core/CartWheel3D.h>
 #include <Core/Visualization.h>
 #include <Control/StaticWalkNearPolicy.h>
-#include <Control/TomsAction.h>
+#include <Control/ExtendedAction.h>
 #include <Control/RelationalState.h>
 #include <Control/PosState.h>
 
@@ -29,7 +29,7 @@ public:
 
 //  void render(void);
   void init_simulation(std::vector<double> start_state);
-  std::vector<PosState*>* simulate(std::vector<double> start_state, std::vector<TomsAction*> actions);
+  std::vector<PosState*>* simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
 private:
   CartWheel3D* simulator;
   Visualization* visualization;

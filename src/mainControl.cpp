@@ -1,6 +1,6 @@
 #include <Core/CartWheel3D.h>
 #include <Control/StaticWalkNearPolicy.h>
-#include <Control/TomsAction.h>
+#include <Control/ExtendedAction.h>
 #include "Control/RelationalState.h"
 #include "Control/PosState.h"
 

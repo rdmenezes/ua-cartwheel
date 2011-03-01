@@ -1,19 +1,19 @@
-#include "Control/FakeTurnAction.h"
+#include <Control/TurnAction.h>
 
 
-void FakeTurnAction::executeSetup(CartWheel3D * cw){
+void TurnAction::executeSetup(CartWheel3D * cw){
   //find the actor and set his speed
   int hIndex = atoi(actorName.c_str());  
   cw->setHumanHeading(hIndex, myChange + cw->getHumanHeading(hIndex));
 
 }
 
-void FakeTurnAction::setParams(std::vector<double> params) {
+void TurnAction::setParams(std::vector<double> params) {
   setTime(params[0]);
   myChange = params[1];
 }
 
-double FakeTurnAction::getPrior(std::vector<double> params) {
+double TurnAction::getPrior(std::vector<double> params) {
   double timeM = 8.0;
   double timeS = 5.0;
 
