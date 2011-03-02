@@ -6,11 +6,15 @@
 #include <string>
 #include "Core/CartWheel3D.h"
 #include <MathLib/Vector3d.h>
+#include <sstream>
+
 
 using CartWheel::Math::Vector3d;
 using std::string;
 using std::vector;
 using std::map;
+using std::stringstream;
+
 using namespace CartWheel;
 using namespace CartWheel::Core;
 using namespace CartWheel::Math;
