@@ -1,9 +1,18 @@
 #include "Control/PosState.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 PosState::PosState(CartWheel3D * cw):blacklist()
 {
-   int h = cw->getHumanCount();
+  blacklist["ground"] = 1;  
+  int h = cw->getHumanCount();
+   blacklist["pelvis"] = 1;
    for(int i =0; i < h; i++){
+      stringstream ss;
+      ss <<"pelvis"<<(i+1);
+      blacklist[ss.str()] = 1; //TODO: Hacked this, not sure why the loop below doesn't fix it
       for(int j=0; j< cw->getHuman(i)->getCharacter()->getArticulatedRigidBodyCount(); j++){
           blacklist[string(cw->getHuman(i)->getCharacter()->getArticulatedRigidBody(j)->getName())] = 1;
 	}
