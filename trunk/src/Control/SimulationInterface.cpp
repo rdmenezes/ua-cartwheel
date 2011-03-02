@@ -130,12 +130,12 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
   }
 }
 
-std::vector<PosState*> SimulationInterface::getPositions()
+const std::vector<PosState*>& SimulationInterface::getPositions() const
 {
   return positions_;
 }
 
-std::vector<CapsuleState*> SimulationInterface::getCapsules()
+const std::vector<CapsuleState*>& SimulationInterface::getCapsules() const
 {
   return capsules_;
 }
