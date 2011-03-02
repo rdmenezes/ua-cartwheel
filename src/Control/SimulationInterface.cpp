@@ -67,8 +67,8 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   simulator_->addHuman(humanModel, humanController, p1, start_state[2]);
 
   // Add human 2
-//  simulator_->addHuman("data/characters/bip2V3.rbs", humanController2, p2, start_state[5]);
-//  simulator_->setHumanSpeed(1, 0);
+  simulator_->addHuman("data/characters/bip2V3.rbs", humanController, p2, start_state[5]);
+  simulator_->setHumanSpeed(1, 0);
 }
 
 void SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)
@@ -105,7 +105,7 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
       {
         break;
       }
-      cout << "SWITCHING ACTION" << endl;
+//      cout << "SWITCHING ACTION" << endl;
       action_index++;
       curr_action = actions[action_index];
       curr_action->executeSetup(simulator_);
@@ -116,8 +116,8 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
     {
       PosState* pos_state = new PosState(simulator_);
       positions_.push_back(pos_state);
-//      CapsuleState* capsule_state = new CapsuleState(simulator_);
-//      capsules_.push_back(capsule_state);
+      CapsuleState* capsule_state = new CapsuleState(simulator_);
+      capsules_.push_back(capsule_state);
     }
 
     curr_action->executeStep(simulator_, step_size);
@@ -135,7 +135,7 @@ std::vector<PosState*> SimulationInterface::getPositions()
   return positions_;
 }
 
-std::vector<Capsule*> SimulationInterface::getCapsules()
+std::vector<CapsuleState*> SimulationInterface::getCapsules()
 {
   return capsules_;
 }

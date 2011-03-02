@@ -20,17 +20,17 @@ public:
   CapsuleState(CartWheel3D* cw);
   virtual ~CapsuleState();
 
-  //  const Vector3d* getPosition(string n);
-  //  void reset(CartWheel3D * cw);
-  //  int getNumVectors(){return myNames.size();};
-  //
-  //  string getName(int index) { return myNames[index]; };
-  //  Vector3d getPosition(int index) { return myPositions[index]; };
-  //
+  int getNumEntities();
+  std::string getName(int index);
+  std::vector<CartWheel::Math::Capsule*> getCapsules(int index);
+
+  void clear();
+
 protected:
-  std::vector<std::string> names_;
-  std::vector<CartWheel::Math::Capsule> capsules_;
   void populate(CartWheel3D* cw);
+
+  std::vector<std::string> names_;
+  std::vector<std::vector<CartWheel::Math::Capsule*> > capsules_;
 
 };
 
