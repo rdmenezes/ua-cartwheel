@@ -39,6 +39,72 @@ BehaviourController::~BehaviourController(void){
 
 }
 
+void BehaviourController::loadFromFile(FILE * f){
+	if (f == NULL)
+		throwError("Invalid file pointer.");
+
+	//have a temporary buffer used to read the file line by line...
+	char buffer[200];
+	char tempName[100];
+
+	//this is where it happens.
+	while (!feof(f)){
+		//get a line from the file...
+		fgets(buffer, 200, f);
+		if (strlen(buffer)>195)
+			throwError("The input file contains a line that is longer than ~200 characters - not allowed");
+		char *line = lTrim(buffer);
+		int lineType = getConLineType(line);
+		switch (lineType) {
+			case CON_DESIRED_HEADING:
+				sscanf(line, "%lf", this->desiredHeading);
+				break;
+			case CON_SAGITTAL_LEAN:
+				sscanf(line, "%lf", this->ubSagittalLean);
+				break;
+			case CON_CORONAL_LEAN:
+				sscanf(line, "%lf", this->ubCoronalLean);
+				break;
+			case CON_TWIST:
+				sscanf(line, "%lf", this->ubTwist);
+				break;
+			case CON_DUCK_WALK:
+				sscanf(line, "%lf", this->duckWalk);
+				break;
+			case CON_VELOCITY_SAGITTAL:
+				sscanf(line, "%lf", this->velDSagittal);
+				break;
+			case CON_VELOCITY_CORONAL:
+				sscanf(line, "%lf", this->velDCoronal);
+				break;
+			case CON_KNEE_BEND:
+				sscanf(line, "%lf", this->kneeBend);
+				break;
+			case CON_CORONAL_STEP_WIDTH:
+				sscanf(line, "%lf", this->coronalStepWidth);
+				break;
+			case CON_STEP_TIME:
+				sscanf(line, "%lf", this->stepTime);
+				break;
+			case CON_STEP_HEIGHT:
+				sscanf(line, "%lf", this->stepHeight);
+				break;
+			case CON_NOT_IMPORTANT:
+				printf("Ignoring input line: \'%s\'\n", line);
+				break;
+			case CON_COMMENT:
+				break;
+			default:
+				throwError("Incorrect BehaviorController input file: \'%s\' - unexpected line.", buffer);
+		}
+	}
+	fclose(f);
+}
+
+void BehaviourController::saveToFile(FILE * file) {
+	//TODO: to be implemented
+}
+
 /**
 	ask for a heading...
 */

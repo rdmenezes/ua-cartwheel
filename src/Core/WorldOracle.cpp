@@ -52,7 +52,7 @@ void WorldOracle::initializeWorld(World *physicalWorld){
 
 	if (spheres.size() > 0){
 		createSpheresRBFile(spheres, "../data/objects/tmpSpheres.rbs");
-		physicalWorld->loadRBsFromFile("../data/objects/tmpSpheres.rbs", "");
+		physicalWorld->loadRBsFromFile("../data/objects/tmpSpheres.rbs", "", "");
 	}
 }
 

@@ -10,6 +10,8 @@
 #include <MathLib/Point3d.h>
 
 #include <string>
+#include <list>
+
 //#include <GL/glut.h>
 #include <GL/freeglut.h>
 
@@ -48,6 +50,7 @@ protected:
     
     CartWheel3D* _cw;
     std::string _selectedHumanName;
+    std::list<std::string> _humanNames;
 
     TransformationMatrix _worldToCam;
 
@@ -94,12 +97,18 @@ public:
     void setRenderGround(bool renderGround) { _renderGround = renderGround; }
     void setDrawBB(bool drawBB) { _drawBB = drawBB; }
     void setCartWheelHandle(CartWheel3D* cw) { _cw = cw; }
+    void setWidth(int width) { _width = width; }
+    void setHeight(int height) { _height = height; }
+    void setHumanNames(const std::list<std::string>& humanNames) { _humanNames = humanNames; }
 
+    int getWidth() { return _width; }
+    int getHeight() { return _height; }
     inline Point3d getCameraLocation() { return _cameraPos; }
     inline Point3d getCameraTarget() { return _cameraTarget; }
     inline double getHumanSpeed() const { return _humanSpeed; }
     inline double getHumanStepWidth() const { return _humanStepWidth; }
     inline CartWheel3D* getCartWheelHandle() const { return _cw; }
+    void getHumanNames(std::list<std::string>& humanNames) const { humanNames = _humanNames; }
 
     void drawAxes();
     void render(CartWheel3D* cartwheel);
@@ -110,6 +119,7 @@ public:
 
     void selectHuman(const std::string& name) { _selectedHumanName = name; }
     std::string getSelectedHuman() const { return _selectedHumanName; }
+
 
     void glutStep();
 

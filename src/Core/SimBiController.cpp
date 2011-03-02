@@ -35,14 +35,17 @@ using namespace CartWheel::Util;
 SimBiController::SimBiController(Character* b) : PoseController(b){
 	if (b == NULL)
 		throwError("Cannot create a SIMBICON controller if there is no associated biped!!");
+
 	//characters controlled by a simbicon controller are assumed to have: 2 feet
 	lFoot = b->getARBByName("lFoot");
 	rFoot = b->getARBByName("rFoot");
 
+/*
 	if (rFoot == NULL || lFoot == NULL){
 		lFoot = b->getARBByName("lFoot2");
 		rFoot = b->getARBByName("rFoot2");
 	}
+*/
 
 	if (rFoot == NULL || lFoot == NULL)
 		throwError("The biped must have the rigid bodies lFoot and rFoot!");

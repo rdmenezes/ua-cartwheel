@@ -4,6 +4,8 @@
 #define CARTWHEEL_3D_H
 
 #include <vector>
+#include <list>
+#include <map>
 #include <string>
 
 #include <MathLib/Vector3d.h>
@@ -30,14 +32,16 @@ private:
 
 	typedef void (*BuilderFunction)(CartWheel3D*);
 
-	std::vector<Core::Human*> _humans;
+	typedef std::map<std::string, Core::Human*> Humans;
+	typedef std::map<std::string, Core::Human*>::iterator HumanItr;
+
+	Humans _humans;
     std::string _path;
     Physics::World* _world;
     Core::WorldOracle* _oracle;
     BuilderFunction _builderFunction;
 
     Core::Character* getAFtoCharacter(Physics::ArticulatedFigure* af);
-    bool getHuman(std::string name, Core::Human** human);
 
 public:
 
@@ -49,9 +53,10 @@ public:
     /**
      * Add a human to the simulator.
      */
-    void addHuman(const std::string& characterFile, const std::string& controllerFile, const Math::Point3d& pos, double heading);
-    void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
+    void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile,
     		const Math::Point3d& pos, double heading);
+    void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile,
+    		const std::string& actionFile, const Math::Point3d& pos, double heading);
 
     void addObject(const std::string& name, const std::string& objFile, double mass);
     void addBox(const std::string& name, const Math::Vector3d& scale, double mass);
@@ -67,20 +72,21 @@ public:
      *                          GETTERS                       *
      **********************************************************/
 
-    Core::Human* getHuman(int i) { return _humans[i]; }
-    Core::SimBiController* getController(int i) { return _humans[i]->getController(); }
-    int getHumanCount() { return _humans.size(); }
+    bool getHuman(const std::string& name, Core::Human** human);
+    bool getHumanNames(std::list<std::string>& names);
 
-    Math::Vector3d getHumanPosition(int i) { return _humans[i]->getPosition(); }
-    double getHumanHeading(int i) { return _humans[i]->getHeading(); }
-    Math::Vector3d getHumanVelocity(int i) { return _humans[i]->getVelocity(); }
+    int getHumanCount();
 
-    const std::string& getPath() const { return _path; }
+    Math::Vector3d getHumanPosition(const std::string& name);
+    double getHumanHeading(const std::string& name);
+    Math::Vector3d getHumanVelocity(const std::string& name);
+
+    const std::string& getPath();
 
     // TODO: This will probably give an error because it's not const.
-    Physics::World* getWorld() { return _world; }
+    Physics::World* getWorld();
 
-    Physics::RigidBody* getObjectByName(const std::string& name) { return _world->getRBByName(name.c_str()); }
+    Physics::RigidBody* getObjectByName(const std::string& name);
 
     /*****************************o*****************************
      *                          SETTERS                       *
@@ -91,25 +97,10 @@ public:
 
     void setPath(const std::string& path) { _path = path; }
 
-    void setHumanPosition(int i, const Math::Point3d& pos)
-    {
-        _world->getAF(i)->getRoot()->setCMPosition(pos);
-    }
-
-    void setHumanHeading(int i, double angle)
-    {
-    	_humans[i]->setHeading(angle);
-    }
-
-    void setHumanSpeed(int i, double speed)
-    {
-    	_humans[i]->setSpeed(speed);
-    }
-
-    void setHumanStepWidth(int i, double width)
-    {
-    	_humans[i]->setStepWidth(width);
-    }
+    void setHumanPosition(const std::string& name, const Math::Point3d& pos);
+    void setHumanHeading(const std::string& name, double angle);
+    void setHumanSpeed(const std::string& name, double speed);
+    void setHumanStepWidth(const std::string& name, double width);
 
     void reset();
 

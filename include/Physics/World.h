@@ -85,7 +85,7 @@ public:
 	/**
 		This method reads a list of rigid bodies from the specified file.
 	*/
-	virtual void loadRBsFromFile(const char* fName, const char* sPath);
+	virtual void loadRBsFromFile(const char* fName, const char* sPath, const char* afName);
 
 	/**
 		This method adds one rigid body (articulated or not).

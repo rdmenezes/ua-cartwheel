@@ -17,7 +17,9 @@ class ExtendedAction {
 
 public:
 
-ExtendedAction(){;};
+ExtendedAction() :
+	actorName("Human1"),
+	myTime(0.0) {}
 
 virtual string getActor(){return actorName;};
 virtual void setActor(string s){actorName =s;};

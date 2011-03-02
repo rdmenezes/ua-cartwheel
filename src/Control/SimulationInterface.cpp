@@ -64,11 +64,13 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   Point3d p2(start_state[3], 1.0, start_state[4]);
 
   // Add human 1
-  simulator_->addHuman(humanModel, humanController, p1, start_state[2]);
+  string humanName1 = "Human1";
+  simulator_->addHuman(humanName1, humanModel, humanController, p1, start_state[2]);
 
   // Add human 2
-  simulator_->addHuman("data/characters/bip2V3.rbs", humanController, p2, start_state[5]);
-  simulator_->setHumanSpeed(1, 0);
+  string humanName2 = "Human2";
+  simulator_->addHuman(humanName2, "data/characters/bip2V3.rbs", humanController, p2, start_state[5]);
+  simulator_->setHumanSpeed(humanName2, 0);
 }
 
 void SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)

@@ -9,6 +9,9 @@
 #include <Physics/HingeJoint.h>
 #include <Physics/BallInSocketJoint.h>
 
+#include <iostream>
+#include <sstream>
+
 namespace CartWheel { namespace Physics {
 
 /*======================================================================================================================================================================*
@@ -28,6 +31,7 @@ protected:
 	//this is the name of the articulated figure
 	char name[100];
 	double mass;
+	static char prefixDelimiter;
 
 	//keep a list of the character's joints, for easy access
 	DynamicArray<Joint*> joints;
@@ -77,19 +81,23 @@ public:
 	}
 
 	/**
+	 * Add prefix to the current ArticulatedBody members
+	 * so that they are unique in the world namespace.
+	 * The prefix is separated from the original name by a space.
+	 */
+	void prefixARBNames(const char* prefixName);
+
+	/**
+	 * Strip away any prefixes from the passed in name.
+	 * The prefix is assumed to be space separated from the name.
+	 */
+	static std::string getNoPrefixName(const std::string& name);
+
+	/**
 		This method returns an ARB that is a child of this articulated figure
 	*/
-	ArticulatedRigidBody* getARBByName(const char* name) const {
-		if( root != NULL ) {
-			if (strcmp(root->name, name) == 0)
-				return root;
-		}
+	ArticulatedRigidBody* getARBByName(const char* name) const;
 
-		for (unsigned int i=0;i<arbs.size();i++)
-			if (strcmp(arbs[i]->name, name) == 0)
-				return arbs[i];
-		return NULL;
-	}
 	/**
 		Adds a joint to the figure
 		This is an empty function as the joints are not tracked
@@ -157,9 +165,12 @@ public:
 		if it is not found.
 	*/
 	inline Joint* getJointByName(const char* jName){
-		for (unsigned int i=0;i<joints.size();i++)
-			if (strcmp(joints[i]->name, jName) == 0)
+		for (unsigned int i=0;i<joints.size();i++) {
+			std::cout << "joints[i]->name=" << joints[i]->name << std::endl;
+			if (strcmp(joints[i]->name, jName) == 0) {
 				return joints[i];
+			}
+		}
 		return NULL;
 	}
 

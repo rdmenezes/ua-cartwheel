@@ -3,7 +3,7 @@
 
 void WalkAction::executeSetup(CartWheel3D * cw){
   //find the actor and set his speed
-    cw->setHumanSpeed(atoi(actorName.c_str()), mySpeed);
+    cw->setHumanSpeed(actorName, mySpeed);
 }
 
 void WalkAction::setParams(std::vector<double> params) {

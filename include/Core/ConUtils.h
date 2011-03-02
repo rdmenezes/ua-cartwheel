@@ -73,6 +73,21 @@ namespace CartWheel { namespace Core {
 
 #define LOAD_IKVMC_CON_FILE				62
 
+#define CON_DESIRED_HEADING				63
+#define CON_SAGITTAL_LEAN				64
+#define CON_CORONAL_LEAN				65
+#define CON_TWIST						66
+#define CON_DUCK_WALK					67
+#define CON_VELOCITY_SAGITTAL			68
+#define CON_VELOCITY_CORONAL			69
+#define CON_KNEE_BEND					70
+#define CON_CORONAL_STEP_WIDTH			71
+#define CON_STEP_TIME					72
+#define CON_STEP_HEIGHT					73
+
+#define LOAD_TURN_BEHAVIOUR_CON_FILE	74
+#define LOAD_DUCK_BEHAVIOUR_CON_FILE	75
+
 /**
 	This method is used to determine the type of a line that was used in the input file for a rigid body.
 	It is assumed that there are no white spaces at the beginning of the string that is passed in. the pointer buffer
