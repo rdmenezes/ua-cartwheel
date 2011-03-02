@@ -26,7 +26,7 @@ public:
   void simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
 
   std::vector<PosState*> getPositions();
-  std::vector<Capsule*> getCapsules();
+  std::vector<CapsuleState*> getCapsules();
 
 private:
   CartWheel3D* simulator_;
@@ -35,7 +35,7 @@ private:
   char* sPath_;
 
   std::vector<PosState*> positions_;
-  std::vector<Capsule*> capsules_;
+  std::vector<CapsuleState*> capsules_;
 };
 
 #endif /* SIMULATIONINTERFACE_H_ */

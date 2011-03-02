@@ -22,6 +22,6 @@ void ExtendedAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory
 
 void ExtendedAction::executeStep(CartWheel3D *cw, double step)
 {
-  cout << "human location (0): " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
+//  cout << "human location (0): " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
   cw->runStep(step);
 }
