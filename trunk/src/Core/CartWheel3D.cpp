@@ -361,6 +361,18 @@ int CartWheel3D::getController(const std::string& name)
 	return actionIndex;
 }
 
+bool CartWheel3D::getHumanNames(std::vector<std::string>& names)
+{
+	for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)
+	{
+		names.push_back((*itr).first);
+	}
+
+	bool result = names.size() > 0;
+
+	return result;
+}
+
 bool CartWheel3D::getHumanNames(std::list<std::string>& names)
 {
 	for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)

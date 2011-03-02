@@ -173,10 +173,10 @@ static void processMenuEvents(int option) {
 	else if (option >= SELECT_HUMAN && option < SELECT_CONTROLLER) {
 		int indexHuman = option - SELECT_HUMAN;
 
-		std::list<std::string> humanNames;
+		std::vector<std::string> humanNames;
 		Visualization::g_instance->getHumanNames(humanNames);
 
-		list<string>::iterator itr = humanNames.begin();
+		vector<string>::iterator itr = humanNames.begin();
 		for (int i = 0; itr != humanNames.end(); itr++, i++)
 		{
 			if (i == indexHuman)
@@ -196,12 +196,12 @@ void Visualization::initMenu() {
 		// create the submenu
 		_humanMenu = glutCreateMenu(processMenuEvents);
 
-		std::list<std::string> humanNames;
+		std::vector<std::string> humanNames;
 		bool result = _cw->getHumanNames(humanNames);
 
 		Visualization::g_instance->setHumanNames(humanNames);
 
-		list<string>::iterator itr = humanNames.begin();
+		vector<string>::iterator itr = humanNames.begin();
 		// Select the first human by default
 		_selectedHumanName = (*itr);
 

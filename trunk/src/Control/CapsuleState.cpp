@@ -34,10 +34,10 @@ void CapsuleState::populate(CartWheel3D* cw)
 {
   Human* human = NULL;
 
-  list<string> humanNames;
+  vector<string> humanNames;
   bool result = cw->getHumanNames(humanNames);
 
-  list<string>::iterator itr = humanNames.begin();
+  vector<string>::iterator itr = humanNames.begin();
   for (; itr != humanNames.end(); itr++)
   {
 	string name = (*itr);
