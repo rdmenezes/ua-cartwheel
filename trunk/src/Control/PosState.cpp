@@ -1,33 +1,54 @@
 #include "Control/PosState.h"
 #include <iostream>
+#include <list>
 
 using std::cout;
 using std::endl;
+using std::list;
+using std::string;
+
+PosState::PosState()
+{
+
+}
 
 PosState::PosState(CartWheel3D * cw):blacklist()
 {
-  blacklist["ground"] = 1;  
-  int h = cw->getHumanCount();
-   blacklist["pelvis"] = 1;
-   for(int i =0; i < h; i++){
-      stringstream ss;
-      ss <<"pelvis"<<(i+1);
-      blacklist[ss.str()] = 1; //TODO: Hacked this, not sure why the loop below doesn't fix it
-      for(int j=0; j< cw->getHuman(i)->getCharacter()->getArticulatedRigidBodyCount(); j++){
-          blacklist[string(cw->getHuman(i)->getCharacter()->getArticulatedRigidBody(j)->getName())] = 1;
-	}
+  Human* human = NULL;
+
+  list<string> humanNames;
+  bool result = cw->getHumanNames(humanNames);
+
+  blacklist["pelvis"] = 1;
+
+  list<string>::const_iterator itr = humanNames.begin();
+  for (int i = 0; itr != humanNames.end(); itr++, i++)
+  {
+	  string name = (*itr);
+	  cw->getHuman(name, &human);
+
+	  stringstream ss;
+	  ss <<"pelvis"<<(i+1);
+	  blacklist[ss.str()] = 1; //TODO: Hacked this, not sure why the loop below doesn't fix it
+
+	  for(int j=0; j < human->getCharacter()->getArticulatedRigidBodyCount(); j++){
+		  blacklist[string(human->getCharacter()->getArticulatedRigidBody(j)->getName())] = 1;
+	  }
    }
    populate(cw);
 }
 
-
-
 void PosState::populate(CartWheel3D * cw)
 {
-  for (int i = 0; i < cw->getHumanCount(); i++)
+  list<string> humanNames;
+  bool result = cw->getHumanNames(humanNames);
+
+  list<string>::const_iterator itr = humanNames.begin();
+  for (int i = 0; itr != humanNames.end(); itr++, i++)
   {
-    myNames.push_back(cw->getHuman(i)->getName());
-    myPositions.push_back(cw->getHumanPosition(i));
+	string name = (*itr);
+    myNames.push_back(name);
+    myPositions.push_back(cw->getHumanPosition(name));
   }
 
   int others = cw->getWorld()->getRBCount();

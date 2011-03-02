@@ -39,6 +39,9 @@ StaticWalkNearPolicy::~StaticWalkNearPolicy(){
 ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
   
   //find location of the controllable actor
+
+	//TODO: Tom please fix this
+#ifdef BROKEN_CODE
         int hIndex= atoi(myControllables[0].c_str());
 	Vector3d pos1 = simState->getHumanPosition(hIndex);
 	 
@@ -68,5 +71,6 @@ ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
 	cout<<"Stopping"<<endl;
   	return myAvailableActions[1];
   }
+#endif
 }
 

@@ -14,7 +14,12 @@ bool RelationalState::contains(Relation & r){
 
 Vector3d RelationalState::findPlace(int x, PosState & last, CartWheel3D * cw){
    if(x < cw->getHumanCount()){
-     return cw->getHumanPosition(x);
+	 // TODO: Tom, please fix this
+#ifdef BROKEN_CODE
+	 return cw->getHumanPosition(x);
+#else
+     return Vector3d(0,0,0);
+#endif
    }
    else{
      Point3d pp = cw->getWorld()->getRBByName(last.getName(x).c_str())->getCMPosition();

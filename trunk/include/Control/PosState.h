@@ -8,7 +8,6 @@
 #include <MathLib/Vector3d.h>
 #include <sstream>
 
-
 using CartWheel::Math::Vector3d;
 using std::string;
 using std::vector;

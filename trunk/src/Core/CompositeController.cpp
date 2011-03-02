@@ -4,6 +4,7 @@
 #include <Core/IKVMCController.h>
 #include <Core/WorldOracle.h>
 #include <Core/TurnController.h>
+#include <Core/CompositeBehaviourController.h>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
@@ -35,8 +36,10 @@ CompositeController::CompositeController(Character* ch, WorldOracle* oracle, con
 			break;
 		if (strlen(buffer)>195)
 			throwError("The input file contains a line that is longer than ~200 characters - not allowed");
+
 		char *line = lTrim(buffer);
 		int lineType = getConLineType(line);
+
 		switch (lineType) {
 			case LOAD_CON_FILE: {
 				//add a new controller
@@ -49,12 +52,20 @@ CompositeController::CompositeController(Character* ch, WorldOracle* oracle, con
 				//add a new controller
 				IKVMCController* controller = new IKVMCController(character);
 				controller->loadFromFile(trim(line));
-
 				BehaviourController* behaviour = new TurnController(character, controller, oracle);
 				controller->setBehaviour(behaviour);
 				behaviour->conTransitionPlan();
-
 				controllers.push_back(controller);
+				break;
+			}
+			case LOAD_TURN_BEHAVIOUR_CON_FILE: {
+				BehaviourController* behaviour = new CompositeBehaviourController(ch, NULL, oracle);
+				const char* input = "data/controllers/bipV3/HMV/compositeBehaviour.con";
+				behaviour->loadFromFile(fopen(input, "r"));
+
+				IKVMCController* controller = dynamic_cast<IKVMCController*>(controllers[controllers.size()-1]);
+				controller->setBehaviour(behaviour);
+				behaviour->conTransitionPlan();
 				break;
 			}
 			case CON_NOT_IMPORTANT:

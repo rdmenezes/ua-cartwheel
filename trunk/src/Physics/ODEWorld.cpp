@@ -405,12 +405,12 @@ void ODEWorld::createODECollisionPrimitives(RigidBody* body, int index){
 /**
 	This method reads a list of rigid bodies from the specified file.
 */
-void ODEWorld::loadRBsFromFile(const char* fName, const char* sPath){
+void ODEWorld::loadRBsFromFile(const char* fName, const char* sPath, const char* afName){
 	//make sure we don't go over the old articulated figures in case this method gets called multiple times.
 	int index = objects.size();
 	int index_afs = AFs.size();
 
-	World::loadRBsFromFile(fName, sPath);
+	World::loadRBsFromFile(fName, sPath, afName);
 
 	// Add all non-articulated rigid bodies in ODE
 	for (unsigned int i=index;i<objects.size();i++){

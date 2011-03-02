@@ -2,9 +2,7 @@
 #include <GLUtils/GLUtils.h>
 #include <Core/TurnController.h>
 #include <Core/ActionCollectionPolicy.h>
-
-//#include <gr/gr_2D_bounding_box.h>
-//#include <i/i_image.h>
+#include <Core/CompositeBehaviourController.h>
 
 #include <iostream>
 #include <sstream>
@@ -50,10 +48,18 @@ CartWheel3D::~CartWheel3D()
     _world->destroyAllObjects();
 }
 
-void CartWheel3D::addHuman(const string& characterFile, const string& controllerFile, const Point3d& pos, double heading)
+void CartWheel3D::addHuman(const string& name, const string& characterFile, const string& controllerFile, const Point3d& pos, double heading)
 {
+	bool foundMatch = (_humans.find(name) != _humans.end());
+	if (foundMatch)
+	{
+		ostringstream osError;
+		osError << name << " already exists!";
+		throwError(osError.str().c_str());
+	}
+
     string sFile = _path + characterFile;
-    _world->loadRBsFromFile(sFile.c_str(), _path.c_str());
+    _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
     Character* ch = getAFtoCharacter(_world->getAF(_world->getAFCount()-1));
     ch->setHeading(heading);
     ch->setPos(pos);
@@ -65,23 +71,27 @@ void CartWheel3D::addHuman(const string& characterFile, const string& controller
 
 	BehaviourController* behaviour = new TurnController(ch, c, _oracle);
 
-	ostringstream ostr;
-	ostr << "Human" << _humans.size() + 1;
-	string name = ostr.str();
-
 	Human* human = new Human(name, ch, c, behaviour);
 
 	human->setHeading(heading);
 	human->init();
 
-    _humans.push_back(human);
+    _humans[name] = human;
 }
 
 void CartWheel3D::addHuman(const string& name, const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
 		const Math::Point3d& pos, double heading)
 {
-    string sFile = _path + characterFile;
-    _world->loadRBsFromFile(sFile.c_str(), _path.c_str());
+	bool foundMatch = (_humans.find(name) != _humans.end());
+	if (foundMatch)
+	{
+		ostringstream osError;
+		osError << name << " already exists!";
+		throwError(osError.str().c_str());
+	}
+
+	string sFile = _path + characterFile;
+    _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
     Character* ch = getAFtoCharacter(_world->getAF(_world->getAFCount()-1));
     ch->setHeading(heading);
     ch->setPos(pos);
@@ -108,19 +118,13 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
 	//con->setControllerState(state);
 
-/*
-	ostringstream ostr;
-	ostr << "Human" << _humans.size() + 1;
-	string name = ostr.str();
-*/
-
 	// Create a new human
 	Human* human = new Human(name, ch, con, policy);
 
 	// Initialize
 	human->init();
 
-    _humans.push_back(human);
+	_humans[name] = human;
 }
 
 void CartWheel3D::addObject(const string& name, const string& objFile, double mass)
@@ -223,35 +227,33 @@ void CartWheel3D::reset()
 //    _oracle->initializeWorld(_world);
 }
 
-#define _SIMBICON
-
 void CartWheel3D::runStep(double dt)
 {
-	double desiredFrameRate = 29.97;
-	double animationTimeToRealTimeRatio = 1.3;
+	const double desiredFrameRate = 29.97;
+	const double animationTimeToRealTimeRatio = 1.3;
+	const double maxRunningTime = 0.98 / desiredFrameRate;
 	double simulationTime = 0;
-	double maxRunningTime = 0.98 / desiredFrameRate;
 
 	DynamicArray<ContactPoint>* contactPoints = _world->getContactForces();
 
 	DynamicArray<Vector3d> humanPositions;
 
-	while (simulationTime / maxRunningTime < animationTimeToRealTimeRatio)
+	while ((simulationTime / maxRunningTime) < animationTimeToRealTimeRatio)
     {
 		simulationTime += SimGlobals::dt;
 
-#ifdef _SIMBICON
-	    for (unsigned int i = 0; i < _humans.size(); i++)
+		for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)
 	    {
-			SimBiController* c = _humans[i]->getController();
+			Human* human = (*itr).second;
+			SimBiController* c = human->getController();
 			if (NULL != c)
 			{
 				c->performPreTasks(dt, contactPoints);
 
 				// Save the current position
-				humanPositions.push_back(_humans[i]->getPosition());
+				humanPositions.push_back(human->getPosition());
 
-				BehaviourController* b = _humans[i]->getBehaviour();
+				BehaviourController* b = human->getBehaviour();
 				if (NULL != b)
 				{
 					if (b->shouldAbort())
@@ -260,6 +262,7 @@ void CartWheel3D::runStep(double dt)
 					}
 				}
 			}
+	    }
 
 /*
     for (unsigned int i = 0; i < _humans.size(); i++)
@@ -272,72 +275,32 @@ void CartWheel3D::runStep(double dt)
     }
 */
 
-#else
-    for (unsigned int i = 0; i < _humans.size(); i++)
-    {
-    	SimBiController* c = _humans[i]->getController();
+		_world->advanceInTime(dt);
 
-        c->performPreTasks(dt, contactPoints);
-    }
-#endif
+		contactPoints = _world->getContactForces();
 
-    _world->advanceInTime(dt);
+		for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)
+		{
+			Human* human = (*itr).second;
+			SimBiController* c = human->getController();
 
-	contactPoints = _world->getContactForces();
-
-#ifdef _SIMBICON
-    for (unsigned int i = 0; i < _humans.size(); i++)
-    {
-    	SimBiController* c = _humans[i]->getController();
-
-    	if (NULL != c)
-    	{
-        	c->performPostTasks(dt, contactPoints);
-
-			// Save the current position
-			humanPositions.push_back(_humans[i]->getPosition());
-
-			BehaviourController* b = _humans[i]->getBehaviour();
-			if (NULL != b)
+			if (NULL != c)
 			{
-				if (b->shouldAbort())
-				{
+				c->performPostTasks(dt, contactPoints);
 
+				// Save the current position
+				humanPositions.push_back(human->getPosition());
+
+				BehaviourController* b = human->getBehaviour();
+				if (NULL != b)
+				{
+					if (b->shouldAbort())
+					{
+
+					}
 				}
 			}
-    	}
-
-    	/*
-    	CompositeController* controller = _humans[i]->getCompositeController();
-    	if (NULL != controller)
-    	{
-    		int actionIndex = getController(_humans[i]->getName());
-
-    		if (actionIndex != -1)
-    		{
-				SimBiController* c = controller->getController(actionIndex);
-
-				c->performPostTasks(dt, contactPoints);
-    		}
-*/
-    	}
-    }
-
-#else
-    for (unsigned int i = 0; i < _humans.size(); i++)
-    {
-    	SimBiController* c = _humans[i]->getController();
-
-        if (c->performPostTasks(dt, contactPoints))
-        {
-            Vector3d step = Vector3d(c->getStanceFootPos(), c->getSwingFootPos());
-            step = c->getCharacterFrame().inverseRotate(step);
-            Vector3d v = c->getV();
-//            double phi = c->getPhase();
-            //printf("Human %d -> step: %f %f %f. Vel: %f %f %f phi = %f\n", i+1, step.x, step.y, step.z, v.x, v.y, v.z, phi);
-        }
-    }
-#endif
+		}
     }
 }
 
@@ -355,46 +318,105 @@ Character* CartWheel3D::getAFtoCharacter(ArticulatedFigure* af)
     return ch;
 }
 
-bool CartWheel3D::getHuman(std::string name, Human** human)
+Math::Vector3d CartWheel3D::getHumanPosition(const std::string& name)
+{
+	return _humans[name]->getPosition();
+}
+
+double CartWheel3D::getHumanHeading(const std::string& name)
+{
+	return _humans[name]->getHeading();
+}
+
+Math::Vector3d CartWheel3D::getHumanVelocity(const std::string& name)
+{
+	return _humans[name]->getVelocity();
+}
+
+bool CartWheel3D::getHuman(const std::string& name, Human** human)
 {
 	bool foundMatch = false;
 
-    for (unsigned int i = 0; i < _humans.size(); i++)
-    {
-    	if (name == _humans[i]->getName())
-    	{
-    		*human = _humans[i];
-    		foundMatch = true;
-    		break;
-    	}
-    }
+	foundMatch = (_humans.find(name) != _humans.end());
+
+	if (foundMatch)
+	{
+		*human = _humans[name];
+	}
 
     return foundMatch;
-}
-
-void CartWheel3D::setController(const std::string& name, int actionIndex)
-{
-	Human* human = NULL;
-
-	if (getHuman(name, &human))
-	{
-		human->applyAction(actionIndex);
-	}
 }
 
 int CartWheel3D::getController(const std::string& name)
 {
 	int actionIndex = 0;
-	Human* human = NULL;
+	Human* human = _humans[name];
 
-	if (getHuman(name, &human))
+	ActionCollectionPolicy* policy = dynamic_cast<ActionCollectionPolicy*>(human->getPolicy());
+	if (NULL != policy)
 	{
-		ActionCollectionPolicy* policy = dynamic_cast<ActionCollectionPolicy*>(human->getPolicy());
-		if (NULL != policy)
-		{
-			actionIndex = policy->getActionIndex();
-		}
+		actionIndex = policy->getActionIndex();
 	}
 
 	return actionIndex;
+}
+
+bool CartWheel3D::getHumanNames(std::list<std::string>& names)
+{
+	for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)
+	{
+		names.push_back((*itr).first);
+	}
+
+	bool result = names.size() > 0;
+
+	return result;
+}
+
+int CartWheel3D::getHumanCount()
+{
+	return _humans.size();
+}
+
+const std::string& CartWheel3D::getPath()
+{
+	return _path;
+}
+
+// TODO: This will probably give an error because it's not const.
+Physics::World* CartWheel3D::getWorld()
+{
+	return _world;
+}
+
+Physics::RigidBody* CartWheel3D::getObjectByName(const std::string& name)
+{
+	return _world->getRBByName(name.c_str());
+}
+
+void CartWheel3D::setHumanPosition(const std::string& name, const Math::Point3d& pos)
+{
+	_humans[name]->setPosition(pos);
+
+    //_world->getAF(i)->getRoot()->setCMPosition(pos);
+}
+
+void CartWheel3D::setHumanHeading(const std::string& name, double angle)
+{
+	_humans[name]->setHeading(angle);
+}
+
+void CartWheel3D::setHumanSpeed(const std::string& name, double speed)
+{
+	_humans[name]->setSpeed(speed);
+}
+
+void CartWheel3D::setHumanStepWidth(const std::string& name, double width)
+{
+	_humans[name]->setStepWidth(width);
+}
+
+void CartWheel3D::setController(const std::string& name, int actionIndex)
+{
+	_humans[name]->applyAction(actionIndex);
 }

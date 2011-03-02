@@ -77,8 +77,15 @@ public:
 		m_policy = policy;
 	}
 
+	void setPosition(CartWheel::Math::Point3d position)
+	{
+		m_character->setPos(position);
+	}
+
 	void setHeading(double angle)
     {
+		m_character->setHeading(angle);
+
 		if (NULL != m_behaviour)
 		{
 			m_behaviour->requestHeading(angle);

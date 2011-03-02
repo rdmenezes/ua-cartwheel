@@ -19,7 +19,7 @@ Human::Human(const std::string& name, Character* character,
 	if (NULL != m_behaviour)
 	{
 		IKVMCController* ikvmccon = (dynamic_cast<IKVMCController*>(controller));
-		if (NULL != m_behaviour)
+		if (NULL != ikvmccon)
 		{
 			ikvmccon->setBehaviour(m_behaviour);
 			m_behaviour->conTransitionPlan();
@@ -31,6 +31,8 @@ Human::Human(const std::string& name, Character* character,
 		CompositeController* controller, Policy* policy) :
 	m_name (name),
 	m_character (character),
+	m_controller (NULL),
+	m_behaviour (NULL),
 	m_policy (policy),
 	m_composite_controller(controller)
 {

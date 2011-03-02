@@ -70,6 +70,9 @@ public:
 	virtual ~BehaviourController(void);
 
 
+	virtual void loadFromFile(FILE * file);
+	virtual void saveToFile(FILE * file);
+
 	virtual void adjustStepHeight();
 
 	virtual void setElbowAngles(double leftElbowAngle, double rightElbowAngle);

@@ -7,6 +7,8 @@ using namespace CartWheel;
 using namespace CartWheel::Physics;
 using namespace CartWheel::Util;
 
+using namespace std;
+
 /**
 	Default constructor
 */
@@ -15,6 +17,8 @@ ArticulatedFigure::ArticulatedFigure(void){
 	name[0] = '\0';
 	mass = 0;
 }
+
+char ArticulatedFigure::prefixDelimiter = ' ';
 
 ArticulatedFigure::~ArticulatedFigure(void){
 	//delete all the joints
@@ -193,3 +197,53 @@ void ArticulatedFigure::loadFromFile(FILE* f, World* world){
 	throwError("Incorrect articulated body input file! No /ArticulatedFigure found");
 }
 
+void ArticulatedFigure::prefixARBNames(const char* prefixName) {
+
+	if (root != NULL) {
+		std::ostringstream ostrRoot;
+		ostrRoot << prefixName << prefixDelimiter << root->name;
+		strcpy(root->name, ostrRoot.str().c_str());
+	}
+
+	for (unsigned int i=0;i<arbs.size();i++) {
+		std::ostringstream ostr;
+		ostr << prefixName << prefixDelimiter << arbs[i]->name;
+		strcpy(arbs[i]->name, ostr.str().c_str());
+	}
+}
+
+std::string ArticulatedFigure::getNoPrefixName(const std::string& name) {
+
+	vector<string> elems;
+	stringstream ss(name);
+	string item;
+
+	while(getline(ss, item, prefixDelimiter)) {
+		elems.push_back(item);
+	}
+
+	string newName = elems[elems.size()-1];
+	return newName;
+}
+
+
+/**
+	This method returns an ARB that is a child of this articulated figure
+*/
+ArticulatedRigidBody* ArticulatedFigure::getARBByName(const char* name) const {
+	std::string findName(name);
+
+	if( root != NULL ) {
+		std::string rootName = getNoPrefixName(root->name);
+		if (findName == rootName)
+			return root;
+	}
+
+	for (unsigned int i=0;i<arbs.size();i++) {
+		std::string arbsName = getNoPrefixName(arbs[i]->name);
+		if (findName == arbsName) {
+			return arbs[i];
+		}
+	}
+	return NULL;
+}

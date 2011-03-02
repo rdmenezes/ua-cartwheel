@@ -38,8 +38,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 	p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
 
 	const int nBalls = 5;
-	for (int i = 0; i < nBalls; i++)
-	{
+	for (int i = 0; i < nBalls; i++) {
 		Vector3d ballScale(0.2, 0.2, 0.2);
 		double ballMass = 1.0;
 
@@ -56,17 +55,43 @@ void makeWorld(CartWheel3D* p_simulator) {
 		p_simulator->updateRB(name, ballPosition, ballOrientation, ballVelocity);
 	}
 
-#if 0
+#if 1
 	string name = "Human1";
 	string characterFile = "data/characters/bipV3.rbs";
 	string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
 	string actionFile = "data/controllers/bipV3/HMV/actions";
-	Math::Point3d humanPosition(0.0, 1.0, 0.0);
+	Math::Point3d humanPosition(5.0, 1.0, 5.0);
 	double heading = 3.14;
 
 	p_simulator->addHuman(name, characterFile, controllerFile, actionFile, humanPosition, heading);
+
+	string name2 = "Human2";
+	string characterFile2 = "data/characters/bip3V3.rbs";
+	string controllerFile2 = "data/controllers/bipV3/HMV/compositeController.con";
+	string actionFile2 = "data/controllers/bipV3/HMV/actions";
+	Math::Point3d humanPosition2(-3.0, 1.0, -5.0);
+	double heading2 = 3.14;
+	//p_simulator->addHuman(name2, characterFile2, controllerFile2, actionFile2, humanPosition2, heading2);
+
+	p_simulator->addHuman(name2, characterFile,  "data/controllers/bipV3/SnakeWalk.sbc", humanPosition2, heading2);
+
+	string name3 = "Human3";
+	Math::Point3d humanPosition3(3.0, 1.0, -5.0);
+	double heading3 = -3.14;
+	p_simulator->addHuman(name3, characterFile,  "data/controllers/bipV3/JumpWalk.sbc", humanPosition3, heading3);
+
+	string name4 = "Human4";
+	Math::Point3d humanPosition4(3.0, 1.0, -2.0);
+	double heading4 = 3.14;
+	p_simulator->addHuman(name4, characterFile,  "data/controllers/bipV3/DrunkenWalk.sbc", humanPosition4, heading4);
+
+	string name5 = "Human5";
+	Math::Point3d humanPosition5(-1.0, 1.0, 1.0);
+	double heading5 = -3.14/2;
+	p_simulator->addHuman(name5, characterFile,  "data/controllers/bipV3/ChickenWalk.sbc", humanPosition5, heading5);
+
 #else
-	p_simulator->addHuman("data/characters/bipV3.rbs",  "data/controllers/bipV3/Walking.sbc", Point3d(0.0, 1.0, 0.0), 3.14);
+	p_simulator->addHuman("Human1", "data/characters/bipV3.rbs",  "data/controllers/bipV3/Walking.sbc", Point3d(0.0, 1.0, 0.0), 3.14);
 #endif
 }
 

@@ -6,6 +6,7 @@
 #include <Utils/Utils.h>
 
 #include <assert.h>
+#include <string>
 
 using namespace CartWheel;
 using namespace CartWheel::Physics;
@@ -142,7 +143,7 @@ int World::getRBCount() {
 /**
 	This method reads a list of rigid bodies from the specified file.
 */
-void World::loadRBsFromFile(const char* fName, const char* sPath){
+void World::loadRBsFromFile(const char* fName, const char* sPath, const char* afName){
 	printf("--- World::loadRBsFromFile, and the path is: %s\n", sPath);
 	if (fName == NULL)
 		throwError("NULL file name provided.");
@@ -182,6 +183,10 @@ void World::loadRBsFromFile(const char* fName, const char* sPath){
                 newFigure = new ArticulatedFigure();
 				AFs.push_back(newFigure);
 				newFigure->loadFromFile(f, this);
+				if (NULL != afName) {
+					newFigure->prefixARBNames(afName);
+				}
+
 				newFigure->addJointsToList(&jts);
 				break;
 			case RB_NOT_IMPORTANT:
@@ -204,7 +209,7 @@ void World::loadRBsFromFile(const char* fName, const char* sPath){
 
 	if (f != NULL) {
 		fclose(f);
-        }
+    }
 }
 
 /**

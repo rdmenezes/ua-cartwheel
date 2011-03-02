@@ -69,7 +69,20 @@ static ConKeyWord keywords[] = {
 	{"dScaleTraj", CON_D_SCALE_TRAJECTORY_START},
 	{"/dScaleTraj", CON_D_SCALE_TRAJECTORY_END},
 	{"vScaleTraj", CON_V_SCALE_TRAJECTORY_START},
-	{"/vScaleTraj", CON_V_SCALE_TRAJECTORY_END}
+	{"/vScaleTraj", CON_V_SCALE_TRAJECTORY_END},
+	{"desiredHeading", CON_DESIRED_HEADING},
+	{"sagittalLean", CON_SAGITTAL_LEAN},
+	{"coronalLean", CON_CORONAL_LEAN},
+	{"twist", CON_TWIST},
+	{"duckWalk", CON_DUCK_WALK},
+	{"velocitySagittal", CON_VELOCITY_SAGITTAL},
+	{"velocityCoronal", CON_VELOCITY_CORONAL},
+	{"kneeBend", CON_KNEE_BEND},
+	{"coronalStepWidth", CON_CORONAL_STEP_WIDTH},
+	{"stepTime", CON_STEP_TIME},
+	{"stepHeight", CON_STEP_HEIGHT},
+	{"loadTurnBeahaviourController", LOAD_TURN_BEHAVIOUR_CON_FILE},
+	{"loadDuckBeahaviourController", LOAD_DUCK_BEHAVIOUR_CON_FILE}
 };
 
 /**

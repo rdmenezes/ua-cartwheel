@@ -7,6 +7,7 @@
 
 #include <Control/CapsuleState.h>
 #include <Core/Human.h>
+#include <list>
 
 using CartWheel::CartWheel3D;
 using CartWheel::Core::Human;
@@ -14,6 +15,7 @@ using CartWheel::Math::Point3d;
 using CartWheel::Math::Capsule;
 using CartWheel::Physics::ArticulatedRigidBody;
 using CartWheel::Physics::CapsuleCDP;
+using namespace std;
 
 CapsuleState::CapsuleState()
 {
@@ -30,11 +32,19 @@ CapsuleState::~CapsuleState()
 
 void CapsuleState::populate(CartWheel3D* cw)
 {
-  for (int i = 0; i < cw->getHumanCount(); ++i)
-  {
-    Human* human = cw->getHuman(i);
+  Human* human = NULL;
 
-    names_.push_back(human->getName());
+  list<string> humanNames;
+  bool result = cw->getHumanNames(humanNames);
+
+  list<string>::iterator itr = humanNames.begin();
+  for (; itr != humanNames.end(); itr++)
+  {
+	string name = (*itr);
+    cw->getHuman(name, &human);
+
+    names_.push_back(name);
+
     std::vector<Capsule*> capsules;
     for (int j = 0; j < human->getCharacter()->getArticulatedRigidBodyCount(); ++j)
     {

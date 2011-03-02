@@ -30,12 +30,21 @@ void init_simulation(int argc, char** argv) {
 
 	simulator->addObject("dodgeBox", "data/objects/box.rbs", 1);
 
-	string humanModel = "data/characters/bipV3.rbs";
-	string humanController = "data/controllers/bipV3/Walking.sbc";
+	string humanName1 = "human1";
+	string humanModel1 = "data/characters/bipV3.rbs";
+	string humanController1 = "data/controllers/bipV3/Walking.sbc";
 
-	simulator->addHuman(humanModel, humanController, Point3d(0.0, 1.0, -1.0), 0);
+	simulator->addHuman(humanName1, humanModel1, humanController1, Point3d(0.0, 1.0, -1.0), 0);
 	simulator->setHumanSpeed(0, 1.0);
-//	simulator->setHumanHeading(0, 3.14);
+
+	//	simulator->setHumanHeading(0, 3.14);
+
+	string humanName2 = "human2";
+	string humanModel2 = "data/characters/bipV3.rbs";
+	string humanController2 = "data/controllers/bipV3/Walking.sbc";
+
+	simulator->addHuman(humanName2, humanModel2, humanController2, Point3d(2.0, 1.0, 2.0), 0);
+
 }
 
 int main(int argc, char** argv) {

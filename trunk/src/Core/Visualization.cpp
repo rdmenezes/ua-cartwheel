@@ -40,7 +40,7 @@ void Visualization::init(int width, int height) {
     _menuIdentifier = -1;
     _humanMenu = -1;
     _cw = NULL;
-    _selectedHumanName = "Human1";
+    _selectedHumanName = "";
     _width = width;
     _height = height;
     _renderGround = false;
@@ -60,6 +60,20 @@ static void timerProc(int) {
 	glutTimerFunc(10, timerProc, 0);
 }
 
+static void changeSize(int w, int h) {
+
+	// Prevent a divide by zero, when window is too short
+	// (you cant make a window of zero width).
+	if(h == 0) {
+		h = 1;
+	}
+
+	float ratio = 1.0* w / h;
+
+	Visualization::g_instance->setWidth(w);
+	Visualization::g_instance->setHeight(h);
+}
+
 void Visualization::initGlut(void (*func)(void), int argc, char** argv) {    
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -68,7 +82,7 @@ void Visualization::initGlut(void (*func)(void), int argc, char** argv) {
     glutCreateWindow("Physics Visualization");
     glutDisplayFunc(func);
     glutIdleFunc(func);
-
+	glutReshapeFunc(changeSize);
     glutTimerFunc(10, timerProc, 0);
 }
 
@@ -85,6 +99,8 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 	if (NULL == cw)
 		return;
 
+	string selectedHuman = Visualization::g_instance->getSelectedHuman();
+
 	if (key >= 48 && key <= 57) { // numeric keys 0..9
 		int actionIndex = key - 48;
 		cw->setController(Visualization::g_instance->getSelectedHuman(), actionIndex);
@@ -94,19 +110,19 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 		{
 		case 65: // a
 		case 97:
-			cw->setHumanHeading(0, -3.14/2);
+			cw->setHumanHeading(selectedHuman, -3.14/2);
 			break;
 		case 83: // s
 		case 115:
-			cw->setHumanHeading(0, 3.14/2);
+			cw->setHumanHeading(selectedHuman, 3.14/2);
 			break;
 		case 87: // w
 		case 119:
-			cw->setHumanHeading(0, 3.14);
+			cw->setHumanHeading(selectedHuman, 3.14);
 			break;
 		case 90: // z
 		case 122:
-			cw->setHumanHeading(0, 0);
+			cw->setHumanHeading(selectedHuman, 0);
 			break;
 		case 82: // r
 		case 114:
@@ -114,19 +130,19 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 			break;
 		case 45: //"-"
 			Visualization::g_instance->setHumanSpeed(Visualization::g_instance->getHumanSpeed()-0.2);
-			cw->setHumanSpeed(0, Visualization::g_instance->getHumanSpeed());
+			cw->setHumanSpeed(selectedHuman, Visualization::g_instance->getHumanSpeed());
 			break;
 		case 61: //"+"
 			Visualization::g_instance->setHumanSpeed(Visualization::g_instance->getHumanSpeed()+0.2);
-			cw->setHumanSpeed(0, Visualization::g_instance->getHumanSpeed());
+			cw->setHumanSpeed(selectedHuman, Visualization::g_instance->getHumanSpeed());
 			break;
 		case 44: //"<"
 			Visualization::g_instance->setHumanStepWidth(Visualization::g_instance->getHumanStepWidth()-0.2);
-			cw->setHumanStepWidth(0, Visualization::g_instance->getHumanStepWidth());
+			cw->setHumanStepWidth(selectedHuman, Visualization::g_instance->getHumanStepWidth());
 			break;
 		case 46: //">"
 			Visualization::g_instance->setHumanStepWidth(Visualization::g_instance->getHumanStepWidth()+0.2);
-			cw->setHumanStepWidth(0, Visualization::g_instance->getHumanStepWidth());
+			cw->setHumanStepWidth(selectedHuman, Visualization::g_instance->getHumanStepWidth());
 			break;
 		default:
 			break;
@@ -155,10 +171,20 @@ static void processMenuEvents(int option) {
 		}
 	}
 	else if (option >= SELECT_HUMAN && option < SELECT_CONTROLLER) {
-		int indexHuman = SELECT_HUMAN - option;
-		ostringstream ostr;
-		ostr << "Human" <<  + indexHuman;
-		Visualization::g_instance->selectHuman(ostr.str());
+		int indexHuman = option - SELECT_HUMAN;
+
+		std::list<std::string> humanNames;
+		Visualization::g_instance->getHumanNames(humanNames);
+
+		list<string>::iterator itr = humanNames.begin();
+		for (int i = 0; itr != humanNames.end(); itr++, i++)
+		{
+			if (i == indexHuman)
+			{
+				Visualization::g_instance->selectHuman((*itr));
+				break;
+			}
+		}
 	}
 }
 
@@ -170,11 +196,18 @@ void Visualization::initMenu() {
 		// create the submenu
 		_humanMenu = glutCreateMenu(processMenuEvents);
 
-		int humanCount =_cw->getHumanCount();
-		for (int i = 0; i < humanCount; i++)
+		std::list<std::string> humanNames;
+		bool result = _cw->getHumanNames(humanNames);
+
+		Visualization::g_instance->setHumanNames(humanNames);
+
+		list<string>::iterator itr = humanNames.begin();
+		// Select the first human by default
+		_selectedHumanName = (*itr);
+
+		for (int id = SELECT_HUMAN; itr != humanNames.end(); itr++,id++)
 		{
-			string name = _cw->getHuman(i)->getName();
-			glutAddMenuEntry(name.c_str(), SELECT_HUMAN + i);
+			glutAddMenuEntry((*itr).c_str(), id);
 		}
 
 		// create the menu
