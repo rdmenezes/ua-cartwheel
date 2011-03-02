@@ -310,6 +310,10 @@ void Visualization::render(CartWheel3D* cartwheel) {
     glutSwapBuffers();
 }
 
+void Visualization::glutStep() {
+    glutMainLoopEvent();
+}
+
 void Visualization::drawAxes(void) {
 	glPushMatrix();
 	glLoadIdentity();

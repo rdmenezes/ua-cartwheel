@@ -15,27 +15,26 @@ void render(void)
 // TODO This will probably need a parameter for sPath
 SimulationInterface::SimulationInterface(bool visualize)
 {
-  this->visualize_ = visualize;
+  visualize_ = visualize;
   sPath_ = new char[200];
   strcpy(sPath_, "");
   simulator_ = new CartWheel3D(sPath_);
 
-  if (visualize)
+  if (visualize_)
   {
-    int argc = 0;
-    char** argv = NULL;
-    visualization_ = new Visualization(render, argc, argv, 640, 480);
-
     Point3d camerPos(0.0, 5.0, 5.0);
     Point3d cameraTarget(0.0, 1.0, 0.0);
     Point3d cameraUp(0.0, 1.0, 0.0);
 
+    int argc = 0;
+    char** argv = NULL;
+    visualization_ = new Visualization(render, argc, argv, 640, 480);
     visualization_->initGL(camerPos, cameraTarget);
     visualization_->setCameraLocation(camerPos);
     visualization_->setCameraTarget(cameraTarget);
     visualization_->setCameraUp(cameraUp);
-
     visualization_->setRenderGround(true);
+    visualization_->setCartWheelHandle(simulator_);
   }
   else
   {
@@ -124,6 +123,7 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
     if (visualize_)
     {
       visualization_->render(simulator_);
+      visualization_->glutStep();
     }
 
     ++i;

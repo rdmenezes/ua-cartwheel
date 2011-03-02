@@ -10,7 +10,8 @@
 #include <MathLib/Point3d.h>
 
 #include <string>
-#include <GL/glut.h>
+//#include <GL/glut.h>
+#include <GL/freeglut.h>
 
 using CartWheel::GL::GLUITopLevelWindow;
 using CartWheel::GL::GLUIWindow;
@@ -109,6 +110,8 @@ public:
 
     void selectHuman(const std::string& name) { _selectedHumanName = name; }
     std::string getSelectedHuman() const { return _selectedHumanName; }
+
+    void glutStep();
 
     /**
      * Invokes glut main loop. Must be called for rendering into a glut window.
