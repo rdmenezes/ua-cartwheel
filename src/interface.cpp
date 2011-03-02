@@ -9,7 +9,7 @@ using std::endl;
 
 int main(int argc, char** argv)
 {
-  SimulationInterface interface(true);
+  SimulationInterface interface(false);//true);
 
   vector<double> start_state;
   start_state.push_back(2);
@@ -27,6 +27,7 @@ int main(int argc, char** argv)
   interface.simulate(start_state, actions);
   vector<PosState*> trajectory = interface.getPositions();
   vector<CapsuleState*> capsule_states = interface.getCapsules();
+  vector<RelationalState*> rel_states = interface.getRelations();
   cout << "GOT " << trajectory.size() << " STATES" << endl;
   for (int i = 0; i < trajectory.size(); ++i)
   {
@@ -35,16 +36,21 @@ int main(int argc, char** argv)
 
     cout << "STATE " << i << "\n=============================\n";
     cout << "POSITIONS:" << endl;
-    for (int i = 0; i < pos_state->getNumVectors(); ++i)
+    for (int j = 0; j < pos_state->getNumVectors(); ++j)
     {
-      cout << pos_state->getName(i) << ": " << pos_state->getPosition(i).x << " " << pos_state->getPosition(i).z
+      cout << pos_state->getName(j) << ": " << pos_state->getPosition(j).x << " " << pos_state->getPosition(j).z
           << endl;
 
     }
+    cout << "RELATIONS " << i << "\n=============================\n";
+    cout << rel_states[i]->toString()  <<endl;
+
+
+
     cout << "CAPSULES:" << endl;
-    for (int i = 0; i < cap_state->getNumEntities(); ++i)
+    for (int j = 0; j < cap_state->getNumEntities(); ++j)
     {
-      cout << cap_state->getName(i) << ": " << cap_state->getCapsules(i).size() << endl;
+      cout << cap_state->getName(j) << ": " << cap_state->getCapsules(j).size() << endl;
     }
   }
 

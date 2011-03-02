@@ -23,8 +23,8 @@ string toString();
 
 protected:
 vector<Relation> myRelations;
-Vector3d findPlace(int, CartWheel3D *);
-string findName(int, CartWheel3D *);
+Vector3d findPlace(int, PosState &, CartWheel3D *);
+string findName(int, PosState & last);
 
 };
 

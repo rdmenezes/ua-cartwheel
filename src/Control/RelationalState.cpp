@@ -12,22 +12,23 @@ bool RelationalState::contains(Relation & r){
 
 }
 
-Vector3d RelationalState::findPlace(int x, CartWheel3D * cw){
-   //if(x < cw->getHumanCount()){
+Vector3d RelationalState::findPlace(int x, PosState & last, CartWheel3D * cw){
+   if(x < cw->getHumanCount()){
      return cw->getHumanPosition(x);
-   //}
-   //else{
-    // Point3d pp = cw->getWorld()->getRB(x - cw->getHumanCount())->getCMPosition();
-      //  return Vector3d(pp.getX(), pp.getY(), pp.getZ());
-   //}
+   }
+   else{
+     Point3d pp = cw->getWorld()->getRBByName(last.getName(x).c_str())->getCMPosition();
+     return Vector3d(pp.getX(), pp.getY(), pp.getZ());
+   }
 }
 
-string RelationalState::findName(int x, CartWheel3D * cw){
-  //if(x < cw->getHumanCount()){
-     return cw->getHuman(x)->getName();
+string RelationalState::findName(int x, PosState & last){
+   return last.getName(x);
+   //if(x < cw->getHumanCount()){
+   //  return cw->getHuman(x)->getName();
    //}
    //else{
-     //   return cw->getWorld()->getRB(x- cw->getHumanCount())->getName();
+     //   return ;
    //}
 
 }
@@ -55,17 +56,17 @@ void RelationalState::reset(PosState & last, CartWheel3D * cw){
   int numThings = last.getNumVectors();
  //just binary relations for right now
   for(int i = 0; i < numThings; i++){
-     Vector3d pos1 = findPlace(i, cw);
-     string n1 = findName(i, cw);
+     Vector3d pos1 = findPlace(i, last, cw);
+     string n1 = findName(i, last);
      for(int j =0; j < numThings; j++){
 	if(i ==j)
 	   continue; 
-        Vector3d pos2 = findPlace(j, cw);
+        Vector3d pos2 = findPlace(j, last, cw);
 	double dist = ControlUtils::eucDistance2d(pos1, pos2);
-	string n2 = findName(j, cw);
+	string n2 = findName(j, last);
 	double prevDist = ControlUtils::eucDistance2d(*(last.getPosition(n1)), *(last.getPosition(n2)));
 	
-	cout<<"rel check "<<dist<<"  "<<prevDist<<endl; 
+	//cout<<"rel check "<<dist<<"  "<<prevDist<<endl; 
         if(dist < atThresh){
 		addRelation(*(new Relation("At",n1,n2)));
 	}

@@ -1,9 +1,17 @@
 #include "Control/PosState.h"
 
-PosState::PosState(CartWheel3D * cw)
+PosState::PosState(CartWheel3D * cw):blacklist()
 {
-  populate(cw);
+   int h = cw->getHumanCount();
+   for(int i =0; i < h; i++){
+      for(int j=0; j< cw->getHuman(i)->getCharacter()->getArticulatedRigidBodyCount(); j++){
+          blacklist[string(cw->getHuman(i)->getCharacter()->getArticulatedRigidBody(j)->getName())] = 1;
+	}
+   }
+   populate(cw);
 }
+
+
 
 void PosState::populate(CartWheel3D * cw)
 {
@@ -13,13 +21,14 @@ void PosState::populate(CartWheel3D * cw)
     myPositions.push_back(cw->getHumanPosition(i));
   }
 
-  //int others = cw->getWorld()->getRBCount();
-  //for(int j =0; j < others; j++){
-  //   myNames.push_back(cw->getWorld()->getRB(j)->getName());
-  //  Point3d pp = cw->getWorld()->getRB(j)->getCMPosition();
-  //  myPositions.push_back(*(new Vector3d(pp.getX(), pp.getY(), pp.getZ())));
-
-  //}
+  int others = cw->getWorld()->getRBCount();
+  for(int j =0; j < others; j++){
+     if(blacklist.count(cw->getWorld()->getRB(j)->getName()) == 0){
+       myNames.push_back(cw->getWorld()->getRB(j)->getName());
+       Point3d pp = cw->getWorld()->getRB(j)->getCMPosition();
+       myPositions.push_back(*(new Vector3d(pp.getX(), pp.getY(), pp.getZ())));
+     }
+  }
 }
 
 void PosState::reset(CartWheel3D * cw)

@@ -15,6 +15,7 @@
 #include <Control/RelationalState.h>
 #include <Control/PosState.h>
 #include <Control/CapsuleState.h>
+#include <Control/RelationalState.h>
 
 class SimulationInterface
 {
@@ -25,8 +26,9 @@ public:
   void init_simulation(std::vector<double> start_state);
   void simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
 
-  std::vector<PosState*> getPositions();
-  std::vector<CapsuleState*> getCapsules();
+  const std::vector<PosState*> getPositions() const;
+  const std::vector<CapsuleState*> getCapsules()  const;
+  const std::vector<RelationalState*> getRelations() const;
 
 private:
   CartWheel3D* simulator_;
@@ -34,6 +36,7 @@ private:
   bool visualize_;
   char* sPath_;
 
+  std::vector<RelationalState*> relations_;
   std::vector<PosState*> positions_;
   std::vector<CapsuleState*> capsules_;
 };

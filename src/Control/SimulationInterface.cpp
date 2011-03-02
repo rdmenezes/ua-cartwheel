@@ -13,7 +13,7 @@ void render(void)
 }
 
 // TODO This will probably need a parameter for sPath
-SimulationInterface::SimulationInterface(bool visualize)
+SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_(),capsules_()
 {
   visualize_ = visualize;
   sPath_ = new char[200];
@@ -50,6 +50,7 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
 {
   positions_.clear();
   capsules_.clear();
+  relations_.clear();
 
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
 
@@ -117,6 +118,10 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
       positions_.push_back(pos_state);
       CapsuleState* capsule_state = new CapsuleState(simulator_);
       capsules_.push_back(capsule_state);
+      RelationalState* rel_state = new RelationalState();
+      if(i != 0)
+          rel_state->reset(*positions_[(i / sampling_rate)-1],simulator_);
+      relations_.push_back(rel_state);
     }
 
     curr_action->executeStep(simulator_, step_size);
@@ -128,14 +133,19 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
 
     ++i;
   }
+  simulator_->reset();
 }
 
-const std::vector<PosState*>& SimulationInterface::getPositions() const
+const std::vector<RelationalState*> SimulationInterface::getRelations() const{
+  return relations_;
+}
+
+const std::vector<PosState*> SimulationInterface::getPositions() const
 {
   return positions_;
 }
 
-const std::vector<CapsuleState*>& SimulationInterface::getCapsules() const
+const std::vector<CapsuleState*> SimulationInterface::getCapsules() const
 {
   return capsules_;
 }
