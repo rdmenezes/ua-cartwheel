@@ -73,7 +73,9 @@ public:
      **********************************************************/
 
     bool getHuman(const std::string& name, Core::Human** human);
+    bool getHumanNames(std::vector<std::string>& names);
     bool getHumanNames(std::list<std::string>& names);
+
 
     int getHumanCount();
 

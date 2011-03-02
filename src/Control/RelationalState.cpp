@@ -14,13 +14,19 @@ bool RelationalState::contains(Relation & r){
 
 Vector3d RelationalState::findPlace(int x, PosState & last, CartWheel3D * cw){
    if(x < cw->getHumanCount()){
-	 // TODO: Tom, please fix this
-#ifdef BROKEN_CODE
-	 return cw->getHumanPosition(x);
-#else
-     return Vector3d(0,0,0);
-#endif
-   }
+	vector<string> humanNames;
+        cw->getHumanNames(humanNames); 
+	//TODO: change this to returning a vector, not a list!
+        //list<string>::const_iterator itr = humanNames.begin();
+
+ 	//for (int i = 0; itr != humanNames.end(); itr++, i++)
+	  //{
+	//	if(i == x){
+	  //  		string s = *itr;
+			return cw->getHumanPosition(humanNames[x]);
+	//	}
+         // }
+    }
    else{
      Point3d pp = cw->getWorld()->getRBByName(last.getName(x).c_str())->getCMPosition();
      return Vector3d(pp.getX(), pp.getY(), pp.getZ());

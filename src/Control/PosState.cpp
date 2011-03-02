@@ -18,7 +18,7 @@ PosState::PosState(CartWheel3D * cw):blacklist()
 
   list<string> humanNames;
   bool result = cw->getHumanNames(humanNames);
-
+  blacklist["ground"] = 1;
   blacklist["pelvis"] = 1;
 
   list<string>::const_iterator itr = humanNames.begin();
@@ -28,7 +28,7 @@ PosState::PosState(CartWheel3D * cw):blacklist()
 	  cw->getHuman(name, &human);
 
 	  stringstream ss;
-	  ss <<"pelvis"<<(i+1);
+	  ss <<"Human"<<(i+1)<<" pelvis";
 	  blacklist[ss.str()] = 1; //TODO: Hacked this, not sure why the loop below doesn't fix it
 
 	  for(int j=0; j < human->getCharacter()->getArticulatedRigidBodyCount(); j++){
@@ -40,10 +40,10 @@ PosState::PosState(CartWheel3D * cw):blacklist()
 
 void PosState::populate(CartWheel3D * cw)
 {
-  list<string> humanNames;
+  vector<string> humanNames;
   bool result = cw->getHumanNames(humanNames);
 
-  list<string>::const_iterator itr = humanNames.begin();
+  vector<string>::const_iterator itr = humanNames.begin();
   for (int i = 0; itr != humanNames.end(); itr++, i++)
   {
 	string name = (*itr);

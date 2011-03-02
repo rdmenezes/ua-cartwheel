@@ -69,7 +69,7 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
 
   // Add human 2
   string humanName2 = "Human2";
-  simulator_->addHuman(humanName2, "data/characters/bip2V3.rbs", humanController, p2, start_state[5]);
+  simulator_->addHuman(humanName2, "data/characters/bipV3.rbs", humanController, p2, start_state[5]);
   simulator_->setHumanSpeed(humanName2, 0);
 }
 

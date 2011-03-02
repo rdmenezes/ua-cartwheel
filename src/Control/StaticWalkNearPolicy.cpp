@@ -40,16 +40,17 @@ ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
   
   //find location of the controllable actor
 
-	//TODO: Tom please fix this
-#ifdef BROKEN_CODE
-        int hIndex= atoi(myControllables[0].c_str());
-	Vector3d pos1 = simState->getHumanPosition(hIndex);
+        //int hIndex= atoi(myControllables[0].c_str());
+	Vector3d pos1 = simState->getHumanPosition(myControllables[0]);
 	 
 	//cout<<"Made the first point"<<endl;
   //target location (later might be another actor)
        //cout<<"pos: "<<simState->getObjectByName("dodgeBox")->getCMPosition().getX()<<endl;
        //Point3d pos21(simState->getObjectByName("dodgeBox")->getCMPosition());
-       Vector3d pos2(simState->getHumanPosition((hIndex+1)%2));   //(pos21.getX(), pos21.getY(), pos21.getZ());	
+       //TODO: Actually look up the other human
+	vector<string> humanNames;
+	simState->getHumanNames(humanNames);
+       Vector3d pos2(simState->getHumanPosition(humanNames[1]));   //(pos21.getX(), pos21.getY(), pos21.getZ());	
        //cout<<"Made the points"<<endl;
 
   //keep walking
@@ -57,7 +58,7 @@ ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
   cout<<"Distance : "<<ControlUtils::eucDistance2d(pos1, pos2)<<endl;
   double deltaZ = pos2.getZ() - pos1.getZ();
   double deltaX = pos2.getX() - pos1.getX();
-  if(fabs(atan(deltaZ / deltaX) - simState->getHumanHeading(hIndex)) > 3.14 / 4.0 ){ //a lot of leeway
+  if(fabs(atan(deltaZ / deltaX) - simState->getHumanHeading(myControllables[0])) > 3.14 / 4.0 ){ //a lot of leeway
         cout<<"Turning"<<endl;
         return myAvailableActions[2]; //someone else can do the logic on which way to turn
 
@@ -71,6 +72,5 @@ ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
 	cout<<"Stopping"<<endl;
   	return myAvailableActions[1];
   }
-#endif
 }
 
