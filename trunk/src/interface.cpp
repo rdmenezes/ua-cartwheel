@@ -1,4 +1,4 @@
-#include <Control/WalkAction.h>;
+#include <Control/WalkAction.h>
 #include <Control/SimulationInterface.h>
 #include <vector>
 #include <iostream>
@@ -47,4 +47,8 @@ int main(int argc, char** argv)
       cout << cap_state->getName(i) << ": " << cap_state->getCapsules(i).size() << endl;
     }
   }
+
+  cout << "running a second time..." << endl;
+  interface.simulate(start_state, actions);
+
 }
