@@ -52,10 +52,10 @@ public:
 		the constructor
 	*/
 	Character();
-	///**
-	//	the constructor2
-	//*/
-	//Character(ArticulatedFigure* ch);
+	/**
+		the constructor2
+	*/
+	Character(ArticulatedFigure* ch);
 
 	/**
 		the destructor

@@ -52,18 +52,24 @@ CompositeController::CompositeController(Character* ch, WorldOracle* oracle, con
 				//add a new controller
 				IKVMCController* controller = new IKVMCController(character);
 				controller->loadFromFile(trim(line));
-				BehaviourController* behaviour = new TurnController(character, controller, oracle);
-				controller->setBehaviour(behaviour);
-				behaviour->conTransitionPlan();
+			//	BehaviourController* behaviour = new TurnController(character, controller, oracle);
+			//	controller->setBehaviour(behaviour);
+			//	behaviour->conTransitionPlan();
 				controllers.push_back(controller);
 				break;
 			}
 			case LOAD_TURN_BEHAVIOUR_CON_FILE: {
-				BehaviourController* behaviour = new CompositeBehaviourController(ch, NULL, oracle);
-				const char* input = "data/controllers/bipV3/HMV/compositeBehaviour.con";
-				behaviour->loadFromFile(fopen(input, "r"));
-
+				// Assign to the associated controller. Normally it is the very last one loaded
 				IKVMCController* controller = dynamic_cast<IKVMCController*>(controllers[controllers.size()-1]);
+
+				// Initialize a new behaviour controller
+				BehaviourController* behaviour = new CompositeBehaviourController(ch, controller, oracle);
+				FILE* fileCNC = fopen(trim(line), "r");
+				if (fileCNC == NULL)
+					throwError("Could not open file: %s", line);
+				behaviour->loadFromFile(fileCNC);
+				fclose(fileCNC);
+
 				controller->setBehaviour(behaviour);
 				behaviour->conTransitionPlan();
 				break;

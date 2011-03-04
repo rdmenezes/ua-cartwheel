@@ -166,7 +166,6 @@ public:
 	*/
 	inline Joint* getJointByName(const char* jName){
 		for (unsigned int i=0;i<joints.size();i++) {
-			std::cout << "joints[i]->name=" << joints[i]->name << std::endl;
 			if (strcmp(joints[i]->name, jName) == 0) {
 				return joints[i];
 			}

@@ -177,13 +177,9 @@ static void processMenuEvents(int option) {
 		Visualization::g_instance->getHumanNames(humanNames);
 
 		vector<string>::iterator itr = humanNames.begin();
-		for (int i = 0; itr != humanNames.end(); itr++, i++)
-		{
-			if (i == indexHuman)
-			{
-				Visualization::g_instance->selectHuman((*itr));
-				break;
-			}
+		std::advance(itr, indexHuman);
+		if (itr != humanNames.end()) {
+			Visualization::g_instance->selectHuman((*itr));
 		}
 	}
 }

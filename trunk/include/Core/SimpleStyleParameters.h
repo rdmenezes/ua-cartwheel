@@ -9,15 +9,20 @@ namespace CartWheel { namespace Core {
 */
 class SimpleStyleParameters{
 public:
-	double torsoLeanSagittal;
+	double ubSagittalLean;
+	double ubCoronalLean;
+	double ubTwist;
+	double velDSagittal;
+	double velDCoronal;
 	double kneeBend;
 	double duckFootedness;
-	double elbowBend;
 	double stepHeight;
-	double shoulderTwist;
-	double shoulderCoronal;
-	double shoulderSagittal;
-	
+	double coronalStepWidth;
+	BehaviourController::LeftRightDouble elbowBend;
+	BehaviourController::LeftRightDouble shoulderTwist;
+	BehaviourController::LeftRightDouble shoulderCoronal;
+	BehaviourController::LeftRightDouble shoulderSagittal;
+
 public:
 	SimpleStyleParameters(void);
 	~SimpleStyleParameters(void);

@@ -1,0 +1,11 @@
+# Define a set of behaviours
+
+duckBehaviour
+#turnBehaviour
+
+kneeBend 0.05
+#stepHeight -0.08
+#elbowBend 0.5
+
+/behaviour
+

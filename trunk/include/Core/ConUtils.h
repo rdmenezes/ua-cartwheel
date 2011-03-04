@@ -82,11 +82,26 @@ namespace CartWheel { namespace Core {
 #define CON_VELOCITY_CORONAL			69
 #define CON_KNEE_BEND					70
 #define CON_CORONAL_STEP_WIDTH			71
-#define CON_STEP_TIME					72
-#define CON_STEP_HEIGHT					73
 
-#define LOAD_TURN_BEHAVIOUR_CON_FILE	74
-#define LOAD_DUCK_BEHAVIOUR_CON_FILE	75
+#define CON_LEFT_ELBOW_BEND				72
+#define CON_RIGHT_ELBOW_BEND			73
+
+#define CON_LEFT_SHOULDER_TWIST			74
+#define CON_RIGHT_SHOULDER_TWIST		75
+
+#define CON_LEFT_SHOULDER_CORONAL		76
+#define CON_RIGHT_SHOULDER_CORONAL		77
+
+#define CON_LEFT_SHOULDER_SAGITTAL		78
+#define CON_RIGHT_SHOULDER_SAGITTAL		79
+
+#define CON_STEP_TIME					80
+#define CON_STEP_HEIGHT					81
+
+#define LOAD_TURN_BEHAVIOUR_CON_FILE	82
+#define CON_TURN_BEHAVIOUR				83
+#define CON_DUCK_BEHAVIOUR				84
+#define CON_BEHAVIOUR_END				85
 
 /**
 	This method is used to determine the type of a line that was used in the input file for a rigid body.

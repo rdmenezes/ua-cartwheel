@@ -1,14 +1,29 @@
 
 synchronizeControllers
 
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/Standing.cbc
+
 loadIKVMCController data/controllers/bipV3/Walking.sbc
-loadIKVMCController data/controllers/bipV3/HappyWalk.sbc
-loadIKVMCController data/controllers/bipV3/BackInStyle.sbc
-loadIKVMCController data/controllers/bipV3/CartoonySneak.sbc
-loadIKVMCController data/controllers/bipV3/DrunkenWalk.sbc
-loadIKVMCController data/controllers/bipV3/IronBootsWalk.sbc
+#loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Default.cbc
+
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/SitDown.cbc
+
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/StandUp.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Push.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Pull.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
 
 startingStance left
 #startingStance right
-loadCharacterState data/controllers/bipV3/WalkingState.rs
+#loadCharacterState data/controllers/bipV3/WalkingState.rs
 
