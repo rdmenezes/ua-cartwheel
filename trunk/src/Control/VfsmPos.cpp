@@ -24,8 +24,10 @@ bool VfsmPos::getCurTerminal(){
 }
 
 void VfsmPos::progress(RelationalState & r){
-	 vector<FsmTrans*> * possible = (*trans)[current];
-	vector<FsmTrans*>::const_iterator itr = possible->begin();
+  if(trans->count(current) == 0)
+	return;
+  vector<FsmTrans*> * possible = (*trans)[current];
+  vector<FsmTrans*>::const_iterator itr = possible->begin();
   bool fired = false;
    for (; itr != possible->end(); itr++){
   	if((*itr)->checkFired(r)){ //TODO: tie-breaking
