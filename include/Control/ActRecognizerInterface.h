@@ -13,8 +13,8 @@ class ActRecognizerInterface{
   public:
    ActRecognizerInterface();
    ~ActRecognizerInterface();
-   ActRecognizerInterface(string, const vector<string> &);
-   void setRecognizer(string s, const vector<string> &);
+   ActRecognizerInterface(const string &, const vector<string> &);
+   void setRecognizer(const string & s, const vector<string> &);
    void progress(RelationalState & r){myRec->progress(r);}
    bool getCurTerminal(){return myRec->getCurTerminal();}
    string getFullVerbName();
@@ -23,7 +23,7 @@ class ActRecognizerInterface{
   
   protected:
     VfsmPos * myRec;
-    void construct(string, const vector<string> &);
+    void construct(const string &, const vector<string> &);
     string myRecName;
    vector<string>* myObjs;
 };
