@@ -9,17 +9,17 @@ twist 0
 duckWalk 0
 velocitySagittal 0
 velocityCoronal 0
-kneeBend 0.5
+kneeBend 0.0
 coronalStepWidth 0
 leftElbowBend 0
 rightElbowBend 0
 leftShoulderTwist 0
 leftShoulderCoronal 0
-leftShoulderSagittal 1
-rightShoulderTwist 1
-rightShoulderCoronal 1
-rightShoulderSagittal 1
-#stepTime 0
+leftShoulderSagittal -1.5
+rightShoulderTwist 0
+rightShoulderCoronal 0
+rightShoulderSagittal -1.5
+#stepTime 0.5
 stepHeight -0.07
 
 /behaviour
