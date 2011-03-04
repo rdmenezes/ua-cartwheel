@@ -220,7 +220,9 @@ void CompositeBehaviourController::switchToNextController() {
 
 	params.applyInterpolatedStyleParameters(controllers[activeBehaviour], 0.5, &params);
 
-	activeBehaviour++;
+	if (controllers.size() > (activeBehaviour + 1)) {
+		activeBehaviour = activeBehaviour + 1;
+	}
 }
 
 void CompositeBehaviourController::simStepPlan(double dt) {
