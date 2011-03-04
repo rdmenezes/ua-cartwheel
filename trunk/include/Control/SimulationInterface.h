@@ -37,6 +37,7 @@ private:
   Visualization* visualization_;
   bool visualize_;
   char* sPath_;
+  void fullClear(); 
 
   std::vector<std::string>* storedNames_;
   std::vector<RelationalState*> relations_;

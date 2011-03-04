@@ -1,22 +1,27 @@
 #include "Control/RelationalState.h"
 
-RelationalState::RelationalState(vector<Relation> & rs):myRelations(rs){
+RelationalState::RelationalState(vector<Relation> & rs):myRelations(){
+   for(int x=0; x< rs.size(); x++)
+	myRelations.push_back(new Relation(rs[x]));
 }
 
 bool RelationalState::containsAll(RelationalState & r){
-  vector<Relation>::const_iterator itr = r.myRelations.begin();
+  vector<Relation*>::const_iterator itr = r.myRelations.begin();
   for (;itr != r.myRelations.end(); itr++)
   {
-    if(!contains(*itr))
+    if(!contains(**itr))
 	return false;
   }
   return true;
 }
 
+RelationalState::~RelationalState(){
+  fullClear();
+}
 
 bool RelationalState::contains(const Relation & r){
   for(int x = 0; x < myRelations.size(); x++){
-     if(r.equals(myRelations[x]))
+     if(r.equals(*(myRelations[x])))
 	return true;
   }
   return false;
@@ -59,7 +64,7 @@ string RelationalState::findName(int x, PosState & last){
 string RelationalState::toString(){
   string s = "[";
   for(int j =0; j < myRelations.size(); j++){
-    s.append(myRelations[j].toString());
+    s.append(myRelations[j]->toString());
     if(j < myRelations.size() -1)
       s.append(",");
   }
@@ -67,12 +72,18 @@ string RelationalState::toString(){
   return s;
 }
 
+void RelationalState::fullClear(){
+  for(int i = 0; i < myRelations.size(); i++)
+      delete myRelations[i];
+  myRelations.clear();
+}
+
 void RelationalState::reset(PosState & last, CartWheel3D * cw){
   double atThresh = 1.0;
   double changeThresh = 0.01;
 
   //get each human (just doing humans now
-  myRelations.clear();
+  fullClear();
    if(last.getNumVectors() == 0)
      return; 
   int numThings = last.getNumVectors();

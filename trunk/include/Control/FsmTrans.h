@@ -8,7 +8,7 @@ class FsmTrans{
 public:
 
 FsmTrans(int s, int e, RelationalState *r);
-
+~FsmTrans();
 
 
 bool checkFired(RelationalState & r);

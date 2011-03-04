@@ -28,6 +28,7 @@ CapsuleState::CapsuleState(CartWheel3D* cw)
 
 CapsuleState::~CapsuleState()
 {
+  clear();
 }
 
 void CapsuleState::populate(CartWheel3D* cw)
@@ -79,6 +80,9 @@ std::vector<CartWheel::Math::Capsule*> CapsuleState::getCapsules(int index)
 
 void CapsuleState::clear()
 {
+  for(int x=0; x< capsules_.size(); x++)
+	 for(int y=0; y< capsules_[x].size(); y++)
+ 		delete capsules_[x][y];
   names_.clear();
   capsules_.clear();
 }

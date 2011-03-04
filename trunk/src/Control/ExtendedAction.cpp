@@ -1,7 +1,7 @@
 #include "Control/ExtendedAction.h"
 #include <Control/PosState.h>
 
-void ExtendedAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory)
+void ExtendedAction::execute(CartWheel3D *cw)
 {
   //time_t starter; 
 
@@ -13,9 +13,9 @@ void ExtendedAction::execute(CartWheel3D *cw, std::vector<PosState*> *trajectory
 
   for (double x = 0.0; x < myTime * 20.0; x++)
   {
-    cout << "human location : " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
-    PosState* pos = new PosState(cw);
-    trajectory->push_back(pos);
+    //cout << "human location : " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
+    //PosState* pos = new PosState(cw);
+    //trajectory->push_back(pos);
     cw->runStep(.001);
   }
 }

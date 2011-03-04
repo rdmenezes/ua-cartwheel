@@ -12,6 +12,7 @@ class VfsmPos{
 
 public:
 VfsmPos(int n, map<int, vector<FsmTrans*>* >* tr, int s, map<int,bool>* t);
+~VfsmPos();
 void progress(RelationalState & r);
 int getCurrent(){return current;}
 bool getCurTerminal();
