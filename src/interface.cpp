@@ -10,7 +10,7 @@ using std::endl;
 
 using namespace std;
 
-//#define ACTREC
+#define ACTREC
 
 int main(int argc, char** argv)
 {

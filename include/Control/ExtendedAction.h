@@ -31,7 +31,7 @@ virtual double getPrior(std::vector<double> params) = 0;
 
 virtual void setParams(std::vector<double> params) = 0;
 
-virtual void execute(CartWheel3D *cw, std::vector<PosState*> *trajectory);
+virtual void execute(CartWheel3D *cw);
 void executeStep(CartWheel3D *cw, double step);
 
 virtual void executeSetup(CartWheel3D * cw) = 0;

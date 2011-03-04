@@ -8,6 +8,10 @@ FsmTrans::FsmTrans(int s, int e, RelationalState *r){
   rs = r;
 }
 
+FsmTrans::~FsmTrans(){
+	delete rs;
+}
+
 bool FsmTrans::checkFired(RelationalState & r){
 	return r.containsAll(*rs);
 }

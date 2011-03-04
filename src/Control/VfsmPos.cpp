@@ -9,6 +9,15 @@ VfsmPos::VfsmPos(int n, map<int, vector<FsmTrans*>* >* tr, int s, map<int,bool>*
       	current = s;
  	lastTrans = NULL;
 }
+
+VfsmPos::~VfsmPos(){
+  for(int i =0; i < trans->size(); i++){
+	for(int j =0; j < (*trans)[i]->size(); j++)
+ 		delete (*(*trans)[i])[j];  //kill off the transition links, they are the vfsm's responsibility
+  }
+  delete trans;
+  delete terminals;
+}
   
 bool VfsmPos::getCurTerminal(){
   return(terminals->count(current)!=0);

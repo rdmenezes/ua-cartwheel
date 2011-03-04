@@ -45,14 +45,29 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
 SimulationInterface::~SimulationInterface()
 {
   delete storedNames_;
+  delete simulator_;
+  delete [] sPath_;
+  if(visualize_)
+     delete visualization_;
 }
 
-void SimulationInterface::init_simulation(std::vector<double> start_state)
-{
-  positions_.clear();
+void SimulationInterface::fullClear(){
+   for(int i =0; i < positions_.size(); i++){
+      delete positions_[i];
+      delete relations_[i];
+      delete capsules_[i];
+  }
+    positions_.clear();
   capsules_.clear();
   relations_.clear();
   storedNames_->clear();
+
+}
+
+
+void SimulationInterface::init_simulation(std::vector<double> start_state)
+{
+  fullClear();
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
 
   //simulator->addObject("dodgeBox", "data/objects/box.rbs", 1);
