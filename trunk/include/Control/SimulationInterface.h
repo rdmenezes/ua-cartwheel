@@ -26,9 +26,9 @@ public:
   void init_simulation(std::vector<double> start_state);
   void simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions);
 
-  const std::vector<PosState*> getPositions() const;
-  const std::vector<CapsuleState*> getCapsules()  const;
-  const std::vector<RelationalState*> getRelations() const;
+  const std::vector<PosState*>& getPositions() const;
+  const std::vector<CapsuleState*>& getCapsules()  const;
+  const std::vector<RelationalState*>& getRelations() const;
 
 private:
   CartWheel3D* simulator_;

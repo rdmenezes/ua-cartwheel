@@ -138,16 +138,17 @@ void SimulationInterface::simulate(std::vector<double> start_state, std::vector<
   simulator_->reset();
 }
 
-const std::vector<RelationalState*> SimulationInterface::getRelations() const{
+const std::vector<RelationalState*>& SimulationInterface::getRelations() const
+{
   return relations_;
 }
 
-const std::vector<PosState*> SimulationInterface::getPositions() const
+const std::vector<PosState*>& SimulationInterface::getPositions() const
 {
   return positions_;
 }
 
-const std::vector<CapsuleState*> SimulationInterface::getCapsules() const
+const std::vector<CapsuleState*>& SimulationInterface::getCapsules() const
 {
   return capsules_;
 }
