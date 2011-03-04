@@ -3,7 +3,18 @@
 RelationalState::RelationalState(vector<Relation> & rs):myRelations(rs){
 }
 
-bool RelationalState::contains(Relation & r){
+bool RelationalState::containsAll(RelationalState & r){
+  vector<Relation>::const_iterator itr = r.myRelations.begin();
+  for (;itr != r.myRelations.end(); itr++)
+  {
+    if(!contains(*itr))
+	return false;
+  }
+  return true;
+}
+
+
+bool RelationalState::contains(const Relation & r){
   for(int x = 0; x < myRelations.size(); x++){
      if(r.equals(myRelations[x]))
 	return true;

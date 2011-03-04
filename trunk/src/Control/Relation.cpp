@@ -7,7 +7,7 @@ Relation::Relation(string n, string o1, string o2, bool b ){
   positive  = b;
 }
 
-bool Relation::equals(Relation r){
+bool Relation::equals(const Relation & r) const{
   return (r.myName.compare(myName) == 0 ) && (r.obj1.compare(obj1)==0) && (r.obj2.compare(obj2) == 0 );
 }
 

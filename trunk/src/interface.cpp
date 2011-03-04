@@ -2,13 +2,20 @@
 #include <Control/SimulationInterface.h>
 #include <vector>
 #include <iostream>
+#include <Control/ActRecognizerInterface.h>
 
 using std::vector;
 using std::cout;
 using std::endl;
 
+using namespace std;
+
+//#define ACTREC
+
 int main(int argc, char** argv)
 {
+ 
+
   SimulationInterface interface(false);//true);
 
   vector<double> start_state;
@@ -24,11 +31,19 @@ int main(int argc, char** argv)
   actions.push_back(new WalkAction(10.0, -0.5));
   actions.push_back(new WalkAction(10.0, 0.0));
 
+
   interface.simulate(start_state, actions);
   vector<PosState*> trajectory = interface.getPositions();
   vector<CapsuleState*> capsule_states = interface.getCapsules();
   vector<RelationalState*> rel_states = interface.getRelations();
   cout << "GOT " << trajectory.size() << " STATES" << endl;
+  
+  #ifdef ACTREC
+      vector<string>* namers= interface.getLastHumanNames();
+
+      ActRecognizerInterface ari(string("meet"), *namers);
+  #endif
+
   for (int i = 0; i < trajectory.size(); ++i)
   {
     PosState* pos_state = trajectory[i];
@@ -44,7 +59,11 @@ int main(int argc, char** argv)
     }
     cout << "RELATIONS " << i << "\n=============================\n";
     cout << rel_states[i]->toString()  <<endl;
-
+    #ifdef ACTREC
+       ari.progress(*(rel_states[i]));
+       if(ari.getCurTerminal())
+	cout<<ari.getFullVerbName()<<" achieved at step "<<i<<endl;
+     #endif
 
 
     cout << "CAPSULES:" << endl;
