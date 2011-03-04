@@ -1,0 +1,20 @@
+# Define a set of behaviours
+
+#duckBehaviour
+turnBehaviour
+
+desiredHeading 0.0
+ubSagittalLean 0.0
+ubCoronalLean 0.0
+ubTwist 0.0
+duckWalk 0.0
+velDSagittal 0.0
+velDCoronal 0.5
+kneeBend 0.0
+coronalStepWidth 0.0
+elbowBend 0.0
+
+stepTime 0.1
+stepHeight 0.05
+
+/behaviour

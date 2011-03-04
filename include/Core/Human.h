@@ -77,7 +77,7 @@ public:
 		m_policy = policy;
 	}
 
-	void setPosition(CartWheel::Math::Point3d position)
+	void setPosition(const CartWheel::Math::Point3d& position)
 	{
 		m_character->setPos(position);
 	}
@@ -111,7 +111,7 @@ public:
 		}
     }
 
-    void setName(std::string name)
+    void setName(const std::string& name)
     {
     	m_name = name;
     }

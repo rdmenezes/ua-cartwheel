@@ -27,7 +27,6 @@ protected:
 	double ankleBaseHeight;
 	bool shouldPreventLegIntersections;
 
-
 	//these are attributes/properties of the motion
 	double desiredHeading;
 	double ubSagittalLean;
@@ -38,6 +37,14 @@ protected:
 	double velDCoronal;
 	double kneeBend;
 	double coronalStepWidth;
+	double leftElbowBend;
+	double rightElbowBend;
+	double leftShoulderTwist;
+	double leftShoulderCoronal;
+	double leftShoulderSagittal;
+	double rightShoulderTwist;
+	double rightShoulderCoronal;
+	double rightShoulderSagittal;
 
 	double stepTime;
 	double stepHeight;
@@ -55,7 +62,6 @@ public:
 	//alternate planned foot trajectory, for cases where we need to go around the stance foot...
 	CartWheel::Math::Trajectory3d alternateFootTraj;
 
-
 	/**
 		a set of useful virtual functions, whose behavior can be overridden
 	*/
@@ -69,15 +75,14 @@ public:
 	BehaviourController(Character* b, IKVMCController* llc, WorldOracle* w = NULL);
 	virtual ~BehaviourController(void);
 
-
 	virtual void loadFromFile(FILE * file);
 	virtual void saveToFile(FILE * file);
 
 	virtual void adjustStepHeight();
 
 	virtual void setElbowAngles(double leftElbowAngle, double rightElbowAngle);
-	virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction, double rightAdduction, double leftSwing, double rightSwing);
-
+	virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction,
+			double rightAdduction, double leftSwing, double rightSwing);
 
 	virtual void requestStepTime(double stepTime);
 	virtual void requestStepHeight(double stepHeight);
@@ -86,10 +91,28 @@ public:
 	virtual void requestKneeBend(double kb);
 	virtual void requestDuckFootedness(double df);
 	virtual void requestCoronalStepWidth(double corSW);
+	virtual void requestElbowBend(double leftBend, double rightBend);
 
-	double getDesiredStepTime() const { return stepTime; }
 	double getDesiredVelocitySagittal() const { return velDSagittal; }
+	double getDesiredVelocityCoronal() const { return velDCoronal; }
+
+	double getDesiredSagittalLean() const { return ubSagittalLean; }
+	double getDesiredCoronalLean() const { return ubCoronalLean; }
+	double getDesiredUpperBodyTwist() const { return ubTwist; }
+
 	double getCoronalStepWidth() const { return coronalStepWidth; }
+	double getDesiredKneeBend() const { return kneeBend; }
+	double getDesiredDuckFootness() const { return duckWalk; }
+
+	typedef std::pair<double, double> LeftRightDouble;
+
+	LeftRightDouble getDesiredElbowBend() const { return std::make_pair(leftElbowBend, rightElbowBend); }
+	LeftRightDouble getDesiredShoulderTwist() const { return std::make_pair(leftShoulderTwist, rightShoulderTwist); }
+	LeftRightDouble getDesiredShoulderCoronal() const { return std::make_pair(leftShoulderCoronal, rightShoulderCoronal); }
+	LeftRightDouble getDesiredShoulderSagittal() const { return std::make_pair(leftShoulderSagittal, rightShoulderSagittal); }
+
+	double getDesiredStepHeight() const { return stepHeight; }
+	double getDesiredStepTime() const { return stepTime; }
 
 	/**
 		determines the desired swing foot location
@@ -97,7 +120,7 @@ public:
 	virtual void setDesiredSwingFootLocation();
 
 	/**
-		determine the estimate desired location of the swing foot, given the etimated position of the COM, and the phase
+		determine the estimate desired location of the swing foot, given the estimated position of the COM, and the phase
 	*/
 	virtual CartWheel::Math::Vector3d computeSwingFootLocationEstimate(const CartWheel::Math::Point3d& comPos, double phase);
 

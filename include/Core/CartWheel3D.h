@@ -42,8 +42,6 @@ private:
     Core::WorldOracle* _oracle;
     BuilderFunction _builderFunction;
 
-    Core::Character* getAFtoCharacter(Physics::ArticulatedFigure* af);
-
 public:
 
     CartWheel3D();

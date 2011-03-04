@@ -1,6 +1,6 @@
 #include <Core/BehaviourController.h>
 #include <MathLib/Trajectory.h>
-#include<iostream>
+#include <iostream>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
@@ -30,6 +30,14 @@ BehaviourController::BehaviourController(Character* b, IKVMCController* llc, Wor
 	velDCoronal = 0;
 	kneeBend = 0;
 	coronalStepWidth = 0.1;
+	leftElbowBend = 0.0;
+	rightElbowBend = 0.0;
+	leftShoulderTwist = 0.0;
+	leftShoulderCoronal = 0.0;
+	leftShoulderSagittal = 0.0;
+	rightShoulderTwist = 0.0;
+	rightShoulderCoronal = 0.0;
+	rightShoulderSagittal = 0.0;
 
 	stepTime = 0.6;
 	stepHeight = 0;
@@ -57,37 +65,64 @@ void BehaviourController::loadFromFile(FILE * f){
 		int lineType = getConLineType(line);
 		switch (lineType) {
 			case CON_DESIRED_HEADING:
-				sscanf(line, "%lf", this->desiredHeading);
+				sscanf(line, "%lf", &this->desiredHeading);
 				break;
 			case CON_SAGITTAL_LEAN:
-				sscanf(line, "%lf", this->ubSagittalLean);
+				sscanf(line, "%lf", &this->ubSagittalLean);
 				break;
 			case CON_CORONAL_LEAN:
-				sscanf(line, "%lf", this->ubCoronalLean);
+				sscanf(line, "%lf", &this->ubCoronalLean);
 				break;
 			case CON_TWIST:
-				sscanf(line, "%lf", this->ubTwist);
+				sscanf(line, "%lf", &this->ubTwist);
 				break;
 			case CON_DUCK_WALK:
-				sscanf(line, "%lf", this->duckWalk);
+				sscanf(line, "%lf", &this->duckWalk);
 				break;
 			case CON_VELOCITY_SAGITTAL:
-				sscanf(line, "%lf", this->velDSagittal);
+				sscanf(line, "%lf", &this->velDSagittal);
 				break;
 			case CON_VELOCITY_CORONAL:
-				sscanf(line, "%lf", this->velDCoronal);
+				sscanf(line, "%lf", &this->velDCoronal);
 				break;
 			case CON_KNEE_BEND:
-				sscanf(line, "%lf", this->kneeBend);
+				sscanf(line, "%lf", &this->kneeBend);
 				break;
 			case CON_CORONAL_STEP_WIDTH:
-				sscanf(line, "%lf", this->coronalStepWidth);
+				sscanf(line, "%lf", &this->coronalStepWidth);
 				break;
 			case CON_STEP_TIME:
-				sscanf(line, "%lf", this->stepTime);
+				sscanf(line, "%lf", &this->stepTime);
 				break;
 			case CON_STEP_HEIGHT:
-				sscanf(line, "%lf", this->stepHeight);
+				sscanf(line, "%lf", &this->stepHeight);
+				break;
+			case CON_LEFT_ELBOW_BEND:
+				sscanf(line, "%lf", &this->leftElbowBend);
+				break;
+			case CON_RIGHT_ELBOW_BEND:
+				sscanf(line, "%lf", &this->rightElbowBend);
+				break;
+			case CON_LEFT_SHOULDER_TWIST:
+				sscanf(line, "%lf", &this->leftShoulderTwist);
+				break;
+			case CON_RIGHT_SHOULDER_TWIST:
+				sscanf(line, "%lf", &this->rightShoulderTwist);
+				break;
+			case CON_LEFT_SHOULDER_CORONAL:
+				sscanf(line, "%lf", &this->leftShoulderCoronal);
+				break;
+			case CON_RIGHT_SHOULDER_CORONAL:
+				sscanf(line, "%lf", &this->rightShoulderCoronal);
+				break;
+			case CON_LEFT_SHOULDER_SAGITTAL:
+				sscanf(line, "%lf", &this->leftShoulderSagittal);
+				break;
+			case CON_RIGHT_SHOULDER_SAGITTAL:
+				sscanf(line, "%lf", &this->rightShoulderSagittal);
+				break;
+			case CON_BEHAVIOUR_END:
+				return;//and... done
 				break;
 			case CON_NOT_IMPORTANT:
 				printf("Ignoring input line: \'%s\'\n", line);
@@ -98,7 +133,7 @@ void BehaviourController::loadFromFile(FILE * f){
 				throwError("Incorrect BehaviorController input file: \'%s\' - unexpected line.", buffer);
 		}
 	}
-	fclose(f);
+	throwError("Incorrect behaviour input file! No /behaviour found");
 }
 
 void BehaviourController::saveToFile(FILE * file) {
@@ -126,6 +161,11 @@ void BehaviourController::setElbowAngles(double leftElbowAngle, double rightElbo
 }
 
 void BehaviourController::setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction, double rightAdduction, double leftSwing, double rightSwing){
+
+	double leftShoulderTwist;
+	double leftShoulderCoronal;
+	double leftShoulderSagittal;
+
 	double stanceTwist = (lowLCon->stance == LEFT_STANCE)?(leftTwist):(rightTwist);
 	double stanceAdd = (lowLCon->stance == LEFT_STANCE)?(leftAdduction):(rightAdduction);
 	double stanceSwing = (lowLCon->stance == LEFT_STANCE)?(leftSwing):(rightSwing);
@@ -227,6 +267,11 @@ void BehaviourController::requestCoronalStepWidth(double corSW) {
 	coronalStepWidth = corSW;
 }
 
+void BehaviourController::requestElbowBend(double leftBend, double rightBend) {
+	leftElbowBend = leftBend;
+	rightElbowBend = rightBend;
+}
+
 void BehaviourController::adjustStepHeight(){
 	lowLCon->unplannedForHeight = 0;
 	if (wo != NULL)
@@ -260,6 +305,8 @@ void BehaviourController::simStepPlan(double /* dt */){
 
 	//adjust for panic mode or unplanned terrain...
 	adjustStepHeight();
+
+	setElbowAngles(leftElbowBend, rightElbowBend);
 
 	//and see if we're really in trouble...
 	if (shouldAbort())

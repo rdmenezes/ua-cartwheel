@@ -17,15 +17,17 @@ Character::Character() : ArticulatedFigure() {
 /**
 	the constructor2
 */
-//Character::Character(ArticulatedFigure* ch){
-//	if (ch == NULL)
-//		throwError("Can't build a character without an articulated figure!!!\n");
-//	this->af = ch;
-//	
-//	//populate the joints while at it
-//	joints.clear();
-//	af->addJointsToList(&joints);
-//}
+Character::Character(ArticulatedFigure* af)
+{
+    setRoot(af->getRoot());
+
+    for(int i=0; i<af->getJointCount(); i++)
+    {
+        addJoint(af->getJoint(i));
+        addArticulatedRigidBody(af->getJoint(i)->getChild());
+    }
+    computeMass();
+}
 
 /**
 	the destructor

@@ -81,8 +81,18 @@ static ConKeyWord keywords[] = {
 	{"coronalStepWidth", CON_CORONAL_STEP_WIDTH},
 	{"stepTime", CON_STEP_TIME},
 	{"stepHeight", CON_STEP_HEIGHT},
-	{"loadTurnBeahaviourController", LOAD_TURN_BEHAVIOUR_CON_FILE},
-	{"loadDuckBeahaviourController", LOAD_DUCK_BEHAVIOUR_CON_FILE}
+	{"leftElbowBend", CON_LEFT_ELBOW_BEND},
+	{"rightElbowBend", CON_RIGHT_ELBOW_BEND},
+	{"leftShoulderTwist", CON_LEFT_SHOULDER_TWIST},
+	{"rightShoulderTwist", CON_RIGHT_SHOULDER_TWIST},
+	{"leftShoulderCoronal", CON_LEFT_SHOULDER_CORONAL},
+	{"rightShoulderCoronal", CON_RIGHT_SHOULDER_CORONAL},
+	{"leftShoulderSagittal", CON_LEFT_SHOULDER_SAGITTAL},
+	{"rightShoulderSagittal", CON_RIGHT_SHOULDER_SAGITTAL},
+	{"loadBehaviourController", LOAD_TURN_BEHAVIOUR_CON_FILE},
+	{"turnBehaviour", CON_TURN_BEHAVIOUR},
+	{"duckBehaviour", CON_DUCK_BEHAVIOUR},
+	{"/behaviour", CON_BEHAVIOUR_END}
 };
 
 /**

@@ -16,14 +16,6 @@ using namespace CartWheel::Physics;
 using namespace CartWheel::Math;
 using namespace CartWheel::Util;
 
-#ifndef TRUE
-#define TRUE 1
-#endif
-
-#ifndef FALSE
-#define FALSE 1
-#endif
-
 CartWheel3D::CartWheel3D() :
     _path(""), _world(&World::instance()), _oracle(NULL),
     _builderFunction(NULL)
@@ -60,9 +52,7 @@ void CartWheel3D::addHuman(const string& name, const string& characterFile, cons
 
     string sFile = _path + characterFile;
     _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
-    Character* ch = getAFtoCharacter(_world->getAF(_world->getAFCount()-1));
-    ch->setHeading(heading);
-    ch->setPos(pos);
+    Character* ch = new Character(_world->getAF(_world->getAFCount()-1));
 
     IKVMCController* c = new IKVMCController(ch);
 
@@ -74,6 +64,8 @@ void CartWheel3D::addHuman(const string& name, const string& characterFile, cons
 	Human* human = new Human(name, ch, c, behaviour);
 
 	human->setHeading(heading);
+	human->setPosition(pos);
+
 	human->init();
 
     _humans[name] = human;
@@ -92,14 +84,13 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
 	string sFile = _path + characterFile;
     _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
-    Character* ch = getAFtoCharacter(_world->getAF(_world->getAFCount()-1));
-    ch->setHeading(heading);
-    ch->setPos(pos);
+    Character* ch = new Character(_world->getAF(_world->getAFCount()-1));
 
 	CompositeController* con = new CompositeController(ch, _oracle, controllerFile.c_str());
 	ActionCollectionPolicy* policy = new ActionCollectionPolicy(con);
 	policy->loadActionsFromFile(actionFile.c_str());
 
+/*
 	// TODO: Hack for now
 	CompositeControllerState state;
 	state.primaryControllerIndex = 0;
@@ -115,11 +106,15 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
 	for(int i=0; i<2; i++)
 		state.controllerStates.push_back(controllerState);
+*/
 
 	//con->setControllerState(state);
 
 	// Create a new human
 	Human* human = new Human(name, ch, con, policy);
+
+	human->setHeading(heading);
+	human->setPosition(pos);
 
 	// Initialize
 	human->init();
@@ -129,29 +124,16 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
 void CartWheel3D::addObject(const string& name, const string& objFile, double mass)
 {
-    string tmp = _path + objFile;
-    FILE* f = fopen(tmp.c_str(), "r");
-    if (f == NULL)
-    {
-        throwError("Could not open file: obj: %s completePath: %s", objFile.c_str(), tmp.c_str());
-    }
+	string sFile = _path + objFile;
+    _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
 
-    // TODO: weird read from the buffer here. Should validate
-    // that it was ok to remove it.
-    char buffer[200];
-    fgets(buffer, 200, f);
-    RigidBody* rb = new RigidBody();
-    rb->loadFromFile(f, _path.c_str());
+    RigidBody* rb = _world->getRB(_world->getRBCount()-1);
     rb->setName(name.c_str());
-
-    // TODO: close file??
 
     if (mass > 0)
     {
         rb->setMass(mass);
     }
-
-    _world->addRigidBody(rb);
 }
 
 void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
@@ -169,10 +151,10 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
 
     Point3d pos1 = Point3d(-scale.x, -scale.y, -scale.z);
     Point3d pos2 = Point3d(scale.x, scale.y, scale.z);
-    //BoxCDP* boxCDP = new BoxCDP(pos1, pos2, body);
+
     body->addCollisionDetectionPrimitive(new BoxCDP(pos1, pos2, body));
 
-    body->setFrictionCoefficient(0.8);
+   	body->setFrictionCoefficient(0.8);
     body->setRestitutionCoefficient(0.35);
 
     _world->addRigidBody(body);
@@ -302,20 +284,6 @@ void CartWheel3D::runStep(double dt)
 			}
 		}
     }
-}
-
-Character* CartWheel3D::getAFtoCharacter(ArticulatedFigure* af)
-{
-    Character* ch = new Character();
-    ch->setRoot(af->getRoot());
-
-    for(int i=0; i<af->getJointCount(); i++)
-    {
-        ch->addJoint(af->getJoint(i));
-        ch->addArticulatedRigidBody(af->getJoint(i)->getChild());
-    }
-    ch->computeMass();
-    return ch;
 }
 
 Math::Vector3d CartWheel3D::getHumanPosition(const std::string& name)
