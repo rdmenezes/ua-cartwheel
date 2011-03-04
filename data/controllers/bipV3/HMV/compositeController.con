@@ -2,6 +2,10 @@
 synchronizeControllers
 
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+#loadIKVMCController data/controllers/bipV3/Walking.sbc
+loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
+
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
 loadBehaviourController data/controllers/bipV3/Standing.cbc
 
 loadIKVMCController data/controllers/bipV3/Walking.sbc
@@ -19,9 +23,6 @@ loadBehaviourController data/controllers/bipV3/Push.cbc
 
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Pull.cbc
-
-loadIKVMCController data/controllers/bipV3/Standing.sbc
-loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
 
 startingStance left
 #startingStance right

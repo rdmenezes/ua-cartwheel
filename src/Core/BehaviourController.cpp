@@ -162,10 +162,6 @@ void BehaviourController::setElbowAngles(double leftElbowAngle, double rightElbo
 
 void BehaviourController::setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction, double rightAdduction, double leftSwing, double rightSwing){
 
-	double leftShoulderTwist;
-	double leftShoulderCoronal;
-	double leftShoulderSagittal;
-
 	double stanceTwist = (lowLCon->stance == LEFT_STANCE)?(leftTwist):(rightTwist);
 	double stanceAdd = (lowLCon->stance == LEFT_STANCE)?(leftAdduction):(rightAdduction);
 	double stanceSwing = (lowLCon->stance == LEFT_STANCE)?(leftSwing):(rightSwing);
@@ -307,6 +303,8 @@ void BehaviourController::simStepPlan(double /* dt */){
 	adjustStepHeight();
 
 	setElbowAngles(leftElbowBend, rightElbowBend);
+
+	setShoulderAngles(leftShoulderTwist, rightShoulderTwist, leftShoulderCoronal, rightShoulderCoronal, leftShoulderSagittal, rightShoulderSagittal);
 
 	//and see if we're really in trouble...
 	if (shouldAbort())
