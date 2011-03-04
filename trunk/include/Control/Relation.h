@@ -9,14 +9,14 @@ class Relation{
 
 
 public:
-Relation(string n, string o1, string o2, bool b=true);
-void setName(string s ){myName = s;};
-void setObj1(string s){obj1 = s;};
-void setObj2(string s){obj2 = s;};
-string getName(){return myName;};
-string getObj1(){return obj1;};
-string getObj2(){return obj2;};
-bool isNegated(){return positive;};
+Relation(const string & n, const string & o1, const string & o2, bool b=true);
+void setName(const string & s){myName = s;};
+void setObj1(const string & s){obj1 = s;};
+void setObj2(const string & s){obj2 = s;};
+string getName()const{return myName;} ;
+string getObj1()const{return obj1;} ;
+string getObj2()const{return obj2;} ;
+bool isPositive()const{return positive;};
 bool equals(const Relation & r) const;
 string toString();
 

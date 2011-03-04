@@ -68,7 +68,7 @@ void PosState::reset(CartWheel3D * cw)
   populate(cw);
 }
 
-const Vector3d * PosState::getPosition(string n)
+const Vector3d * PosState::getPosition(const string  & n)
 {
   for (int i = 0; i < myNames.size(); i++)
   {

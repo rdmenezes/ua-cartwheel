@@ -1,6 +1,6 @@
 #include "Control/Relation.h"
 
-Relation::Relation(string n, string o1, string o2, bool b ){
+Relation::Relation(const string & n, const string & o1, const string & o2, bool b ){
   myName = n;
   obj1 = o1;
   obj2 = o2;

@@ -9,7 +9,7 @@ ActRecognizerInterface::ActRecognizerInterface(){
    myObjs = NULL;
 }
 
-ActRecognizerInterface::ActRecognizerInterface(string s, const vector<string> & objs){
+ActRecognizerInterface::ActRecognizerInterface(const string & s, const vector<string> & objs){
   myRecName = "";
   construct(s, objs);
   myRecName = s;
@@ -22,7 +22,7 @@ ActRecognizerInterface::~ActRecognizerInterface(){
  }
 }
 
-void ActRecognizerInterface::setRecognizer(string s, const vector<string> & objs){
+void ActRecognizerInterface::setRecognizer(const string & s, const vector<string> & objs){
    myRecName  = s;
    construct(s, objs);
 }
@@ -40,7 +40,7 @@ string ActRecognizerInterface::getFullVerbName(){
  return s;
 }
 
-void ActRecognizerInterface::construct(string s, const vector<string> & names){
+void ActRecognizerInterface::construct(const string & s, const vector<string> & names){
   map<int, vector<FsmTrans*>* >* transMap = NULL;
   map<int, bool> * term = NULL;
   if(s.compare("meet") == 0){

@@ -23,7 +23,7 @@ class PosState {
 public:
 PosState();
 PosState(CartWheel3D * cw);
-const Vector3d* getPosition(string n);
+const Vector3d* getPosition(const string & n);
 void reset(CartWheel3D * cw);
 int getNumVectors(){return myNames.size();};
 
