@@ -16,10 +16,11 @@ public:
 RelationalState():myRelations(){};
 RelationalState(vector<Relation> & rs);
 vector<Relation>* getRelations(){return &myRelations;}
-bool contains(Relation & r);
+bool contains(const Relation & r);
 void addRelation(Relation & r){myRelations.push_back(r);};
 void reset(PosState & last, CartWheel3D * cw);
 string toString();
+bool containsAll(RelationalState &);
 
 protected:
 vector<Relation> myRelations;

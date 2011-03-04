@@ -19,7 +19,7 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
   sPath_ = new char[200];
   strcpy(sPath_, "");
   simulator_ = new CartWheel3D(sPath_);
-
+  storedNames_ = new vector<string>();
   if (visualize_)
   {
     Point3d camerPos(0.0, 5.0, 5.0);
@@ -44,6 +44,7 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
 
 SimulationInterface::~SimulationInterface()
 {
+  delete storedNames_;
 }
 
 void SimulationInterface::init_simulation(std::vector<double> start_state)
@@ -51,7 +52,7 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   positions_.clear();
   capsules_.clear();
   relations_.clear();
-
+  storedNames_->clear();
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
 
   //simulator->addObject("dodgeBox", "data/objects/box.rbs", 1);
@@ -69,6 +70,8 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
 
   // Add human 2
   string humanName2 = "Human2";
+  storedNames_->push_back(humanName1);
+  storedNames_->push_back(humanName2);
   simulator_->addHuman(humanName2, "data/characters/bipV3.rbs", humanController, p2, start_state[5]);
   simulator_->setHumanSpeed(humanName2, 0);
 }

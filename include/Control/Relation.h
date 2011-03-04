@@ -17,7 +17,7 @@ string getName(){return myName;};
 string getObj1(){return obj1;};
 string getObj2(){return obj2;};
 bool isNegated(){return positive;};
-bool equals(Relation r);
+bool equals(const Relation & r) const;
 string toString();
 
 protected:
