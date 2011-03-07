@@ -62,16 +62,18 @@ CompositeController::CompositeController(Character* ch, WorldOracle* oracle, con
 				// Assign to the associated controller. Normally it is the very last one loaded
 				IKVMCController* controller = dynamic_cast<IKVMCController*>(controllers[controllers.size()-1]);
 
-				// Initialize a new behaviour controller
-				BehaviourController* behaviour = new CompositeBehaviourController(ch, controller, oracle);
-				FILE* fileCNC = fopen(trim(line), "r");
-				if (fileCNC == NULL)
-					throwError("Could not open file: %s", line);
-				behaviour->loadFromFile(fileCNC);
-				fclose(fileCNC);
+				if (NULL != controller) {
+					// Initialize a new behaviour controller
+					BehaviourController* behaviour = new CompositeBehaviourController(ch, controller, oracle);
+					FILE* fileCNC = fopen(trim(line), "r");
+					if (fileCNC == NULL)
+						throwError("Could not open file: %s", line);
+					behaviour->loadFromFile(fileCNC);
+					fclose(fileCNC);
 
-				controller->setBehaviour(behaviour);
-				behaviour->conTransitionPlan();
+					controller->setBehaviour(behaviour);
+					behaviour->conTransitionPlan();
+				}
 				break;
 			}
 			case CON_NOT_IMPORTANT:

@@ -43,8 +43,16 @@ BehaviourController::BehaviourController(Character* b, IKVMCController* llc, Wor
 	stepHeight = 0;
 }
 
+BehaviourController::BehaviourController(const BehaviourController& behaviour){
+	memcpy(this, &behaviour, sizeof(BehaviourController));
+}
+
 BehaviourController::~BehaviourController(void){
 
+}
+
+BehaviourController& BehaviourController::operator=(const BehaviourController& behaviour){
+	memcpy(this, &behaviour, sizeof(BehaviourController));
 }
 
 void BehaviourController::loadFromFile(FILE * f){
@@ -320,6 +328,22 @@ void BehaviourController::requestStepTime(double stepTime){
 
 void BehaviourController::requestStepHeight(double stepHeight){
 	this->stepHeight = stepHeight;
+}
+
+void BehaviourController::requestElbowAngles(LeftRightDouble elbowBend) {
+	leftElbowBend = elbowBend.first;
+	rightElbowBend = elbowBend.second;
+}
+
+void BehaviourController::requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal) {
+	leftShoulderTwist = shoulderTwist.first;
+	rightShoulderTwist = shoulderTwist.second;
+
+	leftShoulderCoronal = shoulderCoronal.first;
+	rightShoulderCoronal = shoulderCoronal.second;
+
+	leftShoulderSagittal = shoulderSagittal.first;
+	rightShoulderSagittal = shoulderSagittal.second;
 }
 
 /**

@@ -35,10 +35,8 @@ void SimpleStyleParameters::applyStyleParameters(BehaviourController* bc){
 	bc->requestKneeBend(kneeBend);
 	bc->requestDuckFootedness(duckFootedness);
 	bc->requestStepHeight(stepHeight);
-
-	bc->setElbowAngles(elbowBend.first, elbowBend.second);
-	bc->setShoulderAngles(shoulderTwist.first, shoulderTwist.first, shoulderCoronal.first,
-			shoulderCoronal.second, shoulderSagittal.second, shoulderSagittal.second);
+	bc->requestElbowAngles(elbowBend);
+	bc->requestShoulderAngles(shoulderTwist, shoulderCoronal, shoulderSagittal);
 }
 
 /**

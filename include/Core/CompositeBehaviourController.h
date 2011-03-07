@@ -18,16 +18,25 @@ namespace CartWheel { namespace Core {
 
 class CompositeBehaviourController : public BehaviourController {
 private:
-	DynamicArray<BehaviourController*> controllers;
-	DynamicArray<double> behaviourDurations;
-	int activeBehaviour;
-	double phi;
 
-	void switchToNextController();
+	DynamicArray<BehaviourController*> controllers;
+	DynamicArray<BehaviourController*> initialStateControllers;
+	DynamicArray<double> behaviourDurations;
+	DynamicArray<double> behaviourTransitions;
+
+	BehaviourController* m_behaviour;
+	int activeBehaviour;
+	double timeElapsed;
+	double timeTransitioned;
+	bool loopBehaviours;
+	bool processAllBehaviours;
+
+	void addController(BehaviourController* behaviour, FILE* file=NULL);
+	void switchToNextController(double dt);
 
 public:
 	CompositeBehaviourController(Character* b, IKVMCController* llc, WorldOracle* w);
-	~CompositeBehaviourController() {}
+	~CompositeBehaviourController();
 
 	/**
 		Load controllers from the \param file handle.

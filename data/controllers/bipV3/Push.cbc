@@ -3,23 +3,23 @@
 turnBehaviour
 
 #desiredHeading 0
-sagittalLean 0
+sagittalLean 0.1
 coronalLean 0
 twist 0
 duckWalk 0
-velocitySagittal 0.03
+velocitySagittal 0
 velocityCoronal 0
-kneeBend 0.1
+kneeBend 0.2
 coronalStepWidth 0
 leftElbowBend 0.5
 rightElbowBend 0.5
 leftShoulderTwist 0
 leftShoulderCoronal 0
-leftShoulderSagittal 0
+leftShoulderSagittal -1.0
 rightShoulderTwist 0
 rightShoulderCoronal 0
-rightShoulderSagittal 0
+rightShoulderSagittal -1.0
 #stepTime 0
-stepHeight -0.07
+#stepHeight -0.07
 
 /behaviour

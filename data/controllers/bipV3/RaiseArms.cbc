@@ -24,4 +24,5 @@ stepHeight -0.07
 
 /behaviour
 
-time 0.5
+durationTime 0.5
+transitionTime 0.05

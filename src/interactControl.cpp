@@ -53,19 +53,31 @@ void makeWorld(CartWheel3D* p_simulator) {
 		p_simulator->updateRB(name, ballPosition, ballOrientation, ballVelocity);
 	}
 
-#if 1
+#ifndef ADD_MANY_HUMANS
 
-#if 1
 	string name = "Human1";
 	string characterFile = "data/characters/bipV3.rbs";
 	string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
 	string actionFile = "data/controllers/bipV3/HMV/actions";
-	Math::Point3d humanPosition(2.5, 1.0, -3.1);
-	double heading = 3.14;
+	//Math::Point3d humanPosition(2.5, 1.0, -3.1);
+	Math::Point3d humanPosition(0, 1.0, -3.1);
+	//Math::Point3d humanPosition(2.5, 1.0, -10);
+	double heading = 0;//3.14;
 
 	p_simulator->addHuman(name, characterFile, controllerFile, actionFile, humanPosition, heading);
+
 #else
-	//p_simulator->addHuman(name, characterFile, "data/controllers/bipV3/Walking.sbc", humanPosition, heading);
+
+	string name = "Human1";
+	string characterFile = "data/characters/bipV3.rbs";
+	string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
+	string actionFile = "data/controllers/bipV3/HMV/actions";
+	//Math::Point3d humanPosition(2.5, 1.0, -3.1);
+	Math::Point3d humanPosition(0, 1.0, -3.1);
+	//Math::Point3d humanPosition(2.5, 1.0, -10);
+	double heading = 0;//3.14;
+
+	p_simulator->addHuman(name, characterFile, controllerFile, actionFile, humanPosition, heading);
 
 	string name2 = "Human2";
 	string characterFile2 = "data/characters/bip3V3.rbs";
@@ -74,19 +86,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 	Math::Point3d humanPosition2(-3.0, 1.0, -5.0);
 	double heading2 = 3.14;
 
-	p_simulator->addHuman(name2, characterFile2, controllerFile2, actionFile2, humanPosition2, heading2);
-	//p_simulator->addHuman(name2, characterFile,  "data/controllers/bipV3/SnakeWalk.sbc", humanPosition2, heading2);
-
-	string name3 = "Human3";
-	Math::Point3d humanPosition3(3.0, 1.0, -5.0);
-	string controllerFile3 = "data/controllers/bipV3/HMV/compositeController2.con";
-	string actionFile3 = "data/controllers/bipV3/HMV/actions";
-	double heading3 = -3.14;
-	p_simulator->addHuman(name3, characterFile,  controllerFile3, actionFile3, humanPosition3, heading3);
-#endif
-
-#else
-
+//	p_simulator->addHuman(name2, characterFile2, controllerFile2, actionFile2, humanPosition2, heading2);
 	p_simulator->addHuman(name2, characterFile,  "data/controllers/bipV3/SnakeWalk.sbc", humanPosition2, heading2);
 
 	string name3 = "Human3";
@@ -108,12 +108,12 @@ void makeWorld(CartWheel3D* p_simulator) {
 
 int main(int argc, char** argv)
 {
-    Visualization viz(render, argc, argv, 640, 480);
+    Visualization viz(render, argc, argv, 800, 600);
     g_visualization = &viz;
-    Point3d camerPos(1.0,5.0,1.0);
-    Point3d cameraTarget(1.0,1.0,-5.0);
-    // Point3d camerPos(0.0,5.0,5.0);
-    // Point3d cameraTarget(0.0,1.0,0.0);
+    //Point3d camerPos(1.0,5.0,1.0);
+    //Point3d cameraTarget(1.0,1.0,-5.0);
+    Point3d camerPos(0.0,5.0,5.0);
+    Point3d cameraTarget(0.0,1.0,0.0);
     Point3d cameraUp(0.0,1.0,0.0);
 
     viz.initGL(camerPos, cameraTarget);
