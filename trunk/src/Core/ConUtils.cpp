@@ -92,7 +92,9 @@ static ConKeyWord keywords[] = {
 	{"loadBehaviourController", LOAD_TURN_BEHAVIOUR_CON_FILE},
 	{"turnBehaviour", CON_TURN_BEHAVIOUR},
 	{"duckBehaviour", CON_DUCK_BEHAVIOUR},
-	{"/behaviour", CON_BEHAVIOUR_END}
+	{"/behaviour", CON_BEHAVIOUR_END},
+	{"durationTime", CON_DURATION_TIME},
+	{"transitionTime", CON_TRANSITION_TIME},
 };
 
 /**

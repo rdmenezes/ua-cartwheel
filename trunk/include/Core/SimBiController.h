@@ -274,14 +274,12 @@ public:
 
 	inline double getStanceHipDamping() const { return stanceHipDamping; }
 
+	inline void setStanceHipMaxVelocity( double velocity ) { stanceHipMaxVelocity = velocity; }
 
-	inline void setStanceHipMaxVelocity( double velocity ) {
-		stanceHipMaxVelocity = velocity;
-	}
-
+	inline void setDesiredHeading(double heading) { desiredHeading = heading; }
+	inline double getDesiredHeading() { return desiredHeading; }
 
 	inline double getStanceHipMaxVelocity() const { return stanceHipMaxVelocity; }
-
 
 	/**
 		This method is used to set the stance 

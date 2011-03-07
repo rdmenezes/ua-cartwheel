@@ -1,11 +1,12 @@
 # Define a set of behaviours
 
-duckBehaviour
-#turnBehaviour
+#duckBehaviour
+turnBehaviour
 
-kneeBend 0.05
-#stepHeight -0.08
-#elbowBend 0.5
+kneeBend 1.0
+stepHeight -0.08
+#leftElbowBend 0.5
+#rightElbowBend 0.5
 
 /behaviour
 

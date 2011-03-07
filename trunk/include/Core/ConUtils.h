@@ -102,6 +102,8 @@ namespace CartWheel { namespace Core {
 #define CON_TURN_BEHAVIOUR				83
 #define CON_DUCK_BEHAVIOUR				84
 #define CON_BEHAVIOUR_END				85
+#define CON_DURATION_TIME				86
+#define CON_TRANSITION_TIME				87
 
 /**
 	This method is used to determine the type of a line that was used in the input file for a rigid body.

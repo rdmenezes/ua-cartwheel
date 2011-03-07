@@ -56,65 +56,15 @@ public:
 	inline double getHeading() { return m_character->getHeadingAngle(); }
     inline CartWheel::Math::Vector3d getVelocity() { return m_character->getCOMVelocity(); }
 
-
-	void setCharacter(CartWheel::Core::Character* character)
-	{
-		m_character = character;
-	}
-
-	void setController(CartWheel::Core::SimBiController* controller)
-	{
-		m_controller = controller;
-	}
-
-	void setBehaviour(CartWheel::Core::BehaviourController* behaviour)
-	{
-		m_behaviour = behaviour;
-	}
-
-	void setPolicy(CartWheel::Core::Policy* policy)
-	{
-		m_policy = policy;
-	}
-
-	void setPosition(const CartWheel::Math::Point3d& position)
-	{
-		m_character->setPos(position);
-	}
-
-	void setHeading(double angle)
-    {
-		m_character->setHeading(angle);
-
-		if (NULL != m_behaviour)
-		{
-			m_behaviour->requestHeading(angle);
-			m_behaviour->conTransitionPlan();
-		}
-    }
-
-    void setSpeed(double speed)
-    {
-		if (NULL != m_behaviour)
-		{
-			m_behaviour->requestVelocities(speed, 0);
-			m_behaviour->conTransitionPlan();
-		}
-    }
-
-    void setStepWidth(double width)
-    {
-		if (NULL != m_behaviour)
-		{
-			m_behaviour->requestCoronalStepWidth(width);
-			m_behaviour->conTransitionPlan();
-		}
-    }
-
-    void setName(const std::string& name)
-    {
-    	m_name = name;
-    }
+	void setCharacter(CartWheel::Core::Character* character);
+	void setController(CartWheel::Core::SimBiController* controller);
+	void setBehaviour(CartWheel::Core::BehaviourController* behaviour);
+	void setPolicy(CartWheel::Core::Policy* policy);
+	void setPosition(const CartWheel::Math::Point3d& position);
+	void setHeading(double angle);
+    void setSpeed(double speed);
+    void setStepWidth(double width);
+    void setName(const std::string& name);
 
     /**
      * Initialize everything.

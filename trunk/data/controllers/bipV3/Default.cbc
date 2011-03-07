@@ -25,4 +25,5 @@ turnBehaviour
 
 /behaviour
 
-time 0.5
+#durationTime 1
+#transitionTime 0.05

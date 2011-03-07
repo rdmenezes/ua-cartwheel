@@ -90,26 +90,6 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 	ActionCollectionPolicy* policy = new ActionCollectionPolicy(con);
 	policy->loadActionsFromFile(actionFile.c_str());
 
-/*
-	// TODO: Hack for now
-	CompositeControllerState state;
-	state.primaryControllerIndex = 0;
-	state.secondaryControllerIndex = 1;
-	state.interpValue = 0.1;
-	state.synchronizeControllers = TRUE;
-
-	SimBiControllerState controllerState;
-	controllerState.stance = 1;
-	controllerState.phi = 0;
-	controllerState.FSMStateIndex = 0;
-	controllerState.bodyGroundContact = FALSE;
-
-	for(int i=0; i<2; i++)
-		state.controllerStates.push_back(controllerState);
-*/
-
-	//con->setControllerState(state);
-
 	// Create a new human
 	Human* human = new Human(name, ch, con, policy);
 

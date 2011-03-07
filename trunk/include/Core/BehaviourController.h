@@ -50,6 +50,8 @@ protected:
 	double stepHeight;
 
 public:
+	typedef std::pair<double, double> LeftRightDouble;
+
 /*
 	//DEBUG ONLY
 	CartWheel::Math::Point3d predSwingFootPosDebug;
@@ -73,7 +75,10 @@ public:
 
 public:
 	BehaviourController(Character* b, IKVMCController* llc, WorldOracle* w = NULL);
+	BehaviourController(const BehaviourController& behaviour);
 	virtual ~BehaviourController(void);
+
+	BehaviourController& operator=(const BehaviourController& behaviour);
 
 	virtual void loadFromFile(FILE * file);
 	virtual void saveToFile(FILE * file);
@@ -92,6 +97,8 @@ public:
 	virtual void requestDuckFootedness(double df);
 	virtual void requestCoronalStepWidth(double corSW);
 	virtual void requestElbowBend(double leftBend, double rightBend);
+	virtual void requestElbowAngles(LeftRightDouble elbowBend);
+	virtual void requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal);
 
 	double getDesiredVelocitySagittal() const { return velDSagittal; }
 	double getDesiredVelocityCoronal() const { return velDCoronal; }
@@ -103,8 +110,6 @@ public:
 	double getCoronalStepWidth() const { return coronalStepWidth; }
 	double getDesiredKneeBend() const { return kneeBend; }
 	double getDesiredDuckFootness() const { return duckWalk; }
-
-	typedef std::pair<double, double> LeftRightDouble;
 
 	LeftRightDouble getDesiredElbowBend() const { return std::make_pair(leftElbowBend, rightElbowBend); }
 	LeftRightDouble getDesiredShoulderTwist() const { return std::make_pair(leftShoulderTwist, rightShoulderTwist); }

@@ -1,9 +1,23 @@
 
 synchronizeControllers
 
+
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
-#loadIKVMCController data/controllers/bipV3/Walking.sbc
-loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
+loadBehaviourController data/controllers/bipV3/PickUp.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Standing.cbc
+
+loadController data/controllers/bipV3/FastJog.sbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Standing.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Standing.cbc
+
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/SitDown.cbc
 
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
 loadBehaviourController data/controllers/bipV3/Standing.cbc
@@ -13,7 +27,17 @@ loadIKVMCController data/controllers/bipV3/Walking.sbc
 loadBehaviourController data/controllers/bipV3/Default.cbc
 
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
-loadBehaviourController data/controllers/bipV3/SitDown.cbc
+#loadIKVMCController data/controllers/bipV3/Walking.sbc
+loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
+
+loadController data/controllers/bipV3/FastJog.sbc
+
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/Standing.cbc
+
+loadIKVMCController data/controllers/bipV3/Walking.sbc
+#loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Default.cbc
 
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
 loadBehaviourController data/controllers/bipV3/StandUp.cbc
@@ -23,6 +47,8 @@ loadBehaviourController data/controllers/bipV3/Push.cbc
 
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Pull.cbc
+
+loadController data/controllers/bipV3/Kick.sbc
 
 startingStance left
 #startingStance right
