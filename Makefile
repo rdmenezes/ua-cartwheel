@@ -8,7 +8,7 @@ endif
 
 # Linking information
 FRAMEWORKS = 
-GLLIBS = -lglew -lGL -lGLU -lglut
+GLLIBS = -lGLEW -lGL -lGLU -lglut
 MISCLIBS = -lm -lgsl -lgslcblas -lode
 LPATH = 
 
