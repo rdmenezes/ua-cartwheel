@@ -2,8 +2,7 @@
 
 #duckBehaviour
 turnBehaviour
-#stepTime 0.1
-#stepHeight 0.05
-#stepHeight -0.08
+stepTime 1
+stepHeight -0.08
 
 /behaviour
