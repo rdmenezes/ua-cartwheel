@@ -1,25 +1,37 @@
-# LPATH tells the linker where to find libraries
-LPATH = -Llib -lcartwheel
+# OSTYPE is not set by default on Mac OS X.  Should end up being "darwin"
+ifndef OSTYPE
+  OSTYPE = $(shell uname -s|awk '{print tolower($$0)}')
+  #export OSTYPE
+endif
+
+# Linux (default)
+
+# Linking information
+FRAMEWORKS = 
+GLLIBS = -lglew -lGL -lGLU -lglut
+MISCLIBS = -lm -lgsl -lgslcblas -lode
+LPATH = 
 
 # IPATH tells the compiler where to look for include files.
-IPATH = -Iinclude
+IPATH = -Iinclude 
 
-# CWLIBS are the libraries necessary for Cartwheel-3d
-CWLIBS = -lode
+# CWLPATH tells the linker where to find libraries for building executables
+CWLPATH = -Llib -lcartwheel
 
-# GLLIBS are the GLUT and OpenGL libraries needed by the linker.
-GLLIBS = -lglut -lGLU -lGL -lGLEW
+# CFLAGS contains flags for the compiler
+CFLAGS = -g -w -fPIC
 
-# XLIBS are the X libraries needed by the linker because GLUT and OpenGL
-#       call X routines.
-# XLIBS = -lXi -lXmu -lX11 -lXext
-
-# MISCLIBS are miscellaneous libs that are needed by the linker.
-# -lm denotes the math library.
-MISCLIBS = -lm -lgsl -lgslcblas
+# OS X
+ifeq "$(OSTYPE)" "darwin"
+	FRAMEWORKS = -framework Carbon -framework OpenGL -framework GLUT
+	GLLIBS = -lglew
+	IPATH = -Iinclude -I/opt/local/include/
+	LPATH = -L/opt/local/lib
+	CFLAGS = -g -w -fPIC -DdDOUBLE
+endif
 
 # Used to have LPATH in front
-LIBS = $(CWLIBS) $(GLLIBS) $(MISCLIBS)
+LIBS = $(GLLIBS) $(MISCLIBS)
 
 CPP_FILES := $(wildcard src/**/*.cpp)
 OBJ_FILES := $(CPP_FILES:.cpp=.o)
@@ -31,32 +43,28 @@ CC = g++
 #	(like gdb) needs.
 # -Wall	tells the compiler to print warnings about pretty much everything.
 # -w    Hide all of the warnings because I don't like seeing them
-CFLAGS = -g -w -fPIC #-DdDOUBLE
 
-all : library AppMain mainControl interactControl interface
+
+all : library mainControl interactControl interface
 
 library : $(OBJ_FILES)
-	$(CC) -shared -o lib/libcartwheel.so $(OBJ_FILES) 
+	$(CC) -shared $(FRAMEWORKS) $(LPATH) $(LIBS) -o lib/libcartwheel.so $(OBJ_FILES) 
 
 # The default way to convert .c files into .o files.
 %.o : %.cpp		
-	$(CC) $(CFLAGS) $(IPATH) -o $@ -c $<
+	$(CC) $(CFLAGS) $(IPATH) -o $@ -c $< 
 
 clean :
 	$(RM) src/*.o src/*/*.o lib/libcartwheel.so
 
-AppMain : library 
-	$(CC) $(CFLAGS) $(IPATH) -o src/AppMain.o -c src/AppMain.cpp
-	$(CC) $(CFLAGS) -o bin/AppMain src/AppMain.o $(LPATH) $(LIBS)
-	
 mainControl : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/mainControl.o -c src/mainControl.cpp
-	$(CC) $(CFLAGS) -o bin/mainControl src/mainControl.o $(LPATH) $(LIBS)
+	$(CC) $(CFLAGS) $(FRAMEWORKS) -o bin/mainControl src/mainControl.o $(CWLPATH) $(LPATH) $(LIBS)
 
 interactControl : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/interactControl.o -c src/interactControl.cpp
-	$(CC) $(CFLAGS) -o bin/interactControl src/interactControl.o $(LPATH) $(LIBS)
+	$(CC) $(CFLAGS) $(FRAMEWORKS) -o bin/interactControl src/interactControl.o $(CWLPATH) $(LPATH)  $(LIBS)
 	
 interface : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/interface.o -c src/interface.cpp
-	$(CC) $(CFLAGS) -o bin/interface src/interface.o $(LPATH) $(LIBS)
+	$(CC) $(CFLAGS) $(FRAMEWORKS) -o bin/interface src/interface.o $(CWLPATH) $(LPATH) $(LIBS)

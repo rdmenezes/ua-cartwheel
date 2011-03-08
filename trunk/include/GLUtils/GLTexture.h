@@ -3,7 +3,7 @@
 //#include <GL/gl.h>
 //#include <GL/glu.h>
 
-#ifdef MAC_OSX
+#ifdef __APPLE__
 #    include <OpenGL/gl.h>
 #    include <OpenGL/glu.h>
 #else 

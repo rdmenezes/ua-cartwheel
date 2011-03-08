@@ -1,8 +1,18 @@
 
 #include <GLUtils/GLCamera.h>
 
-#include <GL/gl.h>
-#include <GL/glu.h>
+#ifdef __APPLE__
+#    include <OpenGL/gl.h>
+#    include <OpenGL/glu.h>
+#else
+	#ifdef WIN32
+	#	 include <GL/gl.h>
+	#	 include <GL/glu.h>
+	#else
+	#    include <GL/gl.h>
+	#    include <GL/glu.h>
+	#endif
+#endif
 
 #define ORBIT_RAD_PER_SEC 1.0
 

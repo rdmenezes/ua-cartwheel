@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 {
  
 
-  SimulationInterface interface(false);//true);
+  SimulationInterface interface(true);//true);
 
   vector<double> start_state;
   start_state.push_back(2);

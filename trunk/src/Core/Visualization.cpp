@@ -340,7 +340,11 @@ void Visualization::render(CartWheel3D* cartwheel) {
 }
 
 void Visualization::glutStep() {
+#ifdef __APPLE__
+    glutCheckLoop();
+#else
     glutMainLoopEvent();
+#endif
 }
 
 void Visualization::drawAxes(void) {
