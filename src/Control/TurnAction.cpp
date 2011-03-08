@@ -6,12 +6,12 @@ void TurnAction::executeSetup(CartWheel3D * cw){
   cw->setHumanHeading(actorName, myChange + cw->getHumanHeading(actorName));
 }
 
-void TurnAction::setParams(std::vector<double> params) {
+void TurnAction::setParams(std::vector<double> & params) {
   setTime(params[0]);
   myChange = params[1];
 }
 
-double TurnAction::getPrior(std::vector<double> params) {
+double TurnAction::getPrior(std::vector<double> & params) {
   double timeM = 8.0;
   double timeS = 5.0;
 

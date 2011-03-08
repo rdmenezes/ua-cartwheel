@@ -65,7 +65,7 @@ void SimulationInterface::fullClear(){
 }
 
 
-void SimulationInterface::init_simulation(std::vector<double> start_state)
+void SimulationInterface::init_simulation(std::vector<double> & start_state)
 {
   fullClear();
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
@@ -82,6 +82,8 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   // Add human 1
   string humanName1 = "Human1";
   simulator_->addHuman(humanName1, humanModel, humanController, p1, start_state[2]);
+  simulator_->setHumanSpeed(humanName1, 1.0);
+
 
   // Add human 2
   string humanName2 = "Human2";
@@ -91,7 +93,7 @@ void SimulationInterface::init_simulation(std::vector<double> start_state)
   simulator_->setHumanSpeed(humanName2, 0);
 }
 
-void SimulationInterface::simulate(std::vector<double> start_state, std::vector<ExtendedAction*> actions)
+void SimulationInterface::simulate(std::vector<double> & start_state, std::vector<ExtendedAction*> & actions)
 {
   int steps_per_second = 2000;
   double step_size = 1.0 / steps_per_second;
