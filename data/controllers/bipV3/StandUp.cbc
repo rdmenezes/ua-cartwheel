@@ -1,7 +1,7 @@
 # Define a set of behaviours
 
-duckBehaviour
-#turnBehaviour
+#duckBehaviour
+turnBehaviour
 
 kneeBend 0.0
 

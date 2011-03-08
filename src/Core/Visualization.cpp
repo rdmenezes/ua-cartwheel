@@ -327,7 +327,7 @@ void Visualization::render(CartWheel3D* cartwheel) {
     glEnable(GL_LIGHTING);
 
     World* world = cartwheel->getWorld();
-    world->drawRBs(SHOW_COLOURS|SHOW_MESH);
+    world->drawRBs(SHOW_COLOURS | SHOW_MESH);
 
     if (_captureImgs) { 
         captureImage();

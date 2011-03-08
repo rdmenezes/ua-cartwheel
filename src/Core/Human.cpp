@@ -79,7 +79,7 @@ void Human::setPosition(const CartWheel::Math::Point3d& position)
 
 void Human::setHeading(double angle)
 {
-	m_character->setHeading(angle);
+	//m_character->setHeading(angle);
 
 	// If there is a behavior associated with the controller
 	// ask it for a desired heading

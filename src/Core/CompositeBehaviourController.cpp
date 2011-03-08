@@ -313,8 +313,6 @@ void CompositeBehaviourController::simStepPlan(double dt) {
 	}
 
 	m_behaviour->simStepPlan(dt);
-
-	cout << processAllBehaviours << ", " << loopBehaviours << endl;
 }
 
 /**
