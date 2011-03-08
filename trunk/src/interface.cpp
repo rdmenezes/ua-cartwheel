@@ -1,4 +1,4 @@
-#include <Control/WalkAction.h>
+#include <Control/WrapperAction.h>
 #include <Control/SimulationInterface.h>
 #include <vector>
 #include <iostream>
@@ -10,7 +10,7 @@ using std::endl;
 
 using namespace std;
 
-//#define ACTREC
+#define ACTREC
 
 int main(int argc, char** argv)
 {
@@ -26,11 +26,26 @@ int main(int argc, char** argv)
   start_state.push_back(-1);
   start_state.push_back(0);
 
-  vector<ExtendedAction*> actions;
-  actions.push_back(new WalkAction(10.0, 0.5));
-  actions.push_back(new WalkAction(10.0, -0.5));
-  actions.push_back(new WalkAction(10.0, 0.0));
+  vector<double> params1;
+  vector<double> params2;
+  vector<double> params3;
 
+  params1.push_back(10.0);
+  params1.push_back(0.5);
+   params2.push_back(10.0);
+  params2.push_back(-0.5);
+ params3.push_back(10.0);
+  params3.push_back(0.0);
+
+
+  vector<ExtendedAction*> actions;
+  actions.push_back(new WrapperAction(std::string("walk"), params1));//new WalkAction(10.0, 0.5));
+  actions.push_back(new WrapperAction(std::string("walk"), params2));//new WalkAction(10.0, -0.5));
+  actions.push_back(new WrapperAction(std::string("walk"), params3));//new WalkAction(10.0, 0.0));
+
+   for(int i =0; i < actions.size(); i++){
+  	actions[i]->setActor("Human1"); 
+  }  
 
   interface.simulate(start_state, actions);
   vector<PosState*> trajectory = interface.getPositions();

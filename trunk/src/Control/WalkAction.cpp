@@ -6,12 +6,12 @@ void WalkAction::executeSetup(CartWheel3D * cw){
     cw->setHumanSpeed(actorName, mySpeed);
 }
 
-void WalkAction::setParams(std::vector<double> params) {
+void WalkAction::setParams(std::vector<double> & params) {
   setTime(params[0]);
   setSpeed(params[1]);
 }
 
-double WalkAction::getPrior(std::vector<double> params) {
+double WalkAction::getPrior(std::vector<double> & params) {
   double timeM = 8.0;
   double timeS = 5.0;
 

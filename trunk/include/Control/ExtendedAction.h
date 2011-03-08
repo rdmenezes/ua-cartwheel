@@ -27,12 +27,12 @@ virtual void setActor(string s){actorName =s;};
 virtual double getTime() { return myTime; }
 virtual void setTime(double l){myTime = l;}
 
-virtual double getPrior(std::vector<double> params) = 0;
+virtual double getPrior(std::vector<double> & params) = 0;
 
-virtual void setParams(std::vector<double> params) = 0;
+virtual void setParams(std::vector<double> & params) = 0;
 
 virtual void execute(CartWheel3D *cw);
-void executeStep(CartWheel3D *cw, double step);
+virtual void executeStep(CartWheel3D *cw, double step);
 
 virtual void executeSetup(CartWheel3D * cw) = 0;
 

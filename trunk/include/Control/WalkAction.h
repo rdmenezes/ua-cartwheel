@@ -13,8 +13,8 @@ WalkAction(double t, double s) {myTime = t; mySpeed = s;};
 void executeSetup(CartWheel3D * cw);
 void setSpeed(double d){mySpeed = d;};
 
-virtual void setParams(std::vector<double> params);
-virtual double getPrior(std::vector<double> params);
+virtual void setParams(std::vector<double> & params);
+virtual double getPrior(std::vector<double> & params);
 
 private:
   double mySpeed;
