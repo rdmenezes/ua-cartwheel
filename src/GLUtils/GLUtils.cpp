@@ -10,7 +10,11 @@
 #include <Utils/Image.h>
 #include <Utils/BMPIO.h>
 
-#include <GL/glut.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/freeglut.h>
+#endif
 
 //#include <gr/gr_camera.h>
 

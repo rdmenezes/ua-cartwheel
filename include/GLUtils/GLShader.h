@@ -1,7 +1,7 @@
 #pragma once
 
 #define GL_GLEXT_PROTOTYPES 
-#ifdef MAC_OSX
+#ifdef __APPLE__
 #    include <OpenGL/gl.h>
 #    include <OpenGL/glu.h>
 #else 

@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef MAC_OSX
+#ifdef __APPLE__
 #    include <OpenGL/gl.h>
 #    include <OpenGL/glu.h>
 #else 
