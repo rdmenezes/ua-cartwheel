@@ -5,7 +5,9 @@
 #include <Control/ExtendedAction.h>
 #include <string>
 
-using namespace CartWheel;
+namespace CartWheel
+{
+
 using namespace CartWheel::Core;
 using std::string;
 
@@ -28,6 +30,8 @@ protected:
   string* myControllables;
 };
 
+} // namespace CartWheel
 
 #endif
+
 

@@ -7,6 +7,8 @@
 
 #include <Control/SimulationInterface.h>
 
+namespace CartWheel
+{
 void render(void)
 {
   // Does nothing
@@ -173,3 +175,6 @@ const std::vector<CapsuleState*>& SimulationInterface::getCapsules() const
 {
   return capsules_;
 }
+
+
+} // namespace CartWheel

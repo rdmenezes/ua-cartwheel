@@ -1,6 +1,8 @@
 #include <Control/FsmTrans.h>
 
 
+namespace CartWheel
+{
 
 FsmTrans::FsmTrans(int s, int e, RelationalState *r){
   myStart = s;
@@ -15,3 +17,5 @@ FsmTrans::~FsmTrans(){
 bool FsmTrans::checkFired(RelationalState & r){
 	return r.containsAll(*rs);
 }
+
+} // namespace CartWheel

@@ -6,6 +6,8 @@
 #include <Control/FsmTrans.h>
 #include <Control/RelationalState.h>
 
+namespace CartWheel
+{
 using namespace std;
 
 class VfsmPos{
@@ -29,4 +31,5 @@ FsmTrans * lastTrans;
 };
 
 
+} // namespace CartWheel
 #endif

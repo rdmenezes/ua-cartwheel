@@ -8,6 +8,8 @@
 #include "Control/Relation.h"
 #include "Control/PosState.h"
 
+namespace CartWheel
+{
 using namespace std;
 
 class RelationalState{
@@ -32,4 +34,5 @@ string findName(int, PosState & last);
 };
 
 
+} // namespace CartWheel
 #endif

@@ -17,6 +17,8 @@
 #include <Control/CapsuleState.h>
 #include <Control/RelationalState.h>
 
+namespace CartWheel
+{
 
 class SimulationInterface
 {
@@ -45,4 +47,5 @@ private:
   std::vector<CapsuleState*> capsules_;
 };
 
+} // namespace CartWheel
 #endif /* SIMULATIONINTERFACE_H_ */

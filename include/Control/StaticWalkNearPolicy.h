@@ -10,6 +10,8 @@
 #include <math.h>
 #include "Control/ControlUtils.h"
 
+namespace CartWheel
+{
 using CartWheel::Math::Vector3d;
 using std::string;
 using std::cout;
@@ -27,4 +29,5 @@ protected:
 
 };
 
+}
 #endif

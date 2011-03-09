@@ -8,6 +8,8 @@
 #include <MathLib/Vector3d.h>
 #include <sstream>
 
+namespace CartWheel
+{
 using CartWheel::Math::Vector3d;
 using std::string;
 using std::vector;
@@ -37,4 +39,5 @@ protected:
   void populate(CartWheel3D * cw);
 };
 
+} // namespace CartWheel
 #endif

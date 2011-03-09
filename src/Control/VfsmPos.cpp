@@ -1,5 +1,7 @@
 #include<Control/VfsmPos.h>
 
+namespace CartWheel
+{
 
 VfsmPos::VfsmPos(int n, map<int, vector<FsmTrans*>* >* tr, int s, map<int,bool>* t){
 	numStates = n;
@@ -43,4 +45,5 @@ void VfsmPos::progress(RelationalState & r){
  	
 }
 
+} // namespace CartWheel
 
