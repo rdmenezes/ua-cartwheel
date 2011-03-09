@@ -7,6 +7,9 @@ using std::endl;
 using std::list;
 using std::string;
 
+namespace CartWheel
+{
+
 PosState::PosState()
 {
 
@@ -77,3 +80,7 @@ const Vector3d * PosState::getPosition(const string  & n)
   }
   return NULL;
 }
+
+
+
+} // namespace CartWheel

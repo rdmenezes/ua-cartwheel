@@ -1,6 +1,8 @@
 
 #include "Control/StaticWalkNearPolicy.h"
 
+namespace CartWheel
+{
 using namespace CartWheel::Math;
 
 
@@ -74,3 +76,4 @@ ExtendedAction* StaticWalkNearPolicy::getAction(CartWheel3D * simState){
   }
 }
 
+} // namespace CartWheel

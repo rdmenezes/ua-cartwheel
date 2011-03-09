@@ -1,5 +1,7 @@
 #include "Control/Relation.h"
 
+namespace CartWheel
+{
 Relation::Relation(const string & n, const string & o1, const string & o2, bool b ){
   myName = n;
   obj1 = o1;
@@ -20,3 +22,5 @@ string Relation::toString(){
   s.append(")");
   return s;
 }
+
+} // namespace CartWheel

@@ -1,5 +1,7 @@
 #include <Control/WrapperAction.h>
 
+namespace CartWheel
+{
 
 void WrapperAction::executeSetup(CartWheel3D * cw){
   if(switched){
@@ -47,3 +49,22 @@ double WrapperAction::getPrior(std::vector<double> & params) {
   return timePD;
 }
 
+double& WrapperAction::getParam(size_t i)
+{
+    if(i < Base::numParams())
+        return Base::getParam(i);
+    i -= Base::numParams();
+
+    if(i >= myParams.size())
+        throw std::out_of_range("WrapperAction::getParam -- index is out of range");
+
+    return myParams[i];
+}
+
+double WrapperAction::getParam(size_t i) const
+{
+    WrapperAction& self = const_cast<WrapperAction&>(*this);
+    return self.getParam(i);
+}
+
+} // namespace CartWheel

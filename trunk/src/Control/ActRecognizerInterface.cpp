@@ -4,6 +4,9 @@
 using std::cout;
 using std::endl;
 
+namespace CartWheel
+{
+
 ActRecognizerInterface::ActRecognizerInterface(){
    myRecName = "";
    myObjs = NULL;
@@ -71,3 +74,4 @@ void ActRecognizerInterface::construct(const string & s, const vector<string> & 
   myRecName = s; 
   myRec = new VfsmPos(3, transMap, 0, term);
 }
+} // namespace CartWheel

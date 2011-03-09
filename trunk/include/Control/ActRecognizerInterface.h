@@ -7,26 +7,29 @@
 #include <vector>
 #include <Control/FsmTrans.h>
 
-using namespace std;
+
+namespace CartWheel
+{
 
 class ActRecognizerInterface{
   public:
    ActRecognizerInterface();
    ~ActRecognizerInterface();
-   ActRecognizerInterface(const string &, const vector<string> &);
-   void setRecognizer(const string & s, const vector<string> &);
+   ActRecognizerInterface(const std::string &, const std::vector<std::string> &);
+   void setRecognizer(const std::string & s, const std::vector<std::string> &);
    void progress(RelationalState & r){myRec->progress(r);}
    bool getCurTerminal(){return myRec->getCurTerminal();}
-   string getFullVerbName();
-  string getShortVerbName(){return myRecName;};
+   std::string getFullVerbName();
+   std::string getShortVerbName(){return myRecName;};
  void reset(){myRec->reset();};  
   
   protected:
     VfsmPos * myRec;
-    void construct(const string &, const vector<string> &);
-    string myRecName;
-   vector<string>* myObjs;
+    void construct(const std::string &, const std::vector<std::string> &);
+    std::string myRecName;
+    std::vector<std::string>* myObjs;
 };
 
+}
 
 #endif

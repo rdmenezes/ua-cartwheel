@@ -1,6 +1,9 @@
 #include "Control/ExtendedAction.h"
 #include <Control/PosState.h>
 
+namespace CartWheel
+{
+
 void ExtendedAction::execute(CartWheel3D *cw)
 {
   //time_t starter; 
@@ -25,3 +28,5 @@ void ExtendedAction::executeStep(CartWheel3D *cw, double step)
 //  cout << "human location (0): " << cw->getHumanPosition(0).getX() << "  " << cw->getHumanPosition(0).getZ() << endl;
   cw->runStep(step);
 }
+
+} //namespace CartWheel

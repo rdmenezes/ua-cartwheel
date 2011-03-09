@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace CartWheel
+{
 using std::string;
 
 class Relation{
@@ -28,5 +30,6 @@ bool positive;
 
 };
 
+} // namespace CartWheel
 
 #endif

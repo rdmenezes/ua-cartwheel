@@ -9,13 +9,14 @@
 #include <Core/Human.h>
 #include <list>
 
-using CartWheel::CartWheel3D;
-using CartWheel::Core::Human;
-using CartWheel::Math::Point3d;
-using CartWheel::Math::Capsule;
-using CartWheel::Physics::ArticulatedRigidBody;
-using CartWheel::Physics::CapsuleCDP;
+namespace CartWheel
+{
 using namespace std;
+using CartWheel::Core::Human;
+using CartWheel::Math::Capsule;
+using CartWheel::Math::Point3d;
+using CartWheel::Physics::CapsuleCDP;
+using CartWheel::Physics::ArticulatedRigidBody;
 
 CapsuleState::CapsuleState()
 {
@@ -63,17 +64,17 @@ void CapsuleState::populate(CartWheel3D* cw)
   }
 }
 
-int CapsuleState::getNumEntities()
+int CapsuleState::getNumEntities() const
 {
   return names_.size();
 }
 
-std::string CapsuleState::getName(int index)
+const std::string& CapsuleState::getName(int index) const
 {
   return names_[index];
 }
 
-std::vector<CartWheel::Math::Capsule*> CapsuleState::getCapsules(int index)
+const std::vector<CartWheel::Math::Capsule*>& CapsuleState::getCapsules(int index) const
 {
   return capsules_[index];
 }
@@ -86,3 +87,5 @@ void CapsuleState::clear()
   names_.clear();
   capsules_.clear();
 }
+
+} // namespace CartWheel

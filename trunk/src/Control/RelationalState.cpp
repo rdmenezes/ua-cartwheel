@@ -1,5 +1,7 @@
 #include "Control/RelationalState.h"
 
+namespace CartWheel
+{
 RelationalState::RelationalState(vector<Relation> & rs):myRelations(){
    for(int x=0; x< rs.size(); x++)
 	myRelations.push_back(new Relation(rs[x]));
@@ -117,3 +119,5 @@ void RelationalState::reset(PosState & last, CartWheel3D * cw){
 	}
   }
 }
+
+} // namespace CartWheel

@@ -4,6 +4,8 @@
 #include <MathLib/Vector3d.h>
 #include <math.h>
 
+namespace CartWheel
+{
 using CartWheel::Math::Vector3d;
 
 class ControlUtils{
@@ -25,4 +27,5 @@ double static gaussianPD(double m, double s, double t) {
 
 };
 
+} // namespace CartWheel
 #endif

@@ -11,7 +11,8 @@
 #include <Core/CartWheel3D.h>
 #include <vector>
 
-using CartWheel::CartWheel3D;
+namespace CartWheel
+{
 
 class CapsuleState
 {
@@ -20,9 +21,11 @@ public:
   CapsuleState(CartWheel3D* cw);
   virtual ~CapsuleState();
 
-  int getNumEntities();
-  std::string getName(int index);
-  std::vector<CartWheel::Math::Capsule*> getCapsules(int index);
+  int getNumEntities() const;
+  const std::string& getName(int index) const;
+
+  /// Assuming "index" is for human, and the returned vector is over frames
+  const std::vector<CartWheel::Math::Capsule*>& getCapsules(int index) const;
 
   void clear();
 
@@ -33,5 +36,5 @@ protected:
   std::vector<std::vector<CartWheel::Math::Capsule*> > capsules_;
 
 };
-
+}
 #endif /* CAPSULESTATE_H_ */

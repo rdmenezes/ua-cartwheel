@@ -1,6 +1,8 @@
 #include <Control/WalkAction.h>
 #include <Control/ControlUtils.h>
 
+namespace CartWheel
+{
 void WalkAction::executeSetup(CartWheel3D * cw){
   //find the actor and set his speed
     cw->setHumanSpeed(actorName, mySpeed);
@@ -23,4 +25,73 @@ double WalkAction::getPrior(std::vector<double> & params) {
 
   return timePD * speedPD;
 }
+
+double WalkAction::getParam(size_t i) const
+{
+
+    // defer to parent class
+    if(i < Base::numParams()) return Base::getParam(i);
+
+    i -= Base::numParams();
+ 
+    if(i >= myNumParams())
+    {
+        throw std::out_of_range("WalkAction::getParam -- index is out of range");
+    }
+
+    switch(i)
+    {
+        case 0:
+            return mySpeed;
+        default:
+            abort(); // This indicates a bug 
+                    // e.g. added a parameter, but forgot to add a case for it.
+    }
+}
+
+double& WalkAction::getParam(size_t i) 
+{
+    // defer to parent class
+    if(i < Base::numParams()) return Base::getParam(i);
+
+    i -= Base::numParams();
+ 
+    if(i >= myNumParams())
+    {
+        throw std::out_of_range("WalkAction::getParam -- index is out of range");
+    }
+
+    switch(i)
+    {
+        case 0:
+            return mySpeed;
+        default:
+            abort(); // This indicates a bug 
+                    // e.g. added a parameter, but forgot to add a case for it.
+    }
+}
+
+UnitType WalkAction::getParamUnits(size_t i) const
+{
+    // defer to parent class
+    if(i < Base::numParams()) return Base::getParamUnits(i);
+
+    i -= Base::numParams();
+ 
+    if(i >= myNumParams())
+    {
+        throw std::out_of_range("WalkAction::getParamUnits -- index is out of range");
+    }
+
+    switch(i)
+    {
+        case 0:
+            return VSPACIAL_UNIT; // velocity: mySpeed
+        default:
+            abort(); // This indicates a bug 
+                    // e.g. added a parameter, but forgot to add a case for it.
+    }
+}
+
+} // namespace CartWheel
 
