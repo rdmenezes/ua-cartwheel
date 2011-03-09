@@ -68,28 +68,29 @@ void SimulationInterface::fullClear(){
 void SimulationInterface::init_simulation(std::vector<double> & start_state)
 {
   fullClear();
+
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
 
   //simulator->addObject("dodgeBox", "data/objects/box.rbs", 1);
 
   string humanModel = "data/characters/bipV3.rbs";
-  string humanController = "data/controllers/bipV3/Walking.sbc";
-//  string humanController2 = "data/controllers/bipV3/Walking2.sbc";
+  string humanController = "data/controllers/bipV3/HMV/compositeController.con";
+  string humanAction = "data/controllers/bipV3/HMV/actions";
 
   Point3d p1(start_state[0], 1.0, start_state[1]);
   Point3d p2(start_state[3], 1.0, start_state[4]);
 
   // Add human 1
   string humanName1 = "Human1";
-  simulator_->addHuman(humanName1, humanModel, humanController, p1, start_state[2]);
+  simulator_->addHuman(humanName1, humanModel, humanController, humanAction, p1, start_state[2]);
   simulator_->setHumanSpeed(humanName1, 1.0);
-
 
   // Add human 2
   string humanName2 = "Human2";
   storedNames_->push_back(humanName1);
   storedNames_->push_back(humanName2);
-  simulator_->addHuman(humanName2, "data/characters/bipV3.rbs", humanController, p2, start_state[5]);
+
+  simulator_->addHuman(humanName2, humanModel, humanController, humanAction, p2, start_state[5]);
   simulator_->setHumanSpeed(humanName2, 0);
 }
 

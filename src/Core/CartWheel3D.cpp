@@ -62,11 +62,13 @@ void CartWheel3D::addHuman(const string& name, const string& characterFile, cons
 	BehaviourController* behaviour = new TurnController(ch, c, _oracle);
 
 	Human* human = new Human(name, ch, c, behaviour);
+	// Initialize
+	human->init();
 
 	human->setHeading(heading);
 	human->setPosition(pos);
 
-	human->init();
+	ch->setHeading(heading);
 
     _humans[name] = human;
 }
@@ -92,12 +94,13 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
 	// Create a new human
 	Human* human = new Human(name, ch, con, policy);
+	// Initialize
+	human->init();
 
 	human->setHeading(heading);
 	human->setPosition(pos);
 
-	// Initialize
-	human->init();
+	ch->setHeading(heading);
 
 	_humans[name] = human;
 }

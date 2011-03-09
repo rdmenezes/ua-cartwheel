@@ -46,7 +46,8 @@ public:
 	/**
 		returns the parent joint for the current articulated body
 	*/
-	inline Joint* getParentJoint(){return pJoint;};
+	inline Joint* getParentJoint(){ return pJoint; }
+	inline void setParentJoint(Joint* pJoint){ this->pJoint = pJoint; }
 
 	inline int getChildJointCount() const { return cJoints.size(); }
 	inline Joint* getChildJoint(int i) { return cJoints[i]; }

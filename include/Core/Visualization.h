@@ -113,6 +113,8 @@ public:
     inline CartWheel3D* getCartWheelHandle() const { return _cw; }
     void getHumanNames(std::vector<std::string>& humanNames) const { humanNames = _humanNames; }
 
+    void throwBall(std::string humanName);
+
     void drawAxes();
     void render(CartWheel3D* cartwheel);
 
