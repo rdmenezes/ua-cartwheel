@@ -14,8 +14,6 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
- 
-
   SimulationInterface interface(true);//true);
 
   vector<double> start_state;
@@ -30,6 +28,18 @@ int main(int argc, char** argv)
   vector<double> params2;
   vector<double> params3;
 
+#if 1
+  params1.push_back(10.0);
+  params1.push_back(0.5);
+  params2.push_back(10.0); //no second param for standStill
+  params3.push_back(10.0);
+  params3.push_back(0.0);
+
+  vector<ExtendedAction*> actions;
+  actions.push_back(new WrapperAction(std::string("walk"), params1));
+  actions.push_back(new WrapperAction(std::string("standStill"), params2));
+  actions.push_back(new WrapperAction(std::string("walk"), params3));
+#else
   params1.push_back(10.0);
   params1.push_back(0.5);
    params2.push_back(10.0);
@@ -42,8 +52,9 @@ int main(int argc, char** argv)
   actions.push_back(new WrapperAction(std::string("walk"), params1));//new WalkAction(10.0, 0.5));
   actions.push_back(new WrapperAction(std::string("walk"), params2));//new WalkAction(10.0, -0.5));
   actions.push_back(new WrapperAction(std::string("walk"), params3));//new WalkAction(10.0, 0.0));
+#endif
 
-   for(int i =0; i < actions.size(); i++){
+  for(int i =0; i < actions.size(); i++){
   	actions[i]->setActor("Human1"); 
   }  
 

@@ -7,6 +7,7 @@ namespace CartWheel {
 Visualization* Visualization::g_instance = NULL;
 
 using namespace Core;
+using namespace Math;
 using namespace Physics;
 using GL::GLUtils;
 
@@ -53,6 +54,8 @@ void Visualization::init(int width, int height) {
 
     _mainWindow = NULL;
     _window = NULL;
+
+    srand ( time(NULL) );
 }
 
 static void timerProc(int) {
@@ -144,6 +147,10 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 			Visualization::g_instance->setHumanStepWidth(Visualization::g_instance->getHumanStepWidth()+0.2);
 			cw->setHumanStepWidth(selectedHuman, Visualization::g_instance->getHumanStepWidth());
 			break;
+		case 84:  // T, t
+		case 116:
+			Visualization::g_instance->throwBall(selectedHuman);
+			break;
 		default:
 			break;
 		}
@@ -215,6 +222,60 @@ void Visualization::initMenu() {
 
 		// attach the menu to the right button
 		glutAttachMenu(GLUT_RIGHT_BUTTON);
+	}
+}
+
+void Visualization::throwBall(string humanName)
+{
+	Human* human = NULL;
+
+	if (_cw->getHuman(humanName, &human)) {
+		Character* character = human->getCharacter();
+
+		Vector3d ballScale(0.2, 0.2, 0.2);
+		double ballMass = rand() % 5 + 1; // 1..5 kg
+
+		Point3d ballPosition(0, 0, 0);
+		Vector3d ballVelocity(15, 0, 0);
+		double yaw = 0;
+		Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
+
+		string mesh = _cw->getPath() + "data/models/sphere10x.obj";
+		Vector3d offset = Vector3d(0,0,0);
+
+		RigidBody* body = new RigidBody();
+
+		// Generate unique names
+		ostringstream ostr;
+		ostr << "throw_ball" << (rand() % 100 + 1);
+		string name = ostr.str();
+
+		body->setName(name.c_str());
+		body->setScale(ballScale);
+		body->addMeshObj(mesh.c_str(), offset, ballScale);
+
+		body->setColour(0.1, 0.8, 0.1, 1);
+		body->setMass(ballMass);
+		body->setMOI(Vector3d(0.2,0.2,0.2));
+
+		Point3d center = Point3d(0,0,0);
+		SphereCDP* sphereCDP = new SphereCDP(center, 0.1, body);
+		body->addCollisionDetectionPrimitive(sphereCDP);
+
+		body->setFrictionCoefficient(1.8);
+		body->setRestitutionCoefficient(0.35);
+
+		body->setCMPosition(ballPosition);
+		body->setOrientation(ballOrientation);
+		body->setCMVelocity(ballVelocity);
+
+		_cw->getWorld()->addRigidBody(body);
+
+		ArticulatedRigidBody* torso = character->getARBByName("torso");
+
+		Point3d parentPos = torso->getCMPosition();
+		parentPos.x -= 5;
+		body->setCMPosition(parentPos);
 	}
 }
 

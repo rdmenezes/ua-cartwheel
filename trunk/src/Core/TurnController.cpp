@@ -145,7 +145,7 @@ void TurnController::initializeDefaultParameters(){
 void TurnController::initiateTurn(double finalDHeading){
 	if (stillTurning == false){
 		turningBodyTwist = 0;
-		turningDesiredHeading = bip->getHeadingAngle();;
+		turningDesiredHeading = bip->getHeadingAngle();
 	}
 
 	headingRequested = false;
