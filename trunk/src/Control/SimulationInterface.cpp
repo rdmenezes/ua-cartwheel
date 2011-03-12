@@ -21,7 +21,7 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
   sPath_ = new char[200];
   strcpy(sPath_, "");
   simulator_ = new CartWheel3D(sPath_);
-  storedNames_ = new vector<string>();
+  storedNames_ = vector<string>();
   if (visualize_)
   {
     Point3d camerPos(0.0, 5.0, 5.0);
@@ -46,7 +46,6 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
 
 SimulationInterface::~SimulationInterface()
 {
-  delete storedNames_;
   delete simulator_;
   delete [] sPath_;
   if(visualize_)
@@ -62,7 +61,7 @@ void SimulationInterface::fullClear(){
     positions_.clear();
   capsules_.clear();
   relations_.clear();
-  storedNames_->clear();
+  storedNames_.clear();
 
 }
 
@@ -89,8 +88,8 @@ void SimulationInterface::init_simulation(std::vector<double> & start_state)
 
   // Add human 2
   string humanName2 = "Human2";
-  storedNames_->push_back(humanName1);
-  storedNames_->push_back(humanName2);
+  storedNames_.push_back(humanName1);
+  storedNames_.push_back(humanName2);
 
   simulator_->addHuman(humanName2, humanModel, humanController, humanAction, p2, start_state[5]);
   simulator_->setHumanSpeed(humanName2, 0);
