@@ -32,7 +32,7 @@ public:
   const std::vector<PosState*>& getPositions() const;
   const std::vector<CapsuleState*>& getCapsules()  const;
   const std::vector<RelationalState*>& getRelations() const;
-  std::vector<string>* getLastHumanNames(){return storedNames_;};
+  const std::vector<string>& getLastHumanNames(){return storedNames_;};
 
 private:
   CartWheel3D* simulator_;
@@ -41,7 +41,7 @@ private:
   char* sPath_;
   void fullClear(); 
 
-  std::vector<std::string>* storedNames_;
+  std::vector<std::string> storedNames_;
   std::vector<RelationalState*> relations_;
   std::vector<PosState*> positions_;
   std::vector<CapsuleState*> capsules_;

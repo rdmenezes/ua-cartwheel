@@ -67,9 +67,9 @@ int main(int argc, char** argv)
   cout << "GOT " << trajectory.size() << " STATES" << endl;
   
   #ifdef ACTREC
-      vector<string>* namers= interface.getLastHumanNames();
+      const vector<string>& namers= interface.getLastHumanNames();
 
-      ActRecognizerInterface ari(string("meet"), *namers);
+      ActRecognizerInterface ari(string("meet"), namers);
   #endif
 
   for (int i = 0; i < trajectory.size(); ++i)
