@@ -46,6 +46,7 @@ protected:
     Point3d _cameraPos;
     Point3d _cameraTarget;
     Point3d _cameraUp;
+    double _cameraFovy;
 
     int _menuIdentifier;
     int _humanMenu;
@@ -94,6 +95,7 @@ public:
     void setCameraLocation(const Point3d& pos) { _cameraPos = pos; }
     void setCameraTarget(const Point3d& target) { _cameraTarget = target; }
     void setCameraUp(const Point3d& up) { _cameraUp = up; }
+    void setCameraFovy(int fovy) { _cameraFovy = fovy; }
     void setHumanSpeed(double _humanSpeed) { this->_humanSpeed = _humanSpeed; }
     void setHumanStepWidth(double _humanStepWidth) { this->_humanStepWidth = _humanStepWidth; }
     void setCaptureImages(bool captureImgs) { _captureImgs = captureImgs; }
@@ -106,11 +108,12 @@ public:
 
     int getWidth() { return _width; }
     int getHeight() { return _height; }
-    inline Point3d getCameraLocation() { return _cameraPos; }
-    inline Point3d getCameraTarget() { return _cameraTarget; }
-    inline double getHumanSpeed() const { return _humanSpeed; }
-    inline double getHumanStepWidth() const { return _humanStepWidth; }
-    inline CartWheel3D* getCartWheelHandle() const { return _cw; }
+    Point3d getCameraLocation() { return _cameraPos; }
+    Point3d getCameraTarget() { return _cameraTarget; }
+    double getCameraFovy() { return _cameraFovy; }
+    double getHumanSpeed() const { return _humanSpeed; }
+    double getHumanStepWidth() const { return _humanStepWidth; }
+    CartWheel3D* getCartWheelHandle() const { return _cw; }
     void getHumanNames(std::vector<std::string>& humanNames) const { humanNames = _humanNames; }
 
     void throwBall(std::string humanName);

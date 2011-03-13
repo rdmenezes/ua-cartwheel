@@ -51,6 +51,7 @@ void Visualization::init(int width, int height) {
     _cameraPos = Point3d(0,0,0);
     _cameraTarget = Point3d(0,0,0);
     _cameraUp = Point3d(0,1,0);
+    _cameraFovy = 45.0;
 
     _mainWindow = NULL;
     _window = NULL;
@@ -369,7 +370,7 @@ void Visualization::render(CartWheel3D* cartwheel) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0, _width/float(_height), 0.1,150.0);
+    gluPerspective(_cameraFovy, _width/float(_height), 0.1,150.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
