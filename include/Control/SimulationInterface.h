@@ -22,6 +22,15 @@ namespace CartWheel
 
 class SimulationInterface
 {
+private:
+
+// Making these private prevents copying, which results in segfaults during destruction, currently.
+//
+// We need to resolve this by either (1) implementing these two methods to do deep-copies of all pointers, (2) replace plointers with by-value members, or (3) using smart pointers.
+// --Kyle, March 12, 2011
+SimulationInterface(const SimulationInterface& other) {}
+SimulationInterface& operator=(const SimulationInterface& other){return *this;}
+
 public:
   SimulationInterface(bool visualize);
   virtual ~SimulationInterface();

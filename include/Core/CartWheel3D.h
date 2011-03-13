@@ -42,6 +42,13 @@ private:
     Core::WorldOracle* _oracle;
     BuilderFunction _builderFunction;
 
+    // Putting copy constructor and assignment operator in the "private" section
+    // to make this class uncopyable until the memory problems are fixed.
+    // In particular, need all heap-allocated memory to be copied, or  redesign to store them by value (preferred).
+    // Currently, copying results in a segfault upon desctruction, due to double-free.
+    CartWheel3D(const CartWheel3D& other){}
+    CartWheel3D& operator=(const CartWheel3D& other){return *this;};
+
 public:
 
     CartWheel3D();
