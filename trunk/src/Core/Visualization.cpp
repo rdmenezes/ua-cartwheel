@@ -370,10 +370,10 @@ void Visualization::render(CartWheel3D* cartwheel) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(45.0, _width/float(_height), 0.1,150.0);
-    applyCameraTransforms();
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    applyCameraTransforms();
 
     if (_renderGround) {
         // TODO: ensure that sPath is a global variable somewhere
