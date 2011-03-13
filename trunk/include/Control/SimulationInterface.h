@@ -38,6 +38,7 @@ public:
   void init_simulation(std::vector<double> & start_state);
   void simulate(std::vector<double> & start_state, std::vector<ExtendedAction*> & actions);
 
+  Visualization& getVisualization() { return *visualization_; }
   const std::vector<PosState*>& getPositions() const;
   const std::vector<CapsuleState*>& getCapsules()  const;
   const std::vector<RelationalState*>& getRelations() const;
