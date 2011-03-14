@@ -44,6 +44,12 @@ public:
   const std::vector<RelationalState*>& getRelations() const;
   const std::vector<string>& getLastHumanNames(){return storedNames_;};
 
+  /** 
+   * Set a function to be called at each frame of simulation, which will receive
+   * the scene's bounding capsules.  Useful for debugging
+   */
+  void setVisualizeCapsuleCallback(void (*cb)(const CartWheel::CapsuleState&)) { visualizeCapsuleCallback_ = cb; }
+
 private:
   CartWheel3D* simulator_;
   Visualization* visualization_;
@@ -55,6 +61,8 @@ private:
   std::vector<RelationalState*> relations_;
   std::vector<PosState*> positions_;
   std::vector<CapsuleState*> capsules_;
+
+  void (*visualizeCapsuleCallback_)(const CartWheel::CapsuleState&);
 };
 
 } // namespace CartWheel

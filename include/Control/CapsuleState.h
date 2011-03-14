@@ -35,6 +35,13 @@ protected:
   std::vector<std::string> names_;
   std::vector<std::vector<CartWheel::Math::Capsule*> > capsules_;
 
+private:
+
+  // making copy methods private to prevent copying, as it currently 
+  // results in segfaults during destruction
+    CapsuleState(const CapsuleState&) {}
+    CapsuleState& operator=(const CapsuleState&){}
+
 };
 }
 #endif /* CAPSULESTATE_H_ */

@@ -15,7 +15,7 @@ void render(void)
 }
 
 // TODO This will probably need a parameter for sPath
-SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_(),capsules_()
+SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_(),capsules_(), visualizeCapsuleCallback_(NULL)
 {
   visualize_ = visualize;
   sPath_ = new char[200];
@@ -151,7 +151,15 @@ void SimulationInterface::simulate(std::vector<double> & start_state, std::vecto
     curr_action->executeStep(simulator_, step_size);
     if (visualize_)
     {
+      
+      if(visualizeCapsuleCallback_)
+      {
+          CartWheel::CapsuleState* capsule_state = new CapsuleState(simulator_);
+          visualizeCapsuleCallback_(*capsule_state);
+          delete capsule_state;
+      }
       visualization_->render(simulator_);
+       
       visualization_->glutStep();
     }
 
