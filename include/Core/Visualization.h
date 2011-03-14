@@ -62,6 +62,8 @@ protected:
     void initGlut(void (*func)(void), int argc, char**argv);
     void initGLParams();
 
+    void (*_postRenderCallback)(void);
+
 public:
     static Visualization* g_instance;
 
@@ -102,8 +104,8 @@ public:
     void setRenderGround(bool renderGround) { _renderGround = renderGround; }
     void setDrawBB(bool drawBB) { _drawBB = drawBB; }
     void setCartWheelHandle(CartWheel3D* cw) { _cw = cw; }
-    void setWidth(int width) { _width = width; }
-    void setHeight(int height) { _height = height; }
+    void setWidth(int width) { _width = width; glutReshapeWindow(_width, _height); }
+    void setHeight(int height) { _height = height; glutReshapeWindow(_width, _height); }
     void setHumanNames(const std::vector<std::string>& humanNames) { _humanNames = humanNames; }
 
     int getWidth() { return _width; }
@@ -120,6 +122,9 @@ public:
 
     void drawAxes();
     void render(CartWheel3D* cartwheel);
+
+    /// useful for drawing user-defined overlays like bounding boxes, etc
+    void setPostRenderCallback(void (*cb)()) { _postRenderCallback = cb; }
 
     void applyCameraTransforms();
 

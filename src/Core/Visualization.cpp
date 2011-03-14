@@ -56,6 +56,8 @@ void Visualization::init(int width, int height) {
     _mainWindow = NULL;
     _window = NULL;
 
+    _postRenderCallback = NULL;
+
     srand ( time(NULL) );
 }
 
@@ -367,6 +369,8 @@ void Visualization::captureImage() {
 }
 
 void Visualization::render(CartWheel3D* cartwheel) {
+    // viewport and projection matrix set-up should probably be in the reshape callback
+    glViewport(0,0,_width,_height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -396,6 +400,11 @@ void Visualization::render(CartWheel3D* cartwheel) {
     }
 
     glDisable(GL_LIGHTING);
+
+    if(_postRenderCallback)
+    {
+        _postRenderCallback();
+    }
     glFlush();
 
     glutSwapBuffers();
