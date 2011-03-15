@@ -56,6 +56,10 @@ void ActionCollectionPolicy::applyActionNoSwap(){
 */
 int ActionCollectionPolicy::loadActionsFromFile(const char* fName){
 	FILE* f = fopen(fName, "r");
+
+	if (f == NULL)
+		throwError("Could not open file: %s", fName);
+
 	char inputLine[200];
 	bool conSwapMode = false;
 	while (!feof(f)){
@@ -81,6 +85,7 @@ int ActionCollectionPolicy::loadActionsFromFile(const char* fName){
 			}
 		}
 	}
+	fclose(f);
 	return actions.size();
 }
 

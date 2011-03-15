@@ -981,6 +981,7 @@ void SimBiController::loadFromFile(const char* fName){
 				throwError("Incorrect SIMBICON input file: \'%s\' - unexpected line.", buffer);
 		}
 	}
+	fclose(f);
 }
 
 
