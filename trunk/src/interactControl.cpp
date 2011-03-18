@@ -35,6 +35,16 @@ void makeWorld(CartWheel3D* p_simulator) {
 
 	//p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
 
+	Vector3d ballScale(0.2, 0.2, 0.2);
+	double ballMass = 1.0;
+
+	ostringstream ostr;
+	ostr << "ball" << 1;
+	string ballName = ostr.str();
+
+	p_simulator->addBall(ballName, ballScale, ballMass);
+
+	/*
 	const int nBalls = 5;
 	for (int i = 0; i < nBalls; i++) {
 		Vector3d ballScale(0.2, 0.2, 0.2);
@@ -52,7 +62,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 
 		p_simulator->updateRB(name, ballPosition, ballOrientation, ballVelocity);
 	}
-
+*/
 #ifndef ADD_MANY_HUMANS
 
 	string name = "Human1";
@@ -110,10 +120,10 @@ int main(int argc, char** argv)
 {
     Visualization viz(render, argc, argv, 800, 600);
     g_visualization = &viz;
-    //Point3d camerPos(1.0,5.0,1.0);
-    //Point3d cameraTarget(1.0,1.0,-5.0);
-    Point3d camerPos(0.0,5.0,5.0);
-    Point3d cameraTarget(0.0,1.0,0.0);
+    Point3d camerPos(1.0,5.0,1.0);
+    Point3d cameraTarget(1.0,1.0,-5.0);
+    //Point3d camerPos(0.0,5.0,5.0);
+    //Point3d cameraTarget(0.0,1.0,0.0);
     Point3d cameraUp(0.0,1.0,0.0);
 
     viz.initGL(camerPos, cameraTarget);

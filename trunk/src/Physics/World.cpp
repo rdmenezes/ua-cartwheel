@@ -222,13 +222,45 @@ void World::addRigidBody(RigidBody* rigidBody){
 }
 
 /**
-	This method adds one rigid body (not articulated).
+	This method adds one articulated body.
+*/
+void World::addArticulatedRigidBody( ArticulatedRigidBody* rigidBody ){
+	objects.push_back(rigidBody);
+	ABs.push_back((ArticulatedRigidBody*)rigidBody);
+}
+
+/**
+	This method adds one articulated figure.
 */
 void World::addArticulatedFigure(ArticulatedFigure* articulatedFigure){
 	articulatedFigure->loadIntoWorld();
 	AFs.push_back(articulatedFigure);
 	articulatedFigure->addJointsToList(&jts);
 	articulatedFigure->fixJointConstraints();
+}
+
+void World::addJoint(ArticulatedFigure* articulatedFigure, Joint* jt){
+	if (jt != NULL) {
+		jts.push_back(jt);
+		if (articulatedFigure != NULL) {
+			articulatedFigure->fixJointConstraints();
+		}
+	}
+}
+
+bool World::removeJoint(Joint* jt){
+	bool result = false;
+	if (jt != NULL) {
+		DynamicArray<Joint*>::iterator itr = jts.begin();
+		for(; itr != jts.end(); itr++) {
+			if ((*itr)->getOdeID() == jt->getOdeID()) {
+				jts.erase(itr);
+				result = true;
+				break;
+			}
+		}
+	}
+	return result;
 }
 
 /**

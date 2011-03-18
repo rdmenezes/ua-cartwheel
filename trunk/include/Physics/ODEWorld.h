@@ -164,9 +164,29 @@ public:
 	virtual void loadRBsFromFile(const char* fName, const char* sPath, const char* afName);
 
 	/**
+	 * Add a joint.
+	 */
+	virtual void addJoint(ArticulatedFigure* articulatedFigure, Joint* jt);
+
+	/**
+	 * Remove the given joint.
+	 */
+	virtual bool removeJoint(Joint* jt);
+
+	/**
+	 * Setup a joint.
+	 */
+	virtual void setupJoint(Joint* jt);
+
+	/**
 		This method adds one rigid body (articulated or not).
 	*/
-	virtual void addRigidBody( RigidBody* rigidBody_disown );
+	virtual void addRigidBody( RigidBody* rigidBody_disown);
+
+	/**
+		This method adds one articulated body.
+	*/
+	virtual void addArticulatedRigidBody( ArticulatedRigidBody* rigidBody_disown );
 
 	/**
 		This method adds one articulated figure.
