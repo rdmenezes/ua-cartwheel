@@ -75,6 +75,16 @@ public:
      * Apply new action based on the index as prescribed in ActionCollectionPolicy.
      */
     void applyAction(int actionIndex);
+
+    enum GrabbingMethod
+    {
+    	left,
+    	right,
+    	both
+    };
+
+    void Grab(const std::string& targetName, const GrabbingMethod& method);
+    void Drop(const std::string& targetName);
 };
 
 }

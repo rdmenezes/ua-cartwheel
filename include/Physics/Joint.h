@@ -30,6 +30,8 @@
 
 #include <Physics/PhysicsDll.h>
 
+#include <ode/common.h>
+
 namespace CartWheel { namespace Physics {
 
 #define STIFF_JOINT 1
@@ -83,6 +85,11 @@ protected:
 
 	//this is the id of the joint...
 	int id;
+
+	/**
+	 * ODE assigned ID. Used in all joint API functions.
+	 */
+	dJointID odeId;
 
 	//when a joint limit is reached, this variable controls the bounciness of the "collision"
 	double epsBounce;
@@ -147,6 +154,9 @@ public:
 
 	inline void setID(int value) {id = value;}
 	inline int getID() {return id;}
+
+	inline void setOdeID(dJointID id) {odeId = id;}
+	inline dJointID getOdeID() {return odeId;}
 
 	/**
 		sets the torque

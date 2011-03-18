@@ -90,7 +90,12 @@ public:
 	/**
 		This method adds one rigid body (articulated or not).
 	*/
-	virtual void addRigidBody( RigidBody* rigidBody_disown );
+	virtual void addRigidBody( RigidBody* rigidBody_disown);
+
+	/**
+		This method adds one articulated body.
+	*/
+	virtual void addArticulatedRigidBody( ArticulatedRigidBody* rigidBody_disown );
 
 	/**
 		This method adds one articulated figure.
@@ -98,14 +103,24 @@ public:
 	virtual void addArticulatedFigure( ArticulatedFigure* articulatedFigure_disown );
 
 	/**
+	 * Add a joint.
+	 */
+	virtual void addJoint(ArticulatedFigure* articulatedFigure, Joint* jt);
+
+	/**
+	 * Remove the given joint.
+	 */
+	virtual bool removeJoint(Joint* jt);
+
+	/**
 		This method returns the reference to the first articulated rigid body with 
-		its name and its articulared figure name, or NULL if it is not found
+		its name and its articulated figure name, or NULL if it is not found
 	*/
 	ArticulatedRigidBody* getARBByName(const char* name, const char* articulatedFigureName = NULL);
 
 	/**
 		This method returns the reference to the first articulated rigid body with 
-		its name and its articulared figure name, or NULL if it is not found
+		its name and its articulated figure name, or NULL if it is not found
 	*/
 	ArticulatedRigidBody* getARBByName(const char* name, ArticulatedFigure* articulatedFigure);
 

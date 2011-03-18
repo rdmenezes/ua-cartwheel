@@ -46,7 +46,7 @@ void ODEWorld::setupWorld() {
 	int maxCont = 4;
 
 	dInitODE();	
-    	worldID = dWorldCreate();
+    worldID = dWorldCreate();
 
 	//set a few of the constants that ODE needs to be aware of
 	dWorldSetContactSurfaceLayer(worldID,0.001);							// the ammount of interpenetration allowed between objects
@@ -236,6 +236,8 @@ dGeomID ODEWorld::getCapsuleGeom(CapsuleCDP* c){
 */
 void ODEWorld::setupODEFixedJoint(StiffJoint* hj){
 	dJointID j = dJointCreateFixed(worldID, 0);
+	hj->setOdeID(j);
+
 	dJointAttach(j, odeToRbs[(int)(hj->child->id)].id, odeToRbs[(int)(hj->parent->id)].id);
 	dJointSetFixed(j);
 }
@@ -245,6 +247,8 @@ void ODEWorld::setupODEFixedJoint(StiffJoint* hj){
 */
 void ODEWorld::setupODEHingeJoint(HingeJoint* hj){
 	dJointID j = dJointCreateHinge(worldID, 0);
+	hj->setOdeID(j);
+
 	dJointAttach(j, odeToRbs[(int)(hj->child->id)].id, odeToRbs[(int)(hj->parent->id)].id);
 	Point3d p = hj->child->getWorldCoordinates(hj->cJPos);
 	dJointSetHingeAnchor(j, p.x, p.y, p.z);
@@ -264,6 +268,8 @@ void ODEWorld::setupODEHingeJoint(HingeJoint* hj){
 */
 void ODEWorld::setupODEUniversalJoint(UniversalJoint* uj){
 	dJointID j = dJointCreateUniversal(worldID, 0);
+	uj->setOdeID(j);
+
 	dJointAttach(j, odeToRbs[(int)(uj->child->id)].id, odeToRbs[(int)(uj->parent->id)].id);
 	Point3d p = uj->child->getWorldCoordinates(uj->cJPos);
 	dJointSetUniversalAnchor(j, p.x, p.y, p.z);
@@ -291,6 +297,8 @@ void ODEWorld::setupODEBallAndSocketJoint(BallInSocketJoint* basj){
 	//printf("Inside setupODEBallAndSocketJoint %d %d %d\n", worldID, basj->child->id, basj->parent->id);
 
 	dJointID j = dJointCreateBall(worldID, 0);
+	basj->setOdeID(j);
+
 	//printf("Inside setupODEBallAndSocketJoint joint: %d %d\n", j, odeToRbs.size());
 	dJointAttach(j, odeToRbs[(int)(basj->child->id)].id, odeToRbs[(int)(basj->parent->id)].id);
 	//printf("Inside setupODEBallAndSocketJoint 2\n");
@@ -438,25 +446,46 @@ void ODEWorld::loadRBsFromFile(const char* fName, const char* sPath, const char*
 		//now we will go through all the new joints, and create and link their ode equivalents
 		joints.clear();
 		AFs[i]->addJointsToList(&joints);
+
 		for (unsigned int j=0;j<joints.size();j++){
-			//connect the joint to the two bodies
-			int jointType = joints[j]->getJointType();
-			switch (jointType){
-				case STIFF_JOINT:
-					setupODEFixedJoint((StiffJoint*)joints[j]);
-					break;
-				case BALL_IN_SOCKET_JOINT:
-					setupODEBallAndSocketJoint((BallInSocketJoint*)joints[j]);
-					break;
-				case HINGE_JOINT:
-					setupODEHingeJoint((HingeJoint*)joints[j]);
-					break;
-				case UNIVERSAL_JOINT:
-					setupODEUniversalJoint((UniversalJoint*)joints[j]);
-					break;
-				default:
-					throwError("Ooops.... Only BallAndSocket, Hinge, Universal and Stiff joints are currently supported.\n");
-			}
+			setupJoint(joints[j]);
+		}
+	}
+}
+
+void ODEWorld::addJoint(ArticulatedFigure* articulatedFigure, Joint* jt){
+	World::addJoint(articulatedFigure, jt);
+	setupJoint(jt);
+}
+
+bool ODEWorld::removeJoint(Joint* jt){
+	bool result = World::removeJoint(jt);
+
+	if (result) {
+		dJointDestroy(jt->getOdeID());
+	}
+	return result;
+}
+
+void ODEWorld::setupJoint(Joint* jt){
+	if (jt != NULL) {
+		//connect the joint to the two bodies
+		int jointType = jt->getJointType();
+		switch (jointType){
+			case STIFF_JOINT:
+				setupODEFixedJoint((StiffJoint*)jt);
+				break;
+			case BALL_IN_SOCKET_JOINT:
+				setupODEBallAndSocketJoint((BallInSocketJoint*)jt);
+				break;
+			case HINGE_JOINT:
+				setupODEHingeJoint((HingeJoint*)jt);
+				break;
+			case UNIVERSAL_JOINT:
+				setupODEUniversalJoint((UniversalJoint*)jt);
+				break;
+			default:
+				throwError("Ooops.... Only BallAndSocket, Hinge, Universal and Stiff joints are currently supported.\n");
 		}
 	}
 }
@@ -464,7 +493,7 @@ void ODEWorld::loadRBsFromFile(const char* fName, const char* sPath, const char*
 /**
 	This method adds one rigid body (not articulated).
 */
-void ODEWorld::addRigidBody( RigidBody* rigidBody ) {
+void ODEWorld::addRigidBody(RigidBody* rigidBody){
 
 	World::addRigidBody(rigidBody);
 
@@ -472,15 +501,23 @@ void ODEWorld::addRigidBody( RigidBody* rigidBody ) {
 	odeToRbs.push_back(ODE_RB_Map(0, rigidBody));
 
 	// Non-articulated rigid body are already well-positioned, link them to ODE
-	if( !rigidBody->isArticulated() )
+	if( !rigidBody->isArticulated())
 		linkRigidBodyToODE(objects.size()-1);
 	// For articulated rigid bodies, we will only add them when (and if) they appear in an ArticulatedFigure
-
-
 }
 
 /**
-	This method adds one rigid body (not articulated).
+	The articulated rigid body is linked so it must have been configured by now.
+*/
+void ODEWorld::addArticulatedRigidBody(ArticulatedRigidBody* rigidBody){
+
+	addRigidBody(rigidBody);
+
+	linkRigidBodyToODE(objects.size()-1);
+}
+
+/**
+	This method adds one articulated figure.
 */
 void ODEWorld::addArticulatedFigure(ArticulatedFigure* articulatedFigure){
 	World::addArticulatedFigure( articulatedFigure );
@@ -499,24 +536,7 @@ void ODEWorld::addArticulatedFigure(ArticulatedFigure* articulatedFigure){
 	//now we will go through all the new joints, and create and link their ode equivalents
 	articulatedFigure->addJointsToList(&joints);
 	for (unsigned int j=0;j<joints.size();j++){
-		//connect the joint to the two bodies
-		int jointType = joints[j]->getJointType();
-		switch (jointType){
-			case STIFF_JOINT:
-				setupODEFixedJoint((StiffJoint*)joints[j]);
-				break;
-			case BALL_IN_SOCKET_JOINT:
-				setupODEBallAndSocketJoint((BallInSocketJoint*)joints[j]);
-				break;
-			case HINGE_JOINT:
-				setupODEHingeJoint((HingeJoint*)joints[j]);
-				break;
-			case UNIVERSAL_JOINT:
-				setupODEUniversalJoint((UniversalJoint*)joints[j]);
-				break;
-			default:
-				throwError("Ooops.... Only BallAndSocket, Hinge, Universal and Stiff joints are currently supported.\n");
-		}
+		setupJoint(joints[j]);
 	}
 }
 
@@ -528,7 +548,7 @@ void ODEWorld::linkRigidBodyToODE( int index ) {
 	RigidBody* rigidBody = odeToRbs[index].rb; 
 
 	//CREATE AND LINK THE ODE BODY WITH OUR RIGID BODY
-	//if the body is fixed, we'll only create the colission detection primitives
+	//if the body is fixed, we'll only create the collision detection primitives
 	if (!rigidBody->isLocked()){
 		odeToRbs[index].id = dBodyCreate(worldID);
 		//the ID of this rigid body will be its index in the 
