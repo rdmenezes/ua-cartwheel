@@ -114,46 +114,56 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 	else {
 		switch(key)
 		{
-		case 65: // a
-		case 97:
+		case 'a':
 			cw->setHumanHeading(selectedHuman, -3.14/2);
 			break;
-		case 83: // s
-		case 115:
+		case 's':
 			cw->setHumanHeading(selectedHuman, 3.14/2);
 			break;
-		case 87: // w
-		case 119:
+		case 'w':
 			cw->setHumanHeading(selectedHuman, 3.14);
 			break;
-		case 90: // z
-		case 122:
+		case 'z':
 			cw->setHumanHeading(selectedHuman, 0);
 			break;
-		case 82: // r
-		case 114:
+		case 'r':
 			cw->reset();
 			break;
-		case 45: //"-"
+		case '-':
 			Visualization::g_instance->setHumanSpeed(Visualization::g_instance->getHumanSpeed()-0.2);
 			cw->setHumanSpeed(selectedHuman, Visualization::g_instance->getHumanSpeed());
 			break;
-		case 61: //"+"
+		case '+':
 			Visualization::g_instance->setHumanSpeed(Visualization::g_instance->getHumanSpeed()+0.2);
 			cw->setHumanSpeed(selectedHuman, Visualization::g_instance->getHumanSpeed());
 			break;
-		case 44: //"<"
+		case '<':
 			Visualization::g_instance->setHumanStepWidth(Visualization::g_instance->getHumanStepWidth()-0.2);
 			cw->setHumanStepWidth(selectedHuman, Visualization::g_instance->getHumanStepWidth());
 			break;
-		case 46: //">"
+		case '>':
 			Visualization::g_instance->setHumanStepWidth(Visualization::g_instance->getHumanStepWidth()+0.2);
 			cw->setHumanStepWidth(selectedHuman, Visualization::g_instance->getHumanStepWidth());
 			break;
-		case 84:  // T, t
-		case 116:
+		case 'p':
 			Visualization::g_instance->throwBall(selectedHuman);
 			break;
+		case 'n':
+			cw->makeHumanGrabObject(selectedHuman, "ball1", Human::left);
+			break;
+		case 'm':
+			cw->makeHumanGrabObject(selectedHuman, "ball1", Human::right);
+			break;
+		case 'b':
+			cw->makeHumanGrabObject(selectedHuman, "ball1", Human::both);
+			break;
+		case 'd':
+			cw->makeHumanDropObject(selectedHuman, "ball1");
+			break;
+		case 't':
+			cw->makeHumanThrowObject(selectedHuman, "ball1", Vector3d(0,0,15));
+			break;
+
 		default:
 			break;
 		}
@@ -205,26 +215,28 @@ void Visualization::initMenu() {
 		std::vector<std::string> humanNames;
 		bool result = _cw->getHumanNames(humanNames);
 
-		Visualization::g_instance->setHumanNames(humanNames);
+		if (result) {
+			Visualization::g_instance->setHumanNames(humanNames);
 
-		vector<string>::iterator itr = humanNames.begin();
-		// Select the first human by default
-		_selectedHumanName = (*itr);
+			vector<string>::iterator itr = humanNames.begin();
+			// Select the first human by default
+			_selectedHumanName = (*itr);
 
-		for (int id = SELECT_HUMAN; itr != humanNames.end(); itr++,id++)
-		{
-			glutAddMenuEntry((*itr).c_str(), id);
+			for (int id = SELECT_HUMAN; itr != humanNames.end(); itr++,id++)
+			{
+				glutAddMenuEntry((*itr).c_str(), id);
+			}
+
+			// create the menu
+			_menuIdentifier = glutCreateMenu(processMenuEvents);
+
+			//add entries to our menu
+			glutAddMenuEntry("Reset", RESET);
+			glutAddSubMenu("Select", _humanMenu);
+
+			// attach the menu to the right button
+			glutAttachMenu(GLUT_RIGHT_BUTTON);
 		}
-
-		// create the menu
-		_menuIdentifier = glutCreateMenu(processMenuEvents);
-
-		//add entries to our menu
-		glutAddMenuEntry("Reset", RESET);
-		glutAddSubMenu("Select", _humanMenu);
-
-		// attach the menu to the right button
-		glutAttachMenu(GLUT_RIGHT_BUTTON);
 	}
 }
 
@@ -381,13 +393,7 @@ void Visualization::render(CartWheel3D* cartwheel) {
     applyCameraTransforms();
 
     if (_renderGround) {
-        // TODO: ensure that sPath is a global variable somewhere
-        // TODO: determine if we should be loading the bmp file every
-        //  time that we want to draw the ground.
-        
     	GLUtils::drawGround(50, 5, 98);
-
-    	//GLUtils::gprintf( "_humanSpeed %d", _humanSpeed);
     }
 
     glEnable(GL_LIGHTING);

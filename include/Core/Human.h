@@ -1,6 +1,7 @@
 #ifndef HUMAN_H_
 #define HUMAN_H_
 
+#include <map>
 #include <string>
 
 #include <MathLib/Vector3d.h>
@@ -15,6 +16,8 @@
 
 #include <Physics/CollisionDetectionPrimitive.h>
 #include <Physics/CapsuleCDP.h>
+#include <Physics/Joint.h>
+#include <Physics/ArticulatedRigidBody.h>
 
 namespace CartWheel
 {
@@ -31,6 +34,8 @@ private:
 	BehaviourController* m_behaviour;
 	Policy* m_policy;
 	CompositeController* m_composite_controller;
+	std::map<std::string, Physics::Joint*> m_grabJoints;
+	std::map<std::string, Physics::ArticulatedRigidBody*> m_grabbedBodies;
 
 	Human() {}
 
@@ -83,8 +88,9 @@ public:
     	both
     };
 
-    void Grab(const std::string& targetName, const GrabbingMethod& method);
-    void Drop(const std::string& targetName);
+    void grabObject(const std::string& targetName, const GrabbingMethod& method);
+    void dropObject(const std::string& targetName);
+    void throwObject(const std::string& targetName, const Math::Vector3d& velocity);
 };
 
 }

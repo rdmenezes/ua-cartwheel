@@ -129,11 +129,6 @@ private:
 	virtual void setRBStateFromEngine();
 
 	/**
-		this method is used to transfer the state of the rigid bodies, from the rigid body wrapper to the simulator's rigid bodies
-	*/
-	virtual void setEngineStateFromRB();
-
-	/**
 		This methods creates an ODE object and links it to the RigidBody corresponding to objects[index]
 	*/
 	void linkRigidBodyToODE( int index );
@@ -220,6 +215,11 @@ public:
 		this method applies a torque to a rigid body. The torque is specified in world coordinates.
 	*/
 	virtual void applyTorqueTo(RigidBody* b, const CartWheel::Math::Vector3d& t);
+
+	/**
+		this method is used to transfer the state of the rigid bodies, from the rigid body wrapper to the simulator's rigid bodies
+	*/
+	virtual void setEngineStateFromRB();
 
 	/**
 		This method is used to integrate the forward simulation in time.

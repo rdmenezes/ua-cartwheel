@@ -23,26 +23,30 @@ void render(void) {
 void makeWorld(CartWheel3D* p_simulator) {
 	p_simulator->addObject("ground", "data/objects/flatGround.rbs", 0);
 
-	Vector3d boxScale(0.2, 0.2, 0.3);
-	double boxMass = 1.0;
+	Vector3d boxScale(0.1, 0.5, 0.1);
+	double boxMass = 1;
 	p_simulator->addBox("box1", boxScale, boxMass);
 
 	double yaw = 3.14*0;
 	Quaternion boxOrientation(yaw, Vector3d(0, 1, 0));
 
-	Point3d boxPosition(3, 1.0, -3);
+	Point3d boxPosition(0, 1.0, -2.3);
 	Vector3d boxVelocity(0, 0, 0);
 
-	//p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
+	p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
 
-	Vector3d ballScale(0.2, 0.2, 0.2);
-	double ballMass = 1.0;
+	Vector3d ballScale(0.05, 0.05, 0.05);
+	double ballMass = 0.0001;
+	Point3d ballPosition(0, 1.5, -2.3);
+	Vector3d ballVelocity(0, 0, 0);
+	Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
 
 	ostringstream ostr;
 	ostr << "ball" << 1;
 	string ballName = ostr.str();
 
 	p_simulator->addBall(ballName, ballScale, ballMass);
+	p_simulator->updateRB(ballName, ballPosition, ballOrientation, ballVelocity);
 
 	/*
 	const int nBalls = 5;
@@ -120,8 +124,8 @@ int main(int argc, char** argv)
 {
     Visualization viz(render, argc, argv, 800, 600);
     g_visualization = &viz;
-    Point3d camerPos(1.0,5.0,1.0);
-    Point3d cameraTarget(1.0,1.0,-5.0);
+    Point3d camerPos(1.0,1.0,-1.0);
+    Point3d cameraTarget(0.0,1.0,-3.0);
     //Point3d camerPos(0.0,5.0,5.0);
     //Point3d cameraTarget(0.0,1.0,0.0);
     Point3d cameraUp(0.0,1.0,0.0);

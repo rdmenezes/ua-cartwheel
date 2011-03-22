@@ -110,6 +110,10 @@ public:
     void setHumanSpeed(const std::string& name, double speed);
     void setHumanStepWidth(const std::string& name, double width);
 
+    void makeHumanGrabObject(const std::string& name, const std::string& targetName, const Core::Human::GrabbingMethod& method);
+    void makeHumanThrowObject(const std::string& name, const std::string& targetName, const Math::Vector3d& velocity);
+    void makeHumanDropObject(const std::string& name, const std::string& targetName);
+
     void reset();
 
     void runStep(double dt = Core::SimGlobals::dt);

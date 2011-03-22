@@ -51,10 +51,10 @@ void ArticulatedRigidBody::draw(int flags){
 		return;
 
 	if (flags & SHOW_JOINTS){
+		glColor3d(0,1.0,0);
 		//we will draw a little sphere at the location of the joint (we'll do it twice - once for the parent and one for the child. They should coincide
 		//if the joint constraint is properly satisfied
 		GLUtils::drawSphere(this->getWorldCoordinates(pJoint->cJPos), 0.02, 4);
 		GLUtils::drawSphere(pJoint->parent->getWorldCoordinates(pJoint->pJPos), 0.02, 4);
 	}
 }
-

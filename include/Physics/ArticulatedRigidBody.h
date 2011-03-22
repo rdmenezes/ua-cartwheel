@@ -27,11 +27,15 @@ private:
 	DynamicArray<Joint*> cJoints;
 	//this is the articulated figure that the rigid body belongs to
 	ArticulatedFigure* AFParent;
+
+	ArticulatedRigidBody(const ArticulatedRigidBody* body) {}
+
 public:
 	/**
 		Default constructor
 	*/
 	ArticulatedRigidBody(void);
+
 
 	/**
 		This method draws the current rigid body.
@@ -66,8 +70,6 @@ public:
 	ArticulatedFigure* getAFParent(){
 		return AFParent;
 	}
-
-
 };
 
 }

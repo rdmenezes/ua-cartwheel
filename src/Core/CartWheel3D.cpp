@@ -124,7 +124,11 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
     string mesh = _path + "data/models/box3.obj";
     Vector3d offset = Vector3d(0,0,0);
 
+#if 1
+    RigidBody* body = new ArticulatedRigidBody();
+#else
     RigidBody* body = new RigidBody();
+#endif
     body->setName(name.c_str());
     body->setScale(scale);
     body->addMeshObj(mesh.c_str(), offset, scale);
@@ -137,23 +141,35 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
 
     body->addCollisionDetectionPrimitive(new BoxCDP(pos1, pos2, body));
 
-   	body->setFrictionCoefficient(0.8);
+   	body->setFrictionCoefficient(1.8);
     body->setRestitutionCoefficient(0.35);
 
-    _world->addRigidBody(body);
+    ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*>(body);
+    if (NULL != arb)
+    {
+		arb->setParentJoint(NULL);
+		_world->addArticulatedRigidBody(arb);
+    }
+    else
+    {
+    	_world->addRigidBody(body);
+    }
 }
 
 void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass)
 {
     string mesh = _path + "data/models/sphere10x.obj";
     Vector3d offset = Vector3d(0,0,0);
-
+#if 1
+    RigidBody* body = new ArticulatedRigidBody();
+#else
     RigidBody* body = new RigidBody();
+#endif
+
     body->setName(name.c_str());
     body->setScale(scale);
     body->addMeshObj(mesh.c_str(), offset, scale);
-
-    body->setColour(0.8,0,0,1);
+    body->setColour(0.1,0,0.8,1);
     body->setMass(mass);
     body->setMOI(Vector3d(0.2,0.2,0.2));
 
@@ -164,7 +180,17 @@ void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass
     body->setFrictionCoefficient(1.8);
     body->setRestitutionCoefficient(0.35);
 
-    _world->addRigidBody(body);
+    ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*>(body);
+    if (NULL != arb)
+    {
+    	arb->setAFParent(NULL);
+    	arb->setParentJoint(NULL);
+    	_world->addArticulatedRigidBody(arb);
+    }
+    else
+    {
+    	_world->addRigidBody(body);
+    }
 }
 
 void CartWheel3D::updateRB(const string& name, const Point3d& pos, const Quaternion& orientation, const Vector3d& vel) 
@@ -382,4 +408,24 @@ void CartWheel3D::setHumanStepWidth(const std::string& name, double width)
 void CartWheel3D::setController(const std::string& name, int actionIndex)
 {
 	_humans[name]->applyAction(actionIndex);
+}
+
+/*
+Human::GrabbingMethod method = Human::right;
+_humans[name]->grabObject("ball1", Human::right);
+*/
+
+void CartWheel3D::makeHumanGrabObject(const std::string& name, const std::string& targetName, const Human::GrabbingMethod& method)
+{
+	_humans[name]->grabObject(targetName, method);
+}
+
+void CartWheel3D::makeHumanThrowObject(const std::string& name, const std::string& targetName, const Math::Vector3d& velocity)
+{
+	_humans[name]->throwObject("ball1", velocity);
+}
+
+void CartWheel3D::makeHumanDropObject(const std::string& name, const std::string& targetName)
+{
+	_humans[name]->dropObject(targetName);
 }
