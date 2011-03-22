@@ -71,6 +71,9 @@ friend class TestApp2;
 friend class VirtualModelController;
 friend class BehaviourController;
 
+private:
+	RigidBody(const RigidBody* body){}
+
 protected:
 	//--> the state of the rigid body: made up of the object's position in the world, its orientation and linear/angular velocities (stored in world coordinates)
 	RBState state;

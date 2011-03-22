@@ -52,15 +52,47 @@ void ArticulatedFigure::setRoot( ArticulatedRigidBody* root ) {
 	this->root = root;
 }
 
-/**
-	Sets the root
-*/
 void ArticulatedFigure::addArticulatedRigidBody( ArticulatedRigidBody* arb ) {
     //printf("ARB Name: %s\n", arb->getName()); 
-	//printf("Before arbs: size=%d, capacity=%d\n", arbs.size(), arbs.capacity());
+	//printf("Before arbs: size=%d, capacity=%d\	n", arbs.size(), arbs.capacity());
     arb->setAFParent( this );
 	arbs.push_back( arb );
 	//printf("After arbs: size=%d, capacity=%d\n\n", arbs.size(), arbs.capacity());
+}
+
+bool ArticulatedFigure::removeArticulatedRigidBody( ArticulatedRigidBody* arb ) {
+	bool result = false;
+	if (NULL != arb) {
+		arb->setAFParent(NULL);
+		DynamicArray<ArticulatedRigidBody*>::iterator itr = arbs.begin();
+		for(; itr != arbs.end(); itr++) {
+			if (strcmp((*itr)->getName(), arb->getName()) == 0) {
+				arbs.erase(itr);
+				result = true;
+				break;
+			}
+		}
+	}
+	return result;
+}
+
+void ArticulatedFigure::addJoint( Joint* jt ) {
+	joints.push_back( jt );
+}
+
+bool ArticulatedFigure::removeJoint( Joint* jt ) {
+	bool result = false;
+	if (NULL != jt) {
+		DynamicArray<Joint*>::iterator itr = joints.begin();
+		for(; itr != joints.end(); itr++) {
+			if (strcmp((*itr)->getName(), jt->getName()) == 0) {
+				joints.erase(itr);
+				result = true;
+				break;
+			}
+		}
+	}
+	return result;
 }
 
 /**

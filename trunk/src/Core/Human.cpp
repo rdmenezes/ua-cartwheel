@@ -1,6 +1,8 @@
 #include <Core/Human.h>
 #include <Core/ActionCollectionPolicy.h>
 
+using namespace CartWheel::GL;
+
 using namespace CartWheel::Physics;
 using namespace CartWheel::Math;
 using namespace std;
@@ -153,171 +155,136 @@ void Human::applyAction(int actionIndex)
 	}
 }
 
-HingeJoint* g_Joint = NULL;
-
-void Human::Drop(const std::string& targetName)
+void Human::dropObject(const std::string& targetName)
 {
-	(dynamic_cast<ODEWorld*>(&World::instance()))->removeJoint(g_Joint);
+	World& world = World::instance();
+
+	bool foundMatch = (m_grabJoints.find(targetName) != m_grabJoints.end());
+	if (foundMatch)
+	{
+		Joint* joint = m_grabJoints[targetName];
+		(dynamic_cast<ODEWorld*>(&world))->removeJoint(joint);
+
+		m_character->removeJoint(joint);
+
+		m_grabJoints.erase(m_grabJoints.find(targetName));
+	}
+
+	foundMatch = (m_grabbedBodies.find(targetName) != m_grabbedBodies.end());
+	if (foundMatch)
+	{
+		ArticulatedRigidBody* body = m_grabbedBodies[targetName];
+		body->setParentJoint(NULL);
+		body->setAFParent(NULL);
+
+		m_grabbedBodies.erase(m_grabbedBodies.find(targetName));
+	}
 }
 
-void Human::Grab(const std::string& targetName, const GrabbingMethod& method)
+void Human::throwObject(const std::string& targetName, const Vector3d& velocity)
 {
-#ifdef TEST_JOINT
-	Vector3d ballScale(1, 1, 1);
-	double ballMass = 0.2;
+	bool foundMatch = (m_grabbedBodies.find(targetName) != m_grabbedBodies.end());
+	if (foundMatch)
+	{
+		m_grabbedBodies[targetName]->setCMVelocity(velocity);
+	}
+	dropObject(targetName);
+}
 
-	Point3d ballPosition(1, 1, -5);
-	Vector3d ballVelocity(0, 0, 0);
-	double yaw = 0;
-	Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
-
-    string mesh = _path + "data/models/sphereSmall.obj";
-    Vector3d offset = Vector3d(0,0,0);
-
-    ArticulatedRigidBody* body = new ArticulatedRigidBody();
-    body->setName("pickup_ball");
-  //  body->setScale(ballScale);
-    body->addMeshObj(mesh.c_str(), offset, ballScale);
-
-    body->setColour(0.1,0.1,0.9,1);
-    body->setMass(ballMass);
-    body->setMOI(Vector3d(0.2,0.2,0.2));
-
-    Point3d center = Point3d(0,0,0);
-    SphereCDP* sphereCDP = new SphereCDP(center, 0.1, body);
-    body->addCollisionDetectionPrimitive(sphereCDP);
-
-    body->setFrictionCoefficient(0.8);
-    body->setRestitutionCoefficient(0.35);
-
-    ArticulatedRigidBody* body1 = new ArticulatedRigidBody();
-    body1->setName("pickup_ball1");
-  //  body->setScale(ballScale);
-    body1->addMeshObj(mesh.c_str(), offset, ballScale);
-
-    body1->setColour(0.1,0.9,0.1,1);
-    body1->setMass(ballMass);
-    body1->setMOI(Vector3d(0.2,0.2,0.2));
-
-    SphereCDP* sphereCDP1 = new SphereCDP(center, 0.1, body1);
-    body1->addCollisionDetectionPrimitive(sphereCDP1);
-
-    body1->setFrictionCoefficient(0.8);
-    body1->setRestitutionCoefficient(0.35);
-
-    Point3d ballPosition1(1.5, 1, -5);
-    body1->setCMPosition(ballPosition1);
-
-    body->setCMPosition(ballPosition);
-    body->setOrientation(ballOrientation);
-    body->setCMVelocity(ballVelocity);
-
-    body->setParentJoint(NULL);
-
-/*
-    Point3d parentPos = lLowerArm->getCMPosition();
-    Point3d childPos = parentPos;
-//    childPos.x -= 0.05;
-
-//	body->setCMPosition(childPos);
-
-*/
-	HingeJoint* tempJoint = new HingeJoint();
-	tempJoint->setName("lHand2Ball");
-    tempJoint->setAxis(Vector3d(0,1,0));
-	tempJoint->setParentJointPosition(Point3d(0, 0, 0));
-	tempJoint->setChildJointPosition(Point3d(-0.01, 0, 0));
-	tempJoint->setJointLimits(-2.7, 0);
-
-	tempJoint->setChild(body);
-	tempJoint->setParent(body1);
-
-    _world->addArticulatedRigidBody(body);
-    _world->addArticulatedRigidBody(body1);
-
-	ArticulatedFigure* figure = _world->getAF(_world->getAFCount()-1);
-
-//	figure->addJoint(tempJoint);
-//	figure->addArticulatedRigidBody(body);
-	//figure->addArticulatedRigidBody(body1);
-
-    //figure->fixJointConstraints();
-
-    (dynamic_cast<ODEWorld*>(_world))->addJoint(figure, tempJoint);
-#endif
-
-	Vector3d ballScale(1, 1, 1);
-	double ballMass = 0.0001;
-
-
-	Point3d ballPosition(0, 0, 0);
-	Vector3d ballVelocity(0, 0, 0);
-	double yaw = 0;
-	Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
-
-
-    string mesh = "data/models/sphereSmall.obj";
-    Vector3d offset = Vector3d(0,0,0);
-
-    ArticulatedRigidBody* body = new ArticulatedRigidBody();
-    body->setName("pickup_ball");
-  //  body->setScale(ballScale);
-    body->addMeshObj(mesh.c_str(), offset, ballScale);
-
-    body->setColour(0.1,0.1,0.9,1);
-    body->setMass(ballMass);
-    body->setMOI(Vector3d(0.2,0.2,0.2));
-
-    Point3d center = Point3d(0,0,0);
-    SphereCDP* sphereCDP = new SphereCDP(center, 0.1, body);
-    body->addCollisionDetectionPrimitive(sphereCDP);
-
-    body->setFrictionCoefficient(0.8);
-    body->setRestitutionCoefficient(0.35);
-
-
-    body->setCMPosition(ballPosition);
-    body->setOrientation(ballOrientation);
-    body->setCMVelocity(ballVelocity);
-
-
-    body->setParentJoint(NULL);
-
+void Human::grabObject(const std::string& targetName, const GrabbingMethod& method)
+{
     World& world = World::instance();
 
-	ArticulatedFigure* figure = world.getAF(world.getAFCount()-1);
-    ArticulatedRigidBody* lLowerArm = figure->getARBByName("lLowerArm");
+	RigidBody* rigidBody = world.getRBByName(targetName.c_str());
+	ArticulatedRigidBody* body = NULL;
+	bool foundMatch = (m_grabbedBodies.find(targetName) != m_grabbedBodies.end());
+	bool result = false;
 
-    Point3d parentPos = lLowerArm->getCMPosition();
-    Point3d childPos = parentPos;
-/*
-    childPos.x += 0.1;
-    childPos.y -= 0.05;
-*/
-   childPos.x -= 0.01;
-   childPos.y -= 0.05;
+	if (foundMatch == false)
+	{
+		m_grabbedBodies[targetName] = dynamic_cast<ArticulatedRigidBody*>(rigidBody);
+		body = m_grabbedBodies[targetName];
+		result = (NULL != body);
+	}
 
-	body->setCMPosition(childPos);
+	ArticulatedRigidBody* attachmentHand = NULL;
 
-	HingeJoint* tempJoint = new HingeJoint();
-	g_Joint = tempJoint;
+	if (result)
+	{
+		switch (method)
+		{
+		case left:
+			attachmentHand = m_character->getARBByName("lLowerArm");
+			break;
+		case right:
+			attachmentHand = m_character->getARBByName("rLowerArm");
+			break;
+		case both:
+			break;
+		}
 
-	tempJoint->setName("lHand2Ball");
-    tempJoint->setAxis(Vector3d(0,1,0));
-	tempJoint->setParentJointPosition(Point3d(0.12, -0.05, 0));
-	tempJoint->setChildJointPosition(Point3d(-0.01, 0, 0));
-	tempJoint->setJointLimits(-2.7, 0);
+		result = (NULL != attachmentHand);
+	}
 
-	tempJoint->setChild(body);
-	tempJoint->setParent(lLowerArm);
+	if (result)
+	{
+		Point3d parentPos = attachmentHand->getCMPosition();
+		Point3d childPos = parentPos;
+		Point3d parentJointPos;
+		Point3d childJointPos;
 
-	figure->addJoint(tempJoint);
-	figure->addArticulatedRigidBody(body);
-    //figure->fixJointConstraints();
+		// The local coordinate systems of the left and right limbs are rotated pi over y axis
+		// Create offsets to make the hand cling to an object by the palm(s)
+		switch (method)
+		{
+		case left:
+			childPos.x -= 0.03;
+			childPos.y -= 0.07;
+			parentJointPos = Point3d(0.09, -0.04, 0);
+			childJointPos = Point3d(0, 0, 0);
+			break;
+		case right:
+			childPos.x += 0.03;
+			childPos.y -= 0.07;
+			parentJointPos = Point3d(-0.09, -0.04, 0);
+			childJointPos = Point3d(0, 0, 0);
+			break;
+		case both:
+			break;
+		}
 
-	world.addArticulatedRigidBody(body);
+		body->setCMPosition(childPos);
+		// Force updating the body's position
+		// TODO: This is too crude. The parent must be in the proximity to the body, which we do not have good control over yet.
+		// The side-effects from the global rigid body updates may not be desirable, we really should only be updating
+		// the body we are grabbing and nothing else.
+		(dynamic_cast<ODEWorld*>(&world))->setEngineStateFromRB();
 
-    (dynamic_cast<ODEWorld*>(&world))->addJoint(figure, tempJoint);
+		HingeJoint* tempJoint = new HingeJoint();
+
+		ostringstream ostr;
+		ostr << "hand2" << targetName;
+		string name = ostr.str();
+
+		tempJoint->setName(name.c_str());
+		tempJoint->setAxis(Vector3d(0,1,0));
+
+		tempJoint->setParentJointPosition(parentJointPos);
+		tempJoint->setChildJointPosition(childJointPos);
+
+		// Setting high stop angle < low stop angle, effectively disables them, making the joint stiffer?
+		tempJoint->setJointLimits(-1.7, -2.7);
+
+		tempJoint->setChild(body);
+		tempJoint->setParent(attachmentHand);
+
+		m_character->addJoint(tempJoint);
+		body->setAFParent(m_character);
+
+		(dynamic_cast<ODEWorld*>(&world))->addJoint(m_character, tempJoint);
+
+		m_grabJoints[targetName] = tempJoint;
+	}
 }
 
 }

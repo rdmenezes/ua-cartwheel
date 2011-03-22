@@ -68,6 +68,11 @@ public:
 		This method adds one rigid body (articulated or not).
 	*/
 	virtual void addArticulatedRigidBody( ArticulatedRigidBody* articulatedRigidBody_disown );
+
+	/**
+		This method removes one rigid body (articulated or not).
+	*/
+	virtual bool removeArticulatedRigidBody( ArticulatedRigidBody* articulatedRigidBody_disown );
 	
 	ArticulatedRigidBody* getArticulatedRigidBody( int i ) { return arbs[i]; }
 	int getArticulatedRigidBodyCount() const { return arbs.size(); }
@@ -109,21 +114,18 @@ public:
 		for deleting the joint. However, I don't know how to force
 		python to disown an object when a method is called.
 	*/
-	void addJoint( Joint* joint_disown ) {
-		//tprintf("Joint Name: %s\n", joint_disown->getName());
-		//tprintf("Before: size=%d, capacity=%d\n", joints.size(), joints.capacity());
-		joints.push_back( joint_disown );
-		//tprintf("After: size=%d, capacity=%d\n\n", joints.size(), joints.capacity());
-	}
+	void addJoint( Joint* jt );
+
+	bool removeJoint( Joint* jt );
 
 	/**
-		This method is used to automatically fix the errors in the joints (i.e. drift errors caused by numercial integration). At some future
+		This method is used to automatically fix the errors in the joints (i.e. drift errors caused by numerical integration). At some future
 		point it can be changed into a proper stabilization technique.
 	*/
 	void fixJointConstraints(bool fixOrientations = true, bool fixVelocities = false);
 
 	/**
-		This method is used to get all the joints in the articulated figure and add them to the list of joints that is passed in as a paramter.
+		This method is used to get all the joints in the articulated figure and add them to the list of joints that is passed in as a parameter.
 	*/
 	//inline void addJointsToList(DynamicArray<Joint*> *joints);
 	void addJointsToList(DynamicArray<Joint*> *joints);
