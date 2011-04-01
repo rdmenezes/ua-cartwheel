@@ -45,7 +45,7 @@ CC = g++
 # -w    Hide all of the warnings because I don't like seeing them
 
 
-all : library mainControl interactControl interface
+all : library interactControl interface tomsLogger
 
 library : $(OBJ_FILES)
 	$(CC) -shared $(FRAMEWORKS) $(LPATH) $(LIBS) -o lib/libcartwheel.so $(OBJ_FILES) 
@@ -68,3 +68,5 @@ interactControl : library
 interface : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/interface.o -c src/interface.cpp
 	$(CC) $(CFLAGS) $(FRAMEWORKS) -o bin/interface src/interface.o $(CWLPATH) $(LPATH) $(LIBS)
+
+
