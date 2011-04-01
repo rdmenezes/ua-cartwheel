@@ -16,7 +16,7 @@ using namespace CartWheel::Core;
 
 int main(int argc, char** argv)
 {
-  SimulationInterface interface(true);//true);
+  SimulationInterface interface(false);//true);
 
   vector<double> start_state;
   start_state.push_back(2);

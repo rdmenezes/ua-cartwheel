@@ -68,6 +68,7 @@ void SimulationInterface::fullClear(){
 
 void SimulationInterface::init_simulation(std::vector<double> & start_state)
 {
+
   fullClear();
 
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
@@ -79,20 +80,22 @@ void SimulationInterface::init_simulation(std::vector<double> & start_state)
   string humanAction = "data/controllers/bipV3/HMV/actions";
 
   Point3d p1(start_state[0], 1.0, start_state[1]);
-  Point3d p2(start_state[3], 1.0, start_state[4]);
-
+ 
   // Add human 1
   string humanName1 = "Human1";
   simulator_->addHuman(humanName1, humanModel, humanController, humanAction, p1, start_state[2]);
-  simulator_->setHumanSpeed(humanName1, 1.0);
+  simulator_->setHumanSpeed(humanName1, 0.0);
 
   // Add human 2
-  string humanName2 = "Human2";
-  storedNames_.push_back(humanName1);
-  storedNames_.push_back(humanName2);
+  if(start_state.size() > 3){
+     Point3d p2(start_state[3], 1.0, start_state[4]);
+    string humanName2 = "Human2";
+    storedNames_.push_back(humanName1);
+    storedNames_.push_back(humanName2);
 
-  simulator_->addHuman(humanName2, humanModel, humanController, humanAction, p2, start_state[5]);
-  simulator_->setHumanSpeed(humanName2, 0);
+    simulator_->addHuman(humanName2, humanModel, humanController, humanAction, p2, start_state[5]);
+    simulator_->setHumanSpeed(humanName2, 0);
+  }
 }
 
 void SimulationInterface::simulate(std::vector<double> & start_state, std::vector<ExtendedAction*> & actions)
@@ -102,7 +105,7 @@ void SimulationInterface::simulate(std::vector<double> & start_state, std::vecto
 
   double other_steps_per_second = 200;
 
-  int samples_per_second = 2;
+  int samples_per_second = 10;
   int sampling_rate = other_steps_per_second / (samples_per_second * 20);
 
   init_simulation(start_state);
