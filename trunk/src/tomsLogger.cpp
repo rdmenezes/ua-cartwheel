@@ -27,7 +27,7 @@ for(double curSpeed = 0.0; curSpeed <= 3.0; curSpeed += 0.25){
   
   vector<double> params1;
   
-  params1.push_back(5.0);  //time 4.1
+  params1.push_back(15.0);  //time 
   params1.push_back(curSpeed);  //speed
 
   vector<ExtendedAction*> actions;
@@ -52,7 +52,7 @@ for(double curSpeed = 0.0; curSpeed <= 3.0; curSpeed += 0.25){
         int j = 0;
     //for (int j = 0; j < pos_state->getNumVectors(); ++j)
     //{
-      cout <<sqrt((pos_state->getPosition(j).x - 2.0) * (pos_state->getPosition(j).x - 2.0) + (pos_state->getPosition(j).z - 2.0) * (pos_state->getPosition(j).z - 2.0))  <<",";
+      cout <<sqrt((pos_state->getPosition(j).x - trajectory[0]->getPosition(0).x) * (pos_state->getPosition(j).x - trajectory[0]->getPosition(0).x) + (pos_state->getPosition(j).z - trajectory[0]->getPosition(0).z) * (pos_state->getPosition(j).z - trajectory[0]->getPosition(0).z))  <<",";
     //}
   }
   cout<<endl;
