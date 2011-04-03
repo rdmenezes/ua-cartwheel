@@ -1,33 +1,44 @@
 
 synchronizeControllers
 
+#0
 loadIKVMCController data/controllers/bipV3/Walking.sbc
 #loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Default.cbc
 
+#1
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Standing.cbc
 
+#2
 loadController data/controllers/bipV3/FastJog.sbc
 
+#3
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/SitDown.cbc
 
+#4
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
 loadBehaviourController data/controllers/bipV3/StandUp.cbc
 
+#5
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Push.cbc
 
+#6
 loadIKVMCController data/controllers/bipV3/Standing.sbc
 loadBehaviourController data/controllers/bipV3/Pull.cbc
 
+#7
 loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
 loadBehaviourController data/controllers/bipV3/PickUp.cbc
 
-loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
-loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
+#8
+loadController data/controllers/bipV3/Jump.sbc
+#loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+#loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
 
+#9
 loadController data/controllers/bipV3/Kick.sbc
 
 startingStance left

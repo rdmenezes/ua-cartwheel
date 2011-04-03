@@ -174,7 +174,7 @@ void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass
     body->setMOI(Vector3d(0.2,0.2,0.2));
 
     Point3d center = Point3d(0,0,0);
-    SphereCDP* sphereCDP = new SphereCDP(center, 0.1, body);
+    SphereCDP* sphereCDP = new SphereCDP(center, scale.getX(), body);
     body->addCollisionDetectionPrimitive(sphereCDP);
 
     body->setFrictionCoefficient(1.8);

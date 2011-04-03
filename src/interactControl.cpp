@@ -124,7 +124,8 @@ int main(int argc, char** argv)
 {
     Visualization viz(render, argc, argv, 800, 600);
     g_visualization = &viz;
-    Point3d camerPos(1.0,1.0,-1.0);
+    //Point3d camerPos(1.0,1.0,-1.0);***
+    Point3d camerPos(3.0,1.0,-1.0);
     Point3d cameraTarget(0.0,1.0,-3.0);
     //Point3d camerPos(0.0,5.0,5.0);
     //Point3d cameraTarget(0.0,1.0,0.0);
