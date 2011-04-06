@@ -12,6 +12,8 @@
 #include <string>
 #include <list>
 
+#include <boost/shared_ptr.hpp>
+
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -26,6 +28,9 @@ using CartWheel::Math::Point3d;
 namespace CartWheel { 
 
 class CartWheel3D;
+class Visualization;
+
+typedef boost::shared_ptr<Visualization> VisualizationPtr;
 
 class Visualization {
 

@@ -8,6 +8,8 @@
 #include <vector>
 #include <stdexcept>
 
+#include <boost/shared_ptr.hpp>
+
 namespace CartWheel
 {
 
@@ -17,6 +19,9 @@ using std::string;
 using std::out_of_range;
 
 using namespace CartWheel::Core;
+
+class ExtendedAction;
+typedef boost::shared_ptr<ExtendedAction> ExtendedActionPtr;
 
 enum UnitType { UNKNOWN_UNIT,  // error/bug
                   SPACIAL_UNIT,  // position, height, width, etc.

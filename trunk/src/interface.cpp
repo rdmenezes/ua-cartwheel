@@ -3,74 +3,79 @@
 #include <vector>
 #include <iostream>
 #include <Control/ActRecognizerInterface.h>
+#include <boost/assign/std/vector.hpp>
 
 using std::vector;
 using std::cout;
 using std::endl;
 
-using namespace std;
 using namespace CartWheel;
 using namespace CartWheel::Core;
+using namespace boost::assign;
 
 #define ACTREC
 
 int main(int argc, char** argv)
 {
-  SimulationInterface interface(false);//true);
+  SimulationInterface interface(true);
 
-  vector<double> start_state;
-  start_state.push_back(2);
-  start_state.push_back(2);
-  start_state.push_back(-3.14 / 1.5);
-  start_state.push_back(-1);
-  start_state.push_back(-1);
-  start_state.push_back(0);
+  // NEW
+  StartStatePtr s1(new StartState("Human1", 2, 2, -3.14 / 1.5));
+  StartStatePtr s2(new StartState("Human2", -1, -1, 0.0));
 
+  vector<StartStatePtr> start_state;
+  start_state += s1, s2;
+
+  // FIRST HUMAN
   vector<double> params1;
+  params1 += 10.0, 0.5;
+
   vector<double> params2;
+  params2 += 10.0; //no second param for standStill
+
   vector<double> params3;
+  params3 += 10.0, 0.0;
 
-#if 1
-  params1.push_back(10.0);
-  params1.push_back(0.5);
-  params2.push_back(10.0); //no second param for standStill
-  params3.push_back(10.0);
-  params3.push_back(0.0);
+  vector<ExtendedActionPtr> actions1;
+  ExtendedActionPtr a1(new WrapperAction(std::string("walk"), params1));
+  ExtendedActionPtr a2(new WrapperAction(std::string("standStill"), params2));
+  ExtendedActionPtr a3(new WrapperAction(std::string("walk"), params3));
+  actions1 += a1, a2, a3;
+  for (int i = 0; i < actions1.size(); i++)
+  {
+    actions1[i]->setActor("Human1");
+  }
 
-  vector<ExtendedAction*> actions;
-  actions.push_back(new WrapperAction(std::string("walk"), params1));
-  actions.push_back(new WrapperAction(std::string("standStill"), params2));
-  actions.push_back(new WrapperAction(std::string("walk"), params3));
-#else
-  params1.push_back(10.0);
-  params1.push_back(0.5);
-   params2.push_back(10.0);
-  params2.push_back(-0.5);
- params3.push_back(10.0);
-  params3.push_back(0.0);
+  // SECOND HUMAN
+  vector<double> params4;
+  params4 += 10.0, 0.5;
+  ExtendedActionPtr a4(new WrapperAction(std::string("walk"), params4));
 
+  vector<double> params5;
+  params5 += 20.0; //no second param for standStill
+  ExtendedActionPtr a5(new WrapperAction(std::string("standStill"), params5));
 
-  vector<ExtendedAction*> actions;
-  actions.push_back(new WrapperAction(std::string("walk"), params1));//new WalkAction(10.0, 0.5));
-  actions.push_back(new WrapperAction(std::string("walk"), params2));//new WalkAction(10.0, -0.5));
-  actions.push_back(new WrapperAction(std::string("walk"), params3));//new WalkAction(10.0, 0.0));
-#endif
+  vector<ExtendedActionPtr> actions2;
+  actions2 += a4, a5;
+  for (int i = 0; i < actions2.size(); i++)
+  {
+    actions2[i]->setActor("Human2");
+  }
 
-  for(int i =0; i < actions.size(); i++){
-  	actions[i]->setActor("Human1"); 
-  }  
+  vector<vector<ExtendedActionPtr> > actions;
+  actions += actions1, actions2;
 
   interface.simulate(start_state, actions);
   vector<PosState*> trajectory = interface.getPositions();
   vector<CapsuleState*> capsule_states = interface.getCapsules();
   vector<RelationalState*> rel_states = interface.getRelations();
   cout << "GOT " << trajectory.size() << " STATES" << endl;
-  
-  #ifdef ACTREC
-      const vector<string>& namers= interface.getLastHumanNames();
 
-      ActRecognizerInterface ari(string("meet"), namers);
-  #endif
+#ifdef ACTREC
+  const vector<string>& namers = interface.getLastHumanNames();
+
+  ActRecognizerInterface ari(string("meet"), namers);
+#endif
 
   for (int i = 0; i < trajectory.size(); ++i)
   {
@@ -86,13 +91,13 @@ int main(int argc, char** argv)
 
     }
     cout << "RELATIONS " << i << "\n=============================\n";
-    cout << rel_states[i]->toString()  <<endl;
-    #ifdef ACTREC
-       ari.progress(*(rel_states[i]));
-       if(ari.getCurTerminal())
-	cout<<ari.getFullVerbName()<<" achieved at step "<<i<<endl;
-     #endif
+    cout << rel_states[i]->toString() << endl;
 
+#ifdef ACTREC
+    ari.progress(*(rel_states[i]));
+    if (ari.getCurTerminal())
+      cout << ari.getFullVerbName() << " achieved at step " << i << endl;
+#endif
 
     cout << "CAPSULES:" << endl;
     for (int j = 0; j < cap_state->getNumEntities(); ++j)

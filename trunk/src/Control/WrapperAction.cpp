@@ -4,12 +4,12 @@ namespace CartWheel
 {
 
 void WrapperAction::executeSetup(CartWheel3D * cw){
-  if(switched){
+//  if(switched){
     cw->setController(actorName, myCommand);  //TODO: how do we send parameters?
     if(myParams.size() > 1)
 	cw->setHumanSpeed(actorName, myParams[1]);
-    switched = false;
-  }
+//    switched = false;
+//  }
 
 }
 
