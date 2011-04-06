@@ -16,6 +16,9 @@
 #include <Control/PosState.h>
 #include <Control/CapsuleState.h>
 #include <Control/RelationalState.h>
+#include <Control/StartState.h>
+
+#include <boost/shared_ptr.hpp>
 
 namespace CartWheel
 {
@@ -35,10 +38,10 @@ public:
   SimulationInterface(bool visualize);
   virtual ~SimulationInterface();
 
-  void init_simulation(std::vector<double> & start_state);
-  void simulate(std::vector<double> & start_state, std::vector<ExtendedAction*> & actions);
+  void init_simulation(std::vector<StartStatePtr> const &start_state);
+  void simulate(std::vector<StartStatePtr> const &start_state, std::vector<std::vector<ExtendedActionPtr> > const &actions);
 
-  Visualization& getVisualization() { return *visualization_; }
+  Visualization* getVisualization() { return visualization_; }
   const std::vector<PosState*>& getPositions() const;
   const std::vector<CapsuleState*>& getCapsules()  const;
   const std::vector<RelationalState*>& getRelations() const;
@@ -54,7 +57,7 @@ private:
   CartWheel3D* simulator_;
   Visualization* visualization_;
   bool visualize_;
-  char* sPath_;
+  std::string s_path_;
   void fullClear(); 
 
   std::vector<std::string> storedNames_;

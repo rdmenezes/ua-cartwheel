@@ -7,6 +7,12 @@
 
 #include <Control/SimulationInterface.h>
 
+//#include <boost/assign/std/vector.hpp>
+//
+//using namespace boost::assign;
+
+using std::vector;
+
 namespace CartWheel
 {
 void render(void)
@@ -15,13 +21,14 @@ void render(void)
 }
 
 // TODO This will probably need a parameter for sPath
-SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_(),capsules_(), visualizeCapsuleCallback_(NULL)
+SimulationInterface::SimulationInterface(bool visualize) :
+  relations_(), positions_(), capsules_(), visualizeCapsuleCallback_(NULL)
 {
   visualize_ = visualize;
-  sPath_ = new char[200];
-  strcpy(sPath_, "");
-  simulator_ = new CartWheel3D(sPath_);
-  storedNames_ = vector<string>();
+  //sPath_ = new char[200];
+  //strcpy(sPath_, "");
+  simulator_ = new CartWheel3D(s_path_); // Empty string
+  storedNames_ = vector<string> ();
   if (visualize_)
   {
     Point3d camerPos(0.0, 5.0, 5.0);
@@ -47,28 +54,27 @@ SimulationInterface::SimulationInterface(bool visualize):relations_(),positions_
 SimulationInterface::~SimulationInterface()
 {
   delete simulator_;
-  delete [] sPath_;
-  if(visualize_)
-     delete visualization_;
+  if (visualize_)
+    delete visualization_;
 }
 
-void SimulationInterface::fullClear(){
-   for(int i =0; i < positions_.size(); i++){
-      delete positions_[i];
-      delete relations_[i];
-      delete capsules_[i];
+void SimulationInterface::fullClear()
+{
+  for (int i = 0; i < positions_.size(); i++)
+  {
+    delete positions_[i];
+    delete relations_[i];
+    delete capsules_[i];
   }
-    positions_.clear();
+  positions_.clear();
   capsules_.clear();
   relations_.clear();
   storedNames_.clear();
 
 }
 
-
-void SimulationInterface::init_simulation(std::vector<double> & start_state)
+void SimulationInterface::init_simulation(vector<StartStatePtr> const &start_state)
 {
-
   fullClear();
 
   simulator_->addObject("ground", "data/objects/flatGround.rbs", -1);
@@ -79,26 +85,22 @@ void SimulationInterface::init_simulation(std::vector<double> & start_state)
   string humanController = "data/controllers/bipV3/HMV/compositeController.con";
   string humanAction = "data/controllers/bipV3/HMV/actions";
 
-  Point3d p1(start_state[0], 1.0, start_state[1]);
- 
-  // Add human 1
-  string humanName1 = "Human1";
-  simulator_->addHuman(humanName1, humanModel, humanController, humanAction, p1, start_state[2]);
-  simulator_->setHumanSpeed(humanName1, 0.0);
+  int i = 0;
+  for (vector<StartStatePtr>::const_iterator ss = start_state.begin(); ss != start_state.end(); ++ss)
+  {
+    Point3d p1((*ss)->getX(), 1.0, (*ss)->getZ());
+    string humanName = (*ss)->getName();
+    storedNames_.push_back(humanName);
+    simulator_->addHuman(humanName, humanModel, humanController, humanAction, p1, (*ss)->getTheta());
+    simulator_->setHumanSpeed(humanName, 0.0);
 
-  // Add human 2
-  if(start_state.size() > 3){
-     Point3d p2(start_state[3], 1.0, start_state[4]);
-    string humanName2 = "Human2";
-    storedNames_.push_back(humanName1);
-    storedNames_.push_back(humanName2);
-
-    simulator_->addHuman(humanName2, humanModel, humanController, humanAction, p2, start_state[5]);
-    simulator_->setHumanSpeed(humanName2, 0);
+    ++i;
   }
 }
 
-void SimulationInterface::simulate(std::vector<double> & start_state, std::vector<ExtendedAction*> & actions)
+// NOTE: This assumes that the total amount of time taken by each agent's actions is the same, there is no "dead space"
+void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
+                                   vector<vector<ExtendedActionPtr> > const &actions)
 {
   int steps_per_second = 2000;
   double step_size = 1.0 / steps_per_second;
@@ -111,33 +113,61 @@ void SimulationInterface::simulate(std::vector<double> & start_state, std::vecto
   init_simulation(start_state);
 
   double total_time = 0.0;
-  for (std::vector<ExtendedAction*>::iterator it = actions.begin(); it != actions.end(); ++it)
+  vector<ExtendedActionPtr> first_actions = actions[0];
+  for (vector<ExtendedActionPtr>::const_iterator it = first_actions.begin(); it != first_actions.end(); ++it)
   {
     total_time += (*it)->getTime();
   }
   total_time;
 
-  // Queue up the first action
-  int action_index = 0;
-  ExtendedAction* curr_action = actions[action_index];
-  curr_action->executeSetup(simulator_);
-  double prev_start = 0.0;
-  // Run each action for it's duration
-  int i = 0;
+  int action_index[actions.size()];
+  double prev_starts[actions.size()];
+  for (int i = 0; i < actions.size(); i++) {
+    action_index[i] = 0;
+    prev_starts[i] = 0.0;
+  }
+
+  for (vector<vector<ExtendedActionPtr> >::const_iterator av = actions.begin(); av != actions.end(); ++av)
+  {
+    ExtendedActionPtr curr_action = (*av)[0];
+    curr_action->executeSetup(simulator_); // Set it up
+  }
+
+  // Outer loop: Time
+  int i = 0; // step counter
   for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * other_steps_per_second) // Not sure about this constant
   {
-    if (curr_time > curr_action->getTime() + prev_start) // rename to duration
+    // Inner loop: Humans
+    for (int h = 0; h < actions.size(); h++)
     {
-      if (action_index == actions.size() - 1)
+      //cout << h << " " << action_index[h] << endl;
+
+      // Check whether the action is over
+      if (curr_time > actions[h][action_index[h]]->getTime() + prev_starts[h]) // rename action.time to duration
       {
-        break;
+        if (action_index[h] == actions[h].size() - 1)
+        {
+          break; // TODO Is this OK? This ends the main loop if any human's action final action has completed
+        }
+
+        // If so, move on to the next action
+        action_index[h]++;
+        // Setup the next action
+        actions[h][action_index[h]]->executeSetup(simulator_);
+        // Store the start time of the current action
+        prev_starts[h] = curr_time;
       }
-//      cout << "SWITCHING ACTION" << endl;
-      action_index++;
-      curr_action = actions[action_index];
-      curr_action->executeSetup(simulator_);
-      prev_start = curr_time;
+      else
+      {
+        // The action is ongoing
+      }
     }
+    // END HUMAN LOOP
+
+    // Step the simulator
+    simulator_->runStep(step_size);
+    // ... and update the step counter
+    ++i;
 
     if (i % sampling_rate == 0)
     {
@@ -146,45 +176,45 @@ void SimulationInterface::simulate(std::vector<double> & start_state, std::vecto
       CapsuleState* capsule_state = new CapsuleState(simulator_);
       capsules_.push_back(capsule_state);
       RelationalState* rel_state = new RelationalState();
-      if(i != 0)
-          rel_state->reset(*positions_[(i / sampling_rate)-1],simulator_);
+      if (i != 0)
+      {
+        rel_state->reset(*positions_[(i / sampling_rate) - 1], simulator_);
+      }
       relations_.push_back(rel_state);
     }
 
-    curr_action->executeStep(simulator_, step_size);
+    // Lastly, render (if visualization is on)
     if (visualize_)
     {
-      
-      if(visualizeCapsuleCallback_)
+      if (visualizeCapsuleCallback_)
       {
-          CartWheel::CapsuleState* capsule_state = new CapsuleState(simulator_);
-          visualizeCapsuleCallback_(*capsule_state);
-          delete capsule_state;
+        CartWheel::CapsuleState* capsule_state = new CapsuleState(simulator_);
+        visualizeCapsuleCallback_(*capsule_state);
+        delete capsule_state; // Ummm...
       }
       visualization_->render(simulator_);
-       
       visualization_->glutStep();
     }
 
-    ++i;
   }
+
+  // Reset the simulator for the next run
   simulator_->reset();
 }
 
-const std::vector<RelationalState*>& SimulationInterface::getRelations() const
+const vector<RelationalState*>& SimulationInterface::getRelations() const
 {
   return relations_;
 }
 
-const std::vector<PosState*>& SimulationInterface::getPositions() const
+const vector<PosState*>& SimulationInterface::getPositions() const
 {
   return positions_;
 }
 
-const std::vector<CapsuleState*>& SimulationInterface::getCapsules() const
+const vector<CapsuleState*>& SimulationInterface::getCapsules() const
 {
   return capsules_;
 }
-
 
 } // namespace CartWheel
