@@ -6,6 +6,7 @@
  */
 
 #include <Control/SimulationInterface.h>
+#include <Control/WrapperAction.h>
 
 //#include <boost/assign/std/vector.hpp>
 //
@@ -98,7 +99,8 @@ void SimulationInterface::init_simulation(vector<StartStatePtr> const &start_sta
   }
 }
 
-// NOTE: This assumes that the total amount of time taken by each agent's actions is the same, there is no "dead space"
+// Simulation terminates when all actors have run out of actions
+// "Dead space" in simulation is padded with standing still
 void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
                                    vector<vector<ExtendedActionPtr> > const &actions)
 {
@@ -112,42 +114,78 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
 
   init_simulation(start_state);
 
+  // Find the total duration that we will run for, as well as the total duration of each person's actions
   double total_time = 0.0;
-  vector<ExtendedActionPtr> first_actions = actions[0];
-  for (vector<ExtendedActionPtr>::const_iterator it = first_actions.begin(); it != first_actions.end(); ++it)
+  double durations[actions.size()];
+  for (int i = 0; i < actions.size(); i++)
   {
-    total_time += (*it)->getTime();
+    durations[i] = 0.0;
+    vector<ExtendedActionPtr> my_actions = actions[i];
+    for (vector<ExtendedActionPtr>::const_iterator it = my_actions.begin(); it != my_actions.end(); ++it)
+    {
+      durations[i] += (*it)->getTime(); // Really rename to duration
+    }
+    if (durations[i] > total_time)
+    {
+      total_time = durations[i];
+    }
   }
-  total_time;
 
   int action_index[actions.size()];
   double prev_starts[actions.size()];
-  for (int i = 0; i < actions.size(); i++) {
-    action_index[i] = 0;
-    prev_starts[i] = 0.0;
-  }
+  bool complete[actions.size()];
 
-  for (vector<vector<ExtendedActionPtr> >::const_iterator av = actions.begin(); av != actions.end(); ++av)
+  for (int i = 0; i < actions.size(); i++)
   {
-    ExtendedActionPtr curr_action = (*av)[0];
-    curr_action->executeSetup(simulator_); // Set it up
+    prev_starts[i] = 0.0;
+
+    if (actions[i].empty()) // Stand still the whole time
+    {
+      vector<double> params;
+      params.push_back(total_time);
+      ExtendedActionPtr null_action(new WrapperAction("standStill", start_state[i]->getName(), params));
+      null_action->executeSetup(simulator_);
+      complete[i] = true;
+    }
+    else
+    {
+      action_index[i] = 0;
+      ExtendedActionPtr curr_action = actions[i][0];
+      curr_action->executeSetup(simulator_); // Set it up
+      complete[i] = false;
+    }
   }
 
   // Outer loop: Time
   int i = 0; // step counter
   for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * other_steps_per_second) // Not sure about this constant
   {
+    bool keep_going = false;
     // Inner loop: Humans
     for (int h = 0; h < actions.size(); h++)
     {
-      //cout << h << " " << action_index[h] << endl;
+      if (complete[h])
+      {
+        continue;
+      }
 
       // Check whether the action is over
       if (curr_time > actions[h][action_index[h]]->getTime() + prev_starts[h]) // rename action.time to duration
       {
         if (action_index[h] == actions[h].size() - 1)
         {
-          break; // TODO Is this OK? This ends the main loop if any human's action final action has completed
+          cout << start_state[h]->getName() << " " << durations[h] << " " << total_time << endl;
+
+          if (durations[h] < total_time) // If this guy is finished but others are still going, pad with stand still
+          {
+            vector<double> params;
+            params.push_back(total_time - durations[h]);
+            ExtendedActionPtr null_action(new WrapperAction("standStill", start_state[h]->getName(), params));
+            null_action->executeSetup(simulator_);
+          }
+
+          complete[h] = true;
+          continue;
         }
 
         // If so, move on to the next action
@@ -157,12 +195,15 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
         // Store the start time of the current action
         prev_starts[h] = curr_time;
       }
-      else
-      {
-        // The action is ongoing
-      }
+
+      keep_going = true;
     }
     // END HUMAN LOOP
+
+    if (!keep_going)
+    {
+      break; // Termination condition
+    }
 
     // Step the simulator
     simulator_->runStep(step_size);

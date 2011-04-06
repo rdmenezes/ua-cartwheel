@@ -19,9 +19,12 @@ int main(int argc, char** argv)
 {
   SimulationInterface interface(true);
 
+  string actor1 = "Human1";
+  string actor2 = "Human2";
+
   // NEW
-  StartStatePtr s1(new StartState("Human1", 2, 2, -3.14 / 1.5));
-  StartStatePtr s2(new StartState("Human2", -1, -1, 0.0));
+  StartStatePtr s1(new StartState(actor1, 2, 2, -3.14 / 1.5));
+  StartStatePtr s2(new StartState(actor2, -1, -1, 0.0));
 
   vector<StartStatePtr> start_state;
   start_state += s1, s2;
@@ -34,33 +37,26 @@ int main(int argc, char** argv)
   params2 += 10.0; //no second param for standStill
 
   vector<double> params3;
-  params3 += 10.0, 0.0;
+  params3 += 10.0, -0.5;
 
   vector<ExtendedActionPtr> actions1;
-  ExtendedActionPtr a1(new WrapperAction(std::string("walk"), params1));
-  ExtendedActionPtr a2(new WrapperAction(std::string("standStill"), params2));
-  ExtendedActionPtr a3(new WrapperAction(std::string("walk"), params3));
+  ExtendedActionPtr a1(new WrapperAction("walk", actor1, params1));
+  ExtendedActionPtr a2(new WrapperAction("standStill", actor1, params2));
+  ExtendedActionPtr a3(new WrapperAction("walk", actor1, params3));
   actions1 += a1, a2, a3;
-  for (int i = 0; i < actions1.size(); i++)
-  {
-    actions1[i]->setActor("Human1");
-  }
 
   // SECOND HUMAN
   vector<double> params4;
   params4 += 10.0, 0.5;
-  ExtendedActionPtr a4(new WrapperAction(std::string("walk"), params4));
+  ExtendedActionPtr a4(new WrapperAction("walk", actor2, params4));
 
   vector<double> params5;
   params5 += 20.0; //no second param for standStill
-  ExtendedActionPtr a5(new WrapperAction(std::string("standStill"), params5));
+  ExtendedActionPtr a5(new WrapperAction("standStill", actor2, params5));
 
   vector<ExtendedActionPtr> actions2;
-  actions2 += a4, a5;
-  for (int i = 0; i < actions2.size(); i++)
-  {
-    actions2[i]->setActor("Human2");
-  }
+  actions2 += a4; // Partial duration, comment out for empty action vector
+//  actions2 += a5; // Comment in for full duration
 
   vector<vector<ExtendedActionPtr> > actions;
   actions += actions1, actions2;
