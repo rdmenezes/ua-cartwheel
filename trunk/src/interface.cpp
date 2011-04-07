@@ -31,17 +31,18 @@ int main(int argc, char** argv)
 
   // FIRST HUMAN
   vector<double> params1;
-  params1 += 10.0, 0.5;
+  params1 += 5.0, 0.5;
 
   vector<double> params2;
-  params2 += 10.0; //no second param for standStill
+  params2 += 5.0, 0.0; //no second param for standStill
 
   vector<double> params3;
-  params3 += 10.0, -0.5;
+  params3 += 5.0, -0.5;
 
   vector<ExtendedActionPtr> actions1;
   ExtendedActionPtr a1(new WrapperAction("walk", actor1, params1));
-  ExtendedActionPtr a2(new WrapperAction("standStill", actor1, params2));
+  //ExtendedActionPtr a2(new WrapperAction("standStill", actor1, params2));
+  ExtendedActionPtr a2(new WrapperAction("walk", actor1, params2));
   ExtendedActionPtr a3(new WrapperAction("walk", actor1, params3));
   actions1 += a1, a2, a3;
 

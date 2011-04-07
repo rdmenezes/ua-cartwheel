@@ -157,10 +157,14 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
     }
   }
 
+  cout << "Total Time: " << total_time << " Step Size: " << step_size << endl;
+
   // Outer loop: Time
   int i = 0; // step counter
-  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size) 
+  double curr_time = 0.0;
+  for (curr_time = 0.0; curr_time < total_time; curr_time += step_size) 
   {
+     // cout << "Iteration: " << i << " " << curr_time << endl;
     bool keep_going = false;
     // Inner loop: Humans
     for (int h = 0; h < actions.size(); h++)
@@ -173,6 +177,7 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
       // Check whether the action is over
       if (curr_time > actions[h][action_index[h]]->getTime() + prev_starts[h]) // rename action.time to duration
       {
+        cout << " Action finished " << endl;
         if (action_index[h] == actions[h].size() - 1)
         {
           cout << start_state[h]->getName() << " " << durations[h] << " " << total_time << endl;
@@ -228,6 +233,7 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
     // Lastly, render (if visualization is on)
     if (visualize_ && i % steps_per_visual == 0)
     {
+        //cout << "Render " << i << " current time " << curr_time << endl;
       if (visualizeCapsuleCallback_)
       {
         CartWheel::CapsuleState* capsule_state = new CapsuleState(simulator_);
@@ -239,6 +245,8 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
     }
 
   }
+
+  cout << "Simulation Time: " << curr_time << " Steps: " << i << endl;
 
   // Reset the simulator for the next run
   simulator_->reset();
