@@ -24,7 +24,7 @@ public:
   int getNumEntities() const;
   const std::string& getName(int index) const;
 
-  /// Assuming "index" is for human, and the returned vector is over frames
+  /// Assuming "index" is for human, and the returned vector is over body parts
   const std::vector<CartWheel::Math::Capsule*>& getCapsules(int index) const;
 
   void clear();

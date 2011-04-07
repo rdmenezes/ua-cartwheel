@@ -58,9 +58,13 @@ public:
 
     /**
      * Add a human to the simulator.
+     *
+     * @param heading The human's facing direction (in radians from z+ axis)
      */
     void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile,
     		const Math::Point3d& pos, double heading);
+
+    /// Add human with initial heading (in radians/ Add human with initial heading (in radians/ Add human with initial heading (in radians/ Add human with initial heading (in radians)
     void addHuman(const std::string& name, const std::string& characterFile, const std::string& controllerFile,
     		const std::string& actionFile, const Math::Point3d& pos, double heading);
 
@@ -86,6 +90,8 @@ public:
     int getHumanCount();
 
     Math::Vector3d getHumanPosition(const std::string& name);
+
+    /// Get heading (in radians)
     double getHumanHeading(const std::string& name);
     Math::Vector3d getHumanVelocity(const std::string& name);
 
@@ -106,6 +112,8 @@ public:
     void setPath(const std::string& path) { _path = path; }
 
     void setHumanPosition(const std::string& name, const Math::Point3d& pos);
+
+    /// Set heading (in radians)
     void setHumanHeading(const std::string& name, double angle);
     void setHumanSpeed(const std::string& name, double speed);
     void setHumanStepWidth(const std::string& name, double width);
