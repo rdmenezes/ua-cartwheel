@@ -107,7 +107,7 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
   int steps_per_second = 2000;
   double step_size = 1.0 / steps_per_second;
 
-  int samples_per_second = 2;
+  int samples_per_second = 10;  //change back to 2!!!
   int steps_per_sample = steps_per_second / samples_per_second;
 
   int visual_per_second = 30;

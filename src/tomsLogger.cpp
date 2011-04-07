@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 {
   SimulationInterface interface(false);//true);
 
-  StartStatePtr s1(new StartState("Human1", 2, 2, -3.14 / 1.5));
+  StartStatePtr s1(new StartState("Human1", 2, 2, 0.0));
   vector<StartStatePtr> start_state;
   start_state += s1;
 
