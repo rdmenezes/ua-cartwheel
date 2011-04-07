@@ -5,9 +5,17 @@ namespace CartWheel
 
 void WrapperAction::executeSetup(CartWheel3D * cw){
 //  if(switched){
-    cw->setController(actorName, myCommand);  //TODO: how do we send parameters?
-    if(myParams.size() > 1)
+    int com = myCommand;
+    if(myCommand == 10 || myCommand == 11)
+	com = 0;
+    cw->setController(actorName, com);  //TODO: how do we send parameters?
+    if(myParams.size() > 1 && (myCommand == 1 || myCommand ==10))
 	cw->setHumanSpeed(actorName, myParams[1]);
+    else if(myParams.size() > 1)
+	cw->setHumanHeading(actorName, myParams[1]);
+
+    if(myParams.size() > 2 && myCommand == 10)
+	cw->setHumanHeading(actorName, myParams[2]);
 //    switched = false;
 //  }
 
@@ -36,7 +44,8 @@ void WrapperAction::populateMap(){
   actionMap["pickup"]= 7;
   actionMap["raiseArms"]= 8;
   actionMap["kick"]= 9;
-  
+  actionMap["walkTurn"]=10; 
+  actionMap["stillTurn"]=11;
 }
 
 
