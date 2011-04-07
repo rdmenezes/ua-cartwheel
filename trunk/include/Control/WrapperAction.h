@@ -92,7 +92,7 @@ public:
 
   virtual double getParam(size_t i) const;
 
-  virtual UnitType getPAramUnits(size_t i) const
+  virtual UnitType getParamUnits(size_t i) const
   {
     return UNKNOWN_UNIT;
   }

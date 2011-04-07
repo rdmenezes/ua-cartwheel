@@ -66,7 +66,10 @@ public:
 	void setBehaviour(CartWheel::Core::BehaviourController* behaviour);
 	void setPolicy(CartWheel::Core::Policy* policy);
 	void setPosition(const CartWheel::Math::Point3d& position);
+
+    /// @param angle Angle in radians
 	void setHeading(double angle);
+
     void setSpeed(double speed);
     void setStepWidth(double width);
     void setName(const std::string& name);
