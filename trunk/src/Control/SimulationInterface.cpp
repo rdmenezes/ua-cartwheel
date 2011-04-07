@@ -107,10 +107,11 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
   int steps_per_second = 2000;
   double step_size = 1.0 / steps_per_second;
 
-  double other_steps_per_second = 200;
+  int samples_per_second = 2;
+  int steps_per_sample = steps_per_second / samples_per_second;
 
-  int samples_per_second = 10;
-  int sampling_rate = other_steps_per_second / (samples_per_second * 20);
+  int visual_per_second = 30;
+  int steps_per_visual = steps_per_second / visual_per_second;
 
   init_simulation(start_state);
 
@@ -158,7 +159,7 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
 
   // Outer loop: Time
   int i = 0; // step counter
-  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size * other_steps_per_second) // Not sure about this constant
+  for (double curr_time = 0.0; curr_time < total_time; curr_time += step_size) 
   {
     bool keep_going = false;
     // Inner loop: Humans
@@ -210,22 +211,22 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state,
     // ... and update the step counter
     ++i;
 
-    if (i % sampling_rate == 0)
+    if (i % steps_per_sample == 0)
     {
       PosState* pos_state = new PosState(simulator_);
       positions_.push_back(pos_state);
       CapsuleState* capsule_state = new CapsuleState(simulator_);
       capsules_.push_back(capsule_state);
       RelationalState* rel_state = new RelationalState();
-      if (i != 0)
-      {
-        rel_state->reset(*positions_[(i / sampling_rate) - 1], simulator_);
-      }
+//      if (i != 0)
+//      {
+//        rel_state->reset(*positions_[(i / sampling_rate) - 1], simulator_);
+//      }
       relations_.push_back(rel_state);
     }
 
     // Lastly, render (if visualization is on)
-    if (visualize_)
+    if (visualize_ && i % steps_per_visual == 0)
     {
       if (visualizeCapsuleCallback_)
       {
