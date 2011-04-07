@@ -35,6 +35,7 @@ private:
         return 1; // mySpeed;
     }
 
+protected:
   double mySpeed;
 
 };
