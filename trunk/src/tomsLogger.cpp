@@ -3,14 +3,19 @@
 #include <vector>
 #include <iostream>
 #include <Control/ActRecognizerInterface.h>
+#include <boost/assign/std/vector.hpp>
+
 
 using std::vector;
 using std::cout;
 using std::endl;
 
+
 using namespace std;
 using namespace CartWheel;
 using namespace CartWheel::Core;
+using namespace boost::assign;
+
 
 #define ACTREC
 
@@ -18,24 +23,28 @@ int main(int argc, char** argv)
 {
   SimulationInterface interface(false);//true);
 
-  vector<double> start_state;
-  start_state.push_back(2.0);
-  start_state.push_back(2.0);
-  start_state.push_back(-3.14);
+  StartStatePtr s1(new StartState("Human1", 2, 2, -3.14 / 1.5));
+  vector<StartStatePtr> start_state;
+  start_state += s1;
 
 for(double curSpeed = 0.0; curSpeed <= 3.0; curSpeed += 0.25){
-  
+ 
+ 
   vector<double> params1;
   
-  params1.push_back(15.0);  //time 
-  params1.push_back(curSpeed);  //speed
+  params1 += 15.0;  //time 
+  params1 += curSpeed;  //speed
 
-  vector<ExtendedAction*> actions;
-  actions.push_back(new WrapperAction(std::string("walk"), params1));
+  vector<ExtendedActionPtr> actions1;
+  ExtendedActionPtr a1(new WrapperAction("walk", params1));
+  actions1 += a1;
 
-  for(int i =0; i < actions.size(); i++){
-  	actions[i]->setActor("Human1"); 
+  for(int i =0; i < actions1.size(); i++){
+  	actions1[i]->setActor("Human1"); 
   }  
+
+   vector<vector<ExtendedActionPtr> > actions;
+   actions += actions1;
 
   interface.simulate(start_state, actions);
   vector<PosState*> trajectory = interface.getPositions();
@@ -56,7 +65,7 @@ for(double curSpeed = 0.0; curSpeed <= 3.0; curSpeed += 0.25){
     //}
   }
   cout<<endl;
-  delete actions[0];
+  //delete actions[0];
 }
 
 }
