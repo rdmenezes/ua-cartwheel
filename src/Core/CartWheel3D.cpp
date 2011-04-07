@@ -220,18 +220,18 @@ void CartWheel3D::reset()
 
 void CartWheel3D::runStep(double dt)
 {
-	const double desiredFrameRate = 29.97;
-	const double animationTimeToRealTimeRatio = 1.3;
-	const double maxRunningTime = 0.98 / desiredFrameRate;
-	double simulationTime = 0;
+//	const double desiredFrameRate = 29.97;
+//	const double animationTimeToRealTimeRatio = 1.3;
+//	const double maxRunningTime = 0.98 / desiredFrameRate;
+//	double simulationTime = 0;
 
 	DynamicArray<ContactPoint>* contactPoints = _world->getContactForces();
 
 	DynamicArray<Vector3d> humanPositions;
 
-	while ((simulationTime / maxRunningTime) < animationTimeToRealTimeRatio)
-    {
-		simulationTime += SimGlobals::dt;
+//	while ((simulationTime / maxRunningTime) < animationTimeToRealTimeRatio)
+//    {
+//		simulationTime += dt; //SimGlobals::dt;
 
 		for (HumanItr itr = _humans.begin(); itr != _humans.end(); itr++)
 	    {
@@ -292,7 +292,7 @@ void CartWheel3D::runStep(double dt)
 				}
 			}
 		}
-    }
+    //}
 }
 
 Math::Vector3d CartWheel3D::getHumanPosition(const std::string& name)
