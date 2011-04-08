@@ -119,41 +119,50 @@ void CartWheel3D::addObject(const string& name, const string& objFile, double ma
     }
 }
 
+void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector3d& position, double mass)
+{
+  string mesh = _path + "data/models/box3.obj";
+  Vector3d offset = Vector3d(0,0,0);
+
+  RigidBody* body = new ArticulatedRigidBody();
+  body->setName(name.c_str());
+  body->setScale(scale);
+  body->addMeshObj(mesh.c_str(), offset, scale);
+  body->setColour(0.8, 0.8, 0.8, 1);
+  body->setMass(mass);
+  body->setMOI(Vector3d(0.2, 0.2, 0.2));
+
+  Point3d pos1 = Point3d(-scale.x, -scale.y, -scale.z);
+  Point3d pos2 = Point3d(scale.x, scale.y, scale.z);
+
+  body->addCollisionDetectionPrimitive(new BoxCDP(pos1, pos2, body));
+
+  body->setFrictionCoefficient(1.8);
+  body->setRestitutionCoefficient(0.35);
+
+  body->setCMPosition(position);
+
+  ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*> (body);
+  if (NULL != arb)
+  {
+    arb->setParentJoint(NULL);
+    _world->addArticulatedRigidBody(arb);
+  }
+  else
+  {
+    _world->addRigidBody(body);
+  }
+
+//  addBox(name, scale, mass);
+//  RigidBody* body = _world->getRBByName(name.c_str());
+//  body->setCMPosition(position);
+}
+
+// TODO: Probably needs to take a position as well, otherwise have to call updateRB after
 void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
 {
-    string mesh = _path + "data/models/box3.obj";
-    Vector3d offset = Vector3d(0,0,0);
-
-#if 1
-    RigidBody* body = new ArticulatedRigidBody();
-#else
-    RigidBody* body = new RigidBody();
-#endif
-    body->setName(name.c_str());
-    body->setScale(scale);
-    body->addMeshObj(mesh.c_str(), offset, scale);
-    body->setColour(0.8,0.8,0.8,1);
-    body->setMass(mass);
-    body->setMOI(Vector3d(0.2,0.2,0.2));
-
-    Point3d pos1 = Point3d(-scale.x, -scale.y, -scale.z);
-    Point3d pos2 = Point3d(scale.x, scale.y, scale.z);
-
-    body->addCollisionDetectionPrimitive(new BoxCDP(pos1, pos2, body));
-
-   	body->setFrictionCoefficient(1.8);
-    body->setRestitutionCoefficient(0.35);
-
-    ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*>(body);
-    if (NULL != arb)
-    {
-		arb->setParentJoint(NULL);
-		_world->addArticulatedRigidBody(arb);
-    }
-    else
-    {
-    	_world->addRigidBody(body);
-    }
+  Vector3d position = Vector3d(0, 0, 0);
+  addBox(name, scale, position, mass);
 }
 
 void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass)

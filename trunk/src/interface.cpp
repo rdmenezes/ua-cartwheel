@@ -13,7 +13,7 @@ using namespace CartWheel;
 using namespace CartWheel::Core;
 using namespace boost::assign;
 
-#define ACTREC
+//#define ACTREC
 
 int main(int argc, char** argv)
 {
@@ -23,11 +23,12 @@ int main(int argc, char** argv)
   string actor2 = "Human2";
 
   // NEW
-  StartStatePtr s1(new StartState(actor1, 2, 2, -3.14 / 1.5));
-  StartStatePtr s2(new StartState(actor2, -1, -1, 0.0));
+  //  StartStatePtr s1(new StartState(actor1, 2, 2, -3.14 / 1.5));
+  StartStatePtr s1(new StartState(actor1, 0, -1, 0.0));
+  StartStatePtr s2(new StartState(actor2, -1, -3, 0.0));
 
   vector<StartStatePtr> start_state;
-  start_state += s1, s2;
+  start_state += s1; //, s2;
 
   // FIRST HUMAN
   vector<double> params1;
@@ -48,21 +49,35 @@ int main(int argc, char** argv)
 
   // SECOND HUMAN
   vector<double> params4;
-  params4 += 10.0, 0.5;
+  params4 += 5.0, 0.5;
   ExtendedActionPtr a4(new WrapperAction("walk", actor2, params4));
 
   vector<double> params5;
-  params5 += 20.0; //no second param for standStill
+  params5 += 10.0; //no second param for standStill
   ExtendedActionPtr a5(new WrapperAction("standStill", actor2, params5));
 
   vector<ExtendedActionPtr> actions2;
   actions2 += a4; // Partial duration, comment out for empty action vector
-//  actions2 += a5; // Comment in for full duration
+  //  actions2 += a5; // Comment in for full duration
 
   vector<vector<ExtendedActionPtr> > actions;
-  actions += actions1, actions2;
+  actions += actions1; //, actions2;
 
-  interface.simulate(start_state, actions);
+
+  ////////////////////////////////////////
+  // BOXES
+  Vector3d box_scale(0.15, 0.15, 0.15);
+  Vector3d box_pos(0.0, 0.10, 1.0);
+  BoxStartStatePtr box1(new BoxStartState("box1", box_pos, box_scale, 4.0));
+
+  vector<BoxStartStatePtr> boxes;
+  boxes += box1;
+
+  ////////////////////////////////////////
+  // SIMULATE
+//  interface.simulate(start_state, actions);
+  interface.simulate(start_state, boxes, actions);
+
   vector<PosState*> trajectory = interface.getPositions();
   vector<CapsuleState*> capsule_states = interface.getCapsules();
   vector<RelationalState*> rel_states = interface.getRelations();
@@ -93,7 +108,7 @@ int main(int argc, char** argv)
 #ifdef ACTREC
     ari.progress(*(rel_states[i]));
     if (ari.getCurTerminal())
-      cout << ari.getFullVerbName() << " achieved at step " << i << endl;
+    cout << ari.getFullVerbName() << " achieved at step " << i << endl;
 #endif
 
     cout << "CAPSULES:" << endl;
