@@ -70,6 +70,7 @@ public:
 
     void addObject(const std::string& name, const std::string& objFile, double mass);
     void addBox(const std::string& name, const Math::Vector3d& scale, double mass);
+    void addBox(const std::string& name, const Math::Vector3d& scale, const Math::Vector3d& position, double mass);
     void addBall(const std::string& name, const Math::Vector3d& scale, double mass);
 
     /**
