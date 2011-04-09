@@ -21,8 +21,8 @@ class BoxStartState
 {
 
 public:
-  BoxStartState(std::string name, Math::Vector3d position, Math::Vector3d size, double mass) :
-    name_(name), position_(position), size_(size), mass_(mass)
+  BoxStartState(std::string name, Math::Vector3d position, double rotation, Math::Vector3d size, double mass) :
+    name_(name), position_(position), rotation_(rotation), size_(size), mass_(mass)
   {
   };
   virtual ~BoxStartState();
@@ -37,6 +37,12 @@ public:
     return position_;
   };
 
+  double getRotation()
+  {
+    return rotation_;
+  };
+
+
   Math::Vector3d getSize()
   {
     return size_;
@@ -49,12 +55,17 @@ public:
 
   void addToWorld(CartWheel3D* simulator)
   {
-    simulator->addBox(name_, size_, position_, mass_);
+    simulator->addBox(name_, size_, position_, rotation_, mass_);
+//    Quaternion orientation;
+//    orientation.setToRotationQuaternion(rotation_, Vector3d(0, 1, 0));
+//    Vector3d zeroVelocity;
+//    simulator->updateRB(name_, position_, orientation, zeroVelocity);
   };
 
 private:
   std::string name_;
   Math::Vector3d position_;
+  double rotation_;
   Math::Vector3d size_;
   double mass_;
 

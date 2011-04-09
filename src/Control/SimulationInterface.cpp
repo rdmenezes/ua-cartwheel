@@ -21,13 +21,10 @@ void render(void)
   // Does nothing
 }
 
-// TODO This will probably need a parameter for sPath
 SimulationInterface::SimulationInterface(bool visualize) :
   relations_(), positions_(), capsules_(), visualizeCapsuleCallback_(NULL)
 {
   visualize_ = visualize;
-  //sPath_ = new char[200];
-  //strcpy(sPath_, "");
   simulator_ = new CartWheel3D(s_path_); // Empty string
   storedNames_ = vector<string> ();
   if (visualize_)
