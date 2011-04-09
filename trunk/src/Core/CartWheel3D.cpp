@@ -35,6 +35,7 @@ CartWheel3D::CartWheel3D(const string& dataPath) :
 CartWheel3D::~CartWheel3D()
 {
 	_humans.clear();
+	_boxes.clear();
 
     delete _oracle;
     _world->destroyAllObjects();
@@ -124,7 +125,7 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
   string mesh = _path + "data/models/box3.obj";
   Vector3d offset = Vector3d(0,0,0);
 
-  RigidBody* body = new ArticulatedRigidBody();
+  ArticulatedRigidBody* body = new ArticulatedRigidBody();
   body->setName(name.c_str());
   body->setScale(scale);
   body->addMeshObj(mesh.c_str(), offset, scale);
@@ -144,16 +145,18 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
   Vector3d y_axis(0, 1, 0);
   body->setOrientation(rotation, y_axis);
 
-  ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*> (body);
-  if (NULL != arb)
-  {
-    arb->setParentJoint(NULL);
-    _world->addArticulatedRigidBody(arb);
-  }
-  else
-  {
-    _world->addRigidBody(body);
-  }
+//  ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*> (body);
+//  if (NULL != arb)
+//  {
+    body->setParentJoint(NULL);
+    _world->addArticulatedRigidBody(body);
+
+    _boxes[name] = body;
+//  }
+//  else
+//  {
+//    _world->addRigidBody(body);
+//  }
 }
 
 void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
@@ -355,6 +358,16 @@ bool CartWheel3D::getHumanNames(std::vector<std::string>& names)
 
 	return result;
 }
+
+bool CartWheel3D::getBoxNames(std::vector<std::string>& name)
+{
+  for (std::map<std::string, Physics::ArticulatedRigidBody*>::iterator bx = _boxes.begin(); bx != _boxes.end(); ++bx)
+  {
+    name.push_back(bx->first);
+  }
+}
+
+
 
 bool CartWheel3D::getHumanNames(std::list<std::string>& names)
 {

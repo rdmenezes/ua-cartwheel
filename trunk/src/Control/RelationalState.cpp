@@ -2,6 +2,9 @@
 
 namespace CartWheel
 {
+
+using Math::Point3d;
+
 RelationalState::RelationalState(vector<Relation> & rs):myRelations(){
    for(int x=0; x< rs.size(); x++)
 	myRelations.push_back(new Relation(rs[x]));

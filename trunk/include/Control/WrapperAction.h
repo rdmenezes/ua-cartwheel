@@ -103,7 +103,7 @@ private:
   int myCommand;
   bool switched;
   void populateMap();
-  map<string, int> actionMap;
+  std::map<std::string, int> actionMap;
 
 };
 

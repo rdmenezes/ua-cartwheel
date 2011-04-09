@@ -45,7 +45,7 @@ int main(int argc, char** argv)
   //ExtendedActionPtr a2(new WrapperAction("standStill", actor1, params2));
   ExtendedActionPtr a2(new WrapperAction("walk", actor1, params2));
   ExtendedActionPtr a3(new WrapperAction("walk", actor1, params3));
-  actions1 += a1, a2, a3;
+  actions1 += a1, a2; //, a3;
 
   // SECOND HUMAN
   vector<double> params4;
@@ -68,14 +68,14 @@ int main(int argc, char** argv)
   // BOXES
   Vector3d box_scale(0.25, 0.15, 0.15);
   Vector3d box_pos(0.0, 0.10, 1.0);
-  BoxStartStatePtr box1(new BoxStartState("box1", box_pos, 3 * 3.14 / 4.0, box_scale, 4.0));
+  BoxStatePtr box1(new BoxState("box1", box_pos, 3 * 3.14 / 4.0, box_scale, 4.0));
 
-  vector<BoxStartStatePtr> boxes;
+  vector<BoxStatePtr> boxes;
   boxes += box1;
 
   ////////////////////////////////////////
   // SIMULATE
-//  interface.simulate(start_state, actions);
+  //  interface.simulate(start_state, actions);
   interface.simulate(start_state, boxes, actions);
 
   vector<PosState*> trajectory = interface.getPositions();
@@ -102,6 +102,13 @@ int main(int argc, char** argv)
           << endl;
 
     }
+    cout << "BOXES:" << endl;
+    vector<BoxStatePtr> boxes = pos_state->getBoxStates();
+    for (vector<BoxStatePtr>::const_iterator bx = boxes.begin(); bx != boxes.end(); ++bx)
+    {
+      cout << (*bx)->getName() << " => (" << (*bx)->getPosition().x << "," << (*bx)->getPosition().y << ") " << (*bx)->getQuaternion().getAngle() << endl;
+    }
+
     cout << "RELATIONS " << i << "\n=============================\n";
     cout << rel_states[i]->toString() << endl;
 
@@ -118,7 +125,7 @@ int main(int argc, char** argv)
     }
   }
 
-//  cout << "running a second time..." << endl;
-//  interface.simulate(start_state, actions);
+  //  cout << "running a second time..." << endl;
+  //  interface.simulate(start_state, actions);
 
 }

@@ -5,12 +5,12 @@
  *      Author: dhewlett
  */
 
-#include <Control/BoxStartState.h>
+#include <Control/BoxState.h>
 
 namespace CartWheel
 {
 
-BoxStartState::~BoxStartState()
+BoxState::~BoxState()
 {
 }
 
