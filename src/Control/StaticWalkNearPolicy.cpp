@@ -3,8 +3,9 @@
 
 namespace CartWheel
 {
-using namespace CartWheel::Math;
 
+using namespace std;
+using namespace CartWheel::Math;
 
 
 StaticWalkNearPolicy::StaticWalkNearPolicy(double walkSpeed, string p){

@@ -4,39 +4,34 @@
 #include <map>
 #include <vector>
 #include <string>
-#include "Core/CartWheel3D.h"
+#include <Core/CartWheel3D.h>
+#include <Control/BoxState.h>
 #include <MathLib/Vector3d.h>
 #include <sstream>
 
 namespace CartWheel
 {
-using CartWheel::Math::Vector3d;
-using std::string;
-using std::vector;
-using std::map;
-using std::stringstream;
-
-using namespace CartWheel;
-using namespace CartWheel::Core;
-using namespace CartWheel::Math;
 
 class PosState {
 
 public:
 PosState();
 PosState(CartWheel3D * cw);
-const Vector3d* getPosition(const string & n);
+const Math::Vector3d* getPosition(const std::string & n);
 void reset(CartWheel3D * cw);
 int getNumVectors(){return myNames.size();};
 
-string getName(int index) { return myNames[index]; };
-Vector3d getPosition(int index) { return myPositions[index]; };
+std::string getName(int index) { return myNames[index]; };
+Math::Vector3d getPosition(int index) { return myPositions[index]; };
+
+std::vector<BoxStatePtr> getBoxStates();
 
 protected:
-  map<string, int> blacklist;
-  vector<Vector3d> myPositions;
-  vector<string> myNames;
+  std::map<std::string, int> blacklist;
+  std::vector<Math::Vector3d> myPositions;
+  std::vector<std::string> myNames;
   void populate(CartWheel3D * cw);
+  std::vector<BoxStatePtr> box_states_;
 };
 
 } // namespace CartWheel

@@ -8,6 +8,8 @@
 #include <map>
 #include <string>
 
+#include <boost/shared_ptr.hpp>
+
 #include <MathLib/Vector3d.h>
 #include <MathLib/Quaternion.h>
 #include <MathLib/Point3d.h>
@@ -25,7 +27,6 @@
 
 namespace CartWheel {
 
-
 class CartWheel3D
 {
 
@@ -41,6 +42,7 @@ private:
     Physics::World* _world;
     Core::WorldOracle* _oracle;
     BuilderFunction _builderFunction;
+    std::map<std::string, Physics::ArticulatedRigidBody*> _boxes;
 
     // Putting copy constructor and assignment operator in the "private" section
     // to make this class uncopyable until the memory problems are fixed.
@@ -86,7 +88,7 @@ public:
     bool getHuman(const std::string& name, Core::Human** human);
     bool getHumanNames(std::vector<std::string>& names);
     bool getHumanNames(std::list<std::string>& names);
-
+    bool getBoxNames(std::vector<std::string>& names);
 
     int getHumanCount();
 

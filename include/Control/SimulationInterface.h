@@ -17,7 +17,7 @@
 #include <Control/CapsuleState.h>
 #include <Control/RelationalState.h>
 #include <Control/StartState.h>
-#include <Control/BoxStartState.h>
+#include <Control/BoxState.h>
 
 #include <boost/shared_ptr.hpp>
 
@@ -40,11 +40,11 @@ public:
   virtual ~SimulationInterface();
 
   // Daniel: This should really be private
-  void init_simulation(std::vector<StartStatePtr> const& start_state, std::vector<BoxStartStatePtr> const& boxes);
+  void init_simulation(std::vector<StartStatePtr> const& start_state, std::vector<BoxStatePtr> const& boxes);
 
   // The rest are supposed to be part of the public interface
   void simulate(std::vector<StartStatePtr> const& start_state, std::vector<std::vector<ExtendedActionPtr> > const& actions);
-  void simulate(std::vector<StartStatePtr> const& start_state, std::vector<BoxStartStatePtr> const& boxes, std::vector<std::vector<ExtendedActionPtr> > const& actions);
+  void simulate(std::vector<StartStatePtr> const& start_state, std::vector<BoxStatePtr> const& boxes, std::vector<std::vector<ExtendedActionPtr> > const& actions);
 
   Visualization* getVisualization() { return visualization_; }
   const std::vector<PosState*>& getPositions() const;
