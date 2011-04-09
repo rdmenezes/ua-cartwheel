@@ -119,7 +119,7 @@ void CartWheel3D::addObject(const string& name, const string& objFile, double ma
     }
 }
 
-void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector3d& position, double mass)
+void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector3d& position, double rotation, double mass)
 {
   string mesh = _path + "data/models/box3.obj";
   Vector3d offset = Vector3d(0,0,0);
@@ -141,6 +141,8 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
   body->setRestitutionCoefficient(0.35);
 
   body->setCMPosition(position);
+  Vector3d y_axis(0, 1, 0);
+  body->setOrientation(rotation, y_axis);
 
   ArticulatedRigidBody* arb = dynamic_cast<ArticulatedRigidBody*> (body);
   if (NULL != arb)
@@ -152,17 +154,12 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
   {
     _world->addRigidBody(body);
   }
-
-//  addBox(name, scale, mass);
-//  RigidBody* body = _world->getRBByName(name.c_str());
-//  body->setCMPosition(position);
 }
 
-// TODO: Probably needs to take a position as well, otherwise have to call updateRB after
 void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass)
 {
   Vector3d position = Vector3d(0, 0, 0);
-  addBox(name, scale, position, mass);
+  addBox(name, scale, position, 0.0, mass);
 }
 
 void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass)

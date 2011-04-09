@@ -66,9 +66,9 @@ int main(int argc, char** argv)
 
   ////////////////////////////////////////
   // BOXES
-  Vector3d box_scale(0.15, 0.15, 0.15);
+  Vector3d box_scale(0.25, 0.15, 0.15);
   Vector3d box_pos(0.0, 0.10, 1.0);
-  BoxStartStatePtr box1(new BoxStartState("box1", box_pos, box_scale, 4.0));
+  BoxStartStatePtr box1(new BoxStartState("box1", box_pos, 3 * 3.14 / 4.0, box_scale, 4.0));
 
   vector<BoxStartStatePtr> boxes;
   boxes += box1;
@@ -118,7 +118,7 @@ int main(int argc, char** argv)
     }
   }
 
-  cout << "running a second time..." << endl;
-  interface.simulate(start_state, actions);
+//  cout << "running a second time..." << endl;
+//  interface.simulate(start_state, actions);
 
 }
