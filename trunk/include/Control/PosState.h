@@ -24,7 +24,7 @@ int getNumVectors(){return myNames.size();};
 std::string getName(int index) { return myNames[index]; };
 Math::Vector3d getPosition(int index) { return myPositions[index]; };
 
-std::vector<BoxStatePtr> getBoxStates();
+const std::vector<BoxStatePtr>& getBoxStates() const;
 
 protected:
   std::map<std::string, int> blacklist;
