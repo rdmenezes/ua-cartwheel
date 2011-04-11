@@ -38,27 +38,27 @@ public:
   };
   virtual ~BoxState();
 
-  std::string getName()
+  const std::string& getName() const
   {
     return name_;
   };
 
-  Math::Vector3d getPosition()
+  const Math::Vector3d& getPosition() const
   {
     return position_;
   };
 
-  Math::Vector3d getSize()
+  const Math::Vector3d& getSize() const
   {
     return size_;
   };
 
-  double getMass()
+  double getMass() const
   {
     return mass_;
   };
 
-  Math::Quaternion getQuaternion()
+  const Math::Quaternion& getQuaternion() const
   {
     return orientation_;
   };

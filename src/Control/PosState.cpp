@@ -108,7 +108,7 @@ const Vector3d * PosState::getPosition(const string & n)
   return NULL;
 }
 
-vector<BoxStatePtr> PosState::getBoxStates()
+const vector<BoxStatePtr>& PosState::getBoxStates() const
 {
   return box_states_;
 }
