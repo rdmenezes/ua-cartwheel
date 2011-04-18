@@ -1,0 +1,194 @@
+\hypertarget{classCartWheel_1_1CartWheel3D}{
+\section{CartWheel::CartWheel3D Class Reference}
+\label{classCartWheel_1_1CartWheel3D}\index{CartWheel::CartWheel3D@{CartWheel::CartWheel3D}}
+}
+
+
+Collaboration diagram for CartWheel::CartWheel3D:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1CartWheel3D__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_aa35d49f8b7d9477a8a3308ae66c64a39}{
+{\bfseries CartWheel3D} (const std::string \&dataPath)}
+\label{classCartWheel_1_1CartWheel3D_aa35d49f8b7d9477a8a3308ae66c64a39}
+
+\item 
+void \hyperlink{classCartWheel_1_1CartWheel3D_aa3a23d9a368df62279e75fb67ce1656e}{addHuman} (const std::string \&name, const std::string \&characterFile, const std::string \&controllerFile, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Math::Point3d} \&pos, double heading)
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_aa32e24735be8f794fc2fcb73e26b959e}{
+void \hyperlink{classCartWheel_1_1CartWheel3D_aa32e24735be8f794fc2fcb73e26b959e}{addHuman} (const std::string \&name, const std::string \&characterFile, const std::string \&controllerFile, const std::string \&actionFile, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Math::Point3d} \&pos, double heading)}
+\label{classCartWheel_1_1CartWheel3D_aa32e24735be8f794fc2fcb73e26b959e}
+
+\begin{DoxyCompactList}\small\item\em Add human with initial heading (in radians/ Add human with initial heading (in radians/ Add human with initial heading (in radians/ Add human with initial heading (in radians). \item\end{DoxyCompactList}\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ae4b723cbdbb838e1382cba43823ec30f}{
+void {\bfseries addObject} (const std::string \&name, const std::string \&objFile, double mass)}
+\label{classCartWheel_1_1CartWheel3D_ae4b723cbdbb838e1382cba43823ec30f}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a1b6013152e750c3f84807cbe30298a63}{
+void {\bfseries addBox} (const std::string \&name, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&scale, double mass)}
+\label{classCartWheel_1_1CartWheel3D_a1b6013152e750c3f84807cbe30298a63}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_aa9d4b016804a5ac2247a830f7a74dc01}{
+void {\bfseries addBox} (const std::string \&name, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&scale, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&position, double rotation, double mass)}
+\label{classCartWheel_1_1CartWheel3D_aa9d4b016804a5ac2247a830f7a74dc01}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a9c8888a45361848e850326d36dbd3c81}{
+void {\bfseries addBall} (const std::string \&name, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&scale, double mass)}
+\label{classCartWheel_1_1CartWheel3D_a9c8888a45361848e850326d36dbd3c81}
+
+\item 
+void \hyperlink{classCartWheel_1_1CartWheel3D_ae988c01d49c442a2c9edb1798b3f897e}{updateRB} (const std::string \&name, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Math::Point3d} \&pos, const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Math::Quaternion} \&orientation, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&vel)
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a7a706fb0424aa67fea984cab69311610}{
+bool {\bfseries getHuman} (const std::string \&name, \hyperlink{classCartWheel_1_1Core_1_1Human}{Core::Human} $\ast$$\ast$human)}
+\label{classCartWheel_1_1CartWheel3D_a7a706fb0424aa67fea984cab69311610}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a45b5f9697ab7fbf907d7982caaa5f7c8}{
+bool {\bfseries getHumanNames} (std::vector$<$ std::string $>$ \&names)}
+\label{classCartWheel_1_1CartWheel3D_a45b5f9697ab7fbf907d7982caaa5f7c8}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a6c81534a19765dbfb579e813f639d565}{
+bool {\bfseries getHumanNames} (std::list$<$ std::string $>$ \&names)}
+\label{classCartWheel_1_1CartWheel3D_a6c81534a19765dbfb579e813f639d565}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ab4da14f4957c5206748b754e3bf12c36}{
+bool {\bfseries getBoxNames} (std::vector$<$ std::string $>$ \&names)}
+\label{classCartWheel_1_1CartWheel3D_ab4da14f4957c5206748b754e3bf12c36}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ac8b3aa7833a3999b0d4c28f9ff3e9883}{
+int {\bfseries getHumanCount} ()}
+\label{classCartWheel_1_1CartWheel3D_ac8b3aa7833a3999b0d4c28f9ff3e9883}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a2e4cfbe110cc215251735d2aca12ddc0}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} {\bfseries getHumanPosition} (const std::string \&name)}
+\label{classCartWheel_1_1CartWheel3D_a2e4cfbe110cc215251735d2aca12ddc0}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_af6dcedbf7c948f2ccd12c33c1784df8a}{
+double \hyperlink{classCartWheel_1_1CartWheel3D_af6dcedbf7c948f2ccd12c33c1784df8a}{getHumanHeading} (const std::string \&name)}
+\label{classCartWheel_1_1CartWheel3D_af6dcedbf7c948f2ccd12c33c1784df8a}
+
+\begin{DoxyCompactList}\small\item\em Get heading (in radians). \item\end{DoxyCompactList}\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ab81bf4b2db2e6d52269131a6fa680adf}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} {\bfseries getHumanVelocity} (const std::string \&name)}
+\label{classCartWheel_1_1CartWheel3D_ab81bf4b2db2e6d52269131a6fa680adf}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a9c93aeaf985abf2b3e63879f085e067b}{
+const std::string \& {\bfseries getPath} ()}
+\label{classCartWheel_1_1CartWheel3D_a9c93aeaf985abf2b3e63879f085e067b}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_add9d51b7e4c82ec1790b10f4428508d5}{
+\hyperlink{classCartWheel_1_1Physics_1_1World}{Physics::World} $\ast$ {\bfseries getWorld} ()}
+\label{classCartWheel_1_1CartWheel3D_add9d51b7e4c82ec1790b10f4428508d5}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a2b023d8f52274d017916669bf0885e99}{
+\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{Physics::RigidBody} $\ast$ {\bfseries getObjectByName} (const std::string \&name)}
+\label{classCartWheel_1_1CartWheel3D_a2b023d8f52274d017916669bf0885e99}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ab90d070fec7608900b5a68a207b5a288}{
+void {\bfseries setController} (const std::string \&, int actionIndex)}
+\label{classCartWheel_1_1CartWheel3D_ab90d070fec7608900b5a68a207b5a288}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a08e7b15aec1185757afcdd328242024e}{
+int {\bfseries getController} (const std::string \&name)}
+\label{classCartWheel_1_1CartWheel3D_a08e7b15aec1185757afcdd328242024e}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ad20e335f5514bb39f3633cec194a0173}{
+void {\bfseries setPath} (const std::string \&path)}
+\label{classCartWheel_1_1CartWheel3D_ad20e335f5514bb39f3633cec194a0173}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a5ccbf0f48668c2453b8f7c52e10cf57b}{
+void {\bfseries setHumanPosition} (const std::string \&name, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Math::Point3d} \&pos)}
+\label{classCartWheel_1_1CartWheel3D_a5ccbf0f48668c2453b8f7c52e10cf57b}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a95fd5ae663e025416d26c73175767c28}{
+void \hyperlink{classCartWheel_1_1CartWheel3D_a95fd5ae663e025416d26c73175767c28}{setHumanHeading} (const std::string \&name, double angle)}
+\label{classCartWheel_1_1CartWheel3D_a95fd5ae663e025416d26c73175767c28}
+
+\begin{DoxyCompactList}\small\item\em Set heading (in radians). \item\end{DoxyCompactList}\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a92f0b9c03e1c8a67526901cd94d7fcd3}{
+void {\bfseries setHumanSpeed} (const std::string \&name, double speed)}
+\label{classCartWheel_1_1CartWheel3D_a92f0b9c03e1c8a67526901cd94d7fcd3}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_af4069945a2b050cd26dcbf04b115f274}{
+void {\bfseries setHumanStepWidth} (const std::string \&name, double width)}
+\label{classCartWheel_1_1CartWheel3D_af4069945a2b050cd26dcbf04b115f274}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_aed642e084931f023606d9c28def94ccc}{
+void {\bfseries makeHumanGrabObject} (const std::string \&name, const std::string \&targetName, const Core::Human::GrabbingMethod \&method)}
+\label{classCartWheel_1_1CartWheel3D_aed642e084931f023606d9c28def94ccc}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a2f2b825aefa1dc9015fdbdb2ec161cac}{
+void {\bfseries makeHumanThrowObject} (const std::string \&name, const std::string \&targetName, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&velocity)}
+\label{classCartWheel_1_1CartWheel3D_a2f2b825aefa1dc9015fdbdb2ec161cac}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ab8dd4e2d39277f8498963c1624740ad9}{
+void {\bfseries makeHumanDropObject} (const std::string \&name, const std::string \&targetName)}
+\label{classCartWheel_1_1CartWheel3D_ab8dd4e2d39277f8498963c1624740ad9}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a29f2f3182b2f8e03488a7c0c346be6fb}{
+void {\bfseries reset} ()}
+\label{classCartWheel_1_1CartWheel3D_a29f2f3182b2f8e03488a7c0c346be6fb}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_a6304233b998161f81ed6389906cd9cd4}{
+void {\bfseries runStep} (double dt=Core::SimGlobals::dt)}
+\label{classCartWheel_1_1CartWheel3D_a6304233b998161f81ed6389906cd9cd4}
+
+\item 
+\hypertarget{classCartWheel_1_1CartWheel3D_ad733b26e5f0ccf3dc5406b37f20efed9}{
+void {\bfseries registerBuilder} (BuilderFunction builderFunction)}
+\label{classCartWheel_1_1CartWheel3D_ad733b26e5f0ccf3dc5406b37f20efed9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1CartWheel3D_aa3a23d9a368df62279e75fb67ce1656e}{
+\index{CartWheel::CartWheel3D@{CartWheel::CartWheel3D}!addHuman@{addHuman}}
+\index{addHuman@{addHuman}!CartWheel::CartWheel3D@{CartWheel::CartWheel3D}}
+\subsubsection[{addHuman}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::CartWheel3D::addHuman (const std::string \& {\em name}, \/  const std::string \& {\em characterFile}, \/  const std::string \& {\em controllerFile}, \/  const {\bf Math::Point3d} \& {\em pos}, \/  double {\em heading})}}
+\label{classCartWheel_1_1CartWheel3D_aa3a23d9a368df62279e75fb67ce1656e}
+Add a human to the simulator.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em heading}]The human's facing direction (in radians from z+ axis) \end{DoxyParams}
+\hypertarget{classCartWheel_1_1CartWheel3D_ae988c01d49c442a2c9edb1798b3f897e}{
+\index{CartWheel::CartWheel3D@{CartWheel::CartWheel3D}!updateRB@{updateRB}}
+\index{updateRB@{updateRB}!CartWheel::CartWheel3D@{CartWheel::CartWheel3D}}
+\subsubsection[{updateRB}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::CartWheel3D::updateRB (const std::string \& {\em name}, \/  const {\bf Math::Point3d} \& {\em pos}, \/  const {\bf Math::Quaternion} \& {\em orientation}, \/  const {\bf Math::Vector3d} \& {\em vel})}}
+\label{classCartWheel_1_1CartWheel3D_ae988c01d49c442a2c9edb1798b3f897e}
+Update the position, orientation, and velocity of the rigid body indexed by the given name. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/CartWheel3D.h\item 
+src/Core/CartWheel3D.cpp\end{DoxyCompactItemize}

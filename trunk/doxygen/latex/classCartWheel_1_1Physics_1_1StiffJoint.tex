@@ -1,0 +1,56 @@
+\hypertarget{classCartWheel_1_1Physics_1_1StiffJoint}{
+\section{CartWheel::Physics::StiffJoint Class Reference}
+\label{classCartWheel_1_1Physics_1_1StiffJoint}\index{CartWheel::Physics::StiffJoint@{CartWheel::Physics::StiffJoint}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::StiffJoint:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classCartWheel_1_1Physics_1_1StiffJoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::StiffJoint:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1StiffJoint__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1StiffJoint_a85fb008cc0917d1f2fd7c6d6fbda4331}{fixAngularConstraint} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{CartWheel::Math::Quaternion} \&qRel)
+\item 
+virtual int \hyperlink{classCartWheel_1_1Physics_1_1StiffJoint_acc1db8ea3775d137500c15daf8921766}{getJointType} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1StiffJoint_a85fb008cc0917d1f2fd7c6d6fbda4331}{
+\index{CartWheel::Physics::StiffJoint@{CartWheel::Physics::StiffJoint}!fixAngularConstraint@{fixAngularConstraint}}
+\index{fixAngularConstraint@{fixAngularConstraint}!CartWheel::Physics::StiffJoint@{CartWheel::Physics::StiffJoint}}
+\subsubsection[{fixAngularConstraint}]{\setlength{\rightskip}{0pt plus 5cm}void StiffJoint::fixAngularConstraint (const {\bf CartWheel::Math::Quaternion} \& {\em qRel})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1StiffJoint_a85fb008cc0917d1f2fd7c6d6fbda4331}
+This method is used to fix the joint angular constraint to correct for drift. This is done by changing the orientation of the child. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1Joint_ab14f1e87562d9f5993504621d2cf3569}{CartWheel::Physics::Joint}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1StiffJoint_acc1db8ea3775d137500c15daf8921766}{
+\index{CartWheel::Physics::StiffJoint@{CartWheel::Physics::StiffJoint}!getJointType@{getJointType}}
+\index{getJointType@{getJointType}!CartWheel::Physics::StiffJoint@{CartWheel::Physics::StiffJoint}}
+\subsubsection[{getJointType}]{\setlength{\rightskip}{0pt plus 5cm}virtual int CartWheel::Physics::StiffJoint::getJointType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1StiffJoint_acc1db8ea3775d137500c15daf8921766}
+Returns the type of the current joint 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1Joint_a6940878e260534a3803b14aa697b88f7}{CartWheel::Physics::Joint}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/StiffJoint.h\item 
+src/Physics/StiffJoint.cpp\end{DoxyCompactItemize}

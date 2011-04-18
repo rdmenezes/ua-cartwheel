@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classCartWheel_1_1Core_1_1BehaviourController.html" title="CartWheel::Core::BehaviourController" alt="" coords="7,55,236,83"/>
+<area shape="rect" id="node3" href="$classCartWheel_1_1Core_1_1CompositeBehaviourController.html" title="CartWheel::Core::CompositeBehaviourController" alt="" coords="285,5,573,33"/>
+<area shape="rect" id="node5" href="$classCartWheel_1_1Core_1_1DuckController.html" title="CartWheel::Core::DuckController" alt="" coords="328,55,531,83"/>
+<area shape="rect" id="node7" href="$classCartWheel_1_1Core_1_1TurnController.html" title="CartWheel::Core::TurnController" alt="" coords="329,106,529,134"/>
+</map>

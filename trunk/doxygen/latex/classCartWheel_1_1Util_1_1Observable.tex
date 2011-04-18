@@ -1,0 +1,84 @@
+\hypertarget{classCartWheel_1_1Util_1_1Observable}{
+\section{CartWheel::Util::Observable Class Reference}
+\label{classCartWheel_1_1Util_1_1Observable}\index{CartWheel::Util::Observable@{CartWheel::Util::Observable}}
+}
+
+
+Inheritance diagram for CartWheel::Util::Observable:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Util_1_1Observable__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a159b9ea87eebf3a6a664276cdaa20f3f}{
+bool {\bfseries hasChanged} () const }
+\label{classCartWheel_1_1Util_1_1Observable_a159b9ea87eebf3a6a664276cdaa20f3f}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_aee25395314d9803243503382298ee221}{
+bool {\bfseries isDoingBatchChanges} () const }
+\label{classCartWheel_1_1Util_1_1Observable_aee25395314d9803243503382298ee221}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_aed26c5406ecd3701bbf1bbc557977d9e}{
+void {\bfseries beginBatchChanges} ()}
+\label{classCartWheel_1_1Util_1_1Observable_aed26c5406ecd3701bbf1bbc557977d9e}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_ad3e826b96d45dc9574ed49717d7fef01}{
+void {\bfseries endBatchChanges} ()}
+\label{classCartWheel_1_1Util_1_1Observable_ad3e826b96d45dc9574ed49717d7fef01}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a1c319a602480fa545fcdb968a92a9a56}{
+void {\bfseries addObserver} (\hyperlink{classCartWheel_1_1Util_1_1Observer}{Observer} $\ast$observer)}
+\label{classCartWheel_1_1Util_1_1Observable_a1c319a602480fa545fcdb968a92a9a56}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_af90b54c8bfeb151641fd6f2b6f545205}{
+void {\bfseries deleteObserver} (\hyperlink{classCartWheel_1_1Util_1_1Observer}{Observer} $\ast$observer)}
+\label{classCartWheel_1_1Util_1_1Observable_af90b54c8bfeb151641fd6f2b6f545205}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a4280db2d57d4f1e9ca7b24d1e041f51c}{
+unsigned int {\bfseries countObservers} () const }
+\label{classCartWheel_1_1Util_1_1Observable_a4280db2d57d4f1e9ca7b24d1e041f51c}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_adaa8bd15b019959f34529ab14f86aee6}{
+const char $\ast$ {\bfseries typeName} ()}
+\label{classCartWheel_1_1Util_1_1Observable_adaa8bd15b019959f34529ab14f86aee6}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a8001364de946f94a3949f8a741048eb0}{
+void {\bfseries setChanged} ()}
+\label{classCartWheel_1_1Util_1_1Observable_a8001364de946f94a3949f8a741048eb0}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a882e162f0d3ba6cebf136792468d37be}{
+void {\bfseries clearChanged} ()}
+\label{classCartWheel_1_1Util_1_1Observable_a882e162f0d3ba6cebf136792468d37be}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_a689bd38de6c5c3e694caf10931fc9738}{
+void {\bfseries notifyObservers} (void $\ast$data=NULL)}
+\label{classCartWheel_1_1Util_1_1Observable_a689bd38de6c5c3e694caf10931fc9738}
+
+\item 
+\hypertarget{classCartWheel_1_1Util_1_1Observable_ab9129fb68ca5aeb7499966a3611c53d8}{
+void {\bfseries notifyObserversIfChanged} (void $\ast$data=NULL)}
+\label{classCartWheel_1_1Util_1_1Observable_ab9129fb68ca5aeb7499966a3611c53d8}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Utils/Observable.h\end{DoxyCompactItemize}

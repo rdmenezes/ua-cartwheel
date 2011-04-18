@@ -1,0 +1,1539 @@
+%!PS-Adobe-3.0
+%%Creator: graphviz version 2.26.3 (20100126.1600)
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 2254 719
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 2218 683 boxprim clip newpath
+1 1 set_scale 0 rotate 40 41 translate
+% Node1
+gsave
+0 0 0.74902 nodecolor
+newpath 2052.73 172 moveto
+2052.73 192 lineto
+2209.27 192 lineto
+2209.27 172 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 2052.73 172 moveto
+2052.73 192 lineto
+2209.27 192 lineto
+2209.27 172 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+2060.73 179 moveto 140.53 (CartWheel::Core::SimBiController) alignedtext
+grestore
+% Node2
+gsave
+[ /Rect [ 1790 497.5 1940 518.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Core_1_1PoseController.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1790.07 498 moveto
+1790.07 518 lineto
+1939.93 518 lineto
+1939.93 498 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1790.07 498 moveto
+1790.07 518 lineto
+1939.93 518 lineto
+1939.93 498 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1798.07 505 moveto 133.85 (CartWheel::Core::PoseController) alignedtext
+grestore
+% Node2->Node1
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1879.65 490.05 moveto
+1928.44 430.25 2084.54 238.94 2122.58 192.32 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 1876.86 487.93 moveto
+1873.25 497.89 lineto
+1882.29 492.35 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1876.86 487.93 moveto
+1873.25 497.89 lineto
+1882.29 492.35 lineto
+closepath stroke
+grestore
+% Node3
+gsave
+[ /Rect [ 1537 454.5 1667 475.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Core_1_1Controller.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1536.52 455 moveto
+1536.52 475 lineto
+1667.48 475 lineto
+1667.48 455 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1536.52 455 moveto
+1536.52 475 lineto
+1667.48 475 lineto
+1667.48 455 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1544.52 462 moveto 114.97 (CartWheel::Core::Controller) alignedtext
+grestore
+% Node3->Node2
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1673.46 476.68 moveto
+1714.17 483.34 1764.65 491.59 1803.57 497.96 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 1673.76 473.19 moveto
+1663.33 475.03 lineto
+1672.63 480.1 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1673.76 473.19 moveto
+1663.33 475.03 lineto
+1672.63 480.1 lineto
+closepath stroke
+grestore
+% Node4
+gsave
+[ /Rect [ 731 387.5 863 408.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Util_1_1Observable.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 731.24 388 moveto
+731.24 408 lineto
+862.76 408 lineto
+862.76 388 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 731.24 388 moveto
+731.24 408 lineto
+862.76 408 lineto
+862.76 388 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+739.24 395 moveto 115.52 (CartWheel::Util::Observable) alignedtext
+grestore
+% Node4->Node3
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 865.68 409.66 moveto
+951.54 423.68 1103.15 446.63 1234 457 curveto
+1326.18 464.31 1349.55 460.02 1442 462 curveto
+1472.97 462.66 1507.32 463.32 1536.22 463.84 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 866.23 406.2 moveto
+855.8 408.04 lineto
+865.1 413.11 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 866.23 406.2 moveto
+855.8 408.04 lineto
+865.1 413.11 lineto
+closepath stroke
+grestore
+% Node6
+gsave
+[ /Rect [ 928 381.5 1100 402.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1ArticulatedFigure.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 927.97 382 moveto
+927.97 402 lineto
+1100.04 402 lineto
+1100.04 382 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 927.97 382 moveto
+927.97 402 lineto
+1100.04 402 lineto
+1100.04 382 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+935.97 389 moveto 156.07 (CartWheel::Physics::ArticulatedFigure) alignedtext
+grestore
+% Node4->Node6
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 873.23 395.89 moveto
+890.9 395.4 909.83 394.88 927.89 394.38 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 872.89 392.4 moveto
+862.99 396.18 lineto
+873.08 399.4 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 872.89 392.4 moveto
+862.99 396.18 lineto
+873.08 399.4 lineto
+closepath stroke
+grestore
+% Node17
+gsave
+[ /Rect [ 1790 257.5 1940 278.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Core_1_1ControlParams.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1790.07 258 moveto
+1790.07 278 lineto
+1939.93 278 lineto
+1939.93 258 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1790.07 258 moveto
+1790.07 278 lineto
+1939.93 278 lineto
+1939.93 258 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1798.07 265 moveto 133.85 (CartWheel::Core::ControlParams) alignedtext
+grestore
+% Node4->Node17
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 858.76 386.09 moveto
+880.62 381.9 905.4 377.2 928 373 curveto
+1156.24 330.57 1211.09 304.03 1442 280 curveto
+1563.3 267.38 1705.15 266.08 1789.89 266.73 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 858.1 382.65 moveto
+848.93 387.97 lineto
+859.41 389.53 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 858.1 382.65 moveto
+848.93 387.97 lineto
+859.41 389.53 lineto
+closepath stroke
+grestore
+% Node5
+gsave
+[ /Rect [ 1265 427.5 1393 448.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Core_1_1Character.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1264.64 428 moveto
+1264.64 448 lineto
+1393.36 448 lineto
+1393.36 428 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1264.64 428 moveto
+1264.64 448 lineto
+1393.36 448 lineto
+1393.36 428 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1272.64 435 moveto 112.73 (CartWheel::Core::Character) alignedtext
+grestore
+% Node5->Node3
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1403.94 443.32 moveto
+1428.23 445.21 1455.27 447.5 1480 450 curveto
+1498.26 451.85 1518.02 454.15 1536.21 456.38 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1403.96 439.81 moveto
+1393.72 442.53 lineto
+1403.42 446.79 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1403.96 439.81 moveto
+1393.72 442.53 lineto
+1403.42 446.79 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1442.68 453 moveto 36.63 (character) alignedtext
+grestore
+% Node6->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1092.77 403.5 moveto
+1145.74 411.24 1214.71 421.31 1264.44 428.57 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 1093.14 400.02 moveto
+1082.74 402.04 lineto
+1092.13 406.95 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1093.14 400.02 moveto
+1082.74 402.04 lineto
+1092.13 406.95 lineto
+closepath stroke
+grestore
+% Node7
+gsave
+[ /Rect [ 1234 346.5 1424 367.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1ArticulatedRigidBody.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1234.07 347 moveto
+1234.07 367 lineto
+1423.93 367 lineto
+1423.93 347 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1234.07 347 moveto
+1234.07 367 lineto
+1423.93 367 lineto
+1423.93 347 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1242.07 354 moveto 173.86 (CartWheel::Physics::ArticulatedRigidBody) alignedtext
+grestore
+% Node6->Node7
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1110.72 381.59 moveto
+1144.08 377.96 1181.69 373.84 1216 370 curveto
+1224.54 369.04 1233.44 368.04 1242.33 367.03 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1110.08 378.14 moveto
+1100.52 382.69 lineto
+1110.83 385.09 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1110.08 378.14 moveto
+1100.52 382.69 lineto
+1110.83 385.09 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1147.84 383 moveto 38.32 (AFParent) alignedtext
+grestore
+% Node7->Node6
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1223.92 347.24 moveto
+1189.67 346.76 1151.79 349.16 1118 358 curveto
+1109.15 360.32 1108.47 364.52 1100 368 curveto
+1086.52 373.53 1071.35 378.24 1057.54 381.98 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1223.87 350.74 moveto
+1233.95 347.46 lineto
+1224.03 343.74 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1223.87 350.74 moveto
+1233.95 347.46 lineto
+1224.03 343.74 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1158.95 361 moveto 16.11 (root) alignedtext
+grestore
+% Node15
+gsave
+[ /Rect [ 1542 309.5 1662 330.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1Joint.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1541.79 310 moveto
+1541.79 330 lineto
+1662.21 330 lineto
+1662.21 310 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1541.79 310 moveto
+1541.79 330 lineto
+1662.21 330 lineto
+1662.21 310 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1549.79 317 moveto 104.43 (CartWheel::Physics::Joint) alignedtext
+grestore
+% Node7->Node15
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1364.58 343.56 moveto
+1386.54 335.96 1415.5 327.15 1442 323 curveto
+1474.66 317.88 1511.53 316.87 1541.64 317.26 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1363.27 340.31 moveto
+1355.01 346.95 lineto
+1365.61 346.91 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1363.27 340.31 moveto
+1355.01 346.95 lineto
+1365.61 346.91 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1451 338 moveto 20 (child) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1448.51 326 moveto 24.99 (parent) alignedtext
+grestore
+% Node8
+gsave
+[ /Rect [ 942 305.5 1086 326.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1RigidBody.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 941.56 306 moveto
+941.56 326 lineto
+1086.44 326 lineto
+1086.44 306 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 941.56 306 moveto
+941.56 326 lineto
+1086.44 326 lineto
+1086.44 306 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+949.56 313 moveto 128.88 (CartWheel::Physics::RigidBody) alignedtext
+grestore
+% Node8->Node1
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1061.62 303.23 moveto
+1074.14 299.73 1087.62 295.84 1100 292 curveto
+1278.54 236.63 1313.6 186.64 1498 156 curveto
+1708.22 121.07 1962.82 153.91 2074.21 171.94 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1060.52 299.91 moveto
+1051.81 305.95 lineto
+1062.38 306.65 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1060.52 299.91 moveto
+1051.81 305.95 lineto
+1062.38 306.65 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1591.44 207 moveto 21.12 (lFoot) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1593.95 195 moveto 16.11 (root) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1580.89 183 moveto 42.23 (swingFoot) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1591.17 171 moveto 21.67 (rFoot) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1580.34 159 moveto 43.32 (stanceFoot) alignedtext
+grestore
+% Node8->Node7
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1096.73 326.77 moveto
+1144.8 333.02 1204.98 340.86 1252.03 346.98 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 1097.03 323.28 moveto
+1086.66 325.46 lineto
+1096.13 330.22 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 1097.03 323.28 moveto
+1086.66 325.46 lineto
+1096.13 330.22 lineto
+closepath stroke
+grestore
+% Node9
+gsave
+[ /Rect [ 730 245.5 864 266.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1RBState.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 729.84 246 moveto
+729.84 266 lineto
+864.16 266 lineto
+864.16 246 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 729.84 246 moveto
+729.84 266 lineto
+864.16 266 lineto
+864.16 246 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+737.84 253 moveto 118.32 (CartWheel::Physics::RBState) alignedtext
+grestore
+% Node9->Node8
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 846.89 268.53 moveto
+866.62 273.67 889.45 279.86 910 286 curveto
+918.08 288.42 919.94 289.53 928 292 curveto
+943.71 296.81 961.16 301.75 976.21 305.89 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 847.74 265.13 moveto
+837.18 266.02 lineto
+845.98 271.91 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 847.74 265.13 moveto
+837.18 266.02 lineto
+845.98 271.91 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+886.84 289 moveto 18.32 (state) alignedtext
+grestore
+% Node10
+gsave
+[ /Rect [ 401 167.5 537 188.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Math_1_1Quaternion.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 400.74 168 moveto
+400.74 188 lineto
+537.26 188 lineto
+537.26 168 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 400.74 168 moveto
+400.74 188 lineto
+537.26 188 lineto
+537.26 168 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+408.74 175 moveto 120.52 (CartWheel::Math::Quaternion) alignedtext
+grestore
+% Node10->Node1
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 501.79 164.11 moveto
+560.07 140.72 686.03 96 797 96 curveto
+797 96 797 96 1865 96 curveto
+1962.8 96 2071.44 149.28 2113.26 171.97 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 500.31 160.93 moveto
+492.37 167.95 lineto
+502.95 167.42 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 500.31 160.93 moveto
+492.37 167.95 lineto
+502.95 167.42 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1313.17 111 moveto 31.67 (qRootD) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1297.91 99 moveto 62.18 (characterFrame) alignedtext
+grestore
+% Node10->Node9
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 492.65 193.47 moveto
+509.6 203.79 533.34 216.76 556 224 curveto
+572.26 229.19 664.18 240.6 729.67 248.29 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 494.32 190.38 moveto
+483.98 188.05 lineto
+490.61 196.32 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 494.32 190.38 moveto
+483.98 188.05 lineto
+490.61 196.32 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+612.34 249 moveto 43.32 (orientation) alignedtext
+grestore
+% Node10->Node15
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.71 180.83 moveto
+595.34 182.97 657.26 186.5 712 192 curveto
+1027.69 223.74 1403.11 285.76 1544.42 309.98 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.61 177.33 moveto
+537.47 180.38 lineto
+547.3 184.32 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.61 177.33 moveto
+537.47 180.38 lineto
+547.3 184.32 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1000.11 279 moveto 27.78 (tmpQ1) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1000.11 267 moveto 27.78 (tmpQ2) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1000.11 255 moveto 27.78 (tmpQ3) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1000.11 243 moveto 27.78 (tmpQ4) alignedtext
+grestore
+% Node10->Node17
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.36 171.32 moveto
+638.67 163.89 794.14 152.37 928 148 curveto
+1004.4 145.51 1023.8 141.92 1100 148 curveto
+1245.38 159.59 1280.67 173.02 1424 200 curveto
+1457.07 206.22 1464.88 210.08 1498 216 curveto
+1598.56 233.97 1715.53 249.65 1789.89 258.97 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.05 167.83 moveto
+537.36 172.13 lineto
+547.62 174.81 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 547.05 167.83 moveto
+537.36 172.13 lineto
+547.62 174.81 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1155.34 164 moveto 23.32 (frame) alignedtext
+grestore
+% Node11
+gsave
+[ /Rect [ 177 333.5 305 354.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Math_1_1Vector3d.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 176.63 334 moveto
+176.63 354 lineto
+305.37 354 lineto
+305.37 334 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 176.63 334 moveto
+176.63 354 lineto
+305.37 354 lineto
+305.37 334 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+184.63 341 moveto 112.74 (CartWheel::Math::Vector3d) alignedtext
+grestore
+% Node11->Node1
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 248.73 363.68 moveto
+272.36 420.21 349.38 579 469 579 curveto
+469 579 469 579 1865 579 curveto
+2057.06 579 2119.28 254.35 2129.43 192.21 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 251.84 362.04 moveto
+244.83 354.1 lineto
+245.36 364.68 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 251.84 362.04 moveto
+244.83 354.1 lineto
+245.36 364.68 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1135.63 666 moveto 62.74 (forceStanceToe) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1134.52 654 moveto 64.97 (forceSwingHeel) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1118.13 642 moveto 97.75 (doubleStanceCOMError) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1141.17 630 moveto 51.65 (comVelocity) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1133.97 618 moveto 66.07 (forceStanceHeel) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1136.18 606 moveto 61.64 (forceSwingToe) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1164.5 594 moveto 5 (d) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1164.5 582 moveto 5 (v) alignedtext
+grestore
+% Node11->Node8
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.6 336.85 moveto
+375.75 330.81 462.46 321.48 538 311 curveto
+546.03 309.89 547.92 308.67 556 308 curveto
+691.72 296.77 850.81 304.14 941.27 310.26 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.04 333.39 moveto
+305.43 337.86 lineto
+315.73 340.35 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.04 333.39 moveto
+305.43 337.86 lineto
+315.73 340.35 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+624.01 335 moveto 19.98 (scale) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+606.51 323 moveto 54.97 (externalForce) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+603.46 311 moveto 61.08 (externalTorque) alignedtext
+grestore
+% Node11->Node9
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 272.05 329.67 moveto
+303.53 315.91 354.02 295.93 400 287 curveto
+461.25 275.1 633.49 264.57 729.76 259.39 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 270.24 326.64 moveto
+262.52 333.89 lineto
+273.08 333.04 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 270.24 326.64 moveto
+262.52 333.89 lineto
+273.08 333.04 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+436.79 302 moveto 64.42 (angularVelocity) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+452.89 290 moveto 32.21 (velocity) alignedtext
+grestore
+% Node11->Node10
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 253.17 325.57 moveto
+267.89 304.39 294.42 269.66 324 247 curveto
+359.74 219.62 408.1 199.33 438.92 188.07 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 250.17 323.76 moveto
+247.44 333.99 lineto
+255.95 327.69 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 250.17 323.76 moveto
+247.44 333.99 lineto
+255.95 327.69 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+350.5 250 moveto 5 (v) alignedtext
+grestore
+% Node14
+gsave
+[ /Rect [ 557 352.5 711 373.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Physics_1_1RBProperties.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 556.57 353 moveto
+556.57 373 lineto
+711.43 373 lineto
+711.43 353 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 556.57 353 moveto
+556.57 373 lineto
+711.43 373 lineto
+711.43 353 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+564.57 360 moveto 138.86 (CartWheel::Physics::RBProperties) alignedtext
+grestore
+% Node11->Node14
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.8 347.62 moveto
+384.7 350.95 486.53 355.87 556.33 359.24 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.61 344.1 moveto
+305.46 347.12 lineto
+315.28 351.1 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 315.61 344.1 moveto
+305.46 347.12 lineto
+315.28 351.1 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+324.67 365 moveto 56.65 (invMOI_local) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+331.06 353 moveto 43.87 (MOI_local) alignedtext
+grestore
+% Node11->Node15
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 247.92 363.85 moveto
+258.99 392.1 283.62 442.83 324 464 curveto
+476.73 544.07 539.87 474.38 712 464 curveto
+883.6 453.65 1313.79 414.9 1480 371 curveto
+1517.73 361.03 1559.15 341.81 1582.72 330.03 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 251.11 362.38 moveto
+244.34 354.23 lineto
+244.55 364.82 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 251.11 362.38 moveto
+244.34 354.23 lineto
+244.55 364.82 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+882.11 514 moveto 27.78 (tmpV4) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+882.11 502 moveto 27.78 (tmpV5) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+883.23 490 moveto 25.55 (torque) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+882.11 478 moveto 27.78 (tmpV1) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+882.11 466 moveto 27.78 (tmpV2) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+882.11 454 moveto 27.78 (tmpV3) alignedtext
+grestore
+% Node11->Node17
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 270.07 358.24 moveto
+285.7 365.29 305.51 373.29 324 378 curveto
+577.83 442.71 1236.11 478.55 1498 484 curveto
+1590.42 485.92 1623.5 525.71 1706 484 curveto
+1796.38 438.3 1847.96 314.34 1861.43 278.09 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 271.47 355.03 moveto
+260.93 354.01 lineto
+268.53 361.39 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 271.47 355.03 moveto
+260.93 354.01 lineto
+268.53 361.39 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1004.01 481 moveto 19.98 (scale) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+951.8 469 moveto 124.39 (frameAngularVelocityInWorld) alignedtext
+grestore
+% Node12
+gsave
+[ /Rect [ 0 177.5 138 198.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Math_1_1ThreeTuple.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath -.09 178 moveto
+-.09 198 lineto
+138.09 198 lineto
+138.09 178 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath -.09 178 moveto
+-.09 198 lineto
+138.09 198 lineto
+138.09 178 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+7.91 185 moveto 122.18 (CartWheel::Math::ThreeTuple) alignedtext
+grestore
+% Node12->Node11
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 88.12 205.34 moveto
+124.18 238.05 201.18 307.88 229.9 333.93 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 90.04 202.36 moveto
+80.29 198.24 lineto
+85.34 207.55 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 90.04 202.36 moveto
+80.29 198.24 lineto
+85.34 207.55 lineto
+closepath stroke
+grestore
+% Node13
+gsave
+[ /Rect [ 408 88.5 530 109.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Math_1_1Point3d.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 407.67 89 moveto
+407.67 109 lineto
+530.33 109 lineto
+530.33 89 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 407.67 89 moveto
+407.67 109 lineto
+530.33 109 lineto
+530.33 89 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+415.67 96 moveto 106.65 (CartWheel::Math::Point3d) alignedtext
+grestore
+% Node12->Node13
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 123.96 175.77 moveto
+203.67 158.04 349.89 125.5 423.75 109.07 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 123.11 172.38 moveto
+114.11 177.96 lineto
+124.63 179.21 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 123.11 172.38 moveto
+114.11 177.96 lineto
+124.63 179.21 lineto
+closepath stroke
+grestore
+% Node13->Node1
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 497.21 84.33 moveto
+552.93 56.77 681.69 0 797 0 curveto
+797 0 797 0 1865 0 curveto
+1987.82 0 2095.58 133.8 2123.81 171.96 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 495.35 81.35 moveto
+487.99 88.96 lineto
+498.49 87.61 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 495.35 81.35 moveto
+487.99 88.96 lineto
+498.49 87.61 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1302.34 51 moveto 53.32 (toeStancePos) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1300.67 39 moveto 56.66 (heelSwingPos) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1300.12 27 moveto 57.76 (heelStancePos) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1302.89 15 moveto 52.22 (toeSwingPos) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1304 3 moveto 50 (comPosition) alignedtext
+grestore
+% Node13->Node9
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 502.16 113.01 moveto
+549.31 133.15 638.2 171.96 712 209 curveto
+735.81 220.95 762.61 236.05 779.64 245.86 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 503.32 109.7 moveto
+492.75 109 lineto
+500.58 116.14 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 503.32 109.7 moveto
+492.75 109 lineto
+500.58 116.14 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+617.89 212 moveto 32.23 (position) alignedtext
+grestore
+% Node13->Node15
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 521.79 87 moveto
+533.02 84.92 544.86 83.08 556 82 curveto
+625.01 75.32 643.17 73.67 712 82 curveto
+873.75 101.59 1267.9 210.32 1424 257 curveto
+1478.81 273.39 1541.6 296.71 1576.03 309.89 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 520.83 83.62 moveto
+511.68 88.96 lineto
+522.17 90.49 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 520.83 83.62 moveto
+511.68 88.96 lineto
+522.17 90.49 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1002.33 182 moveto 23.34 (pJPos) alignedtext
+0 0 0 edgecolor
+10 /FreeSans set_font
+1002.61 170 moveto 22.78 (cJPos) alignedtext
+grestore
+% Node14->Node8
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 721.88 352.13 moveto
+788.49 343.89 878.92 332.71 941.44 324.97 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 721.31 348.67 moveto
+711.82 353.38 lineto
+722.17 355.62 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 721.31 348.67 moveto
+711.82 353.38 lineto
+722.17 355.62 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+785.89 354 moveto 22.22 (props) alignedtext
+grestore
+% Node15->Node7
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1560.65 332.8 moveto
+1537.23 339.47 1507.25 347.04 1480 351 curveto
+1462.09 353.6 1442.86 355.24 1424.33 356.24 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1561.63 336.16 moveto
+1570.26 330.01 lineto
+1559.68 329.44 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1561.63 336.16 moveto
+1570.26 330.01 lineto
+1559.68 329.44 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1448.78 358 moveto 24.45 (pJoint) alignedtext
+grestore
+% Node15->Node17
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1662.52 308.03 moveto
+1708.37 298.97 1770.66 286.65 1814 278.08 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1661.84 304.6 moveto
+1652.71 309.97 lineto
+1663.2 311.47 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1661.84 304.6 moveto
+1652.71 309.97 lineto
+1663.2 311.47 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1738.83 299 moveto 18.34 (joint) alignedtext
+grestore
+% Node16
+gsave
+[ /Rect [ 1499 530.5 1705 551.5 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCartWheel_1_1Core_1_1ReducedCharacterStateArray.html) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 1498.49 531 moveto
+1498.49 551 lineto
+1705.51 551 lineto
+1705.51 531 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 1498.49 531 moveto
+1498.49 551 lineto
+1705.51 551 lineto
+1705.51 531 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /FreeSans set_font
+1506.49 538 moveto 191.02 (CartWheel::Core::ReducedCharacterStateArray) alignedtext
+grestore
+% Node16->Node2
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1692.18 529.68 moveto
+1724.01 525.69 1759.44 521.24 1789.9 517.42 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1691.47 526.25 moveto
+1681.98 530.96 lineto
+1692.34 533.19 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1691.47 526.25 moveto
+1681.98 530.96 lineto
+1692.34 533.19 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1724.12 528 moveto 47.76 (desiredPose) alignedtext
+grestore
+% Node17->Node1
+gsave
+1 setlinewidth
+dashed
+0.77647 0.75294 0.80392 edgecolor
+newpath 1905.85 254.79 moveto
+1959.24 237.53 2051.6 207.67 2099.75 192.1 curveto
+stroke
+0.77647 0.75294 0.80392 edgecolor
+newpath 1904.47 251.56 moveto
+1896.03 257.97 lineto
+1906.63 258.22 lineto
+closepath fill
+1 setlinewidth
+solid
+0.77647 0.75294 0.80392 edgecolor
+newpath 1904.47 251.56 moveto
+1896.03 257.97 lineto
+1906.63 258.22 lineto
+closepath stroke
+0 0 0 edgecolor
+10 /FreeSans set_font
+1957.95 241 moveto 76.1 (rootControlParams) alignedtext
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 2254 719
+end
+restore
+%%EOF

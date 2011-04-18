@@ -1,0 +1,91 @@
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy}{
+\section{CartWheel::Core::ActionCollectionPolicy Class Reference}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy}\index{CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}}
+}
+
+
+{\ttfamily \#include $<$ActionCollectionPolicy.h$>$}
+
+
+
+Inheritance diagram for CartWheel::Core::ActionCollectionPolicy:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classCartWheel_1_1Core_1_1ActionCollectionPolicy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Core::ActionCollectionPolicy:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Core_1_1ActionCollectionPolicy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a7380c4a5db84ecf445685c0c90b859d2}{
+{\bfseries ActionCollectionPolicy} (\hyperlink{classCartWheel_1_1Core_1_1CompositeController}{CompositeController} $\ast$con)}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a7380c4a5db84ecf445685c0c90b859d2}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a221d8930e20ff82b76e67a353e070442}{
+void {\bfseries setActionIndex} (int index)}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a221d8930e20ff82b76e67a353e070442}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_ae20a888943cdd6d01697114ae3cf4058}{
+int {\bfseries getActionIndex} ()}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_ae20a888943cdd6d01697114ae3cf4058}
+
+\item 
+int \hyperlink{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a810258838684fde8a79b5df92d3eacde}{loadActionsFromFile} (const char $\ast$fName)
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1ActionCollectionPolicy_afe57e1a3ba3f7f8463e1d1b550a57d51}{applyAction} ()
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a12bc039ce38d711ccb1f89bb395fc3a9}{applyActionNoSwap} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a1cd8cd00d480ef41fceb1a0027f6c3d6}{
+class {\bfseries RLSimulationControlProcess}}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a1cd8cd00d480ef41fceb1a0027f6c3d6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to store a list of actions (triples of the form: primary controller index, secondary controller index, interpValue). This list is loaded from a file. Also loaded from the file are a set of mappings that indicate weather or not the controllers used should be stance dependent. For instance, one of the actions could be a turn to the left when the character is in a left stance, or turn to the right when the character is in a right stance. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_afe57e1a3ba3f7f8463e1d1b550a57d51}{
+\index{CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}!applyAction@{applyAction}}
+\index{applyAction@{applyAction}!CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}}
+\subsubsection[{applyAction}]{\setlength{\rightskip}{0pt plus 5cm}void ActionCollectionPolicy::applyAction ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_afe57e1a3ba3f7f8463e1d1b550a57d51}
+this method is used to select the primary and secondary controllers to be run based on the user input. 
+
+Implements \hyperlink{classCartWheel_1_1Core_1_1Policy_acccd1ec26392309eff12c565ae9fb8c7}{CartWheel::Core::Policy}.
+
+\hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a12bc039ce38d711ccb1f89bb395fc3a9}{
+\index{CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}!applyActionNoSwap@{applyActionNoSwap}}
+\index{applyActionNoSwap@{applyActionNoSwap}!CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}}
+\subsubsection[{applyActionNoSwap}]{\setlength{\rightskip}{0pt plus 5cm}void ActionCollectionPolicy::applyActionNoSwap ()}}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a12bc039ce38d711ccb1f89bb395fc3a9}
+this method is used to select the primary and secondary controllers to be run based on the user input. Does not swap the action
+
+this method is used to select the primary and secondary controllers to be run based on the user input. \hypertarget{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a810258838684fde8a79b5df92d3eacde}{
+\index{CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}!loadActionsFromFile@{loadActionsFromFile}}
+\index{loadActionsFromFile@{loadActionsFromFile}!CartWheel::Core::ActionCollectionPolicy@{CartWheel::Core::ActionCollectionPolicy}}
+\subsubsection[{loadActionsFromFile}]{\setlength{\rightskip}{0pt plus 5cm}int ActionCollectionPolicy::loadActionsFromFile (const char $\ast$ {\em fName})}}
+\label{classCartWheel_1_1Core_1_1ActionCollectionPolicy_a810258838684fde8a79b5df92d3eacde}
+this method is used to read the action list from a file. The method returns the number of actions read. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/ActionCollectionPolicy.h\item 
+src/Core/ActionCollectionPolicy.cpp\end{DoxyCompactItemize}

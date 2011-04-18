@@ -1,0 +1,85 @@
+\hypertarget{classCartWheel_1_1Core_1_1VirtualModelController}{
+\section{CartWheel::Core::VirtualModelController Class Reference}
+\label{classCartWheel_1_1Core_1_1VirtualModelController}\index{CartWheel::Core::VirtualModelController@{CartWheel::Core::VirtualModelController}}
+}
+
+
+Inheritance diagram for CartWheel::Core::VirtualModelController:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classCartWheel_1_1Core_1_1VirtualModelController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Core::VirtualModelController:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Core_1_1VirtualModelController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1VirtualModelController_a025763147935a31c9d88728373fcb332}{
+{\bfseries VirtualModelController} (\hyperlink{classCartWheel_1_1Core_1_1Character}{Character} $\ast$ch)}
+\label{classCartWheel_1_1Core_1_1VirtualModelController_a025763147935a31c9d88728373fcb332}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1VirtualModelController_ae4cf418528c2c3df886a552cb4eb14b2}{computeTorques} (DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{CartWheel::Physics::ContactPoint} $>$ $\ast$cfs)
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1VirtualModelController_ab5866418db8f69510ae6de1a5437eda1}{computeJointTorquesEquivalentToForce} (\hyperlink{classCartWheel_1_1Physics_1_1Joint}{CartWheel::Physics::Joint} $\ast$start, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&pLocal, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&fGlobal, \hyperlink{classCartWheel_1_1Physics_1_1Joint}{CartWheel::Physics::Joint} $\ast$end)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Core_1_1VirtualModelController_ab5866418db8f69510ae6de1a5437eda1}{
+\index{CartWheel::Core::VirtualModelController@{CartWheel::Core::VirtualModelController}!computeJointTorquesEquivalentToForce@{computeJointTorquesEquivalentToForce}}
+\index{computeJointTorquesEquivalentToForce@{computeJointTorquesEquivalentToForce}!CartWheel::Core::VirtualModelController@{CartWheel::Core::VirtualModelController}}
+\subsubsection[{computeJointTorquesEquivalentToForce}]{\setlength{\rightskip}{0pt plus 5cm}void VirtualModelController::computeJointTorquesEquivalentToForce ({\bf CartWheel::Physics::Joint} $\ast$ {\em start}, \/  const {\bf CartWheel::Math::Point3d} \& {\em pLocal}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em fGlobal}, \/  {\bf CartWheel::Physics::Joint} $\ast$ {\em end})}}
+\label{classCartWheel_1_1Core_1_1VirtualModelController_ab5866418db8f69510ae6de1a5437eda1}
+This method is used to compute the torques that mimick the effect of applying a force on a rigid body, at some point. It works best if the end joint is connected to something that is grounded, otherwise (I think) this is just an approximation.
+
+This function works by making use of the formula:
+
+t = J' $\ast$ f, where J' is dp/dq, where p is the position where the force is applied, q is 'sorta' the relative orientation between links. It makes the connection between the velocity of the point p and the relative angular velocities at each joint. Here's an example of how to compute it.
+
+Assume: p = pBase + R1 $\ast$ v1 + R2 $\ast$ v2, where R1 is the matrix from link 1 to whatever pBase is specified in, and R2 is the rotation matrix from link 2 to whatever pBase is specified in, v1 is the point from link 1's origin to link 2's origin (in link 1 coordinates), and v2 is the vector from origin of link 2 to p (in link 2 coordinates).
+
+dp/dt = d(R1 $\ast$ v1)/dt + d(R2 $\ast$ v2)/dt = d R1/dt $\ast$ v1 + d R2/dt $\ast$ v2, and dR/dt = wx $\ast$ R, where wx is the cross product matrix associated with the angular velocity w so dp/dt = w1x $\ast$ R1 $\ast$ v1 + w2x $\ast$ R2 $\ast$ v2, and w2 = w1 + wRel
+
+= \mbox{[}-\/(R1$\ast$v1 + R2$\ast$v2)x -\/(R2$\ast$v2)x \mbox{]} \mbox{[}w1 wRel\mbox{]}', so the first matrix is the Jacobian.
+
+for a larger chain, we get: dp/dt = \mbox{[}-\/(R1$\ast$v1 + R2$\ast$v2 + ... + Rn$\ast$vn)x; -\/(R2$\ast$v2 + R3$\ast$v3 + ... + Rn$\ast$vn)x; ...; -\/(Rn$\ast$vn)x \mbox{]} \mbox{[}w1; w2; ...; wn\mbox{]}' or dp/dt = \mbox{[}-\/p1x; -\/p2x; ...; -\/pnx \mbox{]} \mbox{[}w1; w2; ...; wn\mbox{]}' where pi is the vector from the location of the ith joint to p;
+
+and all omegas are relative to the parent. The ith cross product vector in the jacobian is a vector from the location of the ith joint to the world location of the point where the force is applied.
+
+The first entry is the cross product matrix of the vector (in pBase coordinates) from the origin of link 1 to p, and the second entry is the vector (in pBase coordinates) from the origin of link 2 to p (and therein lies the general way of writing this).
+
+This method is used to compute the torques that mimick the effect of applying a force on a rigid body, at some point. It works best if the end joint is connected to something that is grounded, otherwise (I think) this is just an approximation.
+
+This function works by making use of the formula:
+
+t = J' $\ast$ f, where J' is dp/dq, where p is the position where the force is applied, q is 'sorta' the relative orientation between links. It makes the connection between the velocity of the point p and the relative angular velocities at each joint. Here's an example of how to compute it.
+
+Assume: p = pBase + R1 $\ast$ v1 + R2 $\ast$ v2, where R1 is the matrix from link 1 to whatever pBase is specified in, and R2 is the rotation matrix from link 2 to whatever pBase is specified in, v1 is the point from link 1's origin to link 2's origin (in link 1 coordinates), and v2 is the vector from origin of link 2 to p (in link 2 coordinates).
+
+dp/dt = d(R1 $\ast$ v1)/dt + d(R2 $\ast$ v2)/dt = d R1/dt $\ast$ v1 + d R2/dt $\ast$ v2, and dR/dt = wx $\ast$ R, where wx is the cross product matrix associated with the angular velocity w so dp/dt = w1x $\ast$ R1 $\ast$ v1 + w2x $\ast$ R2 $\ast$ v2, and w2 = w1 + wRel
+
+= \mbox{[}-\/(R1$\ast$v1 + R2$\ast$v2)x -\/(R2$\ast$v1)x \mbox{]} \mbox{[}w1 wRel\mbox{]}', so the first matrix is the Jacobian. The first entry is the cross product matrix of the vector (in 'global' coordinates) from the origin of link 1 to p, and the second entry is the vector (in 'global' coordinates) from the origin of link 2 to p (and therein lies the general way of writing this). \hypertarget{classCartWheel_1_1Core_1_1VirtualModelController_ae4cf418528c2c3df886a552cb4eb14b2}{
+\index{CartWheel::Core::VirtualModelController@{CartWheel::Core::VirtualModelController}!computeTorques@{computeTorques}}
+\index{computeTorques@{computeTorques}!CartWheel::Core::VirtualModelController@{CartWheel::Core::VirtualModelController}}
+\subsubsection[{computeTorques}]{\setlength{\rightskip}{0pt plus 5cm}virtual void CartWheel::Core::VirtualModelController::computeTorques (DynamicArray$<$ {\bf CartWheel::Physics::ContactPoint} $>$ $\ast$ {\em cfs})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1VirtualModelController_ae4cf418528c2c3df886a552cb4eb14b2}
+This method is used to compute the torques, based on the current and desired poses 
+
+Implements \hyperlink{classCartWheel_1_1Core_1_1Controller_a4355027883ca8a1be4048d95577b8e74}{CartWheel::Core::Controller}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/VirtualModelController.h\item 
+src/Core/VirtualModelController.cpp\end{DoxyCompactItemize}

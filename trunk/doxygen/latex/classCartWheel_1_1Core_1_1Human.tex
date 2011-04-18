@@ -1,0 +1,167 @@
+\hypertarget{classCartWheel_1_1Core_1_1Human}{
+\section{CartWheel::Core::Human Class Reference}
+\label{classCartWheel_1_1Core_1_1Human}\index{CartWheel::Core::Human@{CartWheel::Core::Human}}
+}
+
+
+Collaboration diagram for CartWheel::Core::Human:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Core_1_1Human__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries GrabbingMethod} \{ {\bfseries left}, 
+{\bfseries right}, 
+{\bfseries both}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_ab4fbcfc558fa6935362df9a6797d38dc}{
+{\bfseries Human} (const std::string \&name, \hyperlink{classCartWheel_1_1Core_1_1Character}{CartWheel::Core::Character} $\ast$character, \hyperlink{classCartWheel_1_1Core_1_1SimBiController}{CartWheel::Core::SimBiController} $\ast$controller, \hyperlink{classCartWheel_1_1Core_1_1BehaviourController}{CartWheel::Core::BehaviourController} $\ast$behaviour=NULL, \hyperlink{classCartWheel_1_1Core_1_1Policy}{CartWheel::Core::Policy} $\ast$policy=NULL)}
+\label{classCartWheel_1_1Core_1_1Human_ab4fbcfc558fa6935362df9a6797d38dc}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a4d9cc118087bb0ed026bdb885967d21b}{
+{\bfseries Human} (const std::string \&name, \hyperlink{classCartWheel_1_1Core_1_1Character}{CartWheel::Core::Character} $\ast$character, \hyperlink{classCartWheel_1_1Core_1_1CompositeController}{CartWheel::Core::CompositeController} $\ast$controller, \hyperlink{classCartWheel_1_1Core_1_1Policy}{CartWheel::Core::Policy} $\ast$policy)}
+\label{classCartWheel_1_1Core_1_1Human_a4d9cc118087bb0ed026bdb885967d21b}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_ad520b56274e80733590918f8445935ca}{
+\hyperlink{classCartWheel_1_1Core_1_1Character}{CartWheel::Core::Character} $\ast$ {\bfseries getCharacter} ()}
+\label{classCartWheel_1_1Core_1_1Human_ad520b56274e80733590918f8445935ca}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a06d07a557b2efe941107e1da74fa6e11}{
+\hyperlink{classCartWheel_1_1Core_1_1SimBiController}{CartWheel::Core::SimBiController} $\ast$ {\bfseries getController} ()}
+\label{classCartWheel_1_1Core_1_1Human_a06d07a557b2efe941107e1da74fa6e11}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_ac7b2a709248efd852af5d19a1aabf55a}{
+\hyperlink{classCartWheel_1_1Core_1_1CompositeController}{CartWheel::Core::CompositeController} $\ast$ {\bfseries getCompositeController} ()}
+\label{classCartWheel_1_1Core_1_1Human_ac7b2a709248efd852af5d19a1aabf55a}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_aaa6da7be945c0d7ddf3e6f0345ead467}{
+\hyperlink{classCartWheel_1_1Core_1_1BehaviourController}{CartWheel::Core::BehaviourController} $\ast$ {\bfseries getBehaviour} ()}
+\label{classCartWheel_1_1Core_1_1Human_aaa6da7be945c0d7ddf3e6f0345ead467}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a48f62c900e7c518232f6234fce5148ab}{
+\hyperlink{classCartWheel_1_1Core_1_1Policy}{CartWheel::Core::Policy} $\ast$ {\bfseries getPolicy} ()}
+\label{classCartWheel_1_1Core_1_1Human_a48f62c900e7c518232f6234fce5148ab}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a2f0c465702f645ee25d4caedf4350bec}{
+std::string {\bfseries getName} ()}
+\label{classCartWheel_1_1Core_1_1Human_a2f0c465702f645ee25d4caedf4350bec}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a3c2cb16d7c50e886284fb9a05e886fe6}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries getPosition} ()}
+\label{classCartWheel_1_1Core_1_1Human_a3c2cb16d7c50e886284fb9a05e886fe6}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a00bed2ea064ddff3ca322c15e095d600}{
+double {\bfseries getHeading} ()}
+\label{classCartWheel_1_1Core_1_1Human_a00bed2ea064ddff3ca322c15e095d600}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_af022ad2caa9f2ed0161a697f7a7b3931}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries getVelocity} ()}
+\label{classCartWheel_1_1Core_1_1Human_af022ad2caa9f2ed0161a697f7a7b3931}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_aa1d657acf6de76e262b51e025e7d97fc}{
+void {\bfseries setCharacter} (\hyperlink{classCartWheel_1_1Core_1_1Character}{CartWheel::Core::Character} $\ast$character)}
+\label{classCartWheel_1_1Core_1_1Human_aa1d657acf6de76e262b51e025e7d97fc}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_ab19877d26c36f028c8ad54772df00934}{
+void {\bfseries setController} (\hyperlink{classCartWheel_1_1Core_1_1SimBiController}{CartWheel::Core::SimBiController} $\ast$controller)}
+\label{classCartWheel_1_1Core_1_1Human_ab19877d26c36f028c8ad54772df00934}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a76df73e2afb3d1f49213448878d9dbf5}{
+void {\bfseries setBehaviour} (\hyperlink{classCartWheel_1_1Core_1_1BehaviourController}{CartWheel::Core::BehaviourController} $\ast$behaviour)}
+\label{classCartWheel_1_1Core_1_1Human_a76df73e2afb3d1f49213448878d9dbf5}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_abd9c16cd8c4f2c3fd3fb24c6e6afdbe5}{
+void {\bfseries setPolicy} (\hyperlink{classCartWheel_1_1Core_1_1Policy}{CartWheel::Core::Policy} $\ast$policy)}
+\label{classCartWheel_1_1Core_1_1Human_abd9c16cd8c4f2c3fd3fb24c6e6afdbe5}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_acbfcfac3c91f01daa2328ddfc062c08d}{
+void {\bfseries setPosition} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&position)}
+\label{classCartWheel_1_1Core_1_1Human_acbfcfac3c91f01daa2328ddfc062c08d}
+
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1Human_a3b99b7ad3f4e6a211093f21250a5b5bf}{setHeading} (double angle)
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a63ec6e9388f921bb52fbd7be5b938a9d}{
+void {\bfseries setSpeed} (double speed)}
+\label{classCartWheel_1_1Core_1_1Human_a63ec6e9388f921bb52fbd7be5b938a9d}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a0218eabcbd12db599cd6c2d4a9a043e8}{
+void {\bfseries setStepWidth} (double width)}
+\label{classCartWheel_1_1Core_1_1Human_a0218eabcbd12db599cd6c2d4a9a043e8}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a901d8aff5d760b19c7d64403ae4d392f}{
+void {\bfseries setName} (const std::string \&name)}
+\label{classCartWheel_1_1Core_1_1Human_a901d8aff5d760b19c7d64403ae4d392f}
+
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1Human_a67285fc71a5c3f07a24a268e796bb3f2}{init} ()
+\item 
+void \hyperlink{classCartWheel_1_1Core_1_1Human_a96af09af6db72efc7fe1582f1721980c}{applyAction} (int actionIndex)
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a15ea269918138a8eb0895bb15deac3a5}{
+void {\bfseries grabObject} (const std::string \&targetName, const GrabbingMethod \&method)}
+\label{classCartWheel_1_1Core_1_1Human_a15ea269918138a8eb0895bb15deac3a5}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a73364958c5eb357d04f0871c8dfb2dc8}{
+void {\bfseries dropObject} (const std::string \&targetName)}
+\label{classCartWheel_1_1Core_1_1Human_a73364958c5eb357d04f0871c8dfb2dc8}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Human_a9c6bf3731f008909399f85a997845cbc}{
+void {\bfseries throwObject} (const std::string \&targetName, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Math::Vector3d} \&velocity)}
+\label{classCartWheel_1_1Core_1_1Human_a9c6bf3731f008909399f85a997845cbc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Core_1_1Human_a96af09af6db72efc7fe1582f1721980c}{
+\index{CartWheel::Core::Human@{CartWheel::Core::Human}!applyAction@{applyAction}}
+\index{applyAction@{applyAction}!CartWheel::Core::Human@{CartWheel::Core::Human}}
+\subsubsection[{applyAction}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Core::Human::applyAction (int {\em actionIndex})}}
+\label{classCartWheel_1_1Core_1_1Human_a96af09af6db72efc7fe1582f1721980c}
+Apply new action based on the index as prescribed in \hyperlink{classCartWheel_1_1Core_1_1ActionCollectionPolicy}{ActionCollectionPolicy}. \hypertarget{classCartWheel_1_1Core_1_1Human_a67285fc71a5c3f07a24a268e796bb3f2}{
+\index{CartWheel::Core::Human@{CartWheel::Core::Human}!init@{init}}
+\index{init@{init}!CartWheel::Core::Human@{CartWheel::Core::Human}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Core::Human::init ()}}
+\label{classCartWheel_1_1Core_1_1Human_a67285fc71a5c3f07a24a268e796bb3f2}
+Initialize everything. \hypertarget{classCartWheel_1_1Core_1_1Human_a3b99b7ad3f4e6a211093f21250a5b5bf}{
+\index{CartWheel::Core::Human@{CartWheel::Core::Human}!setHeading@{setHeading}}
+\index{setHeading@{setHeading}!CartWheel::Core::Human@{CartWheel::Core::Human}}
+\subsubsection[{setHeading}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Core::Human::setHeading (double {\em angle})}}
+\label{classCartWheel_1_1Core_1_1Human_a3b99b7ad3f4e6a211093f21250a5b5bf}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em angle}]Angle in radians \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/Human.h\item 
+src/Core/Human.cpp\end{DoxyCompactItemize}

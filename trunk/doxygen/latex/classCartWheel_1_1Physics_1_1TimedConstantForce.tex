@@ -1,0 +1,85 @@
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce}{
+\section{CartWheel::Physics::TimedConstantForce Class Reference}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce}\index{CartWheel::Physics::TimedConstantForce@{CartWheel::Physics::TimedConstantForce}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::TimedConstantForce:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classCartWheel_1_1Physics_1_1TimedConstantForce__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::TimedConstantForce:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1TimedConstantForce__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a6c7a90368308fb0deca65cb2a1a8ccb0}{
+{\bfseries TimedConstantForce} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$bdy, \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Point3d} \&localActingPoint, \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} value)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a6c7a90368308fb0deca65cb2a1a8ccb0}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a54b0d92766ed0259798c4e70d1324573}{
+void {\bfseries setRigidBody} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$b)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a54b0d92766ed0259798c4e70d1324573}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_ab2382915b5badd720b8508a2235e66fe}{
+void {\bfseries setStartingTime} (double st)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_ab2382915b5badd720b8508a2235e66fe}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a5ae2b9d228270482e0da5289587059f5}{
+void {\bfseries setDuration} (double l)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a5ae2b9d228270482e0da5289587059f5}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_ad068f2daa339c0530c2a96ba9d7c3a32}{
+\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$ {\bfseries getBody} ()}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_ad068f2daa339c0530c2a96ba9d7c3a32}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_af77c8eb851b13cb071760b7114811313}{
+double {\bfseries getDuration} ()}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_af77c8eb851b13cb071760b7114811313}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a1566f2c9385af907d2f6d70bfa77d49c}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} {\bfseries getForce} ()}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a1566f2c9385af907d2f6d70bfa77d49c}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a505fab54a8b09d962117fad501cc9af2}{
+void {\bfseries setForce} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&fNew)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a505fab54a8b09d962117fad501cc9af2}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_adaeae76333ec37e268919e1817aeeeb9}{
+void {\bfseries setActingPoint} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{Point3d} \&pNew)}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_adaeae76333ec37e268919e1817aeeeb9}
+
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1TimedConstantForce_a619d80c474e7905f63b76f3904bddf1e}{evaluateForceAtTime} (double t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1TimedConstantForce_a619d80c474e7905f63b76f3904bddf1e}{
+\index{CartWheel::Physics::TimedConstantForce@{CartWheel::Physics::TimedConstantForce}!evaluateForceAtTime@{evaluateForceAtTime}}
+\index{evaluateForceAtTime@{evaluateForceAtTime}!CartWheel::Physics::TimedConstantForce@{CartWheel::Physics::TimedConstantForce}}
+\subsubsection[{evaluateForceAtTime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} CartWheel::Physics::TimedConstantForce::evaluateForceAtTime (double {\em t})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1TimedConstantForce_a619d80c474e7905f63b76f3904bddf1e}
+this method evaluates the value of the force. NOTE: the value returned by this method is the absolute value of the force, in world coordinates. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Physics/TimedConstantForce.h\end{DoxyCompactItemize}

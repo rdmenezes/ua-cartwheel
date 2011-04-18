@@ -1,0 +1,138 @@
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP}{
+\section{CartWheel::Physics::BoxCDP Class Reference}
+\label{classCartWheel_1_1Physics_1_1BoxCDP}\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::BoxCDP:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classCartWheel_1_1Physics_1_1BoxCDP__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::BoxCDP:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1BoxCDP__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_adfb62bdc76f3f85380618c954cb92894}{
+{\bfseries BoxCDP} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&point1, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&point2, \hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$theBody=NULL)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_adfb62bdc76f3f85380618c954cb92894}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_af7f901d83da49e5e3d77b1912a6611fb}{
+{\bfseries BoxCDP} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$theBody=NULL)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_af7f901d83da49e5e3d77b1912a6611fb}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_ad338cfcbec94b96327377a05c1e0817f}{
+virtual const char $\ast$ {\bfseries save} ()}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_ad338cfcbec94b96327377a05c1e0817f}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a85d65e5e4331e66b4c655bc76971e4cc}{
+virtual void {\bfseries updateToWorldPrimitive} ()}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a85d65e5e4331e66b4c655bc76971e4cc}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_a30fe03a4419ba85988a0d909b42f9c3d}{draw} ()
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a015d274424967e56fd7f75c7e6759116}{
+const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \& {\bfseries getPoint1} () const }
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a015d274424967e56fd7f75c7e6759116}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_ab45de378ebd1e7405ba554a5c42417d6}{
+void {\bfseries setPoint1} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&point1)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_ab45de378ebd1e7405ba554a5c42417d6}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a028629fedb1b0256a7bb096f2ba0c532}{
+const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \& {\bfseries getPoint2} () const }
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a028629fedb1b0256a7bb096f2ba0c532}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_aeee299492278d953d61eb163fee4399d}{
+void {\bfseries setPoint2} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&point2)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_aeee299492278d953d61eb163fee4399d}
+
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_ac0818b982e4690ad1fb95f5c88ecb1a2}{getCenter} ()
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_ac8a41c6da69e379ab479e825b03cbcb3}{getXLen} ()
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_a3536b20411f1534c608f917cf950ba17}{getYLen} ()
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_aa6d43bb822464cf18cc8164dc2942c38}{getZLen} ()
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_af808c33f168e8d9643f435f275dc08f6}{
+virtual int {\bfseries computeCollisionsWith} (\hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_af808c33f168e8d9643f435f275dc08f6}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a19a07840821ab2f7640d7bdca66b95c5}{
+virtual int {\bfseries computeCollisionsWithSphereCDP} (\hyperlink{classCartWheel_1_1Physics_1_1SphereCDP}{SphereCDP} $\ast$, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a19a07840821ab2f7640d7bdca66b95c5}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a89096c652855213aac1430edbe183eee}{
+virtual int {\bfseries computeCollisionsWithPlaneCDP} (\hyperlink{classCartWheel_1_1Physics_1_1PlaneCDP}{PlaneCDP} $\ast$, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a89096c652855213aac1430edbe183eee}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a01990b84e07298efbb25159e88846969}{
+virtual int {\bfseries computeCollisionsWithCapsuleCDP} (\hyperlink{classCartWheel_1_1Physics_1_1CapsuleCDP}{CapsuleCDP} $\ast$, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a01990b84e07298efbb25159e88846969}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a7c8d228d0650be692ae62e14fa179c3d}{
+virtual int {\bfseries computeCollisionsWithBoxCDP} (\hyperlink{classCartWheel_1_1Physics_1_1BoxCDP}{BoxCDP} $\ast$, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$)}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a7c8d228d0650be692ae62e14fa179c3d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a30fe03a4419ba85988a0d909b42f9c3d}{
+\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}!draw@{draw}}
+\index{draw@{draw}!CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void BoxCDP::draw ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a30fe03a4419ba85988a0d909b42f9c3d}
+Draw an outline of the box 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26c85561d35a7df8bb48697da9c1cb10}{CartWheel::Physics::CollisionDetectionPrimitive}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_ac0818b982e4690ad1fb95f5c88ecb1a2}{
+\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+\subsubsection[{getCenter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Point3d} CartWheel::Physics::BoxCDP::getCenter ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_ac0818b982e4690ad1fb95f5c88ecb1a2}
+return the center of the box, expressed in local coordinates \hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_ac8a41c6da69e379ab479e825b03cbcb3}{
+\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}!getXLen@{getXLen}}
+\index{getXLen@{getXLen}!CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+\subsubsection[{getXLen}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::BoxCDP::getXLen ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_ac8a41c6da69e379ab479e825b03cbcb3}
+returns the length in the x-\/direction \hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_a3536b20411f1534c608f917cf950ba17}{
+\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}!getYLen@{getYLen}}
+\index{getYLen@{getYLen}!CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+\subsubsection[{getYLen}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::BoxCDP::getYLen ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_a3536b20411f1534c608f917cf950ba17}
+returns the length in the y-\/direction \hypertarget{classCartWheel_1_1Physics_1_1BoxCDP_aa6d43bb822464cf18cc8164dc2942c38}{
+\index{CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}!getZLen@{getZLen}}
+\index{getZLen@{getZLen}!CartWheel::Physics::BoxCDP@{CartWheel::Physics::BoxCDP}}
+\subsubsection[{getZLen}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::BoxCDP::getZLen ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1BoxCDP_aa6d43bb822464cf18cc8164dc2942c38}
+returns the length in the z-\/direction 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/BoxCDP.h\item 
+src/Physics/BoxCDP.cpp\end{DoxyCompactItemize}

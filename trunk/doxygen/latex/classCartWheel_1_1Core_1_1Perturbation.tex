@@ -1,0 +1,88 @@
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation}{
+\section{CartWheel::Core::Perturbation Class Reference}
+\label{classCartWheel_1_1Core_1_1Perturbation}\index{CartWheel::Core::Perturbation@{CartWheel::Core::Perturbation}}
+}
+
+
+{\ttfamily \#include $<$ControllerPerturbator.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_ac618a55394b02c94b4620ddb8605f321}{
+{\bfseries Perturbation} (double $\ast$var, const char $\ast$PName, double w)}
+\label{classCartWheel_1_1Core_1_1Perturbation_ac618a55394b02c94b4620ddb8605f321}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_af4b0644b316f35d31388a0147e1f67bf}{
+{\bfseries Perturbation} (const \hyperlink{classCartWheel_1_1Core_1_1Perturbation}{Perturbation} \&other)}
+\label{classCartWheel_1_1Core_1_1Perturbation_af4b0644b316f35d31388a0147e1f67bf}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a2582db956313929c9e8bc4b7709e3246}{
+\hyperlink{classCartWheel_1_1Core_1_1Perturbation}{Perturbation} \& {\bfseries operator=} (const \hyperlink{classCartWheel_1_1Core_1_1Perturbation}{Perturbation} \&other)}
+\label{classCartWheel_1_1Core_1_1Perturbation_a2582db956313929c9e8bc4b7709e3246}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_ab7081851d89927451e168567011a4614}{
+void {\bfseries addVariable} (double $\ast$newVar)}
+\label{classCartWheel_1_1Core_1_1Perturbation_ab7081851d89927451e168567011a4614}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_ad4e836e5be0433067a94a5d918e56773}{
+void {\bfseries setValue} (double newValue)}
+\label{classCartWheel_1_1Core_1_1Perturbation_ad4e836e5be0433067a94a5d918e56773}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_ab21514ef7f2914988f0a4bb843b6b12b}{
+double {\bfseries getValue} ()}
+\label{classCartWheel_1_1Core_1_1Perturbation_ab21514ef7f2914988f0a4bb843b6b12b}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a64bb39cb87c4e799365ae8788fe265fa}{
+double {\bfseries getDefaultValue} ()}
+\label{classCartWheel_1_1Core_1_1Perturbation_a64bb39cb87c4e799365ae8788fe265fa}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_aac2288860c6d2542fd20485e261c2dfb}{
+void {\bfseries resetVariables} ()}
+\label{classCartWheel_1_1Core_1_1Perturbation_aac2288860c6d2542fd20485e261c2dfb}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a33947c5f12653fbda760c316c1f2aed7}{
+const char $\ast$ {\bfseries getName} ()}
+\label{classCartWheel_1_1Core_1_1Perturbation_a33947c5f12653fbda760c316c1f2aed7}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_ab62de8ec335920f42fc3679d5e7aaac7}{
+DynamicArray$<$ double $\ast$ $>$ {\bfseries variables}}
+\label{classCartWheel_1_1Core_1_1Perturbation_ab62de8ec335920f42fc3679d5e7aaac7}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a856e8dff7e4bdcb778e275150e1bb101}{
+double {\bfseries originalValue}}
+\label{classCartWheel_1_1Core_1_1Perturbation_a856e8dff7e4bdcb778e275150e1bb101}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a900d9e399eb74b8b6703598d138205bc}{
+char {\bfseries name} \mbox{[}100\mbox{]}}
+\label{classCartWheel_1_1Core_1_1Perturbation_a900d9e399eb74b8b6703598d138205bc}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1Perturbation_a9357b76673fab2e9e7bbc0955331b866}{
+double {\bfseries weight}}
+\label{classCartWheel_1_1Core_1_1Perturbation_a9357b76673fab2e9e7bbc0955331b866}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A perturbation/alteration class contains information regarding the variable(s) that it is used to alter. If multiple variables are altered by the same perturbation, then they are assumed to have the same initial value. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/ControllerPerturbator.h\item 
+src/Core/ControllerPerturbator.cpp\end{DoxyCompactItemize}

@@ -1,0 +1,58 @@
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator}{
+\section{CartWheel::Core::ControllerPerturbator Class Reference}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator}\index{CartWheel::Core::ControllerPerturbator@{CartWheel::Core::ControllerPerturbator}}
+}
+
+
+{\ttfamily \#include $<$ControllerPerturbator.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_ab4721ef490a94a378a7da3c9c4be447d}{
+void {\bfseries resetPerturbations} ()}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_ab4721ef490a94a378a7da3c9c4be447d}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a86718679f1a66a4dcb980ab96ce1c2e0}{
+void {\bfseries perturb} (int which, double value)}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a86718679f1a66a4dcb980ab96ce1c2e0}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a07cbd1ebb67680d6e1739e79e1730e31}{
+void {\bfseries addPerturbation} (DynamicArray$<$ double $\ast$ $>$ $\ast$vars, const char $\ast$PName, double w)}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a07cbd1ebb67680d6e1739e79e1730e31}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a36bef2d19c3f59651561296647e63965}{
+void {\bfseries addPerturbation} (double $\ast$var, const char $\ast$PName, double w)}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a36bef2d19c3f59651561296647e63965}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a3d5b6ee5336f6699cd5d642276748eca}{
+void {\bfseries getDeltaP} (DynamicArray$<$ double $>$ $\ast$result)}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a3d5b6ee5336f6699cd5d642276748eca}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a1ad76cedc4927e7e63109b500598d2cd}{
+void {\bfseries setDeltaP} (DynamicArray$<$ double $>$ $\ast$deltaP)}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a1ad76cedc4927e7e63109b500598d2cd}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1ControllerPerturbator_a375e2dd31457a2dbc95d9df063c0e1de}{
+DynamicArray$<$ \hyperlink{classCartWheel_1_1Core_1_1Perturbation}{Perturbation} $\ast$ $>$ {\bfseries perturbations}}
+\label{classCartWheel_1_1Core_1_1ControllerPerturbator_a375e2dd31457a2dbc95d9df063c0e1de}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A controller is defined by a sequence of parameters. This class provides an easy way of perturbing (i.e. altering) the value of some of these parameters. This can be useful when testing different settings for a controller (for instance when computing gradients). 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/ControllerPerturbator.h\item 
+src/Core/ControllerPerturbator.cpp\end{DoxyCompactItemize}

@@ -1,0 +1,91 @@
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly}{
+\section{CartWheel::GL::GLIndexedPoly Class Reference}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly}\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+}
+
+
+{\ttfamily \#include $<$GLMesh.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly_ac4a271b76b0b2c4776dd3d183af85190}{clear} ()
+\item 
+void \hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly_a4f38506cb27baebf57df07766bf32e53}{addVertexIndex} (int index)
+\item 
+\hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly}{GLIndexedPoly} \& \hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly_a7a698956ee71f181476218a08b121d65}{operator=} (const \hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly}{GLIndexedPoly} \&other)
+\item 
+\hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly_ad665def1b6752e27cab5c195b5101ed8}{GLIndexedPoly} (void)
+\item 
+\hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly_a89e44ede1407a525e8cfbb626e4b0fd9}{$\sim$GLIndexedPoly} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a56caff7c1df9ee0f0551a6c684f2b7d7}{
+DynamicArray$<$ int $>$ {\bfseries indexes}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a56caff7c1df9ee0f0551a6c684f2b7d7}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a69902e7bf669f5d8980e688fb8baccaa}{
+class {\bfseries GLPolyIndexList}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a69902e7bf669f5d8980e688fb8baccaa}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_ae74f0661e50601fed5e420fd78bb98b9}{
+class {\bfseries GLPolyCategory}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_ae74f0661e50601fed5e420fd78bb98b9}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a7ad5c94227dd02947e02998b7eaaf5d9}{
+class {\bfseries GLMesh}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a7ad5c94227dd02947e02998b7eaaf5d9}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_af14de259cd9a2f23c83f88f5a00f3865}{
+class {\bfseries OBJReader}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_af14de259cd9a2f23c83f88f5a00f3865}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains a list of vertex indices that correspond to the vertices that make up the polygon. This class should be populated by the class that reads in the mesh file, and then passes it to the GLMeshObject. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_ad665def1b6752e27cab5c195b5101ed8}{
+\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}!GLIndexedPoly@{GLIndexedPoly}}
+\index{GLIndexedPoly@{GLIndexedPoly}!CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+\subsubsection[{GLIndexedPoly}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::GL::GLIndexedPoly::GLIndexedPoly (void)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_ad665def1b6752e27cab5c195b5101ed8}
+default constructor. \hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a89e44ede1407a525e8cfbb626e4b0fd9}{
+\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}!$\sim$GLIndexedPoly@{$\sim$GLIndexedPoly}}
+\index{$\sim$GLIndexedPoly@{$\sim$GLIndexedPoly}!CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+\subsubsection[{$\sim$GLIndexedPoly}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::GL::GLIndexedPoly::$\sim$GLIndexedPoly (void)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a89e44ede1407a525e8cfbb626e4b0fd9}
+destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a4f38506cb27baebf57df07766bf32e53}{
+\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}!addVertexIndex@{addVertexIndex}}
+\index{addVertexIndex@{addVertexIndex}!CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+\subsubsection[{addVertexIndex}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::GL::GLIndexedPoly::addVertexIndex (int {\em index})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a4f38506cb27baebf57df07766bf32e53}
+adding the index of a new vertex \hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_ac4a271b76b0b2c4776dd3d183af85190}{
+\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}!clear@{clear}}
+\index{clear@{clear}!CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::GL::GLIndexedPoly::clear ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_ac4a271b76b0b2c4776dd3d183af85190}
+clear the indices \hypertarget{classCartWheel_1_1GL_1_1GLIndexedPoly_a7a698956ee71f181476218a08b121d65}{
+\index{CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}!operator=@{operator=}}
+\index{operator=@{operator=}!CartWheel::GL::GLIndexedPoly@{CartWheel::GL::GLIndexedPoly}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GLIndexedPoly}\& CartWheel::GL::GLIndexedPoly::operator= (const {\bf GLIndexedPoly} \& {\em other})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLIndexedPoly_a7a698956ee71f181476218a08b121d65}
+a copy constructor. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/GLUtils/GLMesh.h\end{DoxyCompactItemize}

@@ -1,0 +1,557 @@
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody}{
+\section{CartWheel::Physics::RigidBody Class Reference}
+\label{classCartWheel_1_1Physics_1_1RigidBody}\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::RigidBody:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classCartWheel_1_1Physics_1_1RigidBody__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::RigidBody:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1RigidBody__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ab91c3f0c53842a1b9381cd8a13276f0e}{RigidBody} (void)
+\item 
+virtual \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ac352781e5e8c394d35e203197dd2e893}{$\sim$RigidBody} (void)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a09635f06359d221367e7683c45fd8d19}{
+const char $\ast$ {\bfseries typeName} ()}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a09635f06359d221367e7683c45fd8d19}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a19f32c11ee7495c55b3fcd55193cd93f}{
+void {\bfseries setExternalForce} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&ef)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a19f32c11ee7495c55b3fcd55193cd93f}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a095c38ddafbc59f78d4c5839d56109cb}{
+void {\bfseries setExternalTorque} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&et)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a095c38ddafbc59f78d4c5839d56109cb}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ab2d7edf000f4f3f2e2bc685278258c80}{
+const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \& {\bfseries getExternalForce} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_ab2d7edf000f4f3f2e2bc685278258c80}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a928bd4cb4883201a615d7a93fcb59957}{
+const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \& {\bfseries getExternalTorque} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a928bd4cb4883201a615d7a93fcb59957}
+
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ae83135dc1e3f7ab85541ce67d636af98}{getWorldCoordinates} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&localPoint)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a142142b4060b01345f76f6dcaab89b98}{getLocalCoordinates} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&globalPoint)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a4c5e4189ad6b5ab79ffb4670cbda67e6}{getLocalCoordinates} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&globalVector)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ac333a6a3cf33bedfb73b37b6590a732e}{getWorldCoordinates} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&localVector)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a41e008a18204263356311816ee5039c2}{getAbsoluteVelocityForLocalPoint} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&localPoint)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a8876796e4d15bec1a363f0fd550dad19}{getAbsoluteVelocityForGlobalPoint} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&globalPoint)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a55bb99a033e6c6808d0a447ca92f9d3d}{getCMPosition} ()
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a5febf2c580bc7085209f046e86b49229}{setCMPosition} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&newCMPos)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a60df7d8402d6bc8bab75cb5b5a790920}{getCMVelocity} ()
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a6d93fb9611e05fa3358e67490e37cd4c}{
+void {\bfseries setOrientation} (double angle, \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} axis)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a6d93fb9611e05fa3358e67490e37cd4c}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a86bb81208753da6faabadd52c5151429}{setCMVelocity} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&newCMVel)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a3ab9df508e46d7d34914b8d15634fa3b}{setAngularVelocity} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&newAVel)
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a8d7b517c70e7b06295d0b683148f37de}{getRestitutionCoefficient} ()
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a931f7d46adbf71d5d81f3f352f037412}{getFrictionCoefficient} ()
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a7ab4f12e9d1a403e76022cd8f3124d96}{draw} (int flags)
+\item 
+unsigned int \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a8689b1157719fb47697bb860d3c7b5b4}{renderToObjFile} (FILE $\ast$fp, unsigned int vertexIdxOffset)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ad6e8faca968625e1e3d4eb24a780d2eb}{loadFromFile} (FILE $\ast$fp, const char $\ast$sPath)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a25491da90c53853447ea6e0b098fba3a}{setName} (const char $\ast$name)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad662050c063b3b825b83b717d0466fa2}{
+const char $\ast$ {\bfseries getName} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad662050c063b3b825b83b717d0466fa2}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_abc9171bef06daef1be03e0222f3274e6}{addMeshObj} (const char $\ast$objFilename, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&offset=\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d}(0, 0, 0), const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&scale=\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d}(1, 1, 1))
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a02091e3e2f45c75b95697aa3acad0fe1}{setColour} (double r, double g, double b, double a)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a99b1302a69eb13626e1ca2867ffa676c}{
+void {\bfseries addMesh} (\hyperlink{classCartWheel_1_1GL_1_1GLMesh}{CartWheel::GL::GLMesh} $\ast$mesh\_\-disown)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a99b1302a69eb13626e1ca2867ffa676c}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a52502bff86e85ffe0ca148c4d7466905}{
+int {\bfseries getMeshCount} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a52502bff86e85ffe0ca148c4d7466905}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a41a6333cfa2bb0de913a18069704c1a5}{
+\hyperlink{classCartWheel_1_1GL_1_1GLMesh}{CartWheel::GL::GLMesh} $\ast$ {\bfseries getMesh} (unsigned int index) const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a41a6333cfa2bb0de913a18069704c1a5}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a5ec782bf454a2973c41ce9d3ddcb84d5}{
+int {\bfseries getCDPCount} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a5ec782bf454a2973c41ce9d3ddcb84d5}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_af1b5b6106f66a8dae074192f054fa626}{
+\hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$ {\bfseries getCDP} (unsigned int index) const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_af1b5b6106f66a8dae074192f054fa626}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ac3cefd3c64d69b3fd4ed991f93639e1c}{setMass} (double mass)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a80cf4479818fd2cecf88b30ea4602e7f}{setMOI} (\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} moi)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a1694f538b67ca0c46098a28e372e64ef}{
+const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \& {\bfseries getMOI} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a1694f538b67ca0c46098a28e372e64ef}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a132c2940ca25348ce6188de62eb7f670}{addCollisionDetectionPrimitive} (\hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$cdp\_\-disown)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a6c07768bc24c6bc2f683a1c058f59892}{
+\hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$ {\bfseries getCollisionDetectionPrimitive} (int index)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a6c07768bc24c6bc2f683a1c058f59892}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a3ce2aad6a34c5588d97d0ccddff78120}{
+int {\bfseries getCollisionDetectionPrimitiveCount} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a3ce2aad6a34c5588d97d0ccddff78120}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a7b491a48c13693d6839c6b6f3e9f6dda}{lockBody} (bool isLocked=true)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a325cb4000d1c8f03b1dac250848e657c}{setFrictionCoefficient} (double frictionCoefficient)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a4c009a35d7cf76651c8a890b8c1d4d37}{setRestitutionCoefficient} (double restitutionCoefficient)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a135897fb6aa42dd9e34affbf943e9a92}{
+double {\bfseries getGroundSoftness} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a135897fb6aa42dd9e34affbf943e9a92}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a4fa6290bff3f94b815a0e361f714144d}{
+double {\bfseries getGroundPenalty} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a4fa6290bff3f94b815a0e361f714144d}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a9cb0889861eb744225cde11a3e972c6b}{setODEGroundCoefficients} (double softness, double penalty)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a340fad577816c736f4fa3c1fdaa35236}{
+double {\bfseries getODEGroundSoftness} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_a340fad577816c736f4fa3c1fdaa35236}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad223429decc8768dffd391f10535507a}{
+double {\bfseries getODEGroundPenalty} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad223429decc8768dffd391f10535507a}
+
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a88ef149632bdebc1d5e7f484a41cf4c6}{setPlanar} (bool planar)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_af5560bb06685e71bc960705d87194f30}{
+bool {\bfseries isPlanar} () const }
+\label{classCartWheel_1_1Physics_1_1RigidBody_af5560bb06685e71bc960705d87194f30}
+
+\item 
+double \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a1371aa6d98aa5d78be4cf797905ffc04}{getMass} ()
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a7a121f4b57a20837db2a76c2c49f2598}{setBodyID} (int newID)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a2f0775cdd342fce39edf36185ef67b2d}{getPMI} ()
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{CartWheel::Math::Quaternion} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ad2e28d46c26b424c287b39939f9ff3c1}{getOrientation} ()
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a1d1a3a4e94866d7fde89ab81b117125b}{setOrientation} (\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{CartWheel::Math::Quaternion} q)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ad0587e004de409e67de60eda3987f98b}{getAngularVelocity} ()
+\item 
+bool \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_a39b5754e21393bd02d0eb0e853692b84}{isLocked} ()
+\item 
+virtual bool \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_aee97ae09ce1b2f4643b39d3422a4243d}{isArticulated} ()
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1RigidBody_ac302f7d357d4bd862a6eec7f7566c4c5}{updateWorldCDPs} ()
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_af4a9f4fc5f8ef6188f5ee93136fafcb6}{
+virtual \hyperlink{classCartWheel_1_1Physics_1_1ArticulatedFigure}{ArticulatedFigure} $\ast$ {\bfseries getAFParent} ()}
+\label{classCartWheel_1_1Physics_1_1RigidBody_af4a9f4fc5f8ef6188f5ee93136fafcb6}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a02a6f6f72371084fba7f0725d997a17a}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries getScale} ()}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a02a6f6f72371084fba7f0725d997a17a}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a4ac600a88b06273daf7bc1963cd1331d}{
+void {\bfseries setScale} (\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} newScale)}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a4ac600a88b06273daf7bc1963cd1331d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a1cc8d258ec471ea441a41426387d70d8}{
+\hyperlink{classCartWheel_1_1Physics_1_1RBState}{RBState} {\bfseries state}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a1cc8d258ec471ea441a41426387d70d8}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a1500ef8cad7dfaeb68865ccbfa7c5382}{
+\hyperlink{classCartWheel_1_1Physics_1_1RBProperties}{RBProperties} {\bfseries props}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a1500ef8cad7dfaeb68865ccbfa7c5382}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_acba6dcc88baa63304bc6b664d3cf2a3a}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries externalForce}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_acba6dcc88baa63304bc6b664d3cf2a3a}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a7ddef79ae922652e548343196a373515}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries externalTorque}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a7ddef79ae922652e548343196a373515}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_aab892be04152f0e8aa1239c39fb844a3}{
+DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$ $>$ {\bfseries cdps}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_aab892be04152f0e8aa1239c39fb844a3}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad097e9c978461f9abd95d5386d9f1707}{
+DynamicArray$<$ \hyperlink{classCartWheel_1_1GL_1_1GLMesh}{CartWheel::GL::GLMesh} $\ast$ $>$ {\bfseries meshes}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad097e9c978461f9abd95d5386d9f1707}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a483f2060a83a04e87df8957022309b12}{
+char {\bfseries name} \mbox{[}100\mbox{]}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a483f2060a83a04e87df8957022309b12}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a9450217f50f78d79e5b7b5e059730c17}{
+int {\bfseries id}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a9450217f50f78d79e5b7b5e059730c17}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a89518f43b8afe197edc3b79a636d564e}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries scale}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a89518f43b8afe197edc3b79a636d564e}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a7b4bcdf992c21ae83363f25df05b1d25}{
+class {\bfseries World}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a7b4bcdf992c21ae83363f25df05b1d25}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ab72b3cea5759b226715977a0e48f1c68}{
+class {\bfseries HingeJoint}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ab72b3cea5759b226715977a0e48f1c68}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ac7a3c675c05fc5284cfb406b2aeb03b4}{
+class {\bfseries UniversalJoint}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ac7a3c675c05fc5284cfb406b2aeb03b4}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a6275dfbdf6c9a6d4e25b363106fb9479}{
+class {\bfseries BallInSocketJoint}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a6275dfbdf6c9a6d4e25b363106fb9479}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a5db30e1aef955cb40c04658eacff8680}{
+class {\bfseries ODEWorld}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a5db30e1aef955cb40c04658eacff8680}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a761b6af109db683a0a78e82f9417d975}{
+class {\bfseries Character}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a761b6af109db683a0a78e82f9417d975}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a32065a5c484f47dbe07fbc169bb53dc4}{
+class {\bfseries SimBiController}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a32065a5c484f47dbe07fbc169bb53dc4}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a2b27269e818d7b63995be0e0f812bf54}{
+class {\bfseries Joint}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a2b27269e818d7b63995be0e0f812bf54}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a2b1187739402ddfa863bb7884b9486f2}{
+class {\bfseries PoseController}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a2b1187739402ddfa863bb7884b9486f2}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a60c86d71327fa939d5fb8c0b6c232a2b}{
+class {\bfseries BipV3BalanceController}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a60c86d71327fa939d5fb8c0b6c232a2b}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a53f540ec72017006b082b2cb716644c1}{
+class {\bfseries TestApp}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a53f540ec72017006b082b2cb716644c1}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_afc60a5a7cb2c98d03f699118d5e75af1}{
+class {\bfseries TestApp2}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_afc60a5a7cb2c98d03f699118d5e75af1}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a0b58594678c420e5766977afa192b210}{
+class {\bfseries VirtualModelController}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a0b58594678c420e5766977afa192b210}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a780a8b03a34ab6eb2a7c3944c135ac33}{
+class {\bfseries BehaviourController}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a780a8b03a34ab6eb2a7c3944c135ac33}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ab91c3f0c53842a1b9381cd8a13276f0e}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!RigidBody@{RigidBody}}
+\index{RigidBody@{RigidBody}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{RigidBody}]{\setlength{\rightskip}{0pt plus 5cm}RigidBody::RigidBody (void)}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ab91c3f0c53842a1b9381cd8a13276f0e}
+Default constructor
+
+Default constructor -\/ give sensible values to the class members \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ac352781e5e8c394d35e203197dd2e893}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!$\sim$RigidBody@{$\sim$RigidBody}}
+\index{$\sim$RigidBody@{$\sim$RigidBody}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{$\sim$RigidBody}]{\setlength{\rightskip}{0pt plus 5cm}RigidBody::$\sim$RigidBody (void)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ac352781e5e8c394d35e203197dd2e893}
+Default destructor
+
+Default destructor -\/ free up all the memory that we've used up 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a132c2940ca25348ce6188de62eb7f670}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!addCollisionDetectionPrimitive@{addCollisionDetectionPrimitive}}
+\index{addCollisionDetectionPrimitive@{addCollisionDetectionPrimitive}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{addCollisionDetectionPrimitive}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::addCollisionDetectionPrimitive ({\bf CollisionDetectionPrimitive} $\ast$ {\em cdp\_\-disown})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a132c2940ca25348ce6188de62eb7f670}
+This method adds a collision detection primitive \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_abc9171bef06daef1be03e0222f3274e6}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!addMeshObj@{addMeshObj}}
+\index{addMeshObj@{addMeshObj}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{addMeshObj}]{\setlength{\rightskip}{0pt plus 5cm}void RigidBody::addMeshObj (const char $\ast$ {\em objFilename}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em offset} = {\ttfamily {\bf CartWheel::Math::Vector3d}(0,0,0)}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em scale} = {\ttfamily {\bf CartWheel::Math::Vector3d}(1,1,1)})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_abc9171bef06daef1be03e0222f3274e6}
+This method loads an OBJ mesh and associates it with the rigid body \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a7ab4f12e9d1a403e76022cd8f3124d96}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!draw@{draw}}
+\index{draw@{draw}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void RigidBody::draw (int {\em flags})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a7ab4f12e9d1a403e76022cd8f3124d96}
+This method draws the current rigid body. 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Physics_1_1ArticulatedRigidBody_a59e3001f695f399dec34833dbb5871f0}{CartWheel::Physics::ArticulatedRigidBody}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a8876796e4d15bec1a363f0fd550dad19}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getAbsoluteVelocityForGlobalPoint@{getAbsoluteVelocityForGlobalPoint}}
+\index{getAbsoluteVelocityForGlobalPoint@{getAbsoluteVelocityForGlobalPoint}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getAbsoluteVelocityForGlobalPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} RigidBody::getAbsoluteVelocityForGlobalPoint (const {\bf CartWheel::Math::Point3d} \& {\em globalPoint})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a8876796e4d15bec1a363f0fd550dad19}
+This method returns the absolute velocity of a point that is passed in as a parameter. The point is expressed in global coordinates, and the resulting velocity will be expressed in world coordinates. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a41e008a18204263356311816ee5039c2}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getAbsoluteVelocityForLocalPoint@{getAbsoluteVelocityForLocalPoint}}
+\index{getAbsoluteVelocityForLocalPoint@{getAbsoluteVelocityForLocalPoint}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getAbsoluteVelocityForLocalPoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} RigidBody::getAbsoluteVelocityForLocalPoint (const {\bf CartWheel::Math::Point3d} \& {\em localPoint})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a41e008a18204263356311816ee5039c2}
+This method returns the absolute velocity of a point that is passed in as a parameter. The point is expressed in local coordinates, and the resulting velocity will be expressed in world coordinates. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad0587e004de409e67de60eda3987f98b}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getAngularVelocity@{getAngularVelocity}}
+\index{getAngularVelocity@{getAngularVelocity}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getAngularVelocity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Vector3d} CartWheel::Physics::RigidBody::getAngularVelocity ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad0587e004de409e67de60eda3987f98b}
+this method returns the body's angular velocity \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a55bb99a033e6c6808d0a447ca92f9d3d}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getCMPosition@{getCMPosition}}
+\index{getCMPosition@{getCMPosition}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getCMPosition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Point3d} CartWheel::Physics::RigidBody::getCMPosition ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a55bb99a033e6c6808d0a447ca92f9d3d}
+This method returns the world coordinates of the position of the center of mass of the object \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a60df7d8402d6bc8bab75cb5b5a790920}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getCMVelocity@{getCMVelocity}}
+\index{getCMVelocity@{getCMVelocity}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getCMVelocity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Vector3d} CartWheel::Physics::RigidBody::getCMVelocity ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a60df7d8402d6bc8bab75cb5b5a790920}
+This method returns the body's center of mass velocity \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a931f7d46adbf71d5d81f3f352f037412}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getFrictionCoefficient@{getFrictionCoefficient}}
+\index{getFrictionCoefficient@{getFrictionCoefficient}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getFrictionCoefficient}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::RigidBody::getFrictionCoefficient ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a931f7d46adbf71d5d81f3f352f037412}
+This method returns the rigid body's coefficient of restitution \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a4c5e4189ad6b5ab79ffb4670cbda67e6}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getLocalCoordinates@{getLocalCoordinates}}
+\index{getLocalCoordinates@{getLocalCoordinates}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getLocalCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} RigidBody::getLocalCoordinates (const {\bf CartWheel::Math::Vector3d} \& {\em globalVector})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a4c5e4189ad6b5ab79ffb4670cbda67e6}
+This method is used to return the local coordinates of the vector that is passed in as a parameter (expressed in global coordinates) \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a142142b4060b01345f76f6dcaab89b98}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getLocalCoordinates@{getLocalCoordinates}}
+\index{getLocalCoordinates@{getLocalCoordinates}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getLocalCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point3d} RigidBody::getLocalCoordinates (const {\bf CartWheel::Math::Point3d} \& {\em globalPoint})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a142142b4060b01345f76f6dcaab89b98}
+This method is used to return the local coordinates of the point that is passed in as a parameter (expressed in global coordinates) \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a1371aa6d98aa5d78be4cf797905ffc04}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getMass@{getMass}}
+\index{getMass@{getMass}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getMass}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::RigidBody::getMass ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a1371aa6d98aa5d78be4cf797905ffc04}
+Returns the mass of the rigid body \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad2e28d46c26b424c287b39939f9ff3c1}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getOrientation@{getOrientation}}
+\index{getOrientation@{getOrientation}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getOrientation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Quaternion} CartWheel::Physics::RigidBody::getOrientation ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad2e28d46c26b424c287b39939f9ff3c1}
+this method returns the body's orientation \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a2f0775cdd342fce39edf36185ef67b2d}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getPMI@{getPMI}}
+\index{getPMI@{getPMI}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getPMI}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Vector3d} CartWheel::Physics::RigidBody::getPMI ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a2f0775cdd342fce39edf36185ef67b2d}
+this method returns the body's principal moments of inertia, about the principal axes (which correspond to the bodie's local coordinate frame axes) \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a8d7b517c70e7b06295d0b683148f37de}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getRestitutionCoefficient@{getRestitutionCoefficient}}
+\index{getRestitutionCoefficient@{getRestitutionCoefficient}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getRestitutionCoefficient}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Physics::RigidBody::getRestitutionCoefficient ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a8d7b517c70e7b06295d0b683148f37de}
+This method returns the rigid body's coefficient of restitution \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ac333a6a3cf33bedfb73b37b6590a732e}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getWorldCoordinates@{getWorldCoordinates}}
+\index{getWorldCoordinates@{getWorldCoordinates}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getWorldCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} RigidBody::getWorldCoordinates (const {\bf CartWheel::Math::Vector3d} \& {\em localVector})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ac333a6a3cf33bedfb73b37b6590a732e}
+This method returns the vector that is passed in as a parameter(expressed in local coordinates), in world coordinates. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ae83135dc1e3f7ab85541ce67d636af98}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!getWorldCoordinates@{getWorldCoordinates}}
+\index{getWorldCoordinates@{getWorldCoordinates}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{getWorldCoordinates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point3d} RigidBody::getWorldCoordinates (const {\bf CartWheel::Math::Point3d} \& {\em localPoint})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ae83135dc1e3f7ab85541ce67d636af98}
+This method returns the coordinates of the point that is passed in as a parameter(expressed in local coordinates), in world coordinates. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_aee97ae09ce1b2f4643b39d3422a4243d}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!isArticulated@{isArticulated}}
+\index{isArticulated@{isArticulated}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{isArticulated}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool CartWheel::Physics::RigidBody::isArticulated ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_aee97ae09ce1b2f4643b39d3422a4243d}
+this method returns false if this body is a simple rigid bory, false if it is an articulated figure 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Physics_1_1ArticulatedRigidBody_aeb046899adbf2017e32249b2a651d846}{CartWheel::Physics::ArticulatedRigidBody}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a39b5754e21393bd02d0eb0e853692b84}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!isLocked@{isLocked}}
+\index{isLocked@{isLocked}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{isLocked}]{\setlength{\rightskip}{0pt plus 5cm}bool CartWheel::Physics::RigidBody::isLocked ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a39b5754e21393bd02d0eb0e853692b84}
+this method returns true if the current body is locked, false otherwised \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ad6e8faca968625e1e3d4eb24a780d2eb}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{loadFromFile}]{\setlength{\rightskip}{0pt plus 5cm}void RigidBody::loadFromFile (FILE $\ast$ {\em f}, \/  const char $\ast$ {\em sPath})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ad6e8faca968625e1e3d4eb24a780d2eb}
+This method loads all the pertinent information regarding the rigid body from a file.
+
+This method is used to compute the correct toWorld coordinates matrix based on the state of the rigid body This method loads all the pertinent information regarding the rigid body from a file. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a7b491a48c13693d6839c6b6f3e9f6dda}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!lockBody@{lockBody}}
+\index{lockBody@{lockBody}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{lockBody}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::lockBody (bool {\em isLocked} = {\ttfamily true})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a7b491a48c13693d6839c6b6f3e9f6dda}
+This method makes it possible to lock the body \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a8689b1157719fb47697bb860d3c7b5b4}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!renderToObjFile@{renderToObjFile}}
+\index{renderToObjFile@{renderToObjFile}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{renderToObjFile}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int RigidBody::renderToObjFile (FILE $\ast$ {\em fp}, \/  unsigned int {\em vertexIdxOffset})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a8689b1157719fb47697bb860d3c7b5b4}
+This method renders the rigid body in its current state as a set of vertices and faces that will be appended to the passed OBJ file.
+
+vertexIdxOffset indicates the index of the first vertex for this object, this makes it possible to render multiple different meshes to the same OBJ file
+
+Returns the number of vertices written to the file \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a3ab9df508e46d7d34914b8d15634fa3b}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setAngularVelocity@{setAngularVelocity}}
+\index{setAngularVelocity@{setAngularVelocity}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setAngularVelocity}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setAngularVelocity (const {\bf CartWheel::Math::Vector3d} \& {\em newAVel})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a3ab9df508e46d7d34914b8d15634fa3b}
+this method sets the angular velocity of the body \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a7a121f4b57a20837db2a76c2c49f2598}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setBodyID@{setBodyID}}
+\index{setBodyID@{setBodyID}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setBodyID}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setBodyID (int {\em newID})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a7a121f4b57a20837db2a76c2c49f2598}
+This method is used to compute the correct toWorld coordinates matrix based on the state of the rigid body this method sets the id of the current rigid body. \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a5febf2c580bc7085209f046e86b49229}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setCMPosition@{setCMPosition}}
+\index{setCMPosition@{setCMPosition}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setCMPosition}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setCMPosition (const {\bf CartWheel::Math::Point3d} \& {\em newCMPos})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a5febf2c580bc7085209f046e86b49229}
+This method sets the world coordinate of the posision of the center of mass of the object \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a86bb81208753da6faabadd52c5151429}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setCMVelocity@{setCMVelocity}}
+\index{setCMVelocity@{setCMVelocity}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setCMVelocity}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setCMVelocity (const {\bf CartWheel::Math::Vector3d} \& {\em newCMVel})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a86bb81208753da6faabadd52c5151429}
+This method sets the velocity of the center of mass of the object \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a02091e3e2f45c75b95697aa3acad0fe1}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setColour@{setColour}}
+\index{setColour@{setColour}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setColour}]{\setlength{\rightskip}{0pt plus 5cm}void RigidBody::setColour (double {\em r}, \/  double {\em g}, \/  double {\em b}, \/  double {\em a})}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a02091e3e2f45c75b95697aa3acad0fe1}
+This method sets the colour of the last mesh loaded \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a325cb4000d1c8f03b1dac250848e657c}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setFrictionCoefficient@{setFrictionCoefficient}}
+\index{setFrictionCoefficient@{setFrictionCoefficient}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setFrictionCoefficient}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setFrictionCoefficient (double {\em frictionCoefficient})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a325cb4000d1c8f03b1dac250848e657c}
+This method lets the user set the body friction coefficient \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ac3cefd3c64d69b3fd4ed991f93639e1c}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setMass@{setMass}}
+\index{setMass@{setMass}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setMass}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setMass (double {\em mass})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ac3cefd3c64d69b3fd4ed991f93639e1c}
+This method sets the rigid body mass \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a80cf4479818fd2cecf88b30ea4602e7f}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setMOI@{setMOI}}
+\index{setMOI@{setMOI}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setMOI}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setMOI ({\bf CartWheel::Math::Vector3d} {\em moi})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a80cf4479818fd2cecf88b30ea4602e7f}
+This method sets the rigid body principal moments of intertia \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a25491da90c53853447ea6e0b098fba3a}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setName@{setName}}
+\index{setName@{setName}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setName (const char $\ast$ {\em name})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a25491da90c53853447ea6e0b098fba3a}
+This method sets the rigid body name \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a9cb0889861eb744225cde11a3e972c6b}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setODEGroundCoefficients@{setODEGroundCoefficients}}
+\index{setODEGroundCoefficients@{setODEGroundCoefficients}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setODEGroundCoefficients}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setODEGroundCoefficients (double {\em softness}, \/  double {\em penalty})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a9cb0889861eb744225cde11a3e972c6b}
+This method lets the user set the body friction coefficient \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a1d1a3a4e94866d7fde89ab81b117125b}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setOrientation@{setOrientation}}
+\index{setOrientation@{setOrientation}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setOrientation}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setOrientation ({\bf CartWheel::Math::Quaternion} {\em q})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a1d1a3a4e94866d7fde89ab81b117125b}
+this method sets the body's orientation \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a88ef149632bdebc1d5e7f484a41cf4c6}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setPlanar@{setPlanar}}
+\index{setPlanar@{setPlanar}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setPlanar}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setPlanar (bool {\em planar})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a88ef149632bdebc1d5e7f484a41cf4c6}
+This method indicates that the rigid body is planar \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_a4c009a35d7cf76651c8a890b8c1d4d37}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!setRestitutionCoefficient@{setRestitutionCoefficient}}
+\index{setRestitutionCoefficient@{setRestitutionCoefficient}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{setRestitutionCoefficient}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::RigidBody::setRestitutionCoefficient (double {\em restitutionCoefficient})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_a4c009a35d7cf76651c8a890b8c1d4d37}
+This method lets the user set the body friction coefficient \hypertarget{classCartWheel_1_1Physics_1_1RigidBody_ac302f7d357d4bd862a6eec7f7566c4c5}{
+\index{CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}!updateWorldCDPs@{updateWorldCDPs}}
+\index{updateWorldCDPs@{updateWorldCDPs}!CartWheel::Physics::RigidBody@{CartWheel::Physics::RigidBody}}
+\subsubsection[{updateWorldCDPs}]{\setlength{\rightskip}{0pt plus 5cm}void RigidBody::updateWorldCDPs ()}}
+\label{classCartWheel_1_1Physics_1_1RigidBody_ac302f7d357d4bd862a6eec7f7566c4c5}
+this method is used to update the world positions of the collision detection primitives 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/RigidBody.h\item 
+src/Physics/RigidBody.cpp\end{DoxyCompactItemize}
