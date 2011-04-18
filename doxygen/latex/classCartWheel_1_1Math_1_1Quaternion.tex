@@ -1,0 +1,321 @@
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion}{
+\section{CartWheel::Math::Quaternion Class Reference}
+\label{classCartWheel_1_1Math_1_1Quaternion}\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+}
+
+
+Collaboration diagram for CartWheel::Math::Quaternion:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classCartWheel_1_1Math_1_1Quaternion__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion_a50893666ee58437ff454a27f635fcc56}{Quaternion} (double s, \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} v)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion_af0ff54587a13b829e9c8cb704528185b}{Quaternion} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&other)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion_afd36229554b32c7af256edaed72acc78}{Quaternion} ()
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion_add84f474836720f819997c46d4125b78}{Quaternion} (double w, double x, double y, double z)
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_ad07d605a931f840c239502cca22c4fa9}{
+{\bfseries Quaternion} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&v1, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&v2)}
+\label{classCartWheel_1_1Math_1_1Quaternion_ad07d605a931f840c239502cca22c4fa9}
+
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \& \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a60801cdb44f546258ae4755d689532a2}{operator=} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&rhs)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a16760d63cc452ac36d9bdb200a1d8374}{setToProductOf} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&a, const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&b, bool invA=false, bool invB=false)
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Quaternion_aa6869c5ed6433090dce37a17d2060625}{getRotationAngle} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&positiveRotAxis)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion_a3ad9a74cb7be18ff500ea3628bb0adf0}{$\sim$Quaternion} (void)
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_a4756c9e9f9674615911f8c18ce421b19}{
+double {\bfseries getAngle} () const }
+\label{classCartWheel_1_1Math_1_1Quaternion_a4756c9e9f9674615911f8c18ce421b19}
+
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_a0c30cccd493123f85201fbf54ade2b20}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} {\bfseries getAxis} () const }
+\label{classCartWheel_1_1Math_1_1Quaternion_a0c30cccd493123f85201fbf54ade2b20}
+
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a601630e8a98e18fd1b8a43f2e845a9f4}{getComplexConjugate} () const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_afe3c9a40a60ab64107d8dd7ab4228fce}{getInverse} () const 
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Quaternion_add7502f562000c496aa3a9e34ee5f3c2}{getLength} () const 
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a515282eb35ee7fb50cbc179e96ce434c}{dotProductWith} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&other) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a78fcba74485cb0c364b8f06c983f8d8c}{linearlyInterpolateWith} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&other, double t) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a59da7a7cd17477980d227590837ceaba}{sphericallyInterpolateWith} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&other, double t) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a3b9e77a2f65cea67f5687b0c6dcf11c3}{rotate} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&u) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a1d7ded1abcb1370373dd97dc4d40b9cb}{inverseRotate} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&u) const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_ad951159735ea47e13eb728424ffb64c2}{getRotationMatrix} (\hyperlink{classCartWheel_1_1Math_1_1TransformationMatrix}{TransformationMatrix} $\ast$m) const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a6fb61f1c94f1ee13fd90f75c5e1e021b}{getRotationMatrix} (\hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} $\ast$m) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a2c0b7e2bccac0e3b060d34a717766e82}{operator$\ast$} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&rhs) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \& \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a1ce8c3d9748274407b75769518a423a1}{operator$\ast$=} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&rhs)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \& \hyperlink{classCartWheel_1_1Math_1_1Quaternion_aeb9598aa34468c5b574edbe426ac804d}{operator$\ast$=} (double scalar)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_acc184b31d51f8c0289d3e2b8480f417c}{operator$\ast$} (double scalar) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a79270e624e3e99620857535b3c8565a1}{operator+} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&rhs) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \& \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a2ae0c9a6064b0a9fa9f0687dd39e318d}{operator+=} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \&rhs)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \& \hyperlink{classCartWheel_1_1Math_1_1Quaternion_adc58210f642a0b83b72cad062b9beb0e}{toUnit} ()
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a9d4adca20ef925eb7d6f8bdb1be46363}{getS} () const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a1ce2ae630d5e8c7eae0c0fcb2e501ea3}{getV} () const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a78c391f21f30d1751909ee001778b4d9}{fastRotate} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&u, \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} $\ast$result) const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_afa92e61960b97934e37311e0f00a4822}{setToRotationQuaternion} (double angle, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&axis)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Quaternion_ab5b687af1e88a900759cf931fa9dae8c}{decomposeRotation} (\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} $\ast$qA, \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} $\ast$qB, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&vC) const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a6a8181b3bbf423b18a690563c98e294e}{decomposeRotation} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} vB) const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{Quaternion} \hyperlink{classCartWheel_1_1Math_1_1Quaternion_a299b7739b1f6ea90edfe5d67c9008b0a}{getRotationQuaternion} (double angle, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&axis)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_a3e2c64342d378f8e7a44cc87e0ef82fa}{
+double {\bfseries s}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a3e2c64342d378f8e7a44cc87e0ef82fa}
+
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_ab55dd61157419bfaa35882b507c62f12}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} {\bfseries v}}
+\label{classCartWheel_1_1Math_1_1Quaternion_ab55dd61157419bfaa35882b507c62f12}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_a50893666ee58437ff454a27f635fcc56}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!Quaternion@{Quaternion}}
+\index{Quaternion@{Quaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{Quaternion}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::Math::Quaternion::Quaternion (double {\em s}, \/  {\bf Vector3d} {\em v})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a50893666ee58437ff454a27f635fcc56}
+A constructor. Intuitive... \hypertarget{classCartWheel_1_1Math_1_1Quaternion_af0ff54587a13b829e9c8cb704528185b}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!Quaternion@{Quaternion}}
+\index{Quaternion@{Quaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{Quaternion}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::Math::Quaternion::Quaternion (const {\bf Quaternion} \& {\em other})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_af0ff54587a13b829e9c8cb704528185b}
+A copy constructor \hypertarget{classCartWheel_1_1Math_1_1Quaternion_afd36229554b32c7af256edaed72acc78}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!Quaternion@{Quaternion}}
+\index{Quaternion@{Quaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{Quaternion}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::Math::Quaternion::Quaternion ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_afd36229554b32c7af256edaed72acc78}
+Default constructor \hypertarget{classCartWheel_1_1Math_1_1Quaternion_add84f474836720f819997c46d4125b78}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!Quaternion@{Quaternion}}
+\index{Quaternion@{Quaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{Quaternion}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::Math::Quaternion::Quaternion (double {\em w}, \/  double {\em x}, \/  double {\em y}, \/  double {\em z})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_add84f474836720f819997c46d4125b78}
+Another constructor. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a3ad9a74cb7be18ff500ea3628bb0adf0}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!$\sim$Quaternion@{$\sim$Quaternion}}
+\index{$\sim$Quaternion@{$\sim$Quaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{$\sim$Quaternion}]{\setlength{\rightskip}{0pt plus 5cm}CartWheel::Math::Quaternion::$\sim$Quaternion (void)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a3ad9a74cb7be18ff500ea3628bb0adf0}
+Default destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Quaternion_a6a8181b3bbf423b18a690563c98e294e}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!decomposeRotation@{decomposeRotation}}
+\index{decomposeRotation@{decomposeRotation}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{decomposeRotation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::decomposeRotation (const {\bf Vector3d} {\em vB}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a6a8181b3bbf423b18a690563c98e294e}
+Assume that the current quaternion represents the relative orientation between two coordinate frames A and B. This method decomposes the current relative rotation into a twist of frame B around the axis v passed in as a parameter, and another more arbitrary rotation.
+
+AqB = AqT $\ast$ TqB, where T is a frame that is obtained by rotating frame B around the axis v by the angle that is returned by this function.
+
+In the T coordinate frame, v is the same as in B, and AqT is a rotation that aligns v from A to that from T.
+
+It is assumed that vB is a unit vector!! This method returns TqB, which represents a twist about the axis vB. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_ab5b687af1e88a900759cf931fa9dae8c}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!decomposeRotation@{decomposeRotation}}
+\index{decomposeRotation@{decomposeRotation}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{decomposeRotation}]{\setlength{\rightskip}{0pt plus 5cm}void Quaternion::decomposeRotation ({\bf Quaternion} $\ast$ {\em qA}, \/  {\bf Quaternion} $\ast$ {\em qB}, \/  const {\bf Vector3d} \& {\em vC}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_ab5b687af1e88a900759cf931fa9dae8c}
+Assume that the current quaternion represents the relative orientation between two coordinate frames A and B. This method decomposes the current relative rotation into a twist of frame B around the axis v passed in as a parameter, and another more arbitrary rotation.
+
+AqB = AqT $\ast$ TqB, where T is a frame that is obtained by rotating frame B around the axis v by the angle that is returned by this function.
+
+In the T coordinate frame, v is the same as in B, and AqT is a rotation that aligns v from A to that from T.
+
+It is assumed that vB is a unit vector!! rotAngle is the rotation angle around rotAxis (this gives the AqT transformation. To go from frame B to A, we then twist around the axis v by the amount returned by this function, and we then rotate around rotAxis by rotAngle. Assume that the current quaternion represents the relative orientation between two coordinate frames P and C (i.e. q rotates vectors from the child/local frame C into the parent/global frame P).
+
+With v specified in frame C's coordinates, this method decomposes the current relative rotation, such that:
+
+PqC = qA $\ast$ qB, where qB represents a rotation about axis v.
+
+This can be thought of us as a twist about axis v -\/ qB -\/ and a more general rotation, and swing
+\begin{DoxyItemize}
+\item qA -\/ decomposition. Note that qB can be thought of as a rotation from the C frame into a tmp trame T, and qA a rotation from T into P.
+\end{DoxyItemize}
+
+In the T coordinate frame, v is the same as in C, and qA is a rotation that aligns v from P to that from T.
+
+Assume that the current quaternion represents the relative orientation between two coordinate frames P and C (i.e. q rotates vectors from the child/local frame C into the parent/global frame P).
+
+With v specified in frame C's coordinates, this method decomposes the current relative rotation, such that:
+
+PqC = qA $\ast$ qB, where qB represents a rotation about axis v.
+
+This can be thought of us as a twist about axis v -\/ qB -\/ and a more general rotation, and swing
+\begin{DoxyItemize}
+\item qA -\/ decomposition. Note that qB can be thought of as a rotation from the C frame into a tmp trame T, and qA a rotation from T into P.
+\end{DoxyItemize}
+
+In the T coordinate frame, v is the same as in C, and qA is a rotation that aligns v from P to that from T. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a515282eb35ee7fb50cbc179e96ce434c}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!dotProductWith@{dotProductWith}}
+\index{dotProductWith@{dotProductWith}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{dotProductWith}]{\setlength{\rightskip}{0pt plus 5cm}double Quaternion::dotProductWith (const {\bf Quaternion} \& {\em other}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a515282eb35ee7fb50cbc179e96ce434c}
+Computes the dot product between the current quaternion and the one given as parameter. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a78c391f21f30d1751909ee001778b4d9}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!fastRotate@{fastRotate}}
+\index{fastRotate@{fastRotate}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{fastRotate}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Math::Quaternion::fastRotate (const {\bf Vector3d} \& {\em u}, \/  {\bf Vector3d} $\ast$ {\em result}) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a78c391f21f30d1751909ee001778b4d9}
+Rotates the vector v by the quaternion and the result is placed in 'result' \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a601630e8a98e18fd1b8a43f2e845a9f4}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getComplexConjugate@{getComplexConjugate}}
+\index{getComplexConjugate@{getComplexConjugate}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getComplexConjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::getComplexConjugate () const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a601630e8a98e18fd1b8a43f2e845a9f4}
+Returns the complex conjugate of the current quaternion. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_afe3c9a40a60ab64107d8dd7ab4228fce}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getInverse@{getInverse}}
+\index{getInverse@{getInverse}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getInverse}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::getInverse () const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_afe3c9a40a60ab64107d8dd7ab4228fce}
+Returns the inverse of the current quaternion: q $\ast$ q$^\wedge$-\/1 = identity quaternion: s = 1, v = (0,0,0) \hypertarget{classCartWheel_1_1Math_1_1Quaternion_add7502f562000c496aa3a9e34ee5f3c2}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getLength@{getLength}}
+\index{getLength@{getLength}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getLength}]{\setlength{\rightskip}{0pt plus 5cm}double Quaternion::getLength () const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_add7502f562000c496aa3a9e34ee5f3c2}
+Returns the length of a quaternion. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_aa6869c5ed6433090dce37a17d2060625}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getRotationAngle@{getRotationAngle}}
+\index{getRotationAngle@{getRotationAngle}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getRotationAngle}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Math::Quaternion::getRotationAngle (const {\bf Vector3d} \& {\em positiveRotAxis})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_aa6869c5ed6433090dce37a17d2060625}
+this method is used to return the rotation angle represented by this quaternion -\/ in the range -\/pi to pi. Because you can always consider a rotation to be of x degrees around axis v, or by -\/x degrees around axis -\/v, we need to know the base rotation axis. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a6fb61f1c94f1ee13fd90f75c5e1e021b}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getRotationMatrix@{getRotationMatrix}}
+\index{getRotationMatrix@{getRotationMatrix}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getRotationMatrix}]{\setlength{\rightskip}{0pt plus 5cm}void Quaternion::getRotationMatrix ({\bf Matrix} $\ast$ {\em m}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a6fb61f1c94f1ee13fd90f75c5e1e021b}
+This method fills the presumably 3x3 matrix so that it represents an equivalent rotation as the given quaternion. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_ad951159735ea47e13eb728424ffb64c2}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getRotationMatrix@{getRotationMatrix}}
+\index{getRotationMatrix@{getRotationMatrix}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getRotationMatrix}]{\setlength{\rightskip}{0pt plus 5cm}void Quaternion::getRotationMatrix ({\bf TransformationMatrix} $\ast$ {\em m}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_ad951159735ea47e13eb728424ffb64c2}
+This method populates the transformation matrix that is passed in as a parameter with the 4x4 matrix that represents an equivalent rotation as the current quaternion.
+
+This method will return a 4x4 matrix that represents an equivalent rotation as the given quaternion. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a299b7739b1f6ea90edfe5d67c9008b0a}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getRotationQuaternion@{getRotationQuaternion}}
+\index{getRotationQuaternion@{getRotationQuaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getRotationQuaternion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::getRotationQuaternion (double {\em angle}, \/  const {\bf Vector3d} \& {\em axis})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a299b7739b1f6ea90edfe5d67c9008b0a}
+This method will return a quaternion that represents a rotation of angle radians around the axis provided as a parameter. IT IS ASSUMED THAT THE VECTOR PASSED IN IS A UNIT VECTOR!!! \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a9d4adca20ef925eb7d6f8bdb1be46363}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getS@{getS}}
+\index{getS@{getS}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getS}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Math::Quaternion::getS () const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a9d4adca20ef925eb7d6f8bdb1be46363}
+This method returns the scalar part of the current quaternion \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a1ce2ae630d5e8c7eae0c0fcb2e501ea3}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!getV@{getV}}
+\index{getV@{getV}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{getV}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} CartWheel::Math::Quaternion::getV () const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a1ce2ae630d5e8c7eae0c0fcb2e501ea3}
+This method returns the vector part of the current quaternion \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a1d7ded1abcb1370373dd97dc4d40b9cb}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!inverseRotate@{inverseRotate}}
+\index{inverseRotate@{inverseRotate}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{inverseRotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Quaternion::inverseRotate (const {\bf Vector3d} \& {\em u}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a1d7ded1abcb1370373dd97dc4d40b9cb}
+This method is used to rotate the vector that is passed in as a parameter by the current quaternion (which is assumed to be a unit quaternion). \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a78fcba74485cb0c364b8f06c983f8d8c}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!linearlyInterpolateWith@{linearlyInterpolateWith}}
+\index{linearlyInterpolateWith@{linearlyInterpolateWith}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{linearlyInterpolateWith}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::linearlyInterpolateWith (const {\bf Quaternion} \& {\em other}, \/  double {\em t}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a78fcba74485cb0c364b8f06c983f8d8c}
+This method returns a quaternion that is the result of linearly interpolating between the current quaternion and the one provided as a parameter. The value of the parameter t indicates the progress: if t = 0, the result will be $\ast$this. If it is 1, it will be other. If it is inbetween, then the result will be a combination of the two initial quaternions. Both quaternions that are used for the interpolation are assumed to have unit length!!! \hypertarget{classCartWheel_1_1Math_1_1Quaternion_acc184b31d51f8c0289d3e2b8480f417c}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::operator$\ast$ (double {\em scalar}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_acc184b31d51f8c0289d3e2b8480f417c}
+This method returns a copy of the current quaternion multiplied by a scalar. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a2c0b7e2bccac0e3b060d34a717766e82}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::operator$\ast$ (const {\bf Quaternion} \& {\em other}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a2c0b7e2bccac0e3b060d34a717766e82}
+Returns the result of multiplying the current quaternion by rhs. NOTE: the product of two quaternions represents a rotation as well: q1$\ast$q2 represents a rotation by q2 followed by a rotation by q1!!!! \hypertarget{classCartWheel_1_1Math_1_1Quaternion_aeb9598aa34468c5b574edbe426ac804d}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} \& Quaternion::operator$\ast$= (double {\em scalar})}}
+\label{classCartWheel_1_1Math_1_1Quaternion_aeb9598aa34468c5b574edbe426ac804d}
+This method multiplies the current quaternion by a scalar. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a1ce8c3d9748274407b75769518a423a1}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} \& Quaternion::operator$\ast$= (const {\bf Quaternion} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a1ce8c3d9748274407b75769518a423a1}
+This operator multiplies the current quaternion by the rhs one. Keep in mind the note RE quaternion multiplication. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a79270e624e3e99620857535b3c8565a1}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator+@{operator+}}
+\index{operator+@{operator+}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::operator+ (const {\bf Quaternion} \& {\em other}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a79270e624e3e99620857535b3c8565a1}
+This method returns a quaternion that was the result of adding the quaternion rhs to the current quaternion. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a2ae0c9a6064b0a9fa9f0687dd39e318d}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} \& Quaternion::operator+= (const {\bf Quaternion} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a2ae0c9a6064b0a9fa9f0687dd39e318d}
+This method adds the rhs quaternion to the current one. \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a60801cdb44f546258ae4755d689532a2}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!operator=@{operator=}}
+\index{operator=@{operator=}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion}\& CartWheel::Math::Quaternion::operator= (const {\bf Quaternion} \& {\em rhs})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a60801cdb44f546258ae4755d689532a2}
+A copy operator \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a3b9e77a2f65cea67f5687b0c6dcf11c3}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!rotate@{rotate}}
+\index{rotate@{rotate}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Quaternion::rotate (const {\bf Vector3d} \& {\em u}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a3b9e77a2f65cea67f5687b0c6dcf11c3}
+This method is used to rotate the vector that is passed in as a parameter by the current quaternion (which is assumed to be a unit quaternion). \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a16760d63cc452ac36d9bdb200a1d8374}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!setToProductOf@{setToProductOf}}
+\index{setToProductOf@{setToProductOf}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{setToProductOf}]{\setlength{\rightskip}{0pt plus 5cm}void Quaternion::setToProductOf (const {\bf Quaternion} \& {\em a}, \/  const {\bf Quaternion} \& {\em b}, \/  bool {\em invA} = {\ttfamily false}, \/  bool {\em invB} = {\ttfamily false})}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a16760d63cc452ac36d9bdb200a1d8374}
+this method is used to set the current quaternion to the product of the two quaternions passed in as parameters. the bool parameters invA and invB indicate wether or not, the quaternion a or b should be inverted (well, complex conjugate really) for the multiplication \hypertarget{classCartWheel_1_1Math_1_1Quaternion_afa92e61960b97934e37311e0f00a4822}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!setToRotationQuaternion@{setToRotationQuaternion}}
+\index{setToRotationQuaternion@{setToRotationQuaternion}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{setToRotationQuaternion}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Math::Quaternion::setToRotationQuaternion (double {\em angle}, \/  const {\bf Vector3d} \& {\em axis})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Quaternion_afa92e61960b97934e37311e0f00a4822}
+sets the current quaternion to represent a rotation of theta radians about the (assumed) unit axis \hypertarget{classCartWheel_1_1Math_1_1Quaternion_a59da7a7cd17477980d227590837ceaba}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!sphericallyInterpolateWith@{sphericallyInterpolateWith}}
+\index{sphericallyInterpolateWith@{sphericallyInterpolateWith}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{sphericallyInterpolateWith}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} Quaternion::sphericallyInterpolateWith (const {\bf Quaternion} \& {\em other}, \/  double {\em t}) const}}
+\label{classCartWheel_1_1Math_1_1Quaternion_a59da7a7cd17477980d227590837ceaba}
+This method returns a quaternion that is the result of spherically interpolating between the current quaternion and the one provided as a parameter. The value of the parameter t indicates the progress: if t = 0, the result will be $\ast$this. If it is 1, it will be other. If it is inbetween, then the result will be a combination of the two initial quaternions. Both quaternions that are used for the interpolation are assumed to have unit length!!! \hypertarget{classCartWheel_1_1Math_1_1Quaternion_adc58210f642a0b83b72cad062b9beb0e}{
+\index{CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}!toUnit@{toUnit}}
+\index{toUnit@{toUnit}!CartWheel::Math::Quaternion@{CartWheel::Math::Quaternion}}
+\subsubsection[{toUnit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quaternion} \& Quaternion::toUnit ()}}
+\label{classCartWheel_1_1Math_1_1Quaternion_adc58210f642a0b83b72cad062b9beb0e}
+This method transforms the current quaternion to a unit quaternion. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/MathLib/Quaternion.h\item 
+src/MathLib/Quaternion.cpp\end{DoxyCompactItemize}

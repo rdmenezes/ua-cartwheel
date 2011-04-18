@@ -1,0 +1,47 @@
+\hypertarget{classCartWheel_1_1GL_1_1GLPolyIndexList}{
+\section{CartWheel::GL::GLPolyIndexList Class Reference}
+\label{classCartWheel_1_1GL_1_1GLPolyIndexList}\index{CartWheel::GL::GLPolyIndexList@{CartWheel::GL::GLPolyIndexList}}
+}
+
+
+{\ttfamily \#include $<$GLMesh.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLPolyIndexList_a1566961a6aa1adc463ac6b158edfc2c9}{
+{\bfseries GLPolyIndexList} (unsigned int vertCount)}
+\label{classCartWheel_1_1GL_1_1GLPolyIndexList_a1566961a6aa1adc463ac6b158edfc2c9}
+
+\item 
+int \hyperlink{classCartWheel_1_1GL_1_1GLPolyIndexList_ae9760cd87383177864175e4c6b7b7d6c}{addPoly} (\hyperlink{classCartWheel_1_1GL_1_1GLIndexedPoly}{GLIndexedPoly} \&p)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLPolyIndexList_ae74f0661e50601fed5e420fd78bb98b9}{
+class {\bfseries GLPolyCategory}}
+\label{classCartWheel_1_1GL_1_1GLPolyIndexList_ae74f0661e50601fed5e420fd78bb98b9}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLPolyIndexList_a7ad5c94227dd02947e02998b7eaaf5d9}{
+class {\bfseries GLMesh}}
+\label{classCartWheel_1_1GL_1_1GLPolyIndexList_a7ad5c94227dd02947e02998b7eaaf5d9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains an array of tightly packed indeces of vertices that belong to polygons that have the same number of vertices. As an example the indices of all vertices that belong to traingles in the mesh, would be tightly packed together in one instance of this class. There will be one of these objects for all the triangles in the mesh, one for all the quads, and so on. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1GL_1_1GLPolyIndexList_ae9760cd87383177864175e4c6b7b7d6c}{
+\index{CartWheel::GL::GLPolyIndexList@{CartWheel::GL::GLPolyIndexList}!addPoly@{addPoly}}
+\index{addPoly@{addPoly}!CartWheel::GL::GLPolyIndexList@{CartWheel::GL::GLPolyIndexList}}
+\subsubsection[{addPoly}]{\setlength{\rightskip}{0pt plus 5cm}int CartWheel::GL::GLPolyIndexList::addPoly ({\bf GLIndexedPoly} \& {\em p})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1GL_1_1GLPolyIndexList_ae9760cd87383177864175e4c6b7b7d6c}
+This method adds the indices of the vertices of the polygon p to indexList. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/GLUtils/GLMesh.h\end{DoxyCompactItemize}

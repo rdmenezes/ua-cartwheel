@@ -1,0 +1,154 @@
+\hypertarget{classCartWheel_1_1Math_1_1Vector}{
+\section{CartWheel::Math::Vector Class Reference}
+\label{classCartWheel_1_1Math_1_1Vector}\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+}
+
+
+Inheritance diagram for CartWheel::Math::Vector:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{classCartWheel_1_1Math_1_1Vector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Math::Vector:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{classCartWheel_1_1Math_1_1Vector__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector_a96908fb25f0e8236d25650847ee504d5}{Vector} (int n)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector_a6f80c73b5f18dcf3f8e36065bdc8b9e5}{Vector} ()
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector_a4ec1206fa568aa953588ef663ff511be}{Vector} (const \hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} \&other)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector_a2eb3c49587a4f12cade7895ccb73f6a0}{$\sim$Vector} ()
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} \& \hyperlink{classCartWheel_1_1Math_1_1Vector_a31810b59e0d9106aa17ecf6ae1cfbaf1}{operator=} (const \hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} \&other)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} \& \hyperlink{classCartWheel_1_1Math_1_1Vector_a1ec609f24d97d79e99b6bfc8759863e1}{operator=} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_a8a80f871c2514f51041a4c960659c53a}{shallowCopy} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_aecfcd019a564ab7b9f71e2585de515f6}{deepCopy} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_a3c20feee35a90b2b4da394d7851a0437}{setToProductOf} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&A, const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&B, bool transA=false, bool transB=false)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_acbfd79aa84ad65acabe6ef03f0329e7c}{setToRow} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&A, int row, int start=0, int howMany=-\/1)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_ae98317a1a169070e52436ed4b6c62c5c}{setToCol} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&A, int col, int start=0, int howMany=-\/1)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_a1e60f4c06eaee149416365e2a85bc150}{printVector} () const 
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Vector_a029056849abdef56a0858d4753cd8274}{get} (int i) const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Vector_abb08d9034a1ae962d4bedff66799bf3b}{set} (int i, double newVal)
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Vector_aa5d753fb504bac7f71960daf1ae85f13}{normSquared} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Vector_a96908fb25f0e8236d25650847ee504d5}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}Vector::Vector (int {\em n})}}
+\label{classCartWheel_1_1Math_1_1Vector_a96908fb25f0e8236d25650847ee504d5}
+constructor -\/ creates an n row vector that is not initialized to any particular values \hypertarget{classCartWheel_1_1Math_1_1Vector_a6f80c73b5f18dcf3f8e36065bdc8b9e5}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}Vector::Vector ()}}
+\label{classCartWheel_1_1Math_1_1Vector_a6f80c73b5f18dcf3f8e36065bdc8b9e5}
+default constructor \hypertarget{classCartWheel_1_1Math_1_1Vector_a4ec1206fa568aa953588ef663ff511be}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}Vector::Vector (const {\bf Vector} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Vector_a4ec1206fa568aa953588ef663ff511be}
+copy constructor -\/ performs a deep copy of the matrix passed in as a parameter. \hypertarget{classCartWheel_1_1Math_1_1Vector_a2eb3c49587a4f12cade7895ccb73f6a0}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!$\sim$Vector@{$\sim$Vector}}
+\index{$\sim$Vector@{$\sim$Vector}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{$\sim$Vector}]{\setlength{\rightskip}{0pt plus 5cm}Vector::$\sim$Vector ()}}
+\label{classCartWheel_1_1Math_1_1Vector_a2eb3c49587a4f12cade7895ccb73f6a0}
+destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Vector_aecfcd019a564ab7b9f71e2585de515f6}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!deepCopy@{deepCopy}}
+\index{deepCopy@{deepCopy}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{deepCopy}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::deepCopy (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Vector_aecfcd019a564ab7b9f71e2585de515f6}
+this method performs a deep copy of the vector that is passed in as a paramerer. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Math_1_1Matrix_ae2507575dc309db73a9728f7434b3ac3}{CartWheel::Math::Matrix}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Vector_a029056849abdef56a0858d4753cd8274}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!get@{get}}
+\index{get@{get}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}double Vector::get (int {\em i}) const}}
+\label{classCartWheel_1_1Math_1_1Vector_a029056849abdef56a0858d4753cd8274}
+This method returns a copy of the value of the matrix at (i,j) \hypertarget{classCartWheel_1_1Math_1_1Vector_aa5d753fb504bac7f71960daf1ae85f13}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!normSquared@{normSquared}}
+\index{normSquared@{normSquared}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{normSquared}]{\setlength{\rightskip}{0pt plus 5cm}double CartWheel::Math::Vector::normSquared ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Math_1_1Vector_aa5d753fb504bac7f71960daf1ae85f13}
+Computes the 2-\/norm squared for the current vector. \hypertarget{classCartWheel_1_1Math_1_1Vector_a1ec609f24d97d79e99b6bfc8759863e1}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} \& Vector::operator= (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Vector_a1ec609f24d97d79e99b6bfc8759863e1}
+copy operator -\/ performs a deep copy of the \hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} passed in as a parameter. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Math_1_1Matrix_a3e40db12ae78b7616ee3f099bb15f13d}{CartWheel::Math::Matrix}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Vector_a31810b59e0d9106aa17ecf6ae1cfbaf1}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} \& Vector::operator= (const {\bf Vector} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Vector_a31810b59e0d9106aa17ecf6ae1cfbaf1}
+copy operator -\/ performs a deep copy of the \hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} passed in as a parameter. \hypertarget{classCartWheel_1_1Math_1_1Vector_a1e60f4c06eaee149416365e2a85bc150}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!printVector@{printVector}}
+\index{printVector@{printVector}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{printVector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::printVector () const}}
+\label{classCartWheel_1_1Math_1_1Vector_a1e60f4c06eaee149416365e2a85bc150}
+This method prints the contents of the matrix -\/ testing purpose only. \hypertarget{classCartWheel_1_1Math_1_1Vector_abb08d9034a1ae962d4bedff66799bf3b}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!set@{set}}
+\index{set@{set}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::set (int {\em i}, \/  double {\em newVal})}}
+\label{classCartWheel_1_1Math_1_1Vector_abb08d9034a1ae962d4bedff66799bf3b}
+This method sets the value of the matrix at (i,j) to newVal. \hypertarget{classCartWheel_1_1Math_1_1Vector_ae98317a1a169070e52436ed4b6c62c5c}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!setToCol@{setToCol}}
+\index{setToCol@{setToCol}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{setToCol}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::setToCol (const {\bf Matrix} \& {\em A}, \/  int {\em col}, \/  int {\em start} = {\ttfamily 0}, \/  int {\em howManyRows} = {\ttfamily -\/1})}}
+\label{classCartWheel_1_1Math_1_1Vector_ae98317a1a169070e52436ed4b6c62c5c}
+This method sets the current vector to be equal to one of the cols of A -\/ shallow column only! \hypertarget{classCartWheel_1_1Math_1_1Vector_a3c20feee35a90b2b4da394d7851a0437}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!setToProductOf@{setToProductOf}}
+\index{setToProductOf@{setToProductOf}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{setToProductOf}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::setToProductOf (const {\bf Matrix} \& {\em A}, \/  const {\bf Matrix} \& {\em B}, \/  bool {\em transA} = {\ttfamily false}, \/  bool {\em transB} = {\ttfamily false})}}
+\label{classCartWheel_1_1Math_1_1Vector_a3c20feee35a90b2b4da394d7851a0437}
+This method sets the current vector to be equal to one of the products: A $\ast$ b or A'$\ast$b. The value of transA indicates if A is transposed or not 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Math_1_1Matrix_ac2f4452cecbb5ffdaf6df379229fa22e}{CartWheel::Math::Matrix}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Vector_acbfd79aa84ad65acabe6ef03f0329e7c}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!setToRow@{setToRow}}
+\index{setToRow@{setToRow}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{setToRow}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::setToRow (const {\bf Matrix} \& {\em A}, \/  int {\em row}, \/  int {\em start} = {\ttfamily 0}, \/  int {\em howManyCols} = {\ttfamily -\/1})}}
+\label{classCartWheel_1_1Math_1_1Vector_acbfd79aa84ad65acabe6ef03f0329e7c}
+This method sets the current vector to be equal to one of the rows of A -\/ shallow column only! \hypertarget{classCartWheel_1_1Math_1_1Vector_a8a80f871c2514f51041a4c960659c53a}{
+\index{CartWheel::Math::Vector@{CartWheel::Math::Vector}!shallowCopy@{shallowCopy}}
+\index{shallowCopy@{shallowCopy}!CartWheel::Math::Vector@{CartWheel::Math::Vector}}
+\subsubsection[{shallowCopy}]{\setlength{\rightskip}{0pt plus 5cm}void Vector::shallowCopy (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Vector_a8a80f871c2514f51041a4c960659c53a}
+this method performs a shallow copy of the \hyperlink{classCartWheel_1_1Math_1_1Vector}{Vector} that is passed in as a parameter. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/MathLib/Vector.h\item 
+src/MathLib/Vector.cpp\end{DoxyCompactItemize}

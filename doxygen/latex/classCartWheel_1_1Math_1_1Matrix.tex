@@ -1,0 +1,259 @@
+\hypertarget{classCartWheel_1_1Math_1_1Matrix}{
+\section{CartWheel::Math::Matrix Class Reference}
+\label{classCartWheel_1_1Math_1_1Matrix}\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+}
+
+
+Inheritance diagram for CartWheel::Math::Matrix:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=360pt]{classCartWheel_1_1Math_1_1Matrix__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Matrix_a75e25f70a760fa9625afa33a3c44af8f}{Matrix} (int m, int n)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Matrix_a2dba13c45127354c9f75ef576f49269b}{Matrix} ()
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Matrix_abcf708e864ed3d9db2c3b317c5e529ab}{Matrix} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Matrix_a9b1c3627f573d78a2f08623fdfef990f}{$\sim$Matrix} ()
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a197165ec6577b17ee5ca89af07007d64}{loadZero} ()
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a980ae445a0df5fab5b4e68ce83221853}{loadIdentity} ()
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a3168ef0ced8aa0c414f45049d6db5637}{setToOuterproduct} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&a, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&b)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_aa281a0802c0826225f68d2f5859a5b18}{resizeTo} (int m, int n)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \& \hyperlink{classCartWheel_1_1Math_1_1Matrix_a3e40db12ae78b7616ee3f099bb15f13d}{operator=} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a06aa42f9aa88cbc2e1557e5d4cbc24ec}{shallowCopy} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other, int startRow=0, int startCol=0, int endRow=-\/1, int endCol=-\/1)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_ae2507575dc309db73a9728f7434b3ac3}{deepCopy} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other)
+\item 
+int \hyperlink{classCartWheel_1_1Math_1_1Matrix_af20ba138dda21ea5c3b4fc94cfaebdca}{getColumnCount} () const 
+\item 
+int \hyperlink{classCartWheel_1_1Math_1_1Matrix_a5c379dc39ded5ac48a498f6f6ad0dfc6}{getRowCount} () const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a804032859efce36d43e569ed767271b0}{multiplyBy} (const double val)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_ac2f4452cecbb5ffdaf6df379229fa22e}{setToProductOf} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&a, const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&b, bool transA=false, bool transB=false)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_aafef0fc884fdf893406fcbf9b69bdee5}{setToInverseOf} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&a, double t=0)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a31515ccb097bdaa77027cb1f315cd713}{printMatrix} () const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a66059180667b010ff529c2320fee859f}{setToSubmatrix} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&a, int i, int j, int rows, int cols)
+\item 
+double \hyperlink{classCartWheel_1_1Math_1_1Matrix_aa579c908e6d968b29ed739613ca29d00}{get} (int i, int j) const 
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_aa33675ee32bcb342a7ed18f9e089b615}{set} (int i, int j, double newVal)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a879b543a840821660d869c820f4528a2}{setValues} (double $\ast$vals)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{classCartWheel_1_1Math_1_1Matrix_a38ac405c65b49255f62cf6084fda191a}{getMatrixPointer} () const 
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \hyperlink{classCartWheel_1_1Math_1_1Matrix_ad33238e122583ca44b13197d6f845d91}{operator$\ast$} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&other)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a51c6fb9367bb553ad892ab54ed663c59}{postMultiplyVector} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&v, \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{Vector3d} \&result)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_ad8f3a5082ed8bc533638def9177c5a4e}{add} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other, double scaleA=1.0, double scaleB=1.0)
+\item 
+void \hyperlink{classCartWheel_1_1Math_1_1Matrix_a3e3cb8fbb2734f589230dc7914f7b586}{sub} (const \hyperlink{classCartWheel_1_1Math_1_1Matrix}{Matrix} \&other, double scaleA=1.0, double scaleB=1.0)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a24b0d755f36a5c307ad380714831034c}{
+gsl\_\-matrix $\ast$ {\bfseries matrix}}
+\label{classCartWheel_1_1Math_1_1Matrix_a24b0d755f36a5c307ad380714831034c}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a8d31999cf2d1c149956d35c1c01b3186}{
+class {\bfseries Vector}}
+\label{classCartWheel_1_1Math_1_1Matrix_a8d31999cf2d1c149956d35c1c01b3186}
+
+\item 
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a6ca36c96e96a4c87cf4e539a2c51bbda}{
+class {\bfseries ParticleEngine}}
+\label{classCartWheel_1_1Math_1_1Matrix_a6ca36c96e96a4c87cf4e539a2c51bbda}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a75e25f70a760fa9625afa33a3c44af8f}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix::Matrix (int {\em m}, \/  int {\em n})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a75e25f70a760fa9625afa33a3c44af8f}
+constructor -\/ creates an m rows by n columns matrix that is not initialized to any particular values
+
+constructor -\/ creates an m rows by n columns matrix that is not initialized to a particular values \hypertarget{classCartWheel_1_1Math_1_1Matrix_a2dba13c45127354c9f75ef576f49269b}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix::Matrix ()}}
+\label{classCartWheel_1_1Math_1_1Matrix_a2dba13c45127354c9f75ef576f49269b}
+default constructor \hypertarget{classCartWheel_1_1Math_1_1Matrix_abcf708e864ed3d9db2c3b317c5e529ab}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix::Matrix (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Matrix_abcf708e864ed3d9db2c3b317c5e529ab}
+copy constructor -\/ performs a deep copy of the matrix passed in as a parameter. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a9b1c3627f573d78a2f08623fdfef990f}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!$\sim$Matrix@{$\sim$Matrix}}
+\index{$\sim$Matrix@{$\sim$Matrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{$\sim$Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix::$\sim$Matrix ()}}
+\label{classCartWheel_1_1Math_1_1Matrix_a9b1c3627f573d78a2f08623fdfef990f}
+destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_ad8f3a5082ed8bc533638def9177c5a4e}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!add@{add}}
+\index{add@{add}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::add (const {\bf Matrix} \& {\em other}, \/  double {\em scaleA} = {\ttfamily 1.0}, \/  double {\em scaleB} = {\ttfamily 1.0})}}
+\label{classCartWheel_1_1Math_1_1Matrix_ad8f3a5082ed8bc533638def9177c5a4e}
+Still need to do (if need be): get row/col vector. Initialize a matrix from a vector so that we can create a 1xn matrix easily. make sure dgemv works properly, implement vector class, etc, swap, add, scale matrices, etc this method adds the matrix that is passed in as a parameter to the current matrix. In addition, it scales, both matrices by the two numbers that are passed in as parameters: this = a $\ast$ $\ast$this + b $\ast$ other.
+
+this method adds the matrix that is passed in as a parameter to the current matrix. In addition, it scales, both matrices by the two numbers that are passed in as parameters: this = a $\ast$ $\ast$this + b $\ast$ other. \hypertarget{classCartWheel_1_1Math_1_1Matrix_ae2507575dc309db73a9728f7434b3ac3}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!deepCopy@{deepCopy}}
+\index{deepCopy@{deepCopy}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{deepCopy}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::deepCopy (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Matrix_ae2507575dc309db73a9728f7434b3ac3}
+this method performs a deep copy of the matrix that is passed in as a paramerer. 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Math_1_1Vector_aecfcd019a564ab7b9f71e2585de515f6}{CartWheel::Math::Vector}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_aa579c908e6d968b29ed739613ca29d00}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!get@{get}}
+\index{get@{get}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix::get (int {\em i}, \/  int {\em j}) const}}
+\label{classCartWheel_1_1Math_1_1Matrix_aa579c908e6d968b29ed739613ca29d00}
+This method returns a copy of the value of the matrix at (i,j) \hypertarget{classCartWheel_1_1Math_1_1Matrix_af20ba138dda21ea5c3b4fc94cfaebdca}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!getColumnCount@{getColumnCount}}
+\index{getColumnCount@{getColumnCount}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{getColumnCount}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix::getColumnCount () const}}
+\label{classCartWheel_1_1Math_1_1Matrix_af20ba138dda21ea5c3b4fc94cfaebdca}
+Returns the number of columns \hypertarget{classCartWheel_1_1Math_1_1Matrix_a38ac405c65b49255f62cf6084fda191a}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!getMatrixPointer@{getMatrixPointer}}
+\index{getMatrixPointer@{getMatrixPointer}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{getMatrixPointer}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix $\ast$ Matrix::getMatrixPointer () const}}
+\label{classCartWheel_1_1Math_1_1Matrix_a38ac405c65b49255f62cf6084fda191a}
+this method returns a pointer to its internal matrix data structure \hypertarget{classCartWheel_1_1Math_1_1Matrix_a5c379dc39ded5ac48a498f6f6ad0dfc6}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!getRowCount@{getRowCount}}
+\index{getRowCount@{getRowCount}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{getRowCount}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix::getRowCount () const}}
+\label{classCartWheel_1_1Math_1_1Matrix_a5c379dc39ded5ac48a498f6f6ad0dfc6}
+Returns the number of rows \hypertarget{classCartWheel_1_1Math_1_1Matrix_a980ae445a0df5fab5b4e68ce83221853}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!loadIdentity@{loadIdentity}}
+\index{loadIdentity@{loadIdentity}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{loadIdentity}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::loadIdentity ()}}
+\label{classCartWheel_1_1Math_1_1Matrix_a980ae445a0df5fab5b4e68ce83221853}
+loads the matrix with 1's on the diagonal, 0's everywhere else -\/ note: the matrix doesn't have to be square.
+
+loads the matrix with 1's on the diagonal -\/ note: the matrix doesn't have to be square. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a197165ec6577b17ee5ca89af07007d64}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!loadZero@{loadZero}}
+\index{loadZero@{loadZero}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{loadZero}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::loadZero ()}}
+\label{classCartWheel_1_1Math_1_1Matrix_a197165ec6577b17ee5ca89af07007d64}
+loads the matrix with all zero values. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a804032859efce36d43e569ed767271b0}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!multiplyBy@{multiplyBy}}
+\index{multiplyBy@{multiplyBy}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{multiplyBy}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::multiplyBy (const double {\em val})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a804032859efce36d43e569ed767271b0}
+Multiplies each element in the current matrix by a constant \hypertarget{classCartWheel_1_1Math_1_1Matrix_ad33238e122583ca44b13197d6f845d91}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Matrix::operator$\ast$ (const {\bf Vector3d} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Matrix_ad33238e122583ca44b13197d6f845d91}
+Implement this operator to have a quick way of multiplying 3x3 matrices by vectors -\/ used for dynamics for instance \hypertarget{classCartWheel_1_1Math_1_1Matrix_a3e40db12ae78b7616ee3f099bb15f13d}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix::operator= (const {\bf Matrix} \& {\em other})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a3e40db12ae78b7616ee3f099bb15f13d}
+copy operator -\/ performs a deep copy of the matrix passed in as a parameter. 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Math_1_1TransformationMatrix_ab04a5715c7f1ff7dd912b34abfce10c4}{CartWheel::Math::TransformationMatrix}, and \hyperlink{classCartWheel_1_1Math_1_1Vector_a1ec609f24d97d79e99b6bfc8759863e1}{CartWheel::Math::Vector}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a51c6fb9367bb553ad892ab54ed663c59}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!postMultiplyVector@{postMultiplyVector}}
+\index{postMultiplyVector@{postMultiplyVector}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{postMultiplyVector}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::postMultiplyVector (const {\bf Vector3d} \& {\em v}, \/  {\bf Vector3d} \& {\em result})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a51c6fb9367bb553ad892ab54ed663c59}
+Implement a potentially faster function for 3x3 matrix -\/ vector3d multiplication. Result and v need to be different!!
+
+Implement a potentially faster function for 3x3 matrix -\/ vector3d multiplication \hypertarget{classCartWheel_1_1Math_1_1Matrix_a31515ccb097bdaa77027cb1f315cd713}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!printMatrix@{printMatrix}}
+\index{printMatrix@{printMatrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{printMatrix}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::printMatrix () const}}
+\label{classCartWheel_1_1Math_1_1Matrix_a31515ccb097bdaa77027cb1f315cd713}
+This method prints the contents of the matrix -\/ testing purpose only. \hypertarget{classCartWheel_1_1Math_1_1Matrix_aa281a0802c0826225f68d2f5859a5b18}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!resizeTo@{resizeTo}}
+\index{resizeTo@{resizeTo}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{resizeTo}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::resizeTo (int {\em m}, \/  int {\em n})}}
+\label{classCartWheel_1_1Math_1_1Matrix_aa281a0802c0826225f68d2f5859a5b18}
+this method resizes the current matrix to have m rows and n cols. If not enough space is allocated for it, then a new matrix of correct dimensions is allocated. There is no guarantee with regards to the data that is contained in the matrix after a resize operation.
+
+this method returns true if the current matrix can be safely overwritten by a matrix with m rows by n columns, or false if we need to allocate a new matrix to do the job. \hypertarget{classCartWheel_1_1Math_1_1Matrix_aa33675ee32bcb342a7ed18f9e089b615}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!set@{set}}
+\index{set@{set}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::set (int {\em i}, \/  int {\em j}, \/  double {\em newVal})}}
+\label{classCartWheel_1_1Math_1_1Matrix_aa33675ee32bcb342a7ed18f9e089b615}
+This method sets the value of the matrix at (i,j) to newVal. \hypertarget{classCartWheel_1_1Math_1_1Matrix_aafef0fc884fdf893406fcbf9b69bdee5}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!setToInverseOf@{setToInverseOf}}
+\index{setToInverseOf@{setToInverseOf}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{setToInverseOf}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::setToInverseOf (const {\bf Matrix} \& {\em a}, \/  double {\em t} = {\ttfamily 0})}}
+\label{classCartWheel_1_1Math_1_1Matrix_aafef0fc884fdf893406fcbf9b69bdee5}
+This method computes the inverse of the matrix a and writes it over the current matrix. The implementation for the inverse of a matrix was obtained from Graphite. The parameter t is used as a threshold value for determinants, etc so that we still get a result for the inverse of our matrix even if it is very poorly conditioned.
+
+This method computes the inverse of the matrix a and writes it over the current matrix. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a3168ef0ced8aa0c414f45049d6db5637}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!setToOuterproduct@{setToOuterproduct}}
+\index{setToOuterproduct@{setToOuterproduct}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{setToOuterproduct}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::setToOuterproduct (const {\bf Vector3d} \& {\em a}, \/  const {\bf Vector3d} \& {\em b})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a3168ef0ced8aa0c414f45049d6db5637}
+this method sets the current matrix to a 3x3 matrix that is equal to the outer product of the vectors a and b \hypertarget{classCartWheel_1_1Math_1_1Matrix_ac2f4452cecbb5ffdaf6df379229fa22e}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!setToProductOf@{setToProductOf}}
+\index{setToProductOf@{setToProductOf}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{setToProductOf}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::setToProductOf (const {\bf Matrix} \& {\em a}, \/  const {\bf Matrix} \& {\em b}, \/  bool {\em transA} = {\ttfamily false}, \/  bool {\em transB} = {\ttfamily false})}}
+\label{classCartWheel_1_1Math_1_1Matrix_ac2f4452cecbb5ffdaf6df379229fa22e}
+This method sets the current matrix to be equal to one of the products: a $\ast$ b, a'$\ast$b, a$\ast$b' or a'$\ast$b'. The values of transA and transB indicate which of the matrices are tranposed and which ones are not.
+
+This method sets the current matrix to be equal to one of the products: a $\ast$ b, a'$\ast$b, a$\ast$b' or a'$\ast$b'. The values of transA and transB indicate which of the matrices are tranposed and which ones are not.
+
+NOTE: the matrices a and b should have no elements in common to the current matrix, otherwise the result is unpredictable. 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Math_1_1TransformationMatrix_aa30793678e416efa275e9ede54650bff}{CartWheel::Math::TransformationMatrix}, and \hyperlink{classCartWheel_1_1Math_1_1Vector_a3c20feee35a90b2b4da394d7851a0437}{CartWheel::Math::Vector}.
+
+\hypertarget{classCartWheel_1_1Math_1_1Matrix_a66059180667b010ff529c2320fee859f}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!setToSubmatrix@{setToSubmatrix}}
+\index{setToSubmatrix@{setToSubmatrix}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{setToSubmatrix}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::setToSubmatrix (const {\bf Matrix} \& {\em a}, \/  int {\em i}, \/  int {\em j}, \/  int {\em rows}, \/  int {\em cols})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a66059180667b010ff529c2320fee859f}
+This method sets the current matrix to be a sub-\/matrix (starting at (i,j) and ending at (i+rows, j+cols) of the one that is passed in as a parameter -\/ shallow copy only. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a879b543a840821660d869c820f4528a2}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!setValues@{setValues}}
+\index{setValues@{setValues}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{setValues}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::setValues (double $\ast$ {\em vals})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a879b543a840821660d869c820f4528a2}
+This method is used to set the values in the matrix to the ones that are passed in the array of doubles. It is assumed that the array contains the right number of elements and that there is no space between consecutive rows (tda == nrCols). \hypertarget{classCartWheel_1_1Math_1_1Matrix_a06aa42f9aa88cbc2e1557e5d4cbc24ec}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!shallowCopy@{shallowCopy}}
+\index{shallowCopy@{shallowCopy}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{shallowCopy}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::shallowCopy (const {\bf Matrix} \& {\em other}, \/  int {\em startRow} = {\ttfamily 0}, \/  int {\em startCol} = {\ttfamily 0}, \/  int {\em endRow} = {\ttfamily -\/1}, \/  int {\em endCol} = {\ttfamily -\/1})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a06aa42f9aa88cbc2e1557e5d4cbc24ec}
+this method performs a shallow copy of the matrix that is passed in as a parameter. \hypertarget{classCartWheel_1_1Math_1_1Matrix_a3e3cb8fbb2734f589230dc7914f7b586}{
+\index{CartWheel::Math::Matrix@{CartWheel::Math::Matrix}!sub@{sub}}
+\index{sub@{sub}!CartWheel::Math::Matrix@{CartWheel::Math::Matrix}}
+\subsubsection[{sub}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix::sub (const {\bf Matrix} \& {\em other}, \/  double {\em scaleA} = {\ttfamily 1.0}, \/  double {\em scaleB} = {\ttfamily 1.0})}}
+\label{classCartWheel_1_1Math_1_1Matrix_a3e3cb8fbb2734f589230dc7914f7b586}
+this method subtracts the matrix that is passed in as a parameter from the current matrix. In addition, it scales, both matrices by the two numbers that are passed in as parameters: this = a $\ast$ $\ast$this -\/ b $\ast$ other. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/MathLib/Matrix.h\item 
+src/MathLib/Matrix.cpp\end{DoxyCompactItemize}

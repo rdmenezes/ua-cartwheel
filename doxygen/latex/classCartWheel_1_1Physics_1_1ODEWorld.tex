@@ -1,0 +1,236 @@
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld}{
+\section{CartWheel::Physics::ODEWorld Class Reference}
+\label{classCartWheel_1_1Physics_1_1ODEWorld}\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::ODEWorld:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classCartWheel_1_1Physics_1_1ODEWorld__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::ODEWorld:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1ODEWorld__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_ae66e4bf441a399e71321b31206b56c6d}{ODEWorld} ()
+\item 
+virtual \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a613783ade6a491ef6544227e1b484594}{$\sim$ODEWorld} (void)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a46d8205d2150d58f47c24b74b781a890}{
+virtual void {\bfseries destroyAllObjects} ()}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a46d8205d2150d58f47c24b74b781a890}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_aecf3cd605875b12cdc25edd660ab3085}{loadRBsFromFile} (const char $\ast$fName, const char $\ast$sPath, const char $\ast$afName)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_afb5156756a0a15cc5e535f1ba405324a}{addJoint} (\hyperlink{classCartWheel_1_1Physics_1_1ArticulatedFigure}{ArticulatedFigure} $\ast$articulatedFigure, \hyperlink{classCartWheel_1_1Physics_1_1Joint}{Joint} $\ast$jt)
+\item 
+virtual bool \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a49a6eb9fccf6d96fb57ea626431ce7a4}{removeJoint} (\hyperlink{classCartWheel_1_1Physics_1_1Joint}{Joint} $\ast$jt)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_ae1fb3953c58a1fe62e1ecc2ca4d7c68e}{setupJoint} (\hyperlink{classCartWheel_1_1Physics_1_1Joint}{Joint} $\ast$jt)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a908e6c943e0f464135695aa4942c93d7}{addRigidBody} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$rigidBody\_\-disown)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_aa68b2283efade199c6d444672afea1eb}{addArticulatedRigidBody} (\hyperlink{classCartWheel_1_1Physics_1_1ArticulatedRigidBody}{ArticulatedRigidBody} $\ast$rigidBody\_\-disown)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a092b6f5911b2241c63927005b71fdf1d}{addArticulatedFigure} (\hyperlink{classCartWheel_1_1Physics_1_1ArticulatedFigure}{ArticulatedFigure} $\ast$articulatedFigure\_\-disown)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_af4478f856562a7412583a788f22a7422}{advanceInTime} (double deltaT)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a3403766a4fa655a7b2d0df7a409a990e}{applyRelForceTo} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$b, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&f, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&p)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_ad5f89cdc454b093096825455db1fb294}{setState} (DynamicArray$<$ double $>$ $\ast$state, int start=0)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a7a8c8fc31b0dac181d6d397cd6b70e06}{applyForceTo} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$b, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&f, const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&p)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a99608efa452523e74cc61cd7cbafb496}{applyTorqueTo} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$b, const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&t)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a4413b4b3d3918f05ef2c5fbda8da9af2}{setEngineStateFromRB} ()
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a3989f16bd09d91d2ebf773567ac39e6d}{testAdvanceInTime} (double deltaT)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a24befdbc6e6997f125d65b649c5b8fde}{runTest} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1ODEWorld_a0119980a84afa8b21900e6df9a269913}{collisionCallBack} (void $\ast$odeWorld, dGeomID o1, dGeomID o2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_ae66e4bf441a399e71321b31206b56c6d}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!ODEWorld@{ODEWorld}}
+\index{ODEWorld@{ODEWorld}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{ODEWorld}]{\setlength{\rightskip}{0pt plus 5cm}ODEWorld::ODEWorld ()}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_ae66e4bf441a399e71321b31206b56c6d}
+default constructor
+
+Default constructor \hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a613783ade6a491ef6544227e1b484594}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!$\sim$ODEWorld@{$\sim$ODEWorld}}
+\index{$\sim$ODEWorld@{$\sim$ODEWorld}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{$\sim$ODEWorld}]{\setlength{\rightskip}{0pt plus 5cm}ODEWorld::$\sim$ODEWorld (void)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a613783ade6a491ef6544227e1b484594}
+destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a092b6f5911b2241c63927005b71fdf1d}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!addArticulatedFigure@{addArticulatedFigure}}
+\index{addArticulatedFigure@{addArticulatedFigure}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{addArticulatedFigure}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::addArticulatedFigure ({\bf ArticulatedFigure} $\ast$ {\em articulatedFigure})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a092b6f5911b2241c63927005b71fdf1d}
+This method adds one articulated figure. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_af98e74c3270d1d55dc0990be78653214}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_aa68b2283efade199c6d444672afea1eb}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!addArticulatedRigidBody@{addArticulatedRigidBody}}
+\index{addArticulatedRigidBody@{addArticulatedRigidBody}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{addArticulatedRigidBody}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::addArticulatedRigidBody ({\bf ArticulatedRigidBody} $\ast$ {\em rigidBody})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_aa68b2283efade199c6d444672afea1eb}
+This method adds one articulated body.
+
+The articulated rigid body is linked so it must have been configured by now. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a3804e4088fe10df5c4c08fde98bcbadc}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_afb5156756a0a15cc5e535f1ba405324a}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!addJoint@{addJoint}}
+\index{addJoint@{addJoint}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{addJoint}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::addJoint ({\bf ArticulatedFigure} $\ast$ {\em articulatedFigure}, \/  {\bf Joint} $\ast$ {\em jt})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_afb5156756a0a15cc5e535f1ba405324a}
+Add a joint. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a4e4033d358b1654796aa3c3463fa875a}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a908e6c943e0f464135695aa4942c93d7}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!addRigidBody@{addRigidBody}}
+\index{addRigidBody@{addRigidBody}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{addRigidBody}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::addRigidBody ({\bf RigidBody} $\ast$ {\em rigidBody})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a908e6c943e0f464135695aa4942c93d7}
+This method adds one rigid body (articulated or not).
+
+This method adds one rigid body (not articulated). 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a1ca9b7e988c6f36f136cce897d0f49d8}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_af4478f856562a7412583a788f22a7422}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!advanceInTime@{advanceInTime}}
+\index{advanceInTime@{advanceInTime}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{advanceInTime}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::advanceInTime (double {\em deltaT})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_af4478f856562a7412583a788f22a7422}
+This method is used to integrate the forward simulation in time. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1World_a289b113bee05b81baecebe76bc384069}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a7a8c8fc31b0dac181d6d397cd6b70e06}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!applyForceTo@{applyForceTo}}
+\index{applyForceTo@{applyForceTo}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{applyForceTo}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::applyForceTo ({\bf RigidBody} $\ast$ {\em b}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em f}, \/  const {\bf CartWheel::Math::Point3d} \& {\em p})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a7a8c8fc31b0dac181d6d397cd6b70e06}
+this method applies a force to a rigid body, at the specified point. The point is specified in local coordinates, and the force is specified in world coordinates. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1World_a26058e4671390ada9b3d3b1590f88f1a}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a3403766a4fa655a7b2d0df7a409a990e}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!applyRelForceTo@{applyRelForceTo}}
+\index{applyRelForceTo@{applyRelForceTo}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{applyRelForceTo}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::applyRelForceTo ({\bf RigidBody} $\ast$ {\em b}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em f}, \/  const {\bf CartWheel::Math::Point3d} \& {\em p})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a3403766a4fa655a7b2d0df7a409a990e}
+this method applies a force to a rigid body, at the specified point. The point is specified in local coordinates, and the force is also specified in local coordinates. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1World_a87da6dd55397da4ceceaa457be2e1a89}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a99608efa452523e74cc61cd7cbafb496}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!applyTorqueTo@{applyTorqueTo}}
+\index{applyTorqueTo@{applyTorqueTo}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{applyTorqueTo}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::applyTorqueTo ({\bf RigidBody} $\ast$ {\em b}, \/  const {\bf CartWheel::Math::Vector3d} \& {\em t})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a99608efa452523e74cc61cd7cbafb496}
+this method applies a torque to a rigid body. The torque is specified in world coordinates. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1World_ae4f6992b0360ac2599a8980621cde06f}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_aecf3cd605875b12cdc25edd660ab3085}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!loadRBsFromFile@{loadRBsFromFile}}
+\index{loadRBsFromFile@{loadRBsFromFile}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{loadRBsFromFile}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::loadRBsFromFile (const char $\ast$ {\em fName}, \/  const char $\ast$ {\em sPath}, \/  const char $\ast$ {\em afName})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_aecf3cd605875b12cdc25edd660ab3085}
+This method reads a list of rigid bodies from the specified file. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a0602db984b22bbc3d13162a9ec07eb73}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a49a6eb9fccf6d96fb57ea626431ce7a4}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!removeJoint@{removeJoint}}
+\index{removeJoint@{removeJoint}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{removeJoint}]{\setlength{\rightskip}{0pt plus 5cm}bool ODEWorld::removeJoint ({\bf Joint} $\ast$ {\em jt})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a49a6eb9fccf6d96fb57ea626431ce7a4}
+Remove the given joint. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a5f13914f86bf8007f88b238111233ff6}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a24befdbc6e6997f125d65b649c5b8fde}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!runTest@{runTest}}
+\index{runTest@{runTest}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{runTest}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::runTest ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a24befdbc6e6997f125d65b649c5b8fde}
+run a testing method... 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a2181315ea3069768c0c10f9a9d632f89}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a4413b4b3d3918f05ef2c5fbda8da9af2}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!setEngineStateFromRB@{setEngineStateFromRB}}
+\index{setEngineStateFromRB@{setEngineStateFromRB}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{setEngineStateFromRB}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::setEngineStateFromRB ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a4413b4b3d3918f05ef2c5fbda8da9af2}
+this method is used to transfer the state of the rigid bodies, from the rigid body wrapper to the simulator's rigid bodies
+
+this method is used to transfer the state of the rigid bodies, from the rigid body wrapper to ODE's rigid bodies \hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_ad5f89cdc454b093096825455db1fb294}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!setState@{setState}}
+\index{setState@{setState}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{setState}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::setState (DynamicArray$<$ double $>$ $\ast$ {\em state}, \/  int {\em start} = {\ttfamily 0})}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_ad5f89cdc454b093096825455db1fb294}
+This method is used to set the state of all the rigid body in the physical world.
+
+This method is used to set the state of all the rigid body in this collection. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a8dd0eefe9170b86b0bca968851db88f5}{CartWheel::Physics::World}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_ae1fb3953c58a1fe62e1ecc2ca4d7c68e}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!setupJoint@{setupJoint}}
+\index{setupJoint@{setupJoint}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{setupJoint}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::setupJoint ({\bf Joint} $\ast$ {\em jt})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_ae1fb3953c58a1fe62e1ecc2ca4d7c68e}
+Setup a joint. \hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a3989f16bd09d91d2ebf773567ac39e6d}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!testAdvanceInTime@{testAdvanceInTime}}
+\index{testAdvanceInTime@{testAdvanceInTime}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{testAdvanceInTime}]{\setlength{\rightskip}{0pt plus 5cm}void ODEWorld::testAdvanceInTime (double {\em deltaT})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a3989f16bd09d91d2ebf773567ac39e6d}
+This method is used to integrate the forward simulation in time. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1World_a3eb9011c4c08c2183c1d9a37042e126a}{CartWheel::Physics::World}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1ODEWorld_a0119980a84afa8b21900e6df9a269913}{
+\index{CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}!collisionCallBack@{collisionCallBack}}
+\index{collisionCallBack@{collisionCallBack}!CartWheel::Physics::ODEWorld@{CartWheel::Physics::ODEWorld}}
+\subsubsection[{collisionCallBack}]{\setlength{\rightskip}{0pt plus 5cm}void collisionCallBack (void $\ast$ {\em odeWorld}, \/  dGeomID {\em o1}, \/  dGeomID {\em o2})\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1ODEWorld_a0119980a84afa8b21900e6df9a269913}
+This method is a simple call back function that passes the message to the world whose objects are being acted upon. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/ODEWorld.h\item 
+src/Physics/ODEWorld.cpp\end{DoxyCompactItemize}

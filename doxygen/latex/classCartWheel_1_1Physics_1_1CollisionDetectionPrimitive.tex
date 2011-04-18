@@ -1,0 +1,115 @@
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{
+\section{CartWheel::Physics::CollisionDetectionPrimitive Class Reference}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}\index{CartWheel::Physics::CollisionDetectionPrimitive@{CartWheel::Physics::CollisionDetectionPrimitive}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::CollisionDetectionPrimitive:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::CollisionDetectionPrimitive:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a97bb80333715080e870b264d35f5e070}{
+{\bfseries CollisionDetectionPrimitive} (int type, \hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$theBody=NULL)}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a97bb80333715080e870b264d35f5e070}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26a0df4ddcfd5b646eb3e0f49c4cae6d}{
+const char $\ast$ {\bfseries typeName} ()}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26a0df4ddcfd5b646eb3e0f49c4cae6d}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_af38b7f6e33b7c261a0e1a86c3d6c13dd}{
+virtual const char $\ast$ {\bfseries save} ()=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_af38b7f6e33b7c261a0e1a86c3d6c13dd}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a1849d6063df893f236b7b0936464bd6b}{
+void {\bfseries attachBody} (\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$body)}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a1849d6063df893f236b7b0936464bd6b}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a914554e34e0694ce42c502e0ef5a45d9}{
+virtual void {\bfseries updateToWorldPrimitive} ()=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a914554e34e0694ce42c502e0ef5a45d9}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26c85561d35a7df8bb48697da9c1cb10}{draw} ()
+\item 
+int \hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2720a47fe87d1c3dacec7deefced481c}{getType} ()
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2dc2a1e44abb289f6e4c6a5f8a70074a}{
+virtual int {\bfseries computeCollisionsWith} (\hyperlink{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive}{CollisionDetectionPrimitive} $\ast$other, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$cps)=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2dc2a1e44abb289f6e4c6a5f8a70074a}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_acf3b92498d8328875837093cae380031}{
+virtual int {\bfseries computeCollisionsWithSphereCDP} (\hyperlink{classCartWheel_1_1Physics_1_1SphereCDP}{SphereCDP} $\ast$sp, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$cps)=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_acf3b92498d8328875837093cae380031}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a944721036f923d2e9e60001971460139}{
+virtual int {\bfseries computeCollisionsWithPlaneCDP} (\hyperlink{classCartWheel_1_1Physics_1_1PlaneCDP}{PlaneCDP} $\ast$sp, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$cps)=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a944721036f923d2e9e60001971460139}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a90dd081f7e7fe104c3abceb0bf55595c}{
+virtual int {\bfseries computeCollisionsWithCapsuleCDP} (\hyperlink{classCartWheel_1_1Physics_1_1CapsuleCDP}{CapsuleCDP} $\ast$sp, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$cps)=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a90dd081f7e7fe104c3abceb0bf55595c}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_ae11a147db0dfc3ac9980f9799c48a520}{
+virtual int {\bfseries computeCollisionsWithBoxCDP} (\hyperlink{classCartWheel_1_1Physics_1_1BoxCDP}{BoxCDP} $\ast$sp, DynamicArray$<$ \hyperlink{classCartWheel_1_1Physics_1_1ContactPoint}{ContactPoint} $>$ $\ast$cps)=0}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_ae11a147db0dfc3ac9980f9799c48a520}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2e3ffc91ec388fbbe42a330c8f7fab28}{
+int {\bfseries type}}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2e3ffc91ec388fbbe42a330c8f7fab28}
+
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a73b383dd9795d382aa1d423936cfa1b3}{
+\hyperlink{classCartWheel_1_1Physics_1_1RigidBody}{RigidBody} $\ast$ {\bfseries bdy}}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a73b383dd9795d382aa1d423936cfa1b3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26c85561d35a7df8bb48697da9c1cb10}{
+\index{CartWheel::Physics::CollisionDetectionPrimitive@{CartWheel::Physics::CollisionDetectionPrimitive}!draw@{draw}}
+\index{draw@{draw}!CartWheel::Physics::CollisionDetectionPrimitive@{CartWheel::Physics::CollisionDetectionPrimitive}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void CollisionDetectionPrimitive::draw ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a26c85561d35a7df8bb48697da9c1cb10}
+draw an outline of the primitive... 
+
+Reimplemented in \hyperlink{classCartWheel_1_1Physics_1_1BoxCDP_a30fe03a4419ba85988a0d909b42f9c3d}{CartWheel::Physics::BoxCDP}, \hyperlink{classCartWheel_1_1Physics_1_1CapsuleCDP_a0b2d496f52bbe790ea08846e0f951d63}{CartWheel::Physics::CapsuleCDP}, \hyperlink{classCartWheel_1_1Physics_1_1PlaneCDP_af05d808b4b8c86c3737bbe05ee624cd9}{CartWheel::Physics::PlaneCDP}, and \hyperlink{classCartWheel_1_1Physics_1_1SphereCDP_a02bb51012ee7279a7369fc451276a22f}{CartWheel::Physics::SphereCDP}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2720a47fe87d1c3dacec7deefced481c}{
+\index{CartWheel::Physics::CollisionDetectionPrimitive@{CartWheel::Physics::CollisionDetectionPrimitive}!getType@{getType}}
+\index{getType@{getType}!CartWheel::Physics::CollisionDetectionPrimitive@{CartWheel::Physics::CollisionDetectionPrimitive}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}int CartWheel::Physics::CollisionDetectionPrimitive::getType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1CollisionDetectionPrimitive_a2720a47fe87d1c3dacec7deefced481c}
+returns the type of this collision detection primitive. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/CollisionDetectionPrimitive.h\item 
+src/Physics/CollisionDetectionPrimitive.cpp\end{DoxyCompactItemize}

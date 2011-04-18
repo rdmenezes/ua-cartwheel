@@ -1,0 +1,71 @@
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera}{
+\section{CartWheel::GL::GLTrackingCamera Class Reference}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera}\index{CartWheel::GL::GLTrackingCamera@{CartWheel::GL::GLTrackingCamera}}
+}
+
+
+{\ttfamily \#include $<$GLTrackingCamera.h$>$}
+
+
+
+Inheritance diagram for CartWheel::GL::GLTrackingCamera:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classCartWheel_1_1GL_1_1GLTrackingCamera__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::GL::GLTrackingCamera:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1GL_1_1GLTrackingCamera__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_ab3490447e18e87e262cf7a01aa74224b}{
+virtual void {\bfseries applyCameraTransformations} ()}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_ab3490447e18e87e262cf7a01aa74224b}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_a058285eeef3f588f45793193ba25bcc3}{
+virtual void {\bfseries applyMouseInput} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&input, int mode)}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_a058285eeef3f588f45793193ba25bcc3}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_a18321b7a052369d135e06884b11278fb}{
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} {\bfseries rotations}}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_a18321b7a052369d135e06884b11278fb}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_ac9e1164d3ad06c97a007564fc32e6ae8}{
+double {\bfseries camDistance}}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_ac9e1164d3ad06c97a007564fc32e6ae8}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_a957bfb50736472ce8a5f036e3b8776f9}{
+\hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} {\bfseries target}}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_a957bfb50736472ce8a5f036e3b8776f9}
+
+\item 
+\hypertarget{classCartWheel_1_1GL_1_1GLTrackingCamera_abf44b47bc709e0938679d3985f1210fb}{
+\hyperlink{classCartWheel_1_1Math_1_1TransformationMatrix}{CartWheel::Math::TransformationMatrix} {\bfseries worldToCam}}
+\label{classCartWheel_1_1GL_1_1GLTrackingCamera_abf44b47bc709e0938679d3985f1210fb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements a simple open GL camera. This camera can be used to automatically follow a target, and rotate around it. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/GLUtils/GLTrackingCamera.h\item 
+src/GLUtils/GLTrackingCamera.cpp\end{DoxyCompactItemize}

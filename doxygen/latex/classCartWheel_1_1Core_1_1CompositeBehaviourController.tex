@@ -1,0 +1,225 @@
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController}{
+\section{CartWheel::Core::CompositeBehaviourController Class Reference}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController}\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+}
+
+
+Inheritance diagram for CartWheel::Core::CompositeBehaviourController:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classCartWheel_1_1Core_1_1CompositeBehaviourController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Core::CompositeBehaviourController:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Core_1_1CompositeBehaviourController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad79400366bf2d4e638e36b8e4304c50b}{
+{\bfseries CompositeBehaviourController} (\hyperlink{classCartWheel_1_1Core_1_1Character}{Character} $\ast$b, \hyperlink{classCartWheel_1_1Core_1_1IKVMCController}{IKVMCController} $\ast$llc, \hyperlink{classCartWheel_1_1Core_1_1WorldOracle}{WorldOracle} $\ast$w)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad79400366bf2d4e638e36b8e4304c50b}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad001c87ff24b2e61b0ee4edb3cca5e3b}{loadFromFile} (FILE $\ast$file)
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a1d9dcd5c45b95b88b76bdabba957d6c6}{
+virtual void {\bfseries saveToFile} (FILE $\ast$file)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a1d9dcd5c45b95b88b76bdabba957d6c6}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a0c01e07f056c9af2c59c354471859d29}{setUpperBodyPose} (double leanSagittal, double leanCoronal, double twist)
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a0e04839270598d7f32dee19f0895a1c7}{
+virtual void {\bfseries setKneeBend} (double v, bool swingAlso=false)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a0e04839270598d7f32dee19f0895a1c7}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_aa2f231214cfea4c92a598f502eaa6af9}{
+virtual void {\bfseries setDuckWalkDegree} (double v)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_aa2f231214cfea4c92a598f502eaa6af9}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_abbbcb997f4965ab59c15cc571e70a909}{
+virtual void {\bfseries setDesiredHeading} (double v)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_abbbcb997f4965ab59c15cc571e70a909}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_ac56f358abc3efb8f77b723fab61e122f}{
+virtual void {\bfseries setVelocities} (double velDS, double velDC)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_ac56f358abc3efb8f77b723fab61e122f}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a8fe7669164bd30c5c79b8cd74b5f4de5}{
+virtual void {\bfseries adjustStepHeight} ()}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a8fe7669164bd30c5c79b8cd74b5f4de5}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5e9a1cee9cd7de93a99920ecbe30d5e3}{
+virtual void {\bfseries setElbowAngles} (double leftElbowAngle, double rightElbowAngle)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5e9a1cee9cd7de93a99920ecbe30d5e3}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a7a172faee6a3409d5dabc7c1be511056}{
+virtual void {\bfseries setShoulderAngles} (double leftTwist, double rightTwist, double leftAdduction, double rightAdduction, double leftSwing, double rightSwing)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a7a172faee6a3409d5dabc7c1be511056}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5ea623f720e4de82896b917f88bb326a}{
+virtual void {\bfseries requestStepTime} (double stepTime)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5ea623f720e4de82896b917f88bb326a}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_aa3715256497843d29ed87d47c014c090}{
+virtual void {\bfseries requestStepHeight} (double stepHeight)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_aa3715256497843d29ed87d47c014c090}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad19ee1fb94b0fd9770efd45fb71036f0}{
+virtual void {\bfseries requestVelocities} (double velDS, double velDC)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad19ee1fb94b0fd9770efd45fb71036f0}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_ac0bcbb54c769961fe2e25f7362b4806f}{
+virtual void {\bfseries requestUpperBodyPose} (double leanS, double leanC, double twist)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_ac0bcbb54c769961fe2e25f7362b4806f}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a3a3ca1185f82a6dbe93ce90c4bf7c927}{
+virtual void {\bfseries requestKneeBend} (double kb)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a3a3ca1185f82a6dbe93ce90c4bf7c927}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_af6173fd84770673fe698989694440272}{
+virtual void {\bfseries requestDuckFootedness} (double df)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_af6173fd84770673fe698989694440272}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a919f8ee108399554dbf290b2f13e6297}{
+virtual void {\bfseries requestCoronalStepWidth} (double corSW)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a919f8ee108399554dbf290b2f13e6297}
+
+\item 
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a384eca75453021ab3440cffeb36d53df}{
+virtual void {\bfseries requestElbowBend} (double leftBend, double rightBend)}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a384eca75453021ab3440cffeb36d53df}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5b0841672d1b94a3d3dbc51b2a5d0695}{setDesiredSwingFootLocation} ()
+\item 
+virtual \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a956bb427f158690080f381bd9cf4a089}{computeSwingFootLocationEstimate} (const \hyperlink{classCartWheel_1_1Math_1_1Point3d}{CartWheel::Math::Point3d} \&comPos, double phase)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a48cc3421fce61716da9686c9a351ed78}{requestHeading} (double v)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a88c8eed10fb31f94b720e079348446bb}{initializeDefaultParameters} ()
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_afaba80fe489ca6a997e33551d94a6db1}{simStepPlan} (double dt)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a7fd8f2e351f4dd0fff087c8d254b998e}{conTransitionPlan} ()
+\item 
+virtual double \hyperlink{classCartWheel_1_1Core_1_1CompositeBehaviourController_a103f9b905e00d730a3b07eedad8c491d}{getPanicLevel} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a956bb427f158690080f381bd9cf4a089}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!computeSwingFootLocationEstimate@{computeSwingFootLocationEstimate}}
+\index{computeSwingFootLocationEstimate@{computeSwingFootLocationEstimate}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{computeSwingFootLocationEstimate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} CompositeBehaviourController::computeSwingFootLocationEstimate (const {\bf CartWheel::Math::Point3d} \& {\em comPos}, \/  double {\em phase})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a956bb427f158690080f381bd9cf4a089}
+determine the estimate desired location of the swing foot, given the etimated position of the COM, and the phase
+
+determine the estimate desired location of the swing foot, given the estimated position of the COM, and the phase 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a4586a96ada87681f596ab6bd67af4144}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a7fd8f2e351f4dd0fff087c8d254b998e}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!conTransitionPlan@{conTransitionPlan}}
+\index{conTransitionPlan@{conTransitionPlan}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{conTransitionPlan}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::conTransitionPlan ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a7fd8f2e351f4dd0fff087c8d254b998e}
+this method gets called every time the controller transitions to a new state 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a26bfe1b24d791e35c78ce0dff3c7b274}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a103f9b905e00d730a3b07eedad8c491d}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!getPanicLevel@{getPanicLevel}}
+\index{getPanicLevel@{getPanicLevel}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{getPanicLevel}]{\setlength{\rightskip}{0pt plus 5cm}double CompositeBehaviourController::getPanicLevel ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a103f9b905e00d730a3b07eedad8c491d}
+this method determines the degree to which the character should be panicking
+
+Return the maximum panic level over the entire collection of controllers. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_aa8e43483e51a9cd697fa33a0674abccc}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a88c8eed10fb31f94b720e079348446bb}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!initializeDefaultParameters@{initializeDefaultParameters}}
+\index{initializeDefaultParameters@{initializeDefaultParameters}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{initializeDefaultParameters}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::initializeDefaultParameters ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a88c8eed10fb31f94b720e079348446bb}
+sets a bunch of parameters to some default initial value 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a686bf6e2bc689fef41352eb1fc674884}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad001c87ff24b2e61b0ee4edb3cca5e3b}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{loadFromFile}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::loadFromFile (FILE $\ast$ {\em file})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_ad001c87ff24b2e61b0ee4edb3cca5e3b}
+Load controllers from the 
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]handle. \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a48cc3421fce61716da9686c9a351ed78}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!requestHeading@{requestHeading}}
+\index{requestHeading@{requestHeading}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{requestHeading}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::requestHeading (double {\em v})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a48cc3421fce61716da9686c9a351ed78}
+ask for a heading... 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a9a96dacbf508de76c84fcf494b49c4c9}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5b0841672d1b94a3d3dbc51b2a5d0695}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!setDesiredSwingFootLocation@{setDesiredSwingFootLocation}}
+\index{setDesiredSwingFootLocation@{setDesiredSwingFootLocation}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{setDesiredSwingFootLocation}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::setDesiredSwingFootLocation ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a5b0841672d1b94a3d3dbc51b2a5d0695}
+determines the desired swing foot location 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a335b40febfbe741f290367a2ad59b38a}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_a0c01e07f056c9af2c59c354471859d29}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!setUpperBodyPose@{setUpperBodyPose}}
+\index{setUpperBodyPose@{setUpperBodyPose}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{setUpperBodyPose}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::setUpperBodyPose (double {\em leanSagittal}, \/  double {\em leanCoronal}, \/  double {\em twist})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_a0c01e07f056c9af2c59c354471859d29}
+a set of useful virtual functions, whose behavior can be overridden 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a1086038c78bc9cd190699d7756285b03}{CartWheel::Core::BehaviourController}.
+
+\hypertarget{classCartWheel_1_1Core_1_1CompositeBehaviourController_afaba80fe489ca6a997e33551d94a6db1}{
+\index{CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}!simStepPlan@{simStepPlan}}
+\index{simStepPlan@{simStepPlan}!CartWheel::Core::CompositeBehaviourController@{CartWheel::Core::CompositeBehaviourController}}
+\subsubsection[{simStepPlan}]{\setlength{\rightskip}{0pt plus 5cm}void CompositeBehaviourController::simStepPlan (double {\em dt})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Core_1_1CompositeBehaviourController_afaba80fe489ca6a997e33551d94a6db1}
+this method gets called at every simulation time step 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Core_1_1BehaviourController_a5a0b7293c3693f7a5860ae51bb65164e}{CartWheel::Core::BehaviourController}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Core/CompositeBehaviourController.h\item 
+src/Core/CompositeBehaviourController.cpp\end{DoxyCompactItemize}

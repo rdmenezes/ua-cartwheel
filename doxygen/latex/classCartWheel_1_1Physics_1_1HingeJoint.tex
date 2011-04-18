@@ -1,0 +1,112 @@
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint}{
+\section{CartWheel::Physics::HingeJoint Class Reference}
+\label{classCartWheel_1_1Physics_1_1HingeJoint}\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+}
+
+
+Inheritance diagram for CartWheel::Physics::HingeJoint:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classCartWheel_1_1Physics_1_1HingeJoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for CartWheel::Physics::HingeJoint:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classCartWheel_1_1Physics_1_1HingeJoint__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_a03be2b3b0d8b82d646f2c5b343d19faa}{readAxes} (const char $\ast$axes)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_ad1f3776125f03d67f5abbc90453d28ce}{setAxis} (const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \&axis)
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_ac22ef642193e3ee78a986632c626b5ae}{
+const \hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \& {\bfseries getAxis} () const }
+\label{classCartWheel_1_1Physics_1_1HingeJoint_ac22ef642193e3ee78a986632c626b5ae}
+
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_a1e8d5fd7165a0cc0d669775ac95ab53f}{readJointLimits} (const char $\ast$limits)
+\item 
+void \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_a2d54017b1dcff97409aae453f0b3ab58}{setJointLimits} (double minAngle, double maxAngle)
+\item 
+virtual void \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_a0245e9da2588e69062102bb6750906d0}{fixAngularConstraint} (const \hyperlink{classCartWheel_1_1Math_1_1Quaternion}{CartWheel::Math::Quaternion} \&qRel)
+\item 
+\hyperlink{classCartWheel_1_1Math_1_1Vector3d}{CartWheel::Math::Vector3d} \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_a504ac0c55bb16688748fe19e462b0dcf}{getRotAxisA} ()
+\item 
+virtual int \hyperlink{classCartWheel_1_1Physics_1_1HingeJoint_ac235a55558abc285ec5bc3bd19e3a2da}{getJointType} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a5db30e1aef955cb40c04658eacff8680}{
+class {\bfseries ODEWorld}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a5db30e1aef955cb40c04658eacff8680}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a0245e9da2588e69062102bb6750906d0}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!fixAngularConstraint@{fixAngularConstraint}}
+\index{fixAngularConstraint@{fixAngularConstraint}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{fixAngularConstraint}]{\setlength{\rightskip}{0pt plus 5cm}void HingeJoint::fixAngularConstraint (const {\bf CartWheel::Math::Quaternion} \& {\em qRel})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a0245e9da2588e69062102bb6750906d0}
+This method is used to fix the joint angular constraint to correct for drift. This is done by changing the orientation of the child. 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1Joint_ab14f1e87562d9f5993504621d2cf3569}{CartWheel::Physics::Joint}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_ac235a55558abc285ec5bc3bd19e3a2da}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!getJointType@{getJointType}}
+\index{getJointType@{getJointType}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{getJointType}]{\setlength{\rightskip}{0pt plus 5cm}virtual int CartWheel::Physics::HingeJoint::getJointType ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_ac235a55558abc285ec5bc3bd19e3a2da}
+Returns the type of the current joint 
+
+Implements \hyperlink{classCartWheel_1_1Physics_1_1Joint_a6940878e260534a3803b14aa697b88f7}{CartWheel::Physics::Joint}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a504ac0c55bb16688748fe19e462b0dcf}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!getRotAxisA@{getRotAxisA}}
+\index{getRotAxisA@{getRotAxisA}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{getRotAxisA}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CartWheel::Math::Vector3d} CartWheel::Physics::HingeJoint::getRotAxisA ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a504ac0c55bb16688748fe19e462b0dcf}
+Return the A rotation axis \hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a03be2b3b0d8b82d646f2c5b343d19faa}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!readAxes@{readAxes}}
+\index{readAxes@{readAxes}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{readAxes}]{\setlength{\rightskip}{0pt plus 5cm}void HingeJoint::readAxes (const char $\ast$ {\em axes})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a03be2b3b0d8b82d646f2c5b343d19faa}
+This method is used to pass in information regarding the rotation axes. The string that is passed in is expected to have been read from an input file. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1Joint_a30ecfb4d75270a399661552df87c01de}{CartWheel::Physics::Joint}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a1e8d5fd7165a0cc0d669775ac95ab53f}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!readJointLimits@{readJointLimits}}
+\index{readJointLimits@{readJointLimits}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{readJointLimits}]{\setlength{\rightskip}{0pt plus 5cm}void HingeJoint::readJointLimits (const char $\ast$ {\em limits})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a1e8d5fd7165a0cc0d669775ac95ab53f}
+This method is used to pass information regarding the joint limits for a joint. The string that is passed in is expected to have been read from an input file. 
+
+Reimplemented from \hyperlink{classCartWheel_1_1Physics_1_1Joint_a3a70bb2e447b5acd7997545d3751a423}{CartWheel::Physics::Joint}.
+
+\hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_ad1f3776125f03d67f5abbc90453d28ce}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!setAxis@{setAxis}}
+\index{setAxis@{setAxis}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{setAxis}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::HingeJoint::setAxis (const {\bf CartWheel::Math::Vector3d} \& {\em axis})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_ad1f3776125f03d67f5abbc90453d28ce}
+Sets the axis \hypertarget{classCartWheel_1_1Physics_1_1HingeJoint_a2d54017b1dcff97409aae453f0b3ab58}{
+\index{CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}!setJointLimits@{setJointLimits}}
+\index{setJointLimits@{setJointLimits}!CartWheel::Physics::HingeJoint@{CartWheel::Physics::HingeJoint}}
+\subsubsection[{setJointLimits}]{\setlength{\rightskip}{0pt plus 5cm}void CartWheel::Physics::HingeJoint::setJointLimits (double {\em minAngle}, \/  double {\em maxAngle})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCartWheel_1_1Physics_1_1HingeJoint_a2d54017b1dcff97409aae453f0b3ab58}
+Set the joint limits 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+include/Physics/HingeJoint.h\item 
+src/Physics/HingeJoint.cpp\end{DoxyCompactItemize}

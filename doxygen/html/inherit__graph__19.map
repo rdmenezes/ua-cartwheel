@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classCartWheel_1_1Core_1_1Policy.html" title="CartWheel::Core::Policy" alt="" coords="7,55,159,83"/>
+<area shape="rect" id="node3" href="$classCartWheel_1_1Core_1_1ActionCollectionPolicy.html" title="CartWheel::Core::ActionCollectionPolicy" alt="" coords="208,5,453,33"/>
+<area shape="rect" id="node5" href="$classCartWheel_1_1Core_1_1SimpleControlPolicy.html" title="CartWheel::Core::SimpleControlPolicy" alt="" coords="215,55,447,83"/>
+<area shape="rect" id="node7" href="$classCartWheel_1_1Core_1_1UserInteractionPolicy.html" title="CartWheel::Core::UserInteractionPolicy" alt="" coords="212,106,449,134"/>
+</map>
