@@ -163,7 +163,18 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 		case 't':
 			cw->makeHumanThrowObject(selectedHuman, "ball1", Vector3d(0,0,15));
 			break;
-
+        case 'u':
+            Visualization::g_instance->humanTest1(selectedHuman, true);
+            break;
+        case 'i':
+            Visualization::g_instance->humanTest1(selectedHuman, false);
+            break;
+        case 'j':
+            Visualization::g_instance->humanTest2(selectedHuman);
+            break;
+        case 'k':
+            Visualization::g_instance->humanTest3(selectedHuman);
+            break;
 		default:
 			break;
 		}
@@ -173,6 +184,87 @@ static void processNormalKeys(unsigned char key, int x, int y) {
 void Visualization::initKeyboard() {
 	glutKeyboardFunc(processNormalKeys);
 }
+
+void Visualization::humanTest1(string humanName, bool savestate)
+{
+	Human* human = NULL;
+	static ReducedCharacterStateArray state;
+
+	if (_cw->getHuman(humanName, &human)) {
+		Character* character = human->getCharacter();
+     
+        if (savestate) {   
+            state.clear();
+            character->getState(&state);    // Save the character state to the state array
+            printf("Saving state\n");
+            //for (int i=0; i<state.size(); i++) {
+            //    printf("%f ", state[i]);
+            //}
+            //printf("\n");    
+        }
+        else if (state.size() > 0) {
+            printf("Restoring state\n");
+            character->setState(&state);    // Restore the character state to saved value     
+        }
+        
+    }
+}
+
+typedef std::pair<double, double> LeftRightDouble;
+
+void Visualization::humanTest2(string humanName)
+{
+	Human* human = NULL;
+	static ReducedCharacterStateArray state;
+
+	if (_cw->getHuman(humanName, &human)) {
+        Character* character = human->getCharacter();
+        SimBiController* controller = human->getController();
+	    CompositeController* ccontroller = human->getCompositeController();
+	    BehaviourController* bcontroller = human->getBehaviour();
+	
+	    double lelbow = rand()%314 * 0.01;
+	    double relbow = rand()%314 * 0.01;
+	    printf("Setting elbows to %f, %f\n", lelbow, relbow);
+	    bcontroller->requestElbowBend(lelbow, relbow);
+	    
+	    double knee = rand()%100 * 0.01;
+	    printf("Setting knee bend to %f\n", knee);
+	    bcontroller->requestKneeBend(knee);
+	    
+	    double heading = rand()%628 * 0.01;
+	    printf("Setting heading to %f\n", knee);
+	    bcontroller->requestHeading(heading);
+	    
+	    double lcor, rcor, lsag, rsag;
+	    lcor = -rand()%3140*0.001;
+	    rcor = -rand()%3140*0.001;
+	    //lsag = rand()%6280*0.001-3.14;
+	    //rsag = rand()%6280*0.001-3.14;
+	    lsag = 0; rsag = 0;
+	    LeftRightDouble twist = bcontroller->getDesiredShoulderTwist();
+	    printf("Setting shoulders: cor %f %f  sag %f %f  twist %f %f\n", lcor, rcor, lsag, rsag, twist.first, twist.second);
+	    bcontroller->requestShoulderAngles(twist, make_pair(lcor, rcor), make_pair(lsag, rsag));
+	    
+	    
+    }
+}
+
+void Visualization::humanTest3(string humanName)
+{
+	Human* human = NULL;
+	static ReducedCharacterStateArray state;
+
+	if (_cw->getHuman(humanName, &human)) {
+        Character* character = human->getCharacter();
+        PoseController* posey = new PoseController(character);
+        human->setController((SimBiController*)posey);
+        
+        
+        
+    }
+}
+
 
 #define RESET 1
 
@@ -247,11 +339,16 @@ void Visualization::throwBall(string humanName)
 	if (_cw->getHuman(humanName, &human)) {
 		Character* character = human->getCharacter();
 
-		Vector3d ballScale(0.2, 0.2, 0.2);
-		double ballMass = rand() % 5 + 1; // 1..5 kg
+        double radius = rand()%100*0.002+0.05;
+
+		Vector3d ballScale(radius, radius, radius);
+		double ballMass = rand() % 5 + radius*8; // 1..5 kg
 
 		Point3d ballPosition(0, 0, 0);
-		Vector3d ballVelocity(15, 0, 0);
+		
+		double theta = rand()%6280*0.001;
+		
+		Vector3d ballVelocity(15*cos(theta), 0, 15*sin(theta));
 		double yaw = 0;
 		Quaternion ballOrientation(yaw, Vector3d(0, 1, 0));
 
@@ -269,12 +366,16 @@ void Visualization::throwBall(string humanName)
 		body->setScale(ballScale);
 		body->addMeshObj(mesh.c_str(), offset, ballScale);
 
-		body->setColour(0.1, 0.8, 0.1, 1);
+        double r, g, b;
+        r = rand()%800*0.001+0.2;
+        g = rand()%800*0.001+0.2;
+        b = rand()%800*0.001+0.2;
+		body->setColour(r,g,b, 1);
 		body->setMass(ballMass);
 		body->setMOI(Vector3d(0.2,0.2,0.2));
 
 		Point3d center = Point3d(0,0,0);
-		SphereCDP* sphereCDP = new SphereCDP(center, 0.1, body);
+		SphereCDP* sphereCDP = new SphereCDP(center, radius, body);
 		body->addCollisionDetectionPrimitive(sphereCDP);
 
 		body->setFrictionCoefficient(1.8);
@@ -289,8 +390,14 @@ void Visualization::throwBall(string humanName)
 		ArticulatedRigidBody* torso = character->getARBByName("torso");
 
 		Point3d parentPos = torso->getCMPosition();
-		parentPos.x -= 5;
+		parentPos.x -= 5*cos(theta);
+		parentPos.z -= 5*sin(theta);
+		parentPos.y += rand()%100*0.015-0.75;
+		//parentPos.x -= rand()%10000*0.001 + 5.0;
+		//parentPos.y -= rand()%10000*0.001 + 5.0;
 		body->setCMPosition(parentPos);
+		
+		printf("Throwing ball with radius %f, mass %f from dir %f\n", radius, ballMass, theta);
 	}
 }
 

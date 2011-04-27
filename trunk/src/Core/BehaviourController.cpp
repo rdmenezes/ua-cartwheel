@@ -336,7 +336,7 @@ void BehaviourController::requestElbowAngles(LeftRightDouble elbowBend) {
 }
 
 void BehaviourController::requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal) {
-	leftShoulderTwist = shoulderTwist.first;
+    leftShoulderTwist = shoulderTwist.first;
 	rightShoulderTwist = shoulderTwist.second;
 
 	leftShoulderCoronal = shoulderCoronal.first;

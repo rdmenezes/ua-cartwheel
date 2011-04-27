@@ -146,7 +146,7 @@ void SimBiController::setControllerState(const SimBiControllerState &cs){
 void SimBiController::transitionToState(int stateIndex){
 	setFSMStateTo(stateIndex);
 	setStance(states[FSMStateIndex]->getStateStance(this->stance));
-//	printf("Transition to state: %d (stance = %s) (phi = %lf)\n", stateIndex, (stance == LEFT_STANCE)?("left"):("right"), phi);
+	//printf("Transition to state: %d (stance = %s) (phi = %lf)\n", stateIndex, (stance == LEFT_STANCE)?("left"):("right"), phi);
 	//reset the phase...
 	this->phi = 0;
 }
@@ -621,7 +621,10 @@ void SimBiController::computeTorques(DynamicArray<ContactPoint> *cfs){
 	computePDTorques(cfs);
 	//and now separetely compute the torques for the hips - together with the feedback term, this is what defines simbicon
 	computeHipTorques(qRootD, getStanceFootWeightRatio(cfs), Vector3d());
-	blendOutTorques();
+	if (bodyTouchedTheGround) {
+	//    printf("On the ground\n");
+    	blendOutTorques();
+    }
 }
 
 /**

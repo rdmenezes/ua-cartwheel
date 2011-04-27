@@ -138,6 +138,9 @@ public:
     void selectHuman(const std::string& name) { _selectedHumanName = name; }
     std::string getSelectedHuman() const { return _selectedHumanName; }
 
+    void humanTest1(std::string humanName, bool savestate);
+    void humanTest2(std::string humanName);
+    void humanTest3(std::string humanName);
 
     void glutStep();
 
