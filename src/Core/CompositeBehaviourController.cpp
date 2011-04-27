@@ -195,6 +195,10 @@ void CompositeBehaviourController::requestElbowBend(double leftBend, double righ
 	m_behaviour->requestElbowBend(leftBend, rightBend);
 }
 
+void CompositeBehaviourController::requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal) {
+    m_behaviour->requestShoulderAngles(shoulderTwist,shoulderCoronal,shoulderSagittal);
+}
+
 void CompositeBehaviourController::setDesiredSwingFootLocation() {
 	m_behaviour->setDesiredSwingFootLocation();
 }

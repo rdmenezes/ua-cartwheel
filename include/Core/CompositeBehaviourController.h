@@ -66,7 +66,7 @@ public:
 	virtual void requestDuckFootedness(double df);
 	virtual void requestCoronalStepWidth(double corSW);
 	virtual void requestElbowBend(double leftBend, double rightBend);
-
+    virtual void requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal);
 	/**
 		determines the desired swing foot location
 	*/
