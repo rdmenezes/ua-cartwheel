@@ -16,8 +16,17 @@ static CartWheel3D* g_simulator = NULL;
 static Visualization* g_visualization = NULL;
 
 void render(void) {
-	g_simulator->runStep(1.0/2000);
-	g_visualization->render(g_simulator);
+    const double dt = 1.0 / 2000.0;
+    const double desiredFrameRate = 29.97;
+    const double animationTimeToRealTimeRatio = 1.3;
+    const double maxRunningTime = 0.98 / desiredFrameRate;
+    double simulationTime = 0;
+    
+    while ((simulationTime / maxRunningTime) < animationTimeToRealTimeRatio) {
+	    g_simulator->runStep(dt);
+        simulationTime += dt;
+    }
+    g_visualization->render(g_simulator);
 }
 
 void makeWorld(CartWheel3D* p_simulator) {
@@ -25,7 +34,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 
 	Vector3d boxScale(0.1, 0.5, 0.1);
 	double boxMass = 1;
-	p_simulator->addBox("box1", boxScale, boxMass);
+    //p_simulator->addBox("box1", boxScale, boxMass);
 
 	double yaw = 3.14*0;
 	Quaternion boxOrientation(yaw, Vector3d(0, 1, 0));
@@ -33,7 +42,7 @@ void makeWorld(CartWheel3D* p_simulator) {
 	Point3d boxPosition(0, 1.0, -2.3);
 	Vector3d boxVelocity(0, 0, 0);
 
-	p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
+	//p_simulator->updateRB("box1", boxPosition, boxOrientation, boxVelocity);
 
 	Vector3d ballScale(0.05, 0.05, 0.05);
 	double ballMass = 0.0001;
@@ -45,8 +54,8 @@ void makeWorld(CartWheel3D* p_simulator) {
 	ostr << "ball" << 1;
 	string ballName = ostr.str();
 
-	p_simulator->addBall(ballName, ballScale, ballMass);
-	p_simulator->updateRB(ballName, ballPosition, ballOrientation, ballVelocity);
+	//p_simulator->addBall(ballName, ballScale, ballMass);
+	//p_simulator->updateRB(ballName, ballPosition, ballOrientation, ballVelocity);
 
 	/*
 	const int nBalls = 5;
@@ -125,10 +134,14 @@ int main(int argc, char** argv)
     Visualization viz(render, argc, argv, 800, 600);
     g_visualization = &viz;
     //Point3d camerPos(1.0,1.0,-1.0);***
-    Point3d camerPos(3.0,1.0,-1.0);
-    Point3d cameraTarget(0.0,1.0,-3.0);
-    //Point3d camerPos(0.0,5.0,5.0);
-    //Point3d cameraTarget(0.0,1.0,0.0);
+    // Camera Close
+    //Point3d camerPos(3.0,1.0,-1.0);
+    //Point3d cameraTarget(0.0,1.0,-3.0);
+    
+    // Camera Isometric
+    Point3d camerPos(0.0,5.0,5.0);
+    Point3d cameraTarget(0.0,1.0,0.0);
+    
     Point3d cameraUp(0.0,1.0,0.0);
 
     viz.initGL(camerPos, cameraTarget);
