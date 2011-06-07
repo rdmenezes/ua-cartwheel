@@ -7,6 +7,9 @@
 #include "Control/ControlUtils.h"
 #include "Control/Relation.h"
 #include "Control/PosState.h"
+#include "Physics/ContactPoint.h"
+#include "Utils/StringUtils.h"
+
 
 namespace CartWheel
 {
@@ -30,6 +33,7 @@ void fullClear();
 vector<Relation*> myRelations;
 Vector3d findPlace(int, PosState &, CartWheel3D *);
 string findName(int, PosState & last);
+
 
 };
 
