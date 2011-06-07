@@ -28,7 +28,7 @@ int main(int argc, char** argv)
   StartStatePtr s2(new StartState(actor2, -1, -3, 0.0));
 
   vector<StartStatePtr> start_state;
-  start_state += s1; //, s2;
+  start_state += s1, s2;
 
   // FIRST HUMAN
   vector<double> params1;

@@ -103,7 +103,7 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state, vec
   int steps_per_second = 2000;
   double step_size = 1.0 / steps_per_second;
 
-  int samples_per_second = 2; //change back to 2!!!
+  int samples_per_second = 200; //change back to 2!!!
   int steps_per_sample = steps_per_second / samples_per_second;
 
   int visual_per_second = 30;
@@ -219,10 +219,10 @@ void SimulationInterface::simulate(vector<StartStatePtr> const &start_state, vec
       CapsuleState* capsule_state = new CapsuleState(simulator_);
       capsules_.push_back(capsule_state);
       RelationalState* rel_state = new RelationalState();
-      //      if (i != 0)
-      //      {
-      //        rel_state->reset(*positions_[(i / sampling_rate) - 1], simulator_);
-      //      }
+			if (positions_.size() > 1)
+			{
+			  rel_state->reset(*positions_[positions_.size() - 2], simulator_);
+			}
       relations_.push_back(rel_state);
     }
 
