@@ -60,7 +60,7 @@ library : $(OBJ_FILES)
 	$(CC) $(CFLAGS) $(IPATH) -o $@ -c $< 
 
 clean :
-	$(RM) src/*.o src/*/*.o lib/libcartwheel.so
+	$(RM) src/*.o src/*/*.o lib/libcartwheel.$(LIBRARY_EXT)
 
 mainControl : library 
 	$(CC) $(CFLAGS) $(IPATH) -o src/mainControl.o -c src/mainControl.cpp
