@@ -291,6 +291,8 @@ public:
 	*/
 	Quaternion decomposeRotation(const Vector3d vB) const;
 
+        Vector3d getAngles();
+
 };
 
 

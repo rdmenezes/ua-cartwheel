@@ -70,6 +70,8 @@ public:
 	ArticulatedFigure* getAFParent(){
 		return AFParent;
 	}
+        
+        void removeChildJoints();
 };
 
 }

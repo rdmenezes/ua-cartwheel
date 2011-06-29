@@ -19,7 +19,9 @@ SimpleStyleParameters::SimpleStyleParameters(void){
 	duckFootedness = 0;
 	stepHeight = 0;
 	coronalStepWidth = 0;
-	elbowBend = make_pair(0, 0);
+	elbowBendX = make_pair(0, 0);
+	elbowBendY = make_pair(0, 0);
+	elbowBendZ = make_pair(0, 0);
 	shoulderTwist = make_pair(0, 0);
 	shoulderCoronal = make_pair(0, 0);
 	shoulderSagittal = make_pair(0, 0);
@@ -35,7 +37,7 @@ void SimpleStyleParameters::applyStyleParameters(BehaviourController* bc){
 	bc->requestKneeBend(kneeBend);
 	bc->requestDuckFootedness(duckFootedness);
 	bc->requestStepHeight(stepHeight);
-	bc->requestElbowAngles(elbowBend);
+	bc->requestElbowAngles(elbowBendX, elbowBendY, elbowBendZ);
 	bc->requestShoulderAngles(shoulderTwist, shoulderCoronal, shoulderSagittal);
 }
 
@@ -61,8 +63,14 @@ void SimpleStyleParameters::applyInterpolatedStyleParameters(BehaviourController
 
 	interp.coronalStepWidth = t * coronalStepWidth + (1-t) * other->coronalStepWidth;
 
-	interp.elbowBend.first = t * elbowBend.first + (1-t) * other->elbowBend.first;
-	interp.elbowBend.second = t * elbowBend.second + (1-t) * other->elbowBend.second;
+	interp.elbowBendX.first = t * elbowBendX.first + (1-t) * other->elbowBendX.first;
+	interp.elbowBendX.second = t * elbowBendX.second + (1-t) * other->elbowBendX.second;
+
+	interp.elbowBendY.first = t * elbowBendY.first + (1-t) * other->elbowBendY.first;
+	interp.elbowBendY.second = t * elbowBendY.second + (1-t) * other->elbowBendY.second;
+
+	interp.elbowBendZ.first = t * elbowBendZ.first + (1-t) * other->elbowBendZ.first;
+	interp.elbowBendZ.second = t * elbowBendZ.second + (1-t) * other->elbowBendZ.second;
 
 	interp.shoulderTwist.first = t * shoulderTwist.first + (1-t) * other->shoulderTwist.first;
 	interp.shoulderTwist.second = t * shoulderTwist.second + (1-t) * other->shoulderTwist.second;

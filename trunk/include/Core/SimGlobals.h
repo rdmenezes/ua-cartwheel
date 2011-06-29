@@ -20,6 +20,7 @@ public:
 	static double desiredHeading;
 	//and this is the desired time interval for each simulation timestep (does not apply to animations that are played back).
 	static double dt;
+        static int steps_per_second;
 
 	static CartWheel::Physics::World* activeRbEngine;
 

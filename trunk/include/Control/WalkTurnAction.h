@@ -4,35 +4,44 @@
 #include <Control/ExtendedAction.h>
 #include <Control/WalkAction.h>
 
-namespace CartWheel
-{
-class WalkTurnAction : public WalkAction {
-    typedef WalkAction Base;
+namespace CartWheel {
 
-public:
-WalkTurnAction(){mySpeed = 0.0; myHeading = 0.0;}
-WalkTurnAction(double t, double s, double h) {myTime = t; mySpeed = s; myHeading=h;};
+    class WalkTurnAction : public WalkAction {
+        typedef WalkAction Base;
 
-virtual void executeSetup(CartWheel3D * cw);
-virtual void setParams(std::vector<double> & params);
+    public:
 
-virtual double getParam(size_t i) const;
-virtual double& getParam(size_t i);
-virtual UnitType getParamUnits(size_t i) const;
+        WalkTurnAction() {
+            mySpeed = 0.0;
+            myHeading = 0.0;
+        }
 
+        WalkTurnAction(double t, double s, double h) {
+            myTime = t;
+            mySpeed = s;
+            myHeading = h;
+        };
 
+        virtual void executeSetup(CartWheel3D * cw);
+        virtual void setParams(std::vector<double> & params);
 
-void setHeading(double d){myHeading = d;};
+        virtual double getParam(size_t i) const;
+        virtual double& getParam(size_t i);
+        virtual UnitType getParamUnits(size_t i) const;
 
-private:
-    size_t myNumParams() const 
-    {
-        return 1; // myHeading;
-    }
+        void setHeading(double d) {
+            myHeading = d;
+        };
 
-  double myHeading; //in radians
+    private:
 
-};
+        size_t myNumParams() const {
+            return 1; // myHeading;
+        }
+
+        double myHeading; //in radians
+
+    };
 
 } // namespace CartWheel
 #endif

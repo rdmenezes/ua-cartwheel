@@ -181,6 +181,11 @@ public:
 		set the child
 	*/
 	void setChild( ArticulatedRigidBody* child );
+        
+        /**
+		set the child
+	*/
+	void setChild2( ArticulatedRigidBody* child );
 
 	/**
 		returns the position of the child joint, expressed in child's coordinates

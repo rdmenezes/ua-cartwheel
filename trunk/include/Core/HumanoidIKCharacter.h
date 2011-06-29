@@ -207,7 +207,7 @@ protected:
 /**
 	This class is used to store the relevant information regarding a character's spine
 */
-class HumanoidIKSpine{
+class HumanoidIKSpine : public SimpleIKLinkage{
 private:
 	//The spine is assumed (for now) to be made up of only the lower body (i.e. root or pelvis) and the upper body (chest and upper back)
 	CartWheel::Physics::Joint* spineJoint;
@@ -215,6 +215,47 @@ private:
 	double minAngle;
 	double maxAngle;
 
+public:
+        //this is the constructor - initialize the desired quantities
+	HumanoidIKSpine(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
+		//compute the length of the torso
+		parentPointOfRevolutionP = parent->getParentJoint()->getChildJointPosition();
+		childPointOfRevolutionP = joint->getParentJointPosition();
+		childPointOfRevolutionC = joint->getChildJointPosition();
+		//these bipeds don't have actual wrists, so we'll estimate their position
+		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
+//		if (joint->getJointType() != HINGE_JOINT)
+//			CartWheel::Util::throwError("The torso joint is expected to be a universal joint!!");
+
+		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
+//		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
+//		maxAngle = ((CartWheel::Physics::HingeJoint*)joint)->maxAngleA;
+	}
+
+	//this method is used to compute the desired relative orientations of the upperarm and of the forearm (i.e. the shoulder and elbow joints)
+	//so that the wrist is located at the desired, world-coordinates position specified
+	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition, CartWheel::Math::Quaternion* pOrientation, CartWheel::Math::Quaternion* cOrientation){
+		//set up the needed variables
+		desiredEndEffectorW = desiredWristWorldPosition;
+		grandParentOrientation = parent->getParentJoint()->getParent()->getOrientation();
+//		rotAxisW = joint->getParent()->getWorldCoordinates(rotAxisP);
+		rotAxisW = grandParentOrientation.rotate(rotAxisP);
+
+
+		//get the orientations
+		//CartWheel::Math::Quaternion pOrientation, cOrientation;
+		getIKOrientations(pOrientation, cOrientation);
+
+		//and apply them
+//		ReducedCharacterStateArray state;
+//		bip->getState(&state);
+//		ReducedCharacterState rs(&state);
+//                CartWheel::Math::Vector3d v = pOrientation->getAngles();
+//                printf("Torso: %f, %f, %f\n", v.x, v.y, v.z);
+//		rs.setJointRelativeOrientation(*pOrientation, jParentIndex);
+//		rs.setJointRelativeOrientation(*cOrientation, jChildIndex);
+//		bip->setState(&state);
+	}
 };
 
 /**
@@ -240,7 +281,7 @@ public:
 
 	//this method is used to compute the desired relative orientations of the upperarm and of the forearm (i.e. the shoulder and elbow joints)
 	//so that the wrist is located at the desired, world-coordinates position specified
-	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition){
+	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition, CartWheel::Math::Quaternion* pOrientation, CartWheel::Math::Quaternion* cOrientation){
 		//set up the needed variables
 		desiredEndEffectorW = desiredWristWorldPosition;
 		grandParentOrientation = parent->getParentJoint()->getParent()->getOrientation();
@@ -249,16 +290,16 @@ public:
 
 
 		//get the orientations
-		CartWheel::Math::Quaternion pOrientation, cOrientation;
-		getIKOrientations(&pOrientation, &cOrientation);
+		//CartWheel::Math::Quaternion pOrientation, cOrientation;
+		getIKOrientations(pOrientation, cOrientation);
 		
 		//and apply them
-		ReducedCharacterStateArray state;
-		bip->getState(&state);
-		ReducedCharacterState rs(&state);
-		rs.setJointRelativeOrientation(pOrientation, jParentIndex);
-		rs.setJointRelativeOrientation(cOrientation, jChildIndex);
-		bip->setState(&state);
+//		ReducedCharacterStateArray state;
+//		bip->getState(&state);
+//		ReducedCharacterState rs(&state);
+//		rs.setJointRelativeOrientation(pOrientation, jParentIndex);
+//		rs.setJointRelativeOrientation(cOrientation, jChildIndex);
+//		bip->setState(&state);
 	}
 
 
@@ -326,7 +367,7 @@ private:
 /**
 	This class is used to store the relevant information regarding a character's leg
 */
-class HumanoidIKLeg{
+class HumanoidIKLeg : public SimpleIKLinkage{
 private:
 	//keep track of the elbow joint, and with this we can get to the lower and upper arm
 	CartWheel::Physics::Joint* knee;
@@ -339,6 +380,48 @@ private:
 	CartWheel::Math::Point3d hipPos;
 	//and keep track of the wrist location - store it in the lower arm's local coordinates
 	CartWheel::Math::Point3d anklePos;
+
+public://this is the constructor - initialize the desired quantities
+	HumanoidIKLeg(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
+		//compute the length of the torso
+		parentPointOfRevolutionP = parent->getParentJoint()->getChildJointPosition();
+		childPointOfRevolutionP = joint->getParentJointPosition();
+		childPointOfRevolutionC = joint->getChildJointPosition();
+		//these bipeds don't have actual wrists, so we'll estimate their position
+		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
+		if (joint->getJointType() != HINGE_JOINT)
+			CartWheel::Util::throwError("The knee joint is expected to be a universal joint!!");
+
+		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
+//		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
+//		maxAngle = ((CartWheel::Physics::HingeJoint*)joint)->maxAngleA;
+	}
+
+	//this method is used to compute the desired relative orientations of the upperarm and of the forearm (i.e. the shoulder and elbow joints)
+	//so that the wrist is located at the desired, world-coordinates position specified
+	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition, CartWheel::Math::Quaternion* pOrientation, CartWheel::Math::Quaternion* cOrientation){
+		//set up the needed variables
+		desiredEndEffectorW = desiredWristWorldPosition;
+		grandParentOrientation = parent->getParentJoint()->getParent()->getOrientation();
+//		rotAxisW = joint->getParent()->getWorldCoordinates(rotAxisP);
+		rotAxisW = grandParentOrientation.rotate(rotAxisP);
+
+
+		//get the orientations
+		//CartWheel::Math::Quaternion pOrientation, cOrientation;
+		getIKOrientations(pOrientation, cOrientation);
+
+		//and apply them
+//		ReducedCharacterStateArray state;
+//		bip->getState(&state);
+//		ReducedCharacterState rs(&state);
+//                CartWheel::Math::Vector3d v = pOrientation->getAngles();
+//                printf("Leg***: %f, %f, %f\n", v.x, v.y, v.z);
+//		rs.setJointRelativeOrientation(*pOrientation, 3);
+//		rs.setJointRelativeOrientation(*cOrientation, 6);
+//		bip->setState(&state);
+	}
+
 };
 
 
@@ -356,13 +439,18 @@ private:
 	HumanoidIKArm *rightArm;
 	HumanoidIKLeg *leftLeg;
 	HumanoidIKLeg *rightLeg;
+        HumanoidIKSpine *spine;
 
 
 public:
 	HumanoidIKCharacter(Character* bip);
 	~HumanoidIKCharacter(void);
 
-	void setRightArmTarget(CartWheel::Math::Point3d p);
+	void setRightArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, double* elbowAngle);
+	void setLeftArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, double* elbowAngle);
+        void setSpineTarget(CartWheel::Math::Point3d p, double* leanS, double* leanC, double* twist);
+        void setLeftLegTarget(CartWheel::Math::Point3d p);
+        void setRightLegTarget(CartWheel::Math::Point3d p);
 };
 
 }

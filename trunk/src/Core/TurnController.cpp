@@ -27,7 +27,7 @@ void TurnController::requestHeading(double v){
 	finalHeadingQ.setToRotationQuaternion(v, PhysicsGlobals::up);
 	tmpQ.setToProductOf(finalHeadingQ, currentHeadingQ, false, true);
 	turnAngle = tmpQ.getRotationAngle(PhysicsGlobals::up);
-	printf("turnAngle: %lf\n", turnAngle);
+//	printf("turnAngle: %lf\n", turnAngle);
 
 	initialTiming = stepTime;
 
@@ -98,7 +98,7 @@ void TurnController::simStepPlan(double dt){
 
 	//are we there yet (or close enough)?
 	if (fabs(curToFinal) < 0.2){
-		printf("done turning!\n");
+//		printf("done turning!\n");
 		turningBodyTwist = 0;
 		desiredHeading = turningDesiredHeading = finalHeading;
 		//reset everything...
@@ -159,7 +159,7 @@ void TurnController::initiateTurn(double finalDHeading){
 	finalHeading = finalHeadingQ.getRotationAngle(PhysicsGlobals::up);
 	initialHeading = currentHeadingQ.getRotationAngle(PhysicsGlobals::up);
 
-	printf("turnAngle: %lf. InitialHeading: %lf. Final Heading: %lf\n", turnAngle, initialHeading, finalHeading);
+//	printf("turnAngle: %lf. InitialHeading: %lf. Final Heading: %lf\n", turnAngle, initialHeading, finalHeading);
 
 	initialVelocity = bip->getCOMVelocity();
 	double finalVDSagittal = velDSagittal;

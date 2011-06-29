@@ -37,8 +37,12 @@ protected:
 	double velDCoronal;
 	double kneeBend;
 	double coronalStepWidth;
-	double leftElbowBend;
-	double rightElbowBend;
+	double leftElbowBendX;
+	double rightElbowBendX;
+	double leftElbowBendY;
+	double rightElbowBendY;
+	double leftElbowBendZ;
+	double rightElbowBendZ;
 	double leftShoulderTwist;
 	double leftShoulderCoronal;
 	double leftShoulderSagittal;
@@ -85,7 +89,8 @@ public:
 
 	virtual void adjustStepHeight();
 
-	virtual void setElbowAngles(double leftElbowAngle, double rightElbowAngle);
+	virtual void setElbowAngles(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
+                        double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
 	virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction,
 			double rightAdduction, double leftSwing, double rightSwing);
 
@@ -96,8 +101,9 @@ public:
 	virtual void requestKneeBend(double kb);
 	virtual void requestDuckFootedness(double df);
 	virtual void requestCoronalStepWidth(double corSW);
-	virtual void requestElbowBend(double leftBend, double rightBend);
-	virtual void requestElbowAngles(LeftRightDouble elbowBend);
+	virtual void requestElbowBend(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
+                        double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
+	virtual void requestElbowAngles(LeftRightDouble elbowBendX, LeftRightDouble elbowBendY, LeftRightDouble elbowBendZ);
 	virtual void requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal);
 
 	double getDesiredVelocitySagittal() const { return velDSagittal; }
@@ -111,7 +117,9 @@ public:
 	double getDesiredKneeBend() const { return kneeBend; }
 	double getDesiredDuckFootness() const { return duckWalk; }
 
-	LeftRightDouble getDesiredElbowBend() const { return std::make_pair(leftElbowBend, rightElbowBend); }
+	LeftRightDouble getDesiredElbowBendX() const { return std::make_pair(leftElbowBendX, rightElbowBendX); }
+	LeftRightDouble getDesiredElbowBendY() const { return std::make_pair(leftElbowBendY, rightElbowBendY); }
+	LeftRightDouble getDesiredElbowBendZ() const { return std::make_pair(leftElbowBendZ, rightElbowBendZ); }
 	LeftRightDouble getDesiredShoulderTwist() const { return std::make_pair(leftShoulderTwist, rightShoulderTwist); }
 	LeftRightDouble getDesiredShoulderCoronal() const { return std::make_pair(leftShoulderCoronal, rightShoulderCoronal); }
 	LeftRightDouble getDesiredShoulderSagittal() const { return std::make_pair(leftShoulderSagittal, rightShoulderSagittal); }

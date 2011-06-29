@@ -2,7 +2,10 @@
 
 namespace CartWheel {
 
-using Math::Point3d;
+    RelationalState::RelationalState(vector<Relation> & rs) : myRelations() {
+        for (int x = 0; x < rs.size(); x++)
+            myRelations.push_back(new Relation(rs[x]));
+    }
 using Physics::ContactPoint;
 using Util::StringUtils;
 
@@ -32,7 +35,18 @@ bool RelationalState::contains(const Relation & r) {
 	}
 	return false;
 
-}
+            //for (int i = 0; itr != humanNames.end(); itr++, i++)
+            //{
+            //	if(i == x){
+            //  		string s = *itr;
+            return cw->getHumanPosition(humanNames[x]);
+            //	}
+            // }
+        } else {
+            Point3d pp = cw->getWorld()->getRBByName(last.getName(x).c_str())->getCMPosition();
+            return Vector3d(pp.getX(), pp.getY(), pp.getZ());
+        }
+    }
 
 Vector3d RelationalState::findPlace(int x, PosState & last, CartWheel3D * cw) {
 	if (x < cw->getHumanCount()) {
@@ -65,7 +79,11 @@ string RelationalState::findName(int x, PosState & last) {
 	//   return ;
 	//}
 
-}
+    void RelationalState::fullClear() {
+        for (int i = 0; i < myRelations.size(); i++)
+            delete myRelations[i];
+        myRelations.clear();
+    }
 
 string RelationalState::toString() {
 	string s = "[";
