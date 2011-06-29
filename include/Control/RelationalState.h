@@ -34,11 +34,16 @@ namespace CartWheel {
         string toString();
         bool containsAll(RelationalState &);
 
+    protected:
+        void fullClear();
+        vector<Relation*> myRelations;
+        Vector3d findPlace(int, PosState &, CartWheel3D *);
+        string findName(int, PosState & last);
 
-};
 
     };
 
 
 } // namespace CartWheel
 #endif
+
