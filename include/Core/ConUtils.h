@@ -1,6 +1,7 @@
 #pragma once
 
-namespace CartWheel { namespace Core {
+namespace CartWheel {
+    namespace Core {
 
 #define CON_NOT_IMPORTANT				1
 #define CON_COMMENT						2
@@ -83,8 +84,8 @@ namespace CartWheel { namespace Core {
 #define CON_KNEE_BEND					70
 #define CON_CORONAL_STEP_WIDTH			71
 
-#define CON_LEFT_ELBOW_BEND				72
-#define CON_RIGHT_ELBOW_BEND			73
+#define CON_LEFT_ELBOW_BEND_Y				72
+#define CON_RIGHT_ELBOW_BEND_Y			73
 
 #define CON_LEFT_SHOULDER_TWIST			74
 #define CON_RIGHT_SHOULDER_TWIST		75
@@ -104,18 +105,22 @@ namespace CartWheel { namespace Core {
 #define CON_BEHAVIOUR_END				85
 #define CON_DURATION_TIME				86
 #define CON_TRANSITION_TIME				87
+#define CON_LEFT_ELBOW_BEND_X			88
+#define CON_RIGHT_ELBOW_BEND_X			89
+#define CON_LEFT_ELBOW_BEND_Z			90
+#define CON_RIGHT_ELBOW_BEND_Z			91
 
-/**
-	This method is used to determine the type of a line that was used in the input file for a rigid body.
-	It is assumed that there are no white spaces at the beginning of the string that is passed in. the pointer buffer
-	will be updated to point at the first character after the keyword.
-*/
-int getConLineType(char* &buffer);
+        /**
+                This method is used to determine the type of a line that was used in the input file for a rigid body.
+                It is assumed that there are no white spaces at the beginning of the string that is passed in. the pointer buffer
+                will be updated to point at the first character after the keyword.
+         */
+        int getConLineType(char* &buffer);
 
-/**
-	This method is used to determine the string corresponding to a specific line keyword
-*/
-const char* getConLineString(int lineType);
+        /**
+                This method is used to determine the string corresponding to a specific line keyword
+         */
+        const char* getConLineString(int lineType);
 
-}
+    }
 }

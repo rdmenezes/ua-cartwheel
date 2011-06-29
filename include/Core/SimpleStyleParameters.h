@@ -18,7 +18,9 @@ public:
 	double duckFootedness;
 	double stepHeight;
 	double coronalStepWidth;
-	BehaviourController::LeftRightDouble elbowBend;
+	BehaviourController::LeftRightDouble elbowBendX;
+	BehaviourController::LeftRightDouble elbowBendY;
+	BehaviourController::LeftRightDouble elbowBendZ;
 	BehaviourController::LeftRightDouble shoulderTwist;
 	BehaviourController::LeftRightDouble shoulderCoronal;
 	BehaviourController::LeftRightDouble shoulderSagittal;

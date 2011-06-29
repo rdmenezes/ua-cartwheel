@@ -11,7 +11,8 @@ using namespace CartWheel::Util;
 //give this a very high value so that we can use the scripted values in the rb specs for the value to use
 int SimGlobals::forceHeadingControl = false;
 double SimGlobals::desiredHeading = 0;
-double SimGlobals::dt = 1.0/(2000.0);
+int SimGlobals::steps_per_second = 2000;
+double SimGlobals::dt = 1.0/((double)SimGlobals::steps_per_second);
 World* SimGlobals::activeRbEngine = NULL;
 
 double SimGlobals::conInterpolationValue;

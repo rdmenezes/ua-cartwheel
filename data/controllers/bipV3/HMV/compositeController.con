@@ -2,16 +2,20 @@
 synchronizeControllers
 
 #0
-loadIKVMCController data/controllers/bipV3/Walking.sbc
-#loadIKVMCController data/controllers/bipV3/Standing.sbc
-loadBehaviourController data/controllers/bipV3/Default.cbc
+#loadIKVMCController data/controllers/bipV3/Walking.sbc
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/Default_1.cbc
+#loadBehaviourController data/controllers/bipV3/WaveHand.cbc
+
 
 #1
-loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
 loadBehaviourController data/controllers/bipV3/Standing.cbc
+#loadController data/controllers/bipV3/Standing3.sbc
 
 #2
-loadController data/controllers/bipV3/FastJog.sbc
+#loadController data/controllers/bipV3/FastJog.sbc
+loadController data/controllers/bipV3/Standing3.sbc
 
 #3
 loadIKVMCController data/controllers/bipV3/Standing.sbc
@@ -41,6 +45,13 @@ loadController data/controllers/bipV3/Jump.sbc
 #9
 loadController data/controllers/bipV3/Kick.sbc
 
+
+#10
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/WaveHand.cbc
+
+
+
+#----------------------------------------------------------
 startingStance left
 loadCharacterState data/controllers/bipV3/WalkingState.rs
-

@@ -1,6 +1,8 @@
 #include <Physics/ArticulatedRigidBody.h>
 #include <Physics/Joint.h>
 
+#include "Physics/ArticulatedFigure.h"
+
 using namespace CartWheel;
 using namespace CartWheel::GL;
 using namespace CartWheel::Physics;
@@ -57,4 +59,11 @@ void ArticulatedRigidBody::draw(int flags){
 		GLUtils::drawSphere(this->getWorldCoordinates(pJoint->cJPos), 0.02, 4);
 		GLUtils::drawSphere(pJoint->parent->getWorldCoordinates(pJoint->pJPos), 0.02, 4);
 	}
+}
+
+void ArticulatedRigidBody::removeChildJoints() {
+    cJoints.clear();
+//    for(int i=0; i<cJoints.size(); i++) {
+//        printf("ARB=[%s], ChildJoint=[%s]\n", this->name, cJoints[i]->name);
+//    }
 }

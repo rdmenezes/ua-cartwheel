@@ -11,6 +11,7 @@
 
 #include <Core/BehaviourController.h>
 #include <Core/SimBiController.h>
+#include <Core/WorldOracle.h>
 #include <Core/CompositeController.h>
 #include <Core/Policy.h>
 
@@ -36,6 +37,7 @@ private:
 	CompositeController* m_composite_controller;
 	std::map<std::string, Physics::Joint*> m_grabJoints;
 	std::map<std::string, Physics::ArticulatedRigidBody*> m_grabbedBodies;
+        bool bBusyBothHands;
 
 	Human() {}
 
@@ -92,6 +94,7 @@ public:
     };
 
     void grabObject(const std::string& targetName, const GrabbingMethod& method);
+    void grabObject_BothHands(const std::string& targetName);
     void dropObject(const std::string& targetName);
     void throwObject(const std::string& targetName, const Math::Vector3d& velocity);
 };

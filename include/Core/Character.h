@@ -39,7 +39,8 @@ private:
 		this method is used to rotate the character (well, the character whose state is passed in as a parameter) 
 		about the vertical axis, so that it's default heading has the value that is given as a parameter.
 	*/
-	void setHeading(CartWheel::Math::Quaternion heading, ReducedCharacterStateArray* state, int start = 0);
+	void setHeading(CartWheel::Math::Quaternion heading, ReducedCharacterStateArray* state, int start = 0);      
+        
 
 
 	// Hack! This is for backward compatibility with previous formats that had the joints ordered in this way.

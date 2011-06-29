@@ -6,8 +6,10 @@
 #include <GLUtils/GLUIWindow.h>
 #include <GLUtils/GLUITopLevelWindow.h>
 #include <GLUtils/GLCamera.h>
+#include "Behaviors/Params.h"
 
 #include <MathLib/Point3d.h>
+#include <MathLib/Trajectory.h>
 
 #include <string>
 #include <list>
@@ -71,6 +73,9 @@ protected:
 
 public:
     static Visualization* g_instance;
+    bool _isNewBehavior;
+    std::string _behaviorName;
+    Behaviors::Params* _behaviorParams;
 
 public:
 
@@ -138,9 +143,10 @@ public:
     void selectHuman(const std::string& name) { _selectedHumanName = name; }
     std::string getSelectedHuman() const { return _selectedHumanName; }
 
-    void humanTest1(std::string humanName, bool savestate);
+    void saveState(std::string humanName, bool savestate);
     void humanTest2(std::string humanName);
     void humanTest3(std::string humanName);
+    void drawPath();
 
     void glutStep();
 

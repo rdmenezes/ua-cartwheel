@@ -9,30 +9,36 @@
 #include <MathLib/Vector3d.h>
 #include <sstream>
 
-namespace CartWheel
-{
+namespace CartWheel {
 
-class PosState {
+    class PosState {
+    public:
+        PosState();
+        PosState(CartWheel3D * cw);
+        const Math::Vector3d* getPosition(const std::string & n);
+        void reset(CartWheel3D * cw);
 
-public:
-PosState();
-PosState(CartWheel3D * cw);
-const Math::Vector3d* getPosition(const std::string & n);
-void reset(CartWheel3D * cw);
-int getNumVectors(){return myNames.size();};
+        int getNumVectors() {
+            return myNames.size();
+        };
 
-std::string getName(int index) { return myNames[index]; };
-Math::Vector3d getPosition(int index) { return myPositions[index]; };
+        std::string getName(int index) {
+            return myNames[index];
+        };
 
-const std::vector<BoxStatePtr>& getBoxStates() const;
+        Math::Vector3d getPosition(int index) {
+            return myPositions[index];
+        };
 
-protected:
-  std::map<std::string, int> blacklist;
-  std::vector<Math::Vector3d> myPositions;
-  std::vector<std::string> myNames;
-  void populate(CartWheel3D * cw);
-  std::vector<BoxStatePtr> box_states_;
-};
+        const std::vector<BoxStatePtr>& getBoxStates() const;
+
+    protected:
+        std::map<std::string, int> blacklist;
+        std::vector<Math::Vector3d> myPositions;
+        std::vector<std::string> myNames;
+        void populate(CartWheel3D * cw);
+        std::vector<BoxStatePtr> box_states_;
+    };
 
 } // namespace CartWheel
 #endif

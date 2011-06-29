@@ -11,31 +11,33 @@
 #include "Utils/StringUtils.h"
 
 
-namespace CartWheel
-{
-using namespace std;
+namespace CartWheel {
+    using namespace std;
 
-class RelationalState{
+    class RelationalState {
+    public:
 
-public:
-RelationalState():myRelations(){};
-RelationalState(vector<Relation> & rs);
-~RelationalState();
-vector<Relation*>* getRelations(){return &myRelations;}
-bool contains(const Relation & r);
-void addRelation(Relation & r){myRelations.push_back(&r);};
-void reset(PosState & last, CartWheel3D * cw);
-string toString();
-bool containsAll(RelationalState &);
+        RelationalState() : myRelations() {
+        };
+        RelationalState(vector<Relation> & rs);
+        ~RelationalState();
 
-protected:
-void fullClear();
-vector<Relation*> myRelations;
-Vector3d findPlace(int, PosState &, CartWheel3D *);
-string findName(int, PosState & last);
+        vector<Relation*>* getRelations() {
+            return &myRelations;
+        }
+        bool contains(const Relation & r);
+
+        void addRelation(Relation & r) {
+            myRelations.push_back(&r);
+        };
+        void reset(PosState & last, CartWheel3D * cw);
+        string toString();
+        bool containsAll(RelationalState &);
 
 
 };
+
+    };
 
 
 } // namespace CartWheel
