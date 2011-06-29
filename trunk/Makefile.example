@@ -28,6 +28,11 @@ ifeq "$(OSTYPE)" "darwin"
 	IPATH = -Iinclude -I/opt/local/include/
 	LPATH = -L/opt/local/lib
 	CFLAGS = -g -w -fPIC -DdDOUBLE
+	LIBRARY_EXT=dylib
+	LINK_FLAGS=-dynamiclib -dylib
+else
+	LIBRARY_EXT=so
+	LINK_FLAGS=
 endif
 
 # Used to have LPATH in front
@@ -45,10 +50,10 @@ CC = g++
 # -w    Hide all of the warnings because I don't like seeing them
 
 
-all : library interactControl interface tomsLogger
+all : library interactControl interface
 
 library : $(OBJ_FILES)
-	$(CC) -shared $(FRAMEWORKS) $(LPATH) $(LIBS) -o lib/libcartwheel.so $(OBJ_FILES) 
+	$(CC) -shared $(LINK_FLAGS) $(FRAMEWORKS) $(LPATH) $(LIBS) -o lib/libcartwheel.$(LIBRARY_EXT) $(OBJ_FILES) 
 
 # The default way to convert .c files into .o files.
 %.o : %.cpp		

@@ -10,6 +10,11 @@
 
 using namespace CartWheel;
 
+#ifndef isnan
+#define isnan(x) (x != x)
+#define MUST_UNDEF_ISNAN
+#endif
+
 Walk::Walk(CartWheel3D* cw, std::string humanName, Walk_Params* params)
         : Behavior(cw, humanName, params!=NULL ? params->startTime : 0, params!=NULL ? params->duration : 0) {
     nSpeed = params->speed;
@@ -36,3 +41,7 @@ void Walk::onFinish() {
     cw->setHumanSpeed(humanName, 0);
 }
 
+#ifdef MUST_UNDEF_ISNAN
+#undef isnan(x) (x != x)
+#undef MUST_UNDEF_ISNAN
+#endif
