@@ -34,6 +34,7 @@ namespace CartWheel {
             typedef std::map<std::string /* BehaviorName */, int /* nBehaviors */> BehaviorsCounter;
             std::map<std::string /* HumanName */, BehaviorsMap> _behaviors;
             std::map<std::string /* HumanName */, BehaviorsCounter> _behaviorCounts;
+            std::map<std::string /* HumanName */, double /* nHumanTime */> _humanTime;
             bool _isBehaviorsDone;
             double _serialTime;
             std::map<std::string /* BehaviorName */, int /* BehaviorID */> _mBehaviorsID;
