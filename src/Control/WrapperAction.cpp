@@ -79,6 +79,9 @@ namespace CartWheel {
                     Point3d(myParams[1],myParams[2],myParams[3]), Vector3d(0,0,0), Vector3d(myParams[4],myParams[5],myParams[6]),
                     Vector3d(0,0,0)));            
         }
+        if (myCommand == 1) {
+            cw->doSerialBehavior((std::string)"Standing", (std::string)actorName, &Behaviors::Standing_Params(0, myTime));
+        }
 
     }
 
@@ -95,8 +98,8 @@ namespace CartWheel {
     //this should be static, but being a bit lazy
 
     void WrapperAction::populateMap() {
-        actionMap["walk"] = 0;
-        actionMap["standStill"] = 1;
+        actionMap["Walk"] = 0;
+        actionMap["StandStill"] = 1;
         actionMap["jog"] = 2;
         actionMap["sit"] = 3;
         actionMap["standUp"] = 4;

@@ -30,19 +30,12 @@ int main(int argc, char** argv) {
     StartStatePtr s3(new StartState(1, actor3, -1, 1, -1, 0.1, 0.1));
 
     vector<StartStatePtr> start_state;
-    start_state += s1, s3; //, s2;
+    start_state += s1, s2, s3;
 
+    
     // FIRST HUMAN
-//    vector<double> params1;
-//    params1 += 50.0, 0.0;
-
-//    vector<double> params2;
-//    params2 += 5.0, -0.3; //no second param for standStill
-    
-    
-    
     vector<double> params1; //Walk Params
-    params1 += 3.0, 0.2;
+    params1 += 3.0, -0.4;
     
     vector<double> params2; //WalkInArc Params
     //Duration, WalkSpeed, AngSpeed(rad/sec)
@@ -51,47 +44,63 @@ int main(int argc, char** argv) {
 //    double dTime = 15/4;
     vector<double> params3; //WalkInPath Params
     //<x, z, t>[1], ... <x, z, t>[N]
-    params3 += 0, 0, 1,   1, 0, 3,   -1, 1, 3,   3, 1, 5;
+    params3 += 0, 0, 2,   1, 0, 3,   -1, 1, 3,   3, 1, 6;
     
     vector<double> params4; //WaveHand Params
     //Duration, none
-    params4 += 3.0, 0;
+    params4 += 2.0, 0;
     
+    vector<double> params5; //StandStill Params
+    //Duration
+    params5 += 3.0;    
 
     vector<ExtendedActionPtr> actions1;
-    ExtendedActionPtr a1(new WrapperAction("walk", actor1, params1));
+    ExtendedActionPtr a1(new WrapperAction("Walk", actor1, params1));
     ExtendedActionPtr a2(new WrapperAction("WalkInArc", actor1, params2));
     ExtendedActionPtr a3(new WrapperAction("WalkInPath", actor1, params3));
     ExtendedActionPtr a4(new WrapperAction("WaveHand", actor1, params4));
-    actions1 += a4, a3;
+    ExtendedActionPtr a5(new WrapperAction("StandStill", actor1, params5));
+    actions1 += a4, a1, a5, a3;
     
     
+    // BALL
+    vector<double> params6; //Bounce Params
+    //Duration, Position(x, y, z), Velocity(x, y, z)
+    params6 += 3.0, 1, 1, 1, -2, 2, -2;
     
-////    vector<double> params1; //Bounce Params
-////    //Duration, Position(x, y, z), Velocity(x, y, z)
-////    params1 += 2.0, 1, 1, 1, -2, 2, -2;
+    vector<double> params7; //Bounce Params
+    //Duration, Position(x, y, z), Velocity(x, y, z)
+    params7 += 3.0, -1, 1, -1, 2, 3, 2;
     
-////    vector<ExtendedActionPtr> actionsObj;
-////    ExtendedActionPtr a6(new WrapperAction("MoveBall", actor3, params1));
-////    actionsObj += a6;
+    vector<ExtendedActionPtr> actionsObj;
+    ExtendedActionPtr a6(new WrapperAction("MoveBall", actor3, params6));
+    ExtendedActionPtr a7(new WrapperAction("MoveBall", actor3, params7));
+    actionsObj += a6, a7;
     
 
-    //ExtendedActionPtr a2(new WrapperAction("standStill", actor1, params2));
-//    // SECOND HUMAN
-//    vector<double> params4;
-//    params4 += 5.4, 0.53;
-//    ExtendedActionPtr a4(new WrapperAction("walk", actor2, params4));
-//
-//    vector<double> params5;
-//    params5 += 10.4; //no second param for standStill
-//    ExtendedActionPtr a5(new WrapperAction("standStill", actor2, params5));
-//
-//    vector<ExtendedActionPtr> actions2;
-//    actions2 += a4; // Partial duration, comment out for empty action vector
-//    //  actions2 += a5; // Comment in for full duration
+    // SECOND HUMAN
+    vector<double> params8;
+    params8 += 5, 0.53;
+    ExtendedActionPtr a8(new WrapperAction("Walk", actor2, params8));
+
+    vector<double> params9;
+    params9 += 2; //no second param for StandStill
+    ExtendedActionPtr a9(new WrapperAction("StandStill", actor2, params9));
+
+    vector<double> params10;
+    params10 += 4, 0;
+    ExtendedActionPtr a10(new WrapperAction("WaveHand", actor2, params10));
+    
+    vector<double> params11; //WalkInPath Params
+    //<x, z, t>[1], ... <x, z, t>[N]
+    params11 += 0, 0, 2,   1, 0, 3,   -1, 1, 3,   3, 1, 6;
+    ExtendedActionPtr a11(new WrapperAction("WalkInPath", actor2, params11));
+
+    vector<ExtendedActionPtr> actions2;
+    actions2 += a8, a9, a10, a11;
 
     vector<vector<ExtendedActionPtr> > actions;
-    actions += actions1;//, actionsObj; //, actions2;
+    actions += actions1, actions2, actionsObj; //;
 
 
     ////////////////////////////////////////
