@@ -10,6 +10,7 @@
 
 #include <string>
 #include <Behaviors/Behavior.h>
+#include <Core/Human.h>
 
 using namespace CartWheel::Behaviors;
 
@@ -17,7 +18,10 @@ namespace CartWheel {
     class CartWheel3D;
     namespace Behaviors {
 
-        class Standing : public Behavior {            
+        class Standing : public Behavior {  
+        private:            
+            Core::Human* human;
+            
         protected:
             virtual void runStep();
             virtual void onInit();

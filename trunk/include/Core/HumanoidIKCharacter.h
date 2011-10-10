@@ -207,7 +207,7 @@ protected:
 /**
 	This class is used to store the relevant information regarding a character's spine
 */
-class HumanoidIKSpine : public SimpleIKLinkage{
+class HumanoidIKPelvisTorso : public SimpleIKLinkage{
 private:
 	//The spine is assumed (for now) to be made up of only the lower body (i.e. root or pelvis) and the upper body (chest and upper back)
 	CartWheel::Physics::Joint* spineJoint;
@@ -217,7 +217,115 @@ private:
 
 public:
         //this is the constructor - initialize the desired quantities
-	HumanoidIKSpine(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
+	HumanoidIKPelvisTorso(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
+		//compute the length of the torso
+		parentPointOfRevolutionP = parent->getParentJoint()->getChildJointPosition();
+		childPointOfRevolutionP = joint->getParentJointPosition();
+		childPointOfRevolutionC = joint->getChildJointPosition();
+		//these bipeds don't have actual wrists, so we'll estimate their position
+		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
+//		if (joint->getJointType() != HINGE_JOINT)
+//			CartWheel::Util::throwError("The torso joint is expected to be a universal joint!!");
+
+		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
+//		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
+//		maxAngle = ((CartWheel::Physics::HingeJoint*)joint)->maxAngleA;
+	}
+
+	//this method is used to compute the desired relative orientations of the upperarm and of the forearm (i.e. the shoulder and elbow joints)
+	//so that the wrist is located at the desired, world-coordinates position specified
+	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition, CartWheel::Math::Quaternion* pOrientation, CartWheel::Math::Quaternion* cOrientation){
+		//set up the needed variables
+		desiredEndEffectorW = desiredWristWorldPosition;
+		grandParentOrientation = parent->getParentJoint()->getParent()->getOrientation();
+//		rotAxisW = joint->getParent()->getWorldCoordinates(rotAxisP);
+		rotAxisW = grandParentOrientation.rotate(rotAxisP);
+
+
+		//get the orientations
+		//CartWheel::Math::Quaternion pOrientation, cOrientation;
+		getIKOrientations(pOrientation, cOrientation);
+
+		//and apply them
+//		ReducedCharacterStateArray state;
+//		bip->getState(&state);
+//		ReducedCharacterState rs(&state);
+//                CartWheel::Math::Vector3d v = pOrientation->getAngles();
+//                printf("Torso: %f, %f, %f\n", v.x, v.y, v.z);
+//		rs.setJointRelativeOrientation(*pOrientation, jParentIndex);
+//		rs.setJointRelativeOrientation(*cOrientation, jChildIndex);
+//		bip->setState(&state);
+	}
+};
+
+/**
+	This class is used to store the relevant information regarding a character's spine
+*/
+class HumanoidIKHead : public SimpleIKLinkage{
+private:
+	//The spine is assumed (for now) to be made up of only the lower body (i.e. root or pelvis) and the upper body (chest and upper back)
+	CartWheel::Physics::Joint* headJoint;
+	//store in here the min and max angle for the elbow joint, so that we don't have to access the joint all the time
+	double minAngle;
+	double maxAngle;
+
+public:
+        //this is the constructor - initialize the desired quantities
+	HumanoidIKHead(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
+		//compute the length of the torso
+		parentPointOfRevolutionP = parent->getParentJoint()->getChildJointPosition();
+		childPointOfRevolutionP = joint->getParentJointPosition();
+		childPointOfRevolutionC = joint->getChildJointPosition();
+		//these bipeds don't have actual wrists, so we'll estimate their position
+		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
+//		if (joint->getJointType() != HINGE_JOINT)
+//			CartWheel::Util::throwError("The torso joint is expected to be a universal joint!!");
+
+		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
+//		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
+//		maxAngle = ((CartWheel::Physics::HingeJoint*)joint)->maxAngleA;
+	}
+
+	//this method is used to compute the desired relative orientations of the upperarm and of the forearm (i.e. the shoulder and elbow joints)
+	//so that the wrist is located at the desired, world-coordinates position specified
+	void setIKOrientations(CartWheel::Math::Point3d desiredWristWorldPosition, CartWheel::Math::Quaternion* pOrientation, CartWheel::Math::Quaternion* cOrientation){
+		//set up the needed variables
+		desiredEndEffectorW = desiredWristWorldPosition;
+		grandParentOrientation = parent->getParentJoint()->getParent()->getOrientation();
+//		rotAxisW = joint->getParent()->getWorldCoordinates(rotAxisP);
+		rotAxisW = grandParentOrientation.rotate(rotAxisP);
+
+
+		//get the orientations
+		//CartWheel::Math::Quaternion pOrientation, cOrientation;
+		getIKOrientations(pOrientation, cOrientation);
+
+		//and apply them
+//		ReducedCharacterStateArray state;
+//		bip->getState(&state);
+//		ReducedCharacterState rs(&state);
+//                CartWheel::Math::Vector3d v = pOrientation->getAngles();
+//                printf("Torso: %f, %f, %f\n", v.x, v.y, v.z);
+//		rs.setJointRelativeOrientation(*pOrientation, jParentIndex);
+//		rs.setJointRelativeOrientation(*cOrientation, jChildIndex);
+//		bip->setState(&state);
+	}
+};
+
+/**
+	This class is used to store the relevant information regarding a character's spine
+*/
+class HumanoidIKHand : public SimpleIKLinkage{
+private:
+	//The spine is assumed (for now) to be made up of only the lower body (i.e. root or pelvis) and the upper body (chest and upper back)
+	CartWheel::Physics::Joint* handJoint;
+	//store in here the min and max angle for the elbow joint, so that we don't have to access the joint all the time
+	double minAngle;
+	double maxAngle;
+
+public:
+        //this is the constructor - initialize the desired quantities
+	HumanoidIKHand(Character* bip, const char* jMainName, const char* jParentName) : SimpleIKLinkage(bip, bip->getJointByName(jMainName), bip->getJointIndex(jMainName), bip->getJointIndex(jParentName)){
 		//compute the length of the torso
 		parentPointOfRevolutionP = parent->getParentJoint()->getChildJointPosition();
 		childPointOfRevolutionP = joint->getParentJointPosition();
@@ -271,8 +379,8 @@ public:
 		childPointOfRevolutionC = joint->getChildJointPosition();
 		//these bipeds don't have actual wrists, so we'll estimate their position
 		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
-		if (joint->getJointType() != HINGE_JOINT)
-			CartWheel::Util::throwError("The elbow joint is expected to be a universal joint!!");
+//		if (joint->getJointType() != HINGE_JOINT)
+//			CartWheel::Util::throwError("The elbow joint is expected to be a universal joint!!");
 
 		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
 //		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
@@ -389,8 +497,8 @@ public://this is the constructor - initialize the desired quantities
 		childPointOfRevolutionC = joint->getChildJointPosition();
 		//these bipeds don't have actual wrists, so we'll estimate their position
 		endEffectorC = -CartWheel::Math::Vector3d(joint->getChildJointPosition());
-		if (joint->getJointType() != HINGE_JOINT)
-			CartWheel::Util::throwError("The knee joint is expected to be a universal joint!!");
+//		if (joint->getJointType() != HINGE_JOINT)
+//			CartWheel::Util::throwError("The knee joint is expected to be a universal joint!!");
 
 		rotAxisP = ((CartWheel::Physics::HingeJoint*)joint)->getRotAxisA();
 //		minAngle = ((CartWheel::Physics::HingeJoint*)joint)->minAngleA;
@@ -439,16 +547,22 @@ private:
 	HumanoidIKArm *rightArm;
 	HumanoidIKLeg *leftLeg;
 	HumanoidIKLeg *rightLeg;
-        HumanoidIKSpine *spine;
+        HumanoidIKPelvisTorso *pelvisTorso;
+        HumanoidIKHead *head;
+        HumanoidIKHand *leftHand;
+        HumanoidIKHand *rightHand;
 
 
 public:
 	HumanoidIKCharacter(Character* bip);
 	~HumanoidIKCharacter(void);
 
-	void setRightArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, double* elbowAngle);
-	void setLeftArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, double* elbowAngle);
-        void setSpineTarget(CartWheel::Math::Point3d p, double* leanS, double* leanC, double* twist);
+	void setRightArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, CartWheel::Math::Vector3d* elbowAngles);
+	void setLeftArmTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* shoulderAngles, CartWheel::Math::Vector3d* elbowAngles);
+	void setRightHandTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* handAngles);
+	void setLeftHandTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* handAngles);
+        void setPelvisTorsoTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* pelvisAngles, CartWheel::Math::Vector3d* torsoAngles);
+        void setHeadTarget(CartWheel::Math::Point3d p, CartWheel::Math::Vector3d* headAngles);
         void setLeftLegTarget(CartWheel::Math::Point3d p);
         void setRightLegTarget(CartWheel::Math::Point3d p);
 };

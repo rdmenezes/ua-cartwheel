@@ -21,7 +21,10 @@ namespace CartWheel {
 
         class WaveHand : public Behavior {
         private:
+            int nFrame;
             std::string sHand;
+            Core::Human* human;
+            Core::BehaviourController* bcontroller;
             
         protected:
             virtual void runStep();

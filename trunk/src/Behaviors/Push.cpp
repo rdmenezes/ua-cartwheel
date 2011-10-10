@@ -14,12 +14,12 @@ Push::Push(CartWheel3D* cw, std::string humanName, Push_Params* params)
         : Behavior(cw, humanName, params!=NULL ? params->startTime : 0, params!=NULL ? params->duration : 0) {
 }
 
-void Push::onInit() {    
+void Push::onInit() {
     cw->setController(humanName, 5); //1
 } 
 
 void Push::runStep() {
 }
 
-void Push::onFinish() {    
+void Push::onFinish() {
 }

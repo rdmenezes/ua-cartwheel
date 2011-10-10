@@ -10,6 +10,8 @@
 
 #include <string>
 #include <Behaviors/Behavior.h>
+#include <Core/BehaviourController.h>
+#include <Core/Human.h>
 
 using namespace CartWheel::Behaviors;
 
@@ -21,6 +23,8 @@ namespace CartWheel {
         private:
             double nSpeed;
             double nAngle;
+            Core::Human* human;
+            Core::BehaviourController* bcontroller;
             
         protected:
             virtual void runStep();

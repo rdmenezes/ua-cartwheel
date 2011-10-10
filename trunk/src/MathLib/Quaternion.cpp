@@ -269,26 +269,37 @@ void Quaternion::decomposeRotation(Quaternion* qA, Quaternion* qB, const Vector3
 }
 
 Vector3d Quaternion::getAngles() {
-    double w = this->s;
-    double x = this->v.x;
-    double y = this->v.y;
-    double z = this->v.z;
-    double radX, radY, radZ;
-    double unit = x*x + y*y + z*z + w*w;
-    double test = x*y + z*w;
-    if (test > 0.4999*unit) {
-        radY = 2*atan2(x, w);
-        radX = 0;
-        radZ = PI / 2;
-    } else if (test < -0.4999*unit) {
-        radY = -2 * atan2(x, w);
-        radX = 0;
-        radZ = -PI / 2;
-    } else {
-        radX = atan2(2*x*w - 2*y*z, -x*x + y*y - z*z + w*w);
-        radY = atan2(2 * y * w - 2 * x*z, x * x - y * y - z * z + w * w);
-        radZ = asin(2 * (x * y + z * w) / unit);
-    }
-    return Vector3d(radX, radY, radZ);
+//    double w = this->s;
+//    double x = this->v.x;
+//    double y = this->v.y;
+//    double z = this->v.z;
+//    double radX, radY, radZ;
+//    double unit = x*x + y*y + z*z + w*w;
+//    double test = x*y + z*w;
+//    if (test > 0.499999*unit) {
+//        radY = 2*atan2(x, w);
+//        radX = 0;
+//        radZ = PI / 2;
+//    } else if (test < -0.499999*unit) {
+//        radY = -2 * atan2(x, w);
+//        radX = 0;
+//        radZ = -PI / 2;
+//    } else {
+//        radX = atan2(2*x*w - 2*y*z, -x*x + y*y - z*z + w*w);
+//        radY = atan2(2 * y * w - 2 * x*z, x * x - y * y - z * z + w * w);
+//        radZ = asin(2 * (x * y + z * w) / unit);
+//    }
+//    return Vector3d(radX, radY, radZ);
+    
+
+    double sqx = v.x*v.x;    
+    double sqy = v.y*v.y;    
+    double sqz = v.z*v.z;    
+
+    Vector3d euler;
+    euler.x = atan2f(2.f * (v.z*v.y + v.x*s), 1 - 2* (sqx + sqy));
+    euler.y = asinf(-2.f * (v.x*v.z - v.y*s));
+    euler.z = atan2f(2.f * (v.x*v.y + v.z*s), 1 - 2* (sqy + sqz));  
+    return euler;
 }
 

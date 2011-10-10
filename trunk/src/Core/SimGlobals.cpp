@@ -1,4 +1,5 @@
 #include <Core/SimGlobals.h>
+#include <limits>
 
 using namespace CartWheel;
 using namespace CartWheel::Core;
@@ -19,6 +20,7 @@ double SimGlobals::conInterpolationValue;
 double SimGlobals::bipDesiredVelocity;
 
 
+double SimGlobals::nan = std::numeric_limits<double>::quiet_NaN();
 
 double SimGlobals::targetPos = 0;
 

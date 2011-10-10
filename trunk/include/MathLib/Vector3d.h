@@ -31,6 +31,8 @@ public:
 		This vector points from p1 to p2.
 	*/
 	Vector3d(const Point3d &p1, const Point3d &p2);
+        
+        Vector3d(double value);
 
 	/**
 		Destructor
@@ -320,8 +322,6 @@ public:
 		IT IS ASSUMED THAT THE VECTOR PASSED IN IS A UNIT VECTOR!!!
 	*/
 	Vector3d rotate(double alpha, const Vector3d &axis);
-
-
 };
 
 

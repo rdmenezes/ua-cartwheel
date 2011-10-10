@@ -19,7 +19,6 @@
 #include <Core/BehaviourController.h>
 #include <Core/WorldOracle.h>
 #include <Core/SimBiController.h>
-#include <Core/HumanoidIKCharacter.h>
 #include <Core/Policy.h>
 #include <Core/Human.h>
 
@@ -148,6 +147,7 @@ namespace CartWheel {
 
         void doBehavior(std::string behaviorName, std::string humanName, Params* params);
         void doSerialBehavior(std::string behaviorName, std::string humanName, Params* params);
+        void doParallelBehavior(std::string behaviorName, std::string humanName, Params* params);
         void runStep(double dt = Core::SimGlobals::dt);
 
         void registerBuilder(BuilderFunction builderFunction) {

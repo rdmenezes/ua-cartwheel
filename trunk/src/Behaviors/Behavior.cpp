@@ -36,12 +36,16 @@ bool Behavior::runStep(double time) {
     bool isWaiting = (time < startTime);
     bool isRunning = (time >= startTime) && (time < endTime);
     
-    if(isInit)
+    if(isInit) {
+//        printf("init\n");
         onInit();
-    if(isFinish) 
+    } if(isFinish) {
+//        printf("finish\n");
         onFinish();
-    if(isRunning)
+    } if(isRunning) {
+//        printf("running\n");
         runStep();
+    }
     
     return (isRunning || isWaiting);
 }

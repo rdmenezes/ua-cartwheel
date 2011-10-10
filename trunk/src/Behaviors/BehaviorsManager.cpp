@@ -33,6 +33,10 @@ double BehaviorsManager::getTotalSerialTime() {
     return _serialTime;
 }
 
+double BehaviorsManager::getTotalParallelTime() {
+    return _parallelTime;
+}
+
 void BehaviorsManager::createSerialBehavior(string behaviorName, string humanName, Behaviors::Params* params, CartWheel3D* cw) {
     if(_humanTime.find(humanName.c_str()) != _humanTime.end()) {        
         params->startTime = _humanTime[humanName];
@@ -44,6 +48,20 @@ void BehaviorsManager::createSerialBehavior(string behaviorName, string humanNam
 //    printf("Calling Serial Behaviors: %s, %s, StartTime=%f, Duration=%f\n", behaviorName.c_str(), humanName.c_str(), _serialTime, params->duration);
     printf("Calling Serial Behaviors: %s, %s, StartTime=%f, Duration=%f\n", behaviorName.c_str(), humanName.c_str(), params->startTime, (double)_humanTime[humanName]);
     _serialTime += params->duration;
+    createBehavior(behaviorName, humanName, params, cw);
+}
+
+void BehaviorsManager::createParallelBehavior(string behaviorName, string humanName, Behaviors::Params* params, CartWheel3D* cw) {
+    if(_humanTime.find(humanName.c_str()) != _humanTime.end()) {        
+        params->startTime = _humanTime[humanName];
+        _humanTime[humanName] += params->duration;
+    } else {
+        _humanTime[humanName] = params->duration;
+    }    
+    
+//    printf("Calling Parallel Behaviors: %s, %s, StartTime=%f, Duration=%f\n", behaviorName.c_str(), humanName.c_str(), _serialTime, params->duration);
+    printf("Calling Parallel Behaviors: %s, %s, StartTime=%f, Duration=%f\n", behaviorName.c_str(), humanName.c_str(), params->startTime, (double)_humanTime[humanName]);
+    _parallelTime += params->duration;
     createBehavior(behaviorName, humanName, params, cw);
 }
 
@@ -114,28 +132,49 @@ void BehaviorsManager::createBehavior(string behaviorName, string humanName, Beh
             break;
         }
         case 9:
-            printf("Moving hand by IK\n");
-            //            HumanoidIKCharacter humanIK(_humans[humanName]->getCharacter());
-            ////            Point3d pos = _world->getRBByName("ball1")->getCMPosition();
-            ////            printf("Target: %f, %f, %f\n", pos.x, pos.y, pos.z);
-            //
-            //            Vector3d shoulderL, shoulderR;
-            //            double elbowL, elbowR;
-            //            //////        humanIK.setLeftArmTarget(Point3d(0.1, 1.1, -2.3), &shoulderL, &elbowL);
-            //            humanIK.setRightArmTarget(Point3d(0.1, 1.1, -2.3), &shoulderR, &elbowR);
-            //
-            //            _humans[humanName]->getBehaviour()->requestShoulderAngles(make_pair(shoulderL.x, shoulderR.x),
-            //                    make_pair(shoulderL.y, shoulderR.y), make_pair(shoulderL.z, shoulderR.z));
-            //            _humans[humanName]->getBehaviour()->requestElbowBend(elbowL, elbowR);
-            //            //////
-            //            //////        double leanS, leanC, twist;
-            //            //////        humanIK.setSpineTarget(Point3d(0.1, 1.1, -2.3), &leanS, &leanC, &twist);
-            //            //////        _humans[humanName]->getBehaviour()->requestUpperBodyPose(leanS, leanC, 0);
-            //
-            //            //        _humans[humanName]->getBehaviour()->requestKneeBend(PI*0.34);
-            //            //        _humans[humanName]->getBehaviour()->alternateFootTraj
-            //            //        humanIK.setRightLegTarget(Point3d(0, 0.1, -3));
+        {
+            printf("PickUp!!!\n");
+            PickUp* pickUp = new PickUp(cw, humanName, dynamic_cast<Behaviors::PickUp_Params*> (params));
+            _behaviors[humanName][behaviorName.append(sBeh).c_str()] = dynamic_cast<Behaviors::Behavior*> (pickUp);
             break;
+        }
+        case 10:
+        {
+            printf("Dig!!!\n");
+            Dig* dig = new Dig(cw, humanName, dynamic_cast<Behaviors::Dig_Params*> (params));
+            _behaviors[humanName][behaviorName.append(sBeh).c_str()] = dynamic_cast<Behaviors::Behavior*> (dig);
+            break;
+        }
+        case 11:
+        {
+            printf("Throw!!!\n");
+            Throw* throwObj = new Throw(cw, humanName, dynamic_cast<Behaviors::Throw_Params*> (params));
+            _behaviors[humanName][behaviorName.append(sBeh).c_str()] = dynamic_cast<Behaviors::Behavior*> (throwObj);
+            break;
+        }
+//        case 10:
+//            printf("Moving hand by IK\n");
+//            //            HumanoidIKCharacter humanIK(_humans[humanName]->getCharacter());
+//            ////            Point3d pos = _world->getRBByName("ball1")->getCMPosition();
+//            ////            printf("Target: %f, %f, %f\n", pos.x, pos.y, pos.z);
+//            //
+//            //            Vector3d shoulderL, shoulderR;
+//            //            double elbowL, elbowR;
+//            //            //////        humanIK.setLeftArmTarget(Point3d(0.1, 1.1, -2.3), &shoulderL, &elbowL);
+//            //            humanIK.setRightArmTarget(Point3d(0.1, 1.1, -2.3), &shoulderR, &elbowR);
+//            //
+//            //            _humans[humanName]->getBehaviour()->requestShoulderAngles(make_pair(shoulderL.x, shoulderR.x),
+//            //                    make_pair(shoulderL.y, shoulderR.y), make_pair(shoulderL.z, shoulderR.z));
+//            //            _humans[humanName]->getBehaviour()->requestElbowBend(elbowL, elbowR);
+//            //            //////
+//            //            //////        double leanS, leanC, twist;
+//            //            //////        humanIK.setSpineTarget(Point3d(0.1, 1.1, -2.3), &leanS, &leanC, &twist);
+//            //            //////        _humans[humanName]->getBehaviour()->requestUpperBodyPose(leanS, leanC, 0);
+//            //
+//            //            //        _humans[humanName]->getBehaviour()->requestKneeBend(PI*0.34);
+//            //            //        _humans[humanName]->getBehaviour()->alternateFootTraj
+//            //            //        humanIK.setRightLegTarget(Point3d(0, 0.1, -3));
+//            break;
     }
 }
 
@@ -148,7 +187,10 @@ void BehaviorsManager::populateBehaviorsMap() {
     _mBehaviorsID["Walk"] = 6;
     _mBehaviorsID["WaveHand"] = 7;
     _mBehaviorsID["MoveObject"] = 8;
-    _mBehaviorsID["MoveHand_IK"] = 9;
+    _mBehaviorsID["PickUp"] = 9;
+//    _mBehaviorsID["MoveHand_IK"] = 10;
+    _mBehaviorsID["Dig"] = 10;
+    _mBehaviorsID["Throw"] = 11;
 }
 
 int BehaviorsManager::findBehaviorID(const std::string& behaviorName, const std::string& humanName) {

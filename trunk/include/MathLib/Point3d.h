@@ -6,115 +6,119 @@
 
 #include <MathLib/ThreeTuple.h>
 
-namespace CartWheel { namespace Math {
+namespace CartWheel {
+    namespace Math {
 
-class Vector3d;
-/*=====================================================================================================================================================*
- | This class implements a Point in 3d. It will be stored in homogenous coordinates (x, y, z, w). Every time a w-component is set, the x, y, z will be |
- | rescaled so that w results in being 1 - in other words, the w component is always 1. The x, y and z components are inherited from the Three Tuple   |
- | class that this class extends.                                                                                                                      |
- *=====================================================================================================================================================*/
+        class Vector3d;
 
-class MATHLIB_DECLSPEC Point3d : public ThreeTuple{
-public:
-	/**
-		some useful constructors.
-	*/
-	Point3d() : ThreeTuple(){
-	}
-	Point3d(double x, double y, double z) : ThreeTuple(x, y, z){
-	}
+        /*=====================================================================================================================================================*
+         | This class implements a Point in 3d. It will be stored in homogenous coordinates (x, y, z, w). Every time a w-component is set, the x, y, z will be |
+         | rescaled so that w results in being 1 - in other words, the w component is always 1. The x, y and z components are inherited from the Three Tuple   |
+         | class that this class extends.                                                                                                                      |
+         *=====================================================================================================================================================*/
 
-	Point3d(double x, double y, double z, double w) : ThreeTuple(x, y, z){
-		setW(w);
-	}
+        class MATHLIB_DECLSPEC Point3d : public ThreeTuple {
+        public:
 
-	Point3d(double x, double y) : ThreeTuple(x, y){
-	}
+            /**
+                    some useful constructors.
+             */
+            Point3d() : ThreeTuple() {
+            }
 
-	Point3d(ThreeTuple &p) : ThreeTuple(p){
-	}
+            Point3d(double x, double y, double z) : ThreeTuple(x, y, z) {
+            }
 
-	Point3d(const Vector3d& v);
+            Point3d(double x, double y, double z, double w) : ThreeTuple(x, y, z) {
+                setW(w);
+            }
 
-	Point3d(const Point3d& other) : 
-        ThreeTuple()
-    {
-		this->x = other.x;
-		this->y = other.y;
-		this->z = other.z;
-	}
+            Point3d(double x, double y) : ThreeTuple(x, y) {
+            }
 
-	Point3d& operator = (const Point3d& other){
-		this->x = other.x;
-		this->y = other.y;
-		this->z = other.z;
-		return *this;
-	}
+            Point3d(ThreeTuple &p) : ThreeTuple(p) {
+            }
 
-	/**
-		default destructor.
-	*/
-	~Point3d(){}
-	
-	/**
-		this method is used to set the w component.
-	*/
-	inline void setW(double w){
-		if (w == 0)
-			CartWheel::Util::throwError("Cannot set w-component of a point to 0.");
-		this->x/=w;
-		this->y/=w;
-		this->z/=w;
-	}
+            Point3d(const Vector3d& v);
 
-	//*this = p + v * s
-	void setToOffsetFromPoint(const Point3d &p, const Vector3d& v, double s);
+            Point3d(const Point3d& other) :
+            ThreeTuple() {
+                this->x = other.x;
+                this->y = other.y;
+                this->z = other.z;
+            }
 
-	/**
-		addition of a point and a vector - results in a point
-	*/
-	Point3d operator + (const Vector3d &v) const;
+            Point3d& operator =(const Point3d& other) {
+                this->x = other.x;
+                this->y = other.y;
+                this->z = other.z;
+                return *this;
+            }
 
-	/**
-		add this vector to the current point
-	*/
-	Point3d& operator += (const Vector3d &v);
+            /**
+                    default destructor.
+             */
+            ~Point3d() {
+            }
 
-	inline Point3d& operator /= (double val){
-		double v = 1/val;
-		x *= v;
-		y *= v;
-		z *= v;
-		return *this;
-	}
+            /**
+                    this method is used to set the w component.
+             */
+            inline void setW(double w) {
+                if (w == 0)
+                    CartWheel::Util::throwError("Cannot set w-component of a point to 0.");
+                this->x /= w;
+                this->y /= w;
+                this->z /= w;
+            }
 
-	/**
-		difference betewwn two points - results in a vector
-	*/
-	Vector3d operator - (const Point3d &p) const;
+            //*this = p + v * s
+            void setToOffsetFromPoint(const Point3d &p, const Vector3d& v, double s);
 
-	/**
-		Returns a vector that has all its components multiplied by -1.
-	*/
-	inline Point3d operator - (){
-		return Point3d(-this->x, -this->y, -this->z);
-	}
+            /**
+                    addition of a point and a vector - results in a point
+             */
+            Point3d operator +(const Vector3d &v) const;
 
-	/**
-		multiplication by a constant - results in a new vector.
-	*/
-	inline Point3d operator * (double n) const{
-		return Point3d(n*this->x, n*this->y, n*this->z);
-	}
+            /**
+                    add this vector to the current point
+             */
+            Point3d& operator +=(const Vector3d &v);
 
-	void drawObject();
+            inline Point3d& operator /=(double val) {
+                double v = 1 / val;
+                x *= v;
+                y *= v;
+                z *= v;
+                return *this;
+            }
 
-//	virtual Point3d* createCopy();
+            /**
+                    difference betewwn two points - results in a vector
+             */
+            Vector3d operator -(const Point3d &p) const;
 
-};
+            /**
+                    Returns a vector that has all its components multiplied by -1.
+             */
+            inline Point3d operator -() {
+                return Point3d(-this->x, -this->y, -this->z);
+            }
 
-//MATHLIB_TEMPLATE( DynamicArray<Point3d> )
+            /**
+                    multiplication by a constant - results in a new vector.
+             */
+            inline Point3d operator *(double n) const {
+                return Point3d(n * this->x, n * this->y, n * this->z);
+            }
 
-}
+            void drawObject();
+
+            //	virtual Point3d* createCopy();
+
+        };
+
+        //MATHLIB_TEMPLATE( DynamicArray<Point3d> )
+
+    }
 }

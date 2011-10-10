@@ -18,6 +18,15 @@ public:
 	double duckFootedness;
 	double stepHeight;
 	double coronalStepWidth;
+	double headBendX;
+	double headBendY;
+	double headBendZ;
+	double pelvisBendX;
+	double pelvisBendY;
+	double pelvisBendZ;
+	double torsoBendX;
+	double torsoBendY;
+	double torsoBendZ;
 	BehaviourController::LeftRightDouble elbowBendX;
 	BehaviourController::LeftRightDouble elbowBendY;
 	BehaviourController::LeftRightDouble elbowBendZ;
