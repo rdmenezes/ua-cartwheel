@@ -37,18 +37,37 @@ protected:
 	double velDCoronal;
 	double kneeBend;
 	double coronalStepWidth;
+        
 	double leftElbowBendX;
 	double rightElbowBendX;
 	double leftElbowBendY;
 	double rightElbowBendY;
 	double leftElbowBendZ;
 	double rightElbowBendZ;
+        
+	double leftHandBendX;
+  	double rightHandBendX;
+	double leftHandBendY;
+	double rightHandBendY;
+	double leftHandBendZ;
+	double rightHandBendZ;
+        
 	double leftShoulderTwist;
 	double leftShoulderCoronal;
 	double leftShoulderSagittal;
 	double rightShoulderTwist;
 	double rightShoulderCoronal;
 	double rightShoulderSagittal;
+        
+        double torsoBendX;
+        double torsoBendY;
+        double torsoBendZ;
+        double pelvisBendX;
+        double pelvisBendY;
+        double pelvisBendZ;
+        double headBendX;
+        double headBendY;
+        double headBendZ;
 
 	double stepTime;
 	double stepHeight;
@@ -76,6 +95,15 @@ public:
 	virtual void setDuckWalkDegree(double v);
 	virtual void setDesiredHeading(double v);
 	virtual void setVelocities(double velDS, double velDC);
+	virtual void setElbowAngles(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
+                        double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
+        virtual void setHandAngles(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ);
+	virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction,
+			double rightAdduction, double leftSwing, double rightSwing);
+        virtual void setPelvisTorsoAngles(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ);
+        virtual void setHeadAngles(double headAngleX, double headAngleY, double headAngleZ);
 
 public:
 	BehaviourController(Character* b, IKVMCController* llc, WorldOracle* w = NULL);
@@ -89,11 +117,6 @@ public:
 
 	virtual void adjustStepHeight();
 
-	virtual void setElbowAngles(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
-                        double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
-	virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction,
-			double rightAdduction, double leftSwing, double rightSwing);
-
 	virtual void requestStepTime(double stepTime);
 	virtual void requestStepHeight(double stepHeight);
 	virtual void requestVelocities(double velDS, double velDC);
@@ -103,7 +126,16 @@ public:
 	virtual void requestCoronalStepWidth(double corSW);
 	virtual void requestElbowBend(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
                         double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
+        virtual void requestHandBend(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ);
+        virtual void requestShoulderBend(double leftShoulderAngleX, double rightShoulderAngleX, double leftShoulderAngleY, 
+                        double rightShoulderAngleY, double leftShoulderAngleZ, double rightShoulderAngleZ);
+        virtual void requestPelvisTorsoBend(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ);
+        virtual void requestPelvisBend(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ);
+        virtual void requestHeadBend(double headAngleX, double headAngleY, double headAngleZ);
 	virtual void requestElbowAngles(LeftRightDouble elbowBendX, LeftRightDouble elbowBendY, LeftRightDouble elbowBendZ);
+        virtual void requestHandAngles(LeftRightDouble handBendX, LeftRightDouble handBendY, LeftRightDouble handBendZ);
 	virtual void requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal);
 
 	double getDesiredVelocitySagittal() const { return velDSagittal; }
@@ -116,13 +148,30 @@ public:
 	double getCoronalStepWidth() const { return coronalStepWidth; }
 	double getDesiredKneeBend() const { return kneeBend; }
 	double getDesiredDuckFootness() const { return duckWalk; }
+        
+	double getDesiredTorsoBendX() const { return torsoBendX; }
+	double getDesiredTorsoBendY() const { return torsoBendY; }
+	double getDesiredTorsoBendZ() const { return torsoBendZ; }        
+	double getDesiredPelvisBendX() const { return pelvisBendX; }
+	double getDesiredPelvisBendY() const { return pelvisBendY; }
+	double getDesiredPelvisBendZ() const { return pelvisBendZ; }        
+	double getDesiredHeadBendX() const { return headBendX; }
+	double getDesiredHeadBendY() const { return headBendY; }
+	double getDesiredHeadBendZ() const { return headBendZ; }
 
 	LeftRightDouble getDesiredElbowBendX() const { return std::make_pair(leftElbowBendX, rightElbowBendX); }
 	LeftRightDouble getDesiredElbowBendY() const { return std::make_pair(leftElbowBendY, rightElbowBendY); }
 	LeftRightDouble getDesiredElbowBendZ() const { return std::make_pair(leftElbowBendZ, rightElbowBendZ); }
+	LeftRightDouble getDesiredHandBendX() const { return std::make_pair(leftHandBendX, rightHandBendX); }
+	LeftRightDouble getDesiredHandBendY() const { return std::make_pair(leftHandBendY, rightHandBendY); }
+	LeftRightDouble getDesiredHandBendZ() const { return std::make_pair(leftHandBendZ, rightHandBendZ); }  
 	LeftRightDouble getDesiredShoulderTwist() const { return std::make_pair(leftShoulderTwist, rightShoulderTwist); }
 	LeftRightDouble getDesiredShoulderCoronal() const { return std::make_pair(leftShoulderCoronal, rightShoulderCoronal); }
-	LeftRightDouble getDesiredShoulderSagittal() const { return std::make_pair(leftShoulderSagittal, rightShoulderSagittal); }
+	LeftRightDouble getDesiredShoulderSagittal() const { return std::make_pair(leftShoulderSagittal, rightShoulderSagittal); }      
+//	LeftRightDouble getDesiredShoulderTwist();
+//	LeftRightDouble getDesiredShoulderCoronal();
+//	LeftRightDouble getDesiredShoulderSagittal();
+//	double getDesiredShoulderTwistL();
 
 	double getDesiredStepHeight() const { return stepHeight; }
 	double getDesiredStepTime() const { return stepTime; }

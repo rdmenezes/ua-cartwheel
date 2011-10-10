@@ -22,6 +22,9 @@
 #include <Behaviors/WalkInPath.h>
 #include <Behaviors/WaveHand.h>
 #include <Behaviors/MoveObject.h>
+#include <Behaviors/PickUp.h>
+#include <Behaviors/Dig.h>
+#include <Behaviors/Throw.h>
 
 
 namespace CartWheel { 
@@ -36,7 +39,7 @@ namespace CartWheel {
             std::map<std::string /* HumanName */, BehaviorsCounter> _behaviorCounts;
             std::map<std::string /* HumanName */, double /* nHumanTime */> _humanTime;
             bool _isBehaviorsDone;
-            double _serialTime;
+            double _serialTime, _parallelTime;
             std::map<std::string /* BehaviorName */, int /* BehaviorID */> _mBehaviorsID;
             
         public:
@@ -45,6 +48,7 @@ namespace CartWheel {
             
             void createBehavior(std::string behaviorName, std::string humanName, Behaviors::Params* params, CartWheel3D* cw);
             void createSerialBehavior(std::string behaviorName, std::string humanName, Behaviors::Params* params, CartWheel3D* cw);
+            void createParallelBehavior(std::string behaviorName, std::string humanName, Behaviors::Params* params, CartWheel3D* cw);
             bool runStep(std::string name, double _nTime);
             void populateBehaviorsMap();
             int findBehaviorID(const std::string& behaviorName, const std::string& humanName);
@@ -53,6 +57,7 @@ namespace CartWheel {
             bool isBehaviorsDone();
             void setBehaviorsDone(bool isBehaviorsDone);
             double getTotalSerialTime();
+            double getTotalParallelTime();
         };
     }
 }

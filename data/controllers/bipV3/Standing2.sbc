@@ -16,6 +16,8 @@ PDParams
 	rAnkle	50.0	15.0	100.0	1.0	0.2	0.2
 	lToeJoint	2.0	0.2	100.0	1.0	1.0	1.0
 	rToeJoint	2.0	0.2	100.0	1.0	1.0	1.0
+	lHandJoint	2.0	0.2	100.0	1.0	1.0	1.0
+	rHandJoint	2.0	0.2	100.0	1.0	1.0	1.0
 /PDParams
 
 
@@ -27,11 +29,16 @@ ConState 0
 	stateStance reverse
 	
 	
-	trajectory root
+	trajectory root		
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				1.0 0.0
+			/baseTrajectory
+		/component
 		
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
 				1.0 0.0
 			/baseTrajectory
@@ -39,14 +46,6 @@ ConState 0
 		
 		component
 			rotationAxis 0.0 0.0 1.0
-			reverseTargetAngleOnStance right
-			baseTrajectory
-				1.0 0.0
-			/baseTrajectory
-		/component
-		
-		component
-			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
@@ -103,7 +102,7 @@ ConState 0
 		strengthTrajectory
 			0.3 1.0
 		/strengthTrajectory
-	characterFrameRelative
+                characterFrameRelative
 		component
 			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
@@ -129,7 +128,6 @@ ConState 0
 		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
@@ -147,20 +145,19 @@ ConState 0
 		component
 			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
-				0.0 0.0
+				0.0 0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
-				0.0 0.0
+				0.0 0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 0.0 1.0
 			baseTrajectory
-				0.0 0.0
+				0.0 0
 			/baseTrajectory
 		/component
 	/trajectory
@@ -170,20 +167,19 @@ ConState 0
 		component
 			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
-				0.0 0.0 
+				0.0 0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance left
 			baseTrajectory
-				0.0 0.0 
+				0.0 0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 0.0 1.0
 			baseTrajectory
-				0.0 0.0 
+				0.0 0
 			/baseTrajectory
 		/component
 	/trajectory
@@ -198,7 +194,6 @@ ConState 0
 		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance left
 			baseTrajectory
 				0.0 0.0  
 			/baseTrajectory
@@ -212,24 +207,64 @@ ConState 0
 	/trajectory
 	
 	
+	trajectory STANCE_HandJoint
+		component
+		    rotationAxis 1 0 0
+		    baseTrajectory
+		        0.0 0.0                # 0.0
+		    /baseTrajectory
+		/component
+		component
+		    rotationAxis 0 1 0
+		    baseTrajectory
+		        0.0 -0                # -0.0
+		    /baseTrajectory
+		/component
+		component
+		    rotationAxis 0 0 1
+		    baseTrajectory
+		        0.0 0.0                # 0.0
+		    /baseTrajectory
+		/component
+    	/trajectory
+	
+    	trajectory SWING_HandJoint
+		component
+		    rotationAxis 1 0 0
+		    baseTrajectory
+		        0.0 0.0                # 0.0
+		    /baseTrajectory
+		/component
+		component
+		    rotationAxis 0 1 0
+		    baseTrajectory
+		        0.0 -0                # -0.0
+		    /baseTrajectory
+		/component
+		component
+		    rotationAxis 0 0 1
+		    baseTrajectory
+		        0.0 0.0                # 0.0
+		    /baseTrajectory
+		/component
+	/trajectory
+	
+	
 	trajectory pelvis_lowerback
-	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 0.0 1.0
-			reverseTargetAngleOnStance right
-			baseTrajectory
-				0.0 0.0
-			/baseTrajectory
-		/component
-		component
-			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
@@ -238,23 +273,20 @@ ConState 0
 	
 	
 	trajectory lowerback_torso
-	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 0.0 1.0
-			reverseTargetAngleOnStance right
-			baseTrajectory
-				0.0 0.0
-			/baseTrajectory
-		/component
-		component
-			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
@@ -263,23 +295,20 @@ ConState 0
 	
 	
 	trajectory torso_head
-	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
 		component
 			rotationAxis 0.0 1.0 0.0
-			reverseTargetAngleOnStance right
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory
 		/component
 		component
 			rotationAxis 0.0 0.0 1.0
-			reverseTargetAngleOnStance right
-			baseTrajectory
-				0.0 0.0
-			/baseTrajectory
-		/component
-		component
-			rotationAxis 1.0 0.0 0.0
 			baseTrajectory
 				0.0 0.0
 			/baseTrajectory

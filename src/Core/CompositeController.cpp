@@ -68,11 +68,13 @@ CompositeController::CompositeController(Character* ch, WorldOracle* oracle, con
                 if (NULL != controller) {
                     // Initialize a new behaviour controller
                     BehaviourController* behaviour = new CompositeBehaviourController(ch, controller, oracle);
-                    FILE* fileCNC = fopen(trim(line), "r");
-                    if (fileCNC == NULL)
+                    FILE* fileCBC = fopen(trim(line), "r");
+                    if (fileCBC == NULL)
                         throwError("Could not open file: %s", line);
-                    behaviour->loadFromFile(fileCNC);
-                    fclose(fileCNC);
+//                    printf("Reading File: %s\n", line);
+                    behaviour->loadFromFile(fileCBC);
+//                    printf("----------------\n");
+                    fclose(fileCBC);
 
                     controller->setBehaviour(behaviour);
                     behaviour->conTransitionPlan();

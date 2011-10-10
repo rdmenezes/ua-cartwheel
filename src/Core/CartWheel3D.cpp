@@ -75,7 +75,8 @@ void CartWheel3D::addHuman(const string& name, const string& characterFile, cons
 
     _humans[name] = human;
     ch->getState(&_hStates[name]);
-    doBehavior("Standing", name, NULL);
+    setController(name, 0);
+//    doBehavior("Standing", name, NULL);
 }
 
 void CartWheel3D::addHuman(const string& name, const std::string& characterFile, const std::string& controllerFile, const std::string& actionFile,
@@ -107,7 +108,22 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 
     _humans[name] = human;
     ch->getState(&_hStates[name]);
-    doBehavior("Standing", name, NULL);
+//    doBehavior("Standing", name, NULL);
+    setController(name, 0);
+    
+    
+//    printf("\n\nJoints:\n");
+//    for(int i=0; i<ch->getJointCount(); i++) {
+//        Point3d p1 = ch->getJoint(i)->getChildJointPosition();
+//        Point3d p2 = ch->getJoint(i)->getParentJointPosition();
+//        printf("Joint: %s, Parent-Joint: %s, Pos: (%f, %f, %f)\n", ch->getJoint(i)->getName(), ch->getJoint(i)->getParent()->getName(), p2.x, p2.y, p2.z);
+//        printf("Joint: %s, Child-Joint: %s, Pos: (%f, %f, %f)\n\n", ch->getJoint(i)->getName(), ch->getJoint(i)->getChild()->getName(), p1.x, p1.y, p1.z);
+//    }
+//    printf("\n\n\nArticulated Rigid Bodies:\n");
+//    for(int i=0; i<ch->getArticulatedRigidBodyCount(); i++) {
+//        Vector3d p = ch->getArticulatedRigidBody(i)->getCMPosition();
+//        printf("ARB: %s, Pos: (%f, %f, %f)\n", ch->getArticulatedRigidBody(i)->getName(), p.x, p.y, p.z);
+//    }
 }
 
 void CartWheel3D::resetHumanPose(const std::string& name) {
@@ -289,7 +305,22 @@ void CartWheel3D::doSerialBehavior(string behaviorName, string humanName, Behavi
     _behaviorsManager->createSerialBehavior(behaviorName, humanName, params, this);
 }
 
+void CartWheel3D::doParallelBehavior(string behaviorName, string humanName, Behaviors::Params* params) {
+    _behaviorsManager->createParallelBehavior(behaviorName, humanName, params, this);
+} 
+
 void CartWheel3D::doBehavior(string behaviorName, string humanName, Behaviors::Params* params) {
+//    if(strcmp(behaviorName.c_str(), "MoveHand_IK")==0) {
+//        doSerialBehavior("PickUp", humanName, &Behaviors::PickUp_Params(0, 50, "ball1", "Left"));
+//    } else if(strcmp(behaviorName.c_str(), "Kick")==0) {
+//        doSerialBehavior("Kick", humanName, &Behaviors::Kick_Params(1.5, 1.2));
+//    } else if(strcmp(behaviorName.c_str(), "Push")==0) {
+//        doSerialBehavior("Push", humanName, &Behaviors::Push_Params(1, 2));
+//    } else if(strcmp(behaviorName.c_str(), "WaveHand")==0) {
+//        doSerialBehavior("WaveHand", humanName, &Behaviors::WaveHand_Params(1, 2, "Left"));
+//    } else if(strcmp(behaviorName.c_str(), "Dig")==0) {
+//        doSerialBehavior("Dig", humanName, &Behaviors::Dig_Params(1.5, 7));
+//    }
     _behaviorsManager->createBehavior(behaviorName, humanName, params, this);
 }
 
@@ -343,6 +374,7 @@ void CartWheel3D::runStep(double dt) {
             }
         }        
         if(_behaviorsManager->runStep(human->getName().c_str(), _nTime)) {
+//            printf("nTime: %f\n", _nTime);
             isHumansWorking = true;
         }
     }
@@ -353,7 +385,7 @@ void CartWheel3D::runStep(double dt) {
     }
     if(!isHumansWorking && !isObjsWorking) {
         _behaviorsManager->setBehaviorsDone(true);
-    }
+    } 
 }
 
 Math::Vector3d CartWheel3D::getHumanPosition(const std::string& name) {

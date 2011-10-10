@@ -11,6 +11,7 @@
 
 #include <Core/BehaviourController.h>
 #include <Core/SimBiController.h>
+#include <Core/HumanoidIKCharacter.h>
 #include <Core/WorldOracle.h>
 #include <Core/CompositeController.h>
 #include <Core/Policy.h>
@@ -20,86 +21,141 @@
 #include <Physics/Joint.h>
 #include <Physics/ArticulatedRigidBody.h>
 
-namespace CartWheel
-{
+using namespace CartWheel::Math;
+using namespace CartWheel::Core;
 
-namespace Core
-{
+namespace CartWheel {
 
-class Human
-{
-private:
-	std::string m_name;
-	Character* m_character;
-	SimBiController* m_controller;
-	BehaviourController* m_behaviour;
-	Policy* m_policy;
-	CompositeController* m_composite_controller;
-	std::map<std::string, Physics::Joint*> m_grabJoints;
-	std::map<std::string, Physics::ArticulatedRigidBody*> m_grabbedBodies;
-        bool bBusyBothHands;
+    namespace Core {
 
-	Human() {}
+        class Human {
+        private:
+            std::string m_name;
+            Character* m_character;
+            SimBiController* m_controller;
+            BehaviourController* m_behaviour;
+            Policy* m_policy;
+            CompositeController* m_composite_controller;
+            std::map<std::string, Physics::Joint*> m_grabJoints;
+            std::map<std::string, Physics::ArticulatedRigidBody*> m_grabbedBodies;
+            HumanoidIKCharacter* m_humanIK;
+            bool bBusyBothHands;
+            Vector3d vMinPos, vMaxPos;
+            
 
-public:
+            Human() {
+            }
 
-	Human(const std::string& name, CartWheel::Core::Character* character,
-			CartWheel::Core::SimBiController* controller,
-			CartWheel::Core::BehaviourController* behaviour = NULL, CartWheel::Core::Policy* policy = NULL);
+        public:
 
-	Human(const std::string& name, CartWheel::Core::Character* character,
-			CartWheel::Core::CompositeController* controller, CartWheel::Core::Policy* policy);
+            Human(const std::string& name, Character* character, SimBiController* controller,
+                    BehaviourController* behaviour = NULL, Policy* policy = NULL);
+            Human(const std::string& name, Character* character, CompositeController* controller, Policy* policy);
 
-	virtual ~Human();
+            virtual ~Human();
 
-	inline CartWheel::Core::Character* getCharacter() { return m_character; }
-	inline CartWheel::Core::SimBiController* getController() { return m_controller; }
-	inline CartWheel::Core::CompositeController* getCompositeController() { return m_composite_controller; }
-	inline CartWheel::Core::BehaviourController* getBehaviour() { return m_behaviour; }
-	inline CartWheel::Core::Policy* getPolicy() { return m_policy; }
-	inline std::string getName() { return m_name; }
+            inline Character* getCharacter() {
+                return m_character;
+            }
 
-	inline CartWheel::Math::Vector3d getPosition() { return m_character->getCOM(); }
-	inline double getHeading() { return m_character->getHeadingAngle(); }
-    inline CartWheel::Math::Vector3d getVelocity() { return m_character->getCOMVelocity(); }
+            inline SimBiController* getController() {
+                return m_controller;
+            }
 
-	void setCharacter(CartWheel::Core::Character* character);
-	void setController(CartWheel::Core::SimBiController* controller);
-	void setBehaviour(CartWheel::Core::BehaviourController* behaviour);
-	void setPolicy(CartWheel::Core::Policy* policy);
-	void setPosition(const CartWheel::Math::Point3d& position);
+            inline CompositeController* getCompositeController() {
+                return m_composite_controller;
+            }
 
-    /// @param angle Angle in radians
-	void setHeading(double angle);
+            inline BehaviourController* getBehaviour() {
+                return m_behaviour;
+            }
 
-    void setSpeed(double speed);
-    void setStepWidth(double width);
-    void setName(const std::string& name);
+            inline Policy* getPolicy() {
+                return m_policy;
+            }
 
-    /**
-     * Initialize everything.
-     */
-    void init();
+            inline std::string getName() {
+                return m_name;
+            }
 
-    /**
-     * Apply new action based on the index as prescribed in ActionCollectionPolicy.
-     */
-    void applyAction(int actionIndex);
+            inline Vector3d getPosition() {
+                return m_character->getCOM();
+            }
 
-    enum GrabbingMethod
-    {
-    	left,
-    	right,
-    	both
-    };
+            inline double getHeading() {
+                return m_character->getHeadingAngle();
+            }
 
-    void grabObject(const std::string& targetName, const GrabbingMethod& method);
-    void grabObject_BothHands(const std::string& targetName);
-    void dropObject(const std::string& targetName);
-    void throwObject(const std::string& targetName, const Math::Vector3d& velocity);
-};
+            inline Vector3d getVelocity() {
+                return m_character->getCOMVelocity();
+            }
+            
+            inline Vector3d getPosition(std::string sARB) {
+                return m_character->getARBByName(sARB.c_str())->getCMPosition();
+            }
+            
+            void getLeftArmIK(Point3d pTarget, Vector3d* vShoulder, Vector3d* vElbow, Vector3d* vHand);
+            void getRightArmIK(Point3d pTarget, Vector3d* vShoulder, Vector3d* vElbow, Vector3d* vHand);
+            void getPelvisTorsoIK(Point3d pTarget, Vector3d* vPelvis, Vector3d* vTorso);
+            void getHeadIK(Point3d pTarget, Vector3d* vHead);
+            void getPelvisIK(Point3d pTarget, Vector3d* vPelvis);
 
-}
+            void setCharacter(Character* character);
+            void setController(SimBiController* controller);
+            void setBehaviour(BehaviourController* behaviour);
+            void setPolicy(Policy* policy);
+            void setPosition(const Point3d& position);
+
+            /// @param angle Angle in radians
+            void setHeading(double angle);
+
+            void setSpeed(double speed);
+            void setStepWidth(double width);
+            void setName(const std::string& name);
+            
+            bool getFootTouchedGround();
+            void setLock(const std::string& sARB, bool bLockPosition = false, bool bLockOrientation = false);
+            void setLock(const std::string& sARB, bool bPosX, bool bPosY, bool bPosZ, 
+                bool bAngleX = false, bool bAngleY = false, bool bAngleZ = false);
+            void setLockPosition(const std::string& sARB, bool bLockX = false, bool bLockY = false, bool bLockZ = false);
+            void setLockOrientation(const std::string& sARB, bool bLockX = false, bool bLockY = false, bool bLockZ = false);
+            void setPosition(const std::string& sARB, Vector3d vPos, bool bIncremental = false);
+            void setOrientation(const std::string& sARB, Vector3d vAngle, bool bIncremental = false);
+            void setConstraintPos(Vector3d minPos, Vector3d maxPos);
+            void setConstraintOrientation(Vector3d minAngle, Vector3d maxAngle);
+            void setExternalForce(const std::string& sARB, Vector3d vForce, bool bIncremental = false);
+            void setExternalTorque(const std::string& sARB, Vector3d vTorque, bool bIncremental = false);
+            void setVelocity(const std::string& sARB, Vector3d vSpeed, bool bIncremental = false);
+            void setAngVelocity(const std::string& sARB, Vector3d vAngSpeed, bool bIncremental = false);
+            void setOrientationQ(const std::string& sARB, Quaternion qAngle);
+            Quaternion getOrientationQ(const std::string& sARB);
+            void factorVelocity(const std::string& sARB, Vector3d vFactor);
+            void factorAngVelocity(const std::string& sARB, Vector3d vFactor);
+            
+
+            /**
+             * Initialize everything.
+             */
+            void init();
+
+            /**
+             * Apply new action based on the index as prescribed in ActionCollectionPolicy.
+             */
+            void applyAction(int actionIndex);
+
+            enum GrabbingMethod {
+                left,
+                right,
+                both
+            };
+
+            void grabObject(const std::string& targetName, const GrabbingMethod& method);
+            void grabObject_BothHands(const std::string& targetName);
+            void dropObject(const std::string& targetName);
+            void throwObject(const std::string& targetName, const Vector3d& velocity);
+        };
+
+    }
 
 }
 

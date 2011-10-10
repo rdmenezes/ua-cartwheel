@@ -141,10 +141,10 @@ namespace CartWheel {
                     Visualization::g_instance->_behaviorName = "MoveHand_IK";
                     break;
                 case 6:
-                    Visualization::g_instance->_behaviorName = "BehaviorName6";
+                    Visualization::g_instance->_behaviorName = "WaveHand";
                     break;
                 case 7:
-                    Visualization::g_instance->_behaviorName = "BehaviorName7";
+                    Visualization::g_instance->_behaviorName = "Dig";
                     break;
                 case 8:
                     Visualization::g_instance->_behaviorName = "Push";
@@ -706,7 +706,7 @@ namespace CartWheel {
         world->drawRBs(SHOW_COLOURS | SHOW_MESH);
 
         
-//        GLUtils::drawSphere(Point3d(0, 0.1, -3), 0.02, 50);
+//        GLUtils::drawSphere(Point3d(0, 0.1, -1), 0.05, 50);
 //        drawPath();
 
         

@@ -30,6 +30,14 @@ namespace CartWheel {
             }
         };
         
+        class Dig_Params : public Params {
+        public:
+            Dig_Params(double startTime, double duration) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+            }
+        };
+        
         class Push_Params : public Params {
         public:
             Push_Params(double startTime, double duration) {
@@ -110,6 +118,30 @@ namespace CartWheel {
                 Params::startTime = startTime;
                 Params::duration = duration;
                 this->sHand = hand.c_str();
+            }
+        };
+        
+        class Throw_Params : public Params {
+        public:
+            std::string sHand;
+            
+            Throw_Params(double startTime, double duration, std::string hand) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sHand = hand.c_str();
+            }
+        };
+        
+        class PickUp_Params : public Params {
+        public:
+            std::string sTargetObj;
+            std::string sHand;
+            
+            PickUp_Params(double startTime, double duration, std::string sTargetObj, std::string hand) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sTargetObj = sTargetObj;
+                this->sHand = hand;
             }
         };
     }

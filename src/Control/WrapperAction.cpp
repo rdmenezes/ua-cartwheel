@@ -5,6 +5,9 @@ namespace CartWheel {
     void WrapperAction::executeSetup(CartWheel3D * cw) {
         //  if(switched){
         int com = myCommand;
+        if (myCommand == 1) {
+            cw->doSerialBehavior((std::string)"Standing", (std::string)actorName, &Behaviors::Standing_Params(0, myTime));
+        }
         if (myCommand == 10 || myCommand == 11)
             com = 0;
 //        cw->setController(actorName, com); //TODO: how do we send parameters?
@@ -71,7 +74,13 @@ namespace CartWheel {
             }
         }
         if (myCommand == 14) {
-            cw->doSerialBehavior((std::string)"WaveHand", (std::string)actorName, &Behaviors::WaveHand_Params(0, myTime, "Right"));            
+            if(myParams[1]==0) {
+                cw->doSerialBehavior((std::string)"WaveHand", (std::string)actorName, &Behaviors::WaveHand_Params(0, myTime, "Left"));    
+            } else if(myParams[1]==1) {
+                cw->doSerialBehavior((std::string)"WaveHand", (std::string)actorName, &Behaviors::WaveHand_Params(0, myTime, "Right"));   
+            } else if(myParams[1]==2) {
+                cw->doSerialBehavior((std::string)"WaveHand", (std::string)actorName, &Behaviors::WaveHand_Params(0, myTime, "Both"));   
+            }                    
         }
         if (myCommand == 15) {
             //MoveObject_Params(double startTime, double duration, Point3d position, Vector3d orientation, Vector3d speed, Vector3d angSpeed)
@@ -79,9 +88,17 @@ namespace CartWheel {
                     Point3d(myParams[1],myParams[2],myParams[3]), Vector3d(0,0,0), Vector3d(myParams[4],myParams[5],myParams[6]),
                     Vector3d(0,0,0)));            
         }
-        if (myCommand == 1) {
-            cw->doSerialBehavior((std::string)"Standing", (std::string)actorName, &Behaviors::Standing_Params(0, myTime));
+        if(myCommand == 16) {
+            std::string sObj = "Ball1";
+            if(myParams[2]==0) {
+                cw->doSerialBehavior((std::string)"PickUp", (std::string)actorName, &Behaviors::PickUp_Params(0, myTime, sObj.c_str(), "Left"));    
+            } else if(myParams[2]==1) {
+                cw->doSerialBehavior((std::string)"PickUp", (std::string)actorName, &Behaviors::PickUp_Params(0, myTime, sObj.c_str(), "Right")); 
+            } else if(myParams[2]==2) {
+                cw->doSerialBehavior((std::string)"PickUp", (std::string)actorName, &Behaviors::PickUp_Params(0, myTime, sObj.c_str(), "Both"));  
+            }   
         }
+        
 
     }
 
@@ -105,7 +122,7 @@ namespace CartWheel {
         actionMap["standUp"] = 4;
         actionMap["push"] = 5;
         actionMap["pull"] = 6;
-        actionMap["pickup"] = 7;
+        actionMap["pickup0"] = 7;
         actionMap["raiseArms"] = 8;
         actionMap["kick"] = 9;
         actionMap["walkTurn"] = 10;
@@ -114,6 +131,7 @@ namespace CartWheel {
         actionMap["WalkInPath"] = 13;
         actionMap["WaveHand"] = 14;
         actionMap["MoveBall"] = 15;
+        actionMap["PickUp"] = 16;
     }
 
     double WrapperAction::getPrior(std::vector<double> & params) {

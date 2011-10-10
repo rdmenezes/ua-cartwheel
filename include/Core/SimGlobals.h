@@ -28,6 +28,7 @@ public:
 	static double targetPos;
 	static double targetPosX;
 	static double targetPosZ;
+        static double nan;
 
 	static double conInterpolationValue;
 	static double bipDesiredVelocity;

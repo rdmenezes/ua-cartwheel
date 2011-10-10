@@ -11,7 +11,10 @@ HumanoidIKCharacter::HumanoidIKCharacter(Character* bip) {
     //populate the relevant data members
     leftArm = new HumanoidIKArm(bip, "lElbow", "lShoulder");
     rightArm = new HumanoidIKArm(bip, "rElbow", "rShoulder");
-    spine = new HumanoidIKSpine(bip, "lowerback_torso", "pelvis_lowerback");
+    leftHand = new HumanoidIKHand(bip, "lHandJoint", "lElbow");
+    rightHand = new HumanoidIKHand(bip, "rHandJoint", "rElbow");
+    pelvisTorso = new HumanoidIKPelvisTorso(bip, "lowerback_torso", "pelvis_lowerback");
+    head = new HumanoidIKHead(bip, "torso_head", "lowerback_torso");
     leftLeg = new HumanoidIKLeg(bip, "lKnee", "lHip");
     rightLeg = new HumanoidIKLeg(bip, "rKnee", "rHip");
     //	setRightArmTarget(Point3d(0.6, 1.3, 0.3));
@@ -21,53 +24,112 @@ HumanoidIKCharacter::HumanoidIKCharacter(Character* bip) {
 HumanoidIKCharacter::~HumanoidIKCharacter(void) {
     delete leftArm;
     delete rightArm;
-    delete spine;
+    delete pelvisTorso;
     delete leftLeg;
     delete rightLeg;
+    delete head;
+    delete leftHand;
+    delete rightHand;
 }
 
-void HumanoidIKCharacter::setLeftArmTarget(Point3d p, Vector3d* shoulderAngles, double* elbowAngle) {
+void HumanoidIKCharacter::setLeftArmTarget(Point3d p, Vector3d* shoulderAngles, Vector3d* elbowAngles) {
     Quaternion pOrientation, cOrientation;
     leftArm->setIKOrientations(p, &pOrientation, &cOrientation);
 
     //Left-Shoulder
-    Quaternion qRot(0.707107, 0, 0, 0.707107);
-    pOrientation = qRot*pOrientation;
     Vector3d vAngles = pOrientation.getAngles();
     double radX = vAngles.x;
-    double radY = -vAngles.z;
-    double radZ = vAngles.y;
-    *shoulderAngles = Vector3d(radX, radY, radZ);
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
+    *shoulderAngles = Vector3d(radX, radY, radZ);   
+    
 
     //Left-Elbow
-    *elbowAngle = -cOrientation.getAngles().y;
+    vAngles = cOrientation.getAngles();
+    radX = vAngles.x;
+    radY = vAngles.y;
+    radZ = vAngles.z;
+    *elbowAngles = Vector3d(radX, radY, radZ);
+    
+    
+//    printf("Shoulder = %f, %f, %f, %f\n", pOrientation.s, pOrientation.v.x, pOrientation.v.y, pOrientation.v.z);
+//    ReducedCharacterStateArray state;
+//    biped->getState(&state);
+//    ReducedCharacterState rs(&state);
+//    rs.setJointRelativeOrientation(pOrientation, biped->getJointIndex("lShoulder"));
+//    rs.setJointRelativeOrientation(cOrientation, biped->getJointIndex("lElbow"));
+//    biped->setState(&state);
 }
 
-void HumanoidIKCharacter::setRightArmTarget(Point3d p, Vector3d* shoulderAngles, double* elbowAngle) {
+void HumanoidIKCharacter::setRightArmTarget(Point3d p, Vector3d* shoulderAngles, Vector3d* elbowAngles) {
     Quaternion pOrientation, cOrientation;
     rightArm->setIKOrientations(p, &pOrientation, &cOrientation);
 
     //Right-Shoulder
-    Quaternion qRot(0.707107, 0, 0, 0.707107);
-    pOrientation = qRot*pOrientation;
     Vector3d vAngles = pOrientation.getAngles();
-    double radX = vAngles.y;
-    double radY = -vAngles.z;
-    double radZ = vAngles.x;
+    double radX = vAngles.x;
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
     *shoulderAngles = Vector3d(radX, radY, radZ);
 
     //Right-Elbow
-    *elbowAngle = cOrientation.getAngles().y;
+    vAngles = cOrientation.getAngles();
+    radX = vAngles.x;
+    radY = vAngles.y;
+    radZ = vAngles.z;
+    *elbowAngles = Vector3d(radX, radY, radZ);
 }
 
-void HumanoidIKCharacter::setSpineTarget(Point3d p, double* leanS, double* leanC, double* twist) {
+void HumanoidIKCharacter::setLeftHandTarget(Point3d p, Vector3d* handAngles) {
     Quaternion pOrientation, cOrientation;
-    spine->setIKOrientations(p, &pOrientation, &cOrientation);
+    leftHand->setIKOrientations(p, &pOrientation, &cOrientation);
+
+    //Left-Hand
+    Vector3d vAngles = cOrientation.getAngles();
+    double radX = vAngles.x;
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
+    *handAngles = Vector3d(radX, radY, radZ); 
+}
+
+void HumanoidIKCharacter::setRightHandTarget(Point3d p, Vector3d* handAngles) {
+    Quaternion pOrientation, cOrientation;
+    rightHand->setIKOrientations(p, &pOrientation, &cOrientation);
+
+    //Right-Hand
+    Vector3d vAngles = cOrientation.getAngles();
+    double radX = vAngles.x;
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
+    *handAngles = Vector3d(radX, radY, radZ);
+}
+
+void HumanoidIKCharacter::setPelvisTorsoTarget(Point3d p, Vector3d* pelvisAngles, Vector3d* torsoAngles) {
+    Quaternion pOrientation, cOrientation;
+    pelvisTorso->setIKOrientations(p, &pOrientation, &cOrientation);
 
     Vector3d vAngles = pOrientation.getAngles();
-    *leanS = vAngles.x*0.25;
-    *leanC = -vAngles.y*0.25;
-    *twist = vAngles.z;
+    double radX = vAngles.x;
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
+    *pelvisAngles = Vector3d(radX, radY, radZ);
+
+    vAngles = cOrientation.getAngles();
+    radX = vAngles.x;
+    radY = vAngles.y;
+    radZ = vAngles.z;
+    *torsoAngles = Vector3d(radX, radY, radZ);
+}
+
+void HumanoidIKCharacter::setHeadTarget(Point3d p, Vector3d* headAngles) {
+    Quaternion pOrientation, cOrientation;
+    head->setIKOrientations(p, &pOrientation, &cOrientation);
+
+    Vector3d vAngles = cOrientation.getAngles();
+    double radX = vAngles.x;
+    double radY = vAngles.y;
+    double radZ = vAngles.z;
+    *headAngles = Vector3d(radX, radY, radZ);
 }
 
 void HumanoidIKCharacter::setLeftLegTarget(Point3d p) {
@@ -108,3 +170,17 @@ void HumanoidIKCharacter::setRightLegTarget(Point3d p) {
         printf("Error IK leg target.\n");
     }
 }
+
+
+//Trying to make kind of Forward Kinematics
+////    Character* ch = new Character(dynamic_cast<ArticulatedFigure*>(biped));
+////    Point3d handPos = ch->getARBByName("lHand")->getCMPosition();
+////    printf("lHand before IK: %f, %f, %f\n", handPos.x, handPos.y, handPos.z);
+////    ReducedCharacterStateArray state;
+////    ch->getState(&state);
+////    ReducedCharacterState rs(&state);
+////    rs.setJointRelativeOrientation(pOrientation, ch->getJointIndex("lShoulder"));
+////    rs.setJointRelativeOrientation(cOrientation, ch->getJointIndex("lElbow"));
+////    ch->setState(&state);
+////    handPos = ch->getARBByName("lHand")->getCMPosition();
+////    printf("lHand after IK: %f, %f, %f\n", handPos.x, handPos.y, handPos.z);

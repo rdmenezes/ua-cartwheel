@@ -58,7 +58,12 @@ namespace CartWheel {
 
             virtual void setElbowAngles(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY,
                                         double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ);
+            virtual void setHandAngles(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ);
             virtual void setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction, double rightAdduction, double leftSwing, double rightSwing);
+            virtual void setPelvisTorsoAngles(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ);
+            virtual void setHeadAngles(double headAngleX, double headAngleY, double headAngleZ);
 
             virtual void requestStepTime(double stepTime);
             virtual void requestStepHeight(double stepHeight);
@@ -68,6 +73,11 @@ namespace CartWheel {
             virtual void requestDuckFootedness(double df);
             virtual void requestCoronalStepWidth(double corSW);
             virtual void requestElbowBend(double leftBendX, double rightBendX, double leftBendY, double rightBendY, double leftBendZ, double rightBendZ);
+            virtual void requestHandBend(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ);
+            virtual void requestPelvisTorsoBend(double pelvisBendX, double pelvisBendY, double pelvisBendZ, 
+                        double torsoBendX, double torsoBendY, double torsoBendZ);
+            virtual void requestHeadBend(double headBendX, double headBendY, double headBendZ);
             virtual void requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal);
             /**
                     determines the desired swing foot location

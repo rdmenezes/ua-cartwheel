@@ -10,6 +10,7 @@
 
 #include <string>
 #include <Behaviors/Behavior.h>
+#include <Core/Human.h>
 
 using namespace CartWheel::Behaviors;
 
@@ -18,6 +19,10 @@ namespace CartWheel {
     namespace Behaviors {
 
         class Kick : public Behavior {
+        private:            
+            Core::Human* human;
+            bool bKickFinishing, bKicking;
+            Quaternion qUpperLeg, qLowerLeg;
             
         protected:
             virtual void runStep();

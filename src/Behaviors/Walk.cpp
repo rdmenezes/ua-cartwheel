@@ -20,6 +20,10 @@ Walk::Walk(CartWheel3D* cw, std::string humanName, Walk_Params* params)
     nSpeed = params->speed;
     nAngle = params->angle;
     printf("StartTime %f, Duration %f, Speed %f, Angle %f.\n", startTime, duration, nSpeed, nAngle);
+    
+    this->cw = cw;
+    this->cw->getHuman(humanName, &human);
+    bcontroller = human->getBehaviour();
 }
 
 void Walk::onInit() {
@@ -32,6 +36,8 @@ void Walk::onInit() {
         printf("Starting to turn... (angle=%f)\n", nAngle);
         cw->setHumanHeading(humanName, nAngle);
     }
+//    bcontroller->requestStepTime(0.35);
+//    bcontroller->requestStepHeight(0.5);
 }
 
 void Walk::runStep() {

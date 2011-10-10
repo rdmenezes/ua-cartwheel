@@ -54,6 +54,7 @@ void CompositeBehaviourController::loadFromFile(FILE * f) {
             throwError("The input file contains a line that is longer than ~200 characters - not allowed");
         char *line = lTrim(buffer);
         int lineType = getConLineType(line);
+//        printf("CompositeBehaviourController line: %s\n", line);
 
         switch (lineType) {
             case CON_TURN_BEHAVIOUR:
@@ -114,6 +115,7 @@ void CompositeBehaviourController::saveToFile(FILE * file) {
 void CompositeBehaviourController::addController(BehaviourController* behaviour, FILE * file) {
     // Load from the file if the handle is provided
     if (NULL != file) {
+//        printf("Reading TurnController frame.\n");
         behaviour->loadFromFile(file);
     }
 
@@ -160,10 +162,26 @@ void CompositeBehaviourController::setElbowAngles(double leftElbowAngleX, double
             rightElbowAngleY, leftElbowAngleZ, rightElbowAngleZ);
 }
 
+void CompositeBehaviourController::setHandAngles(double leftHandAngleX, double rightHandAngleX,
+        double leftHandAngleY, double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ) {
+    m_behaviour->setHandAngles(leftHandAngleX, rightHandAngleX, leftHandAngleY,
+            rightHandAngleY, leftHandAngleZ, rightHandAngleZ);
+}
+
 void CompositeBehaviourController::setShoulderAngles(double leftTwist, double rightTwist, double leftAdduction,
         double rightAdduction, double leftSwing, double rightSwing) {
     m_behaviour->setShoulderAngles(leftTwist, rightTwist, leftAdduction, rightAdduction,
             leftSwing, rightSwing);
+}
+
+void CompositeBehaviourController::setPelvisTorsoAngles(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ) {
+    m_behaviour->setPelvisTorsoAngles(pelvisAngleX, pelvisAngleY, pelvisAngleZ, 
+                        torsoAngleX, torsoAngleY, torsoAngleZ);
+}
+
+void CompositeBehaviourController::setHeadAngles(double headAngleX, double headAngleY, double headAngleZ) {
+    m_behaviour->setHeadAngles(headAngleX, headAngleY, headAngleZ);
 }
 
 void CompositeBehaviourController::requestStepTime(double stepTime) {
@@ -198,6 +216,22 @@ void CompositeBehaviourController::requestElbowBend(double leftBendX, double rig
         double leftBendY, double rightBendY, double leftBendZ, double rightBendZ) {
     m_behaviour->requestElbowBend(leftBendX, rightBendX, leftBendY, rightBendY,
             leftBendZ, rightBendZ);
+}
+
+void CompositeBehaviourController::requestHandBend(double leftBendX, double rightBendX,
+        double leftBendY, double rightBendY, double leftBendZ, double rightBendZ) {
+    m_behaviour->requestHandBend(leftBendX, rightBendX, leftBendY, rightBendY,
+            leftBendZ, rightBendZ);
+}
+
+void CompositeBehaviourController::requestPelvisTorsoBend(double pelvisBendX, double pelvisBendY,
+        double pelvisBendZ, double torsoBendX, double torsoBendY, double torsoBendZ) {
+    m_behaviour->requestPelvisTorsoBend(pelvisBendX, pelvisBendY, pelvisBendZ, torsoBendX,
+            torsoBendY, torsoBendZ);
+}
+
+void CompositeBehaviourController::requestHeadBend(double headBendX, double headBendY, double headBendZ) {
+    m_behaviour->requestHeadBend(headBendX, headBendY, headBendZ);
 }
 
 void CompositeBehaviourController::requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal) {
@@ -237,11 +271,7 @@ void CompositeBehaviourController::initializeDefaultParameters() {
  * Switch to the next controller
  */
 void CompositeBehaviourController::switchToNextController(double dt) {
-
-    SimpleStyleParameters params;
-
     int i = 0;
-
     if ((activeBehaviour + 1) < controllers.size()) {
         i = activeBehaviour + 1;
     } else {
@@ -256,6 +286,7 @@ void CompositeBehaviourController::switchToNextController(double dt) {
         phase = timeTransitioned / transition;
     }
 
+    SimpleStyleParameters params;
     params.ubSagittalLean = initialStateControllers[activeBehaviour]->getDesiredSagittalLean();
     params.ubCoronalLean = initialStateControllers[activeBehaviour]->getDesiredCoronalLean();
     params.ubTwist = initialStateControllers[activeBehaviour]->getDesiredUpperBodyTwist();
@@ -271,6 +302,15 @@ void CompositeBehaviourController::switchToNextController(double dt) {
     params.shoulderCoronal = initialStateControllers[activeBehaviour]->getDesiredShoulderCoronal();
     params.shoulderSagittal = initialStateControllers[activeBehaviour]->getDesiredShoulderSagittal();
     params.stepHeight = initialStateControllers[activeBehaviour]->getDesiredStepHeight();
+    params.pelvisBendX = initialStateControllers[activeBehaviour]->getDesiredPelvisBendX();
+    params.pelvisBendY = initialStateControllers[activeBehaviour]->getDesiredPelvisBendY();
+    params.pelvisBendZ = initialStateControllers[activeBehaviour]->getDesiredPelvisBendZ();
+    params.torsoBendX = initialStateControllers[activeBehaviour]->getDesiredTorsoBendX();
+    params.torsoBendY = initialStateControllers[activeBehaviour]->getDesiredTorsoBendY();
+    params.torsoBendZ = initialStateControllers[activeBehaviour]->getDesiredTorsoBendZ();
+    params.headBendX = initialStateControllers[activeBehaviour]->getDesiredHeadBendX();
+    params.headBendY = initialStateControllers[activeBehaviour]->getDesiredHeadBendY();
+    params.headBendZ = initialStateControllers[activeBehaviour]->getDesiredHeadBendZ();
 
     SimpleStyleParameters newParams;
     newParams.ubSagittalLean = initialStateControllers[i]->getDesiredSagittalLean();
@@ -288,6 +328,15 @@ void CompositeBehaviourController::switchToNextController(double dt) {
     newParams.shoulderCoronal = initialStateControllers[i]->getDesiredShoulderCoronal();
     newParams.shoulderSagittal = initialStateControllers[i]->getDesiredShoulderSagittal();
     newParams.stepHeight = initialStateControllers[i]->getDesiredStepHeight();
+    newParams.pelvisBendX = initialStateControllers[i]->getDesiredPelvisBendX();
+    newParams.pelvisBendY = initialStateControllers[i]->getDesiredPelvisBendY();
+    newParams.pelvisBendZ = initialStateControllers[i]->getDesiredPelvisBendZ();
+    newParams.torsoBendX = initialStateControllers[i]->getDesiredTorsoBendX();
+    newParams.torsoBendY = initialStateControllers[i]->getDesiredTorsoBendY();
+    newParams.torsoBendZ = initialStateControllers[i]->getDesiredTorsoBendZ();
+    newParams.headBendX = initialStateControllers[i]->getDesiredHeadBendX();
+    newParams.headBendY = initialStateControllers[i]->getDesiredHeadBendY();
+    newParams.headBendZ = initialStateControllers[i]->getDesiredHeadBendZ();
 
     newParams.applyInterpolatedStyleParameters(m_behaviour, phase, &params);
 

@@ -189,27 +189,27 @@ protected:
 		This method returns the net force on the body rb, acting from the ground
 	*/
 	CartWheel::Math::Vector3d getForceOnFoot(CartWheel::Physics::RigidBody* foot, DynamicArray<CartWheel::Physics::ContactPoint> *cfs);
-
-	/**
-		check to see if rb is the same as whichBody or any of its children
-	*/
-	bool haveRelationBetween(CartWheel::Physics::RigidBody* rb, CartWheel::Physics::RigidBody* whichBody);
-
-	/**
-		This method is used to determine if the rigid body that is passed in as a parameter is a
-		part of a foot
-	*/
-	bool isFoot(CartWheel::Physics::RigidBody* rb);
-
-	/**
-		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
-	*/
-	bool isStanceFoot(CartWheel::Physics::RigidBody* rb);
-
-	/**
-		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
-	*/
-	bool isSwingFoot(CartWheel::Physics::RigidBody* rb);
+//
+//	/**
+//		check to see if rb is the same as whichBody or any of its children
+//	*/
+//	bool haveRelationBetween(CartWheel::Physics::RigidBody* rb, CartWheel::Physics::RigidBody* whichBody);
+//
+//	/**
+//		This method is used to determine if the rigid body that is passed in as a parameter is a
+//		part of a foot
+//	*/
+//	bool isFoot(CartWheel::Physics::RigidBody* rb);
+//
+//	/**
+//		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
+//	*/
+//	bool isStanceFoot(CartWheel::Physics::RigidBody* rb);
+//
+//	/**
+//		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
+//	*/
+//	bool isSwingFoot(CartWheel::Physics::RigidBody* rb);
 
 	/**
 		This method is used to return the ratio of the weight that is supported by the stance foot.
@@ -252,6 +252,28 @@ public:
 		Destructor
 	*/
 	virtual ~SimBiController(void);
+        
+        
+	/**
+		check to see if rb is the same as whichBody or any of its children
+	*/
+	bool haveRelationBetween(CartWheel::Physics::RigidBody* rb, CartWheel::Physics::RigidBody* whichBody);
+
+	/**
+		This method is used to determine if the rigid body that is passed in as a parameter is a
+		part of a foot
+	*/
+	bool isFoot(CartWheel::Physics::RigidBody* rb);
+
+	/**
+		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
+	*/
+	bool isStanceFoot(CartWheel::Physics::RigidBody* rb);
+
+	/**
+		This method returns true if the rigid body that is passed in as a parameter is a swing foot, false otherwise
+	*/
+	bool isSwingFoot(CartWheel::Physics::RigidBody* rb);
 
 
 	/**
@@ -262,7 +284,7 @@ public:
 		rootControlParams.setKd( rootControlParams.getKd() * factor );
 //		rootControlParams.setKd( sqrt(rootControlParams.getKp()) * 2 );
 		PoseController::scaleGains( factor );
-	}
+	}        
 
 	const double* getPhiPtr() const { return &phi; }
 

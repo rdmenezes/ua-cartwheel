@@ -119,6 +119,12 @@ namespace CartWheel {
         }
         total_time = simulator_->getTotalSerialTime();
         cout << "Total Time: " << total_time << ", Step Size: " << step_size << endl;
+        
+        
+//        for(int i=0; i<simulator_->getWorld()->getRBCount(); i++) {
+//            std::string sObjs = simulator_->getWorld()->getRB(i)->getName()==NULL ? "" : simulator_->getWorld()->getRB(i)->getName();
+//            printf("Object %d: %s\n", i, sObjs.c_str());
+//        }
 
         // Outer loop: Time
         int i = 0; // step counter

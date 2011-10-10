@@ -40,8 +40,8 @@ void WalkInPath::runStep() {
     double dp = getDistance(nPoint);
     double tl = getTimeLeft(nPoint, time - startTime);
     double nSpeed = dp / tl;
-    nSpeed = nSpeed > 6 ? 6 : nSpeed;
-    nSpeed = nSpeed < 0 ? 0 : nSpeed;
+//    nSpeed = nSpeed > 6 ? 6 : nSpeed;
+//    nSpeed = nSpeed < 0 ? 0 : nSpeed;
     if (dp < 0.2 || tl <= 0) {
         nPoint++;
         if (nPoint >= tPath->getKnotCount())
@@ -50,8 +50,8 @@ void WalkInPath::runStep() {
         dp = getDistance(nPoint);
         tl = getTimeLeft(nPoint, time - startTime);
         nSpeed = dp / tl;
-        nSpeed = nSpeed > 6 ? 6 : nSpeed;
-        nSpeed = nSpeed < 0 ? 0 : nSpeed;
+//        nSpeed = nSpeed > 6 ? 6 : nSpeed;
+//        nSpeed = nSpeed < 0 ? 0 : nSpeed;
         double angle = getAngle(tPath->getKnotValue(nPoint));
         cw->setHumanHeading(humanName, angle);
         cw->setHumanSpeed(humanName, nSpeed);

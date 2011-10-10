@@ -19,6 +19,15 @@ SimpleStyleParameters::SimpleStyleParameters(void){
 	duckFootedness = 0;
 	stepHeight = 0;
 	coronalStepWidth = 0;
+	headBendX = 0;
+	headBendY = 0;
+	headBendZ = 0;
+	pelvisBendX = 0;
+	pelvisBendY = 0;
+	pelvisBendZ = 0;
+	torsoBendX = 0;
+	torsoBendY = 0;
+	torsoBendZ = 0;
 	elbowBendX = make_pair(0, 0);
 	elbowBendY = make_pair(0, 0);
 	elbowBendZ = make_pair(0, 0);
@@ -39,6 +48,8 @@ void SimpleStyleParameters::applyStyleParameters(BehaviourController* bc){
 	bc->requestStepHeight(stepHeight);
 	bc->requestElbowAngles(elbowBendX, elbowBendY, elbowBendZ);
 	bc->requestShoulderAngles(shoulderTwist, shoulderCoronal, shoulderSagittal);
+	bc->requestPelvisTorsoBend(pelvisBendX, pelvisBendY, pelvisBendZ, torsoBendX, torsoBendY, torsoBendZ);
+	bc->requestHeadBend(headBendX, headBendY, headBendZ);
 }
 
 /**
@@ -80,6 +91,18 @@ void SimpleStyleParameters::applyInterpolatedStyleParameters(BehaviourController
 
 	interp.shoulderSagittal.first = t * shoulderSagittal.first + (1-t) * other->shoulderSagittal.first;
 	interp.shoulderSagittal.second = t * shoulderSagittal.second + (1-t) * other->shoulderSagittal.second;
+        
+	interp.pelvisBendX = t * pelvisBendX + (1-t) * other->pelvisBendX;
+	interp.pelvisBendY = t * pelvisBendY + (1-t) * other->pelvisBendY;
+	interp.pelvisBendZ = t * pelvisBendZ + (1-t) * other->pelvisBendZ;
+        
+	interp.torsoBendX = t * torsoBendX + (1-t) * other->torsoBendX;
+	interp.torsoBendY = t * torsoBendY + (1-t) * other->torsoBendY;
+	interp.torsoBendZ = t * torsoBendZ + (1-t) * other->torsoBendZ;
+        
+	interp.headBendX = t * headBendX + (1-t) * other->headBendX;
+	interp.headBendY = t * headBendY + (1-t) * other->headBendY;
+	interp.headBendZ = t * headBendZ + (1-t) * other->headBendZ;
 
 	interp.applyStyleParameters(bc);
 }

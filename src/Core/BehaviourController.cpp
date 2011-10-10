@@ -8,6 +8,11 @@ using namespace CartWheel::Physics;
 using namespace CartWheel::Math;
 using namespace CartWheel::Util;
 
+#ifndef isnan
+#define isnan(x) (x != x)
+#define MUST_UNDEF_ISNAN
+#endif
+
 using namespace std;
 
 BehaviourController::BehaviourController(Character* b, IKVMCController* llc, WorldOracle* w) {
@@ -28,7 +33,7 @@ BehaviourController::BehaviourController(Character* b, IKVMCController* llc, Wor
     duckWalk = 0;
     velDSagittal = 0;
     velDCoronal = 0;
-    kneeBend = 0;
+    kneeBend = 0;    
     coronalStepWidth = 0.1;
     leftElbowBendX = 0.0;
     rightElbowBendX = 0.0;
@@ -36,12 +41,31 @@ BehaviourController::BehaviourController(Character* b, IKVMCController* llc, Wor
     rightElbowBendY = 0.0;
     leftElbowBendZ = 0.0;
     rightElbowBendZ = 0.0;
+    
+    leftHandBendX = 0.0;
+    rightHandBendX = 0.0;
+    leftHandBendY = 0.0;
+    rightHandBendY = 0.0;
+    leftHandBendZ = 0.0;
+    rightHandBendZ = 0.0;
+    
+    
     leftShoulderTwist = 0.0;
     leftShoulderCoronal = 0.0;
     leftShoulderSagittal = 0.0;
     rightShoulderTwist = 0.0;
     rightShoulderCoronal = 0.0;
     rightShoulderSagittal = 0.0;
+    
+    torsoBendX = 0.0;
+    torsoBendY = 0.0;
+    torsoBendZ = 0.0;
+    pelvisBendX = 0.0;
+    pelvisBendY = 0.0;
+    pelvisBendZ = 0.0;
+    headBendX = 0.0;
+    headBendY = 0.0;
+    headBendZ = 0.0;
 
     stepTime = 0.6;
     stepHeight = 0;
@@ -74,6 +98,7 @@ void BehaviourController::loadFromFile(FILE * f) {
         if (strlen(buffer) > 195)
             throwError("The input file contains a line that is longer than ~200 characters - not allowed");
         char *line = lTrim(buffer);
+//        printf("line: %s", line);
         int lineType = getConLineType(line);
 //        printf("lineType=%d, %s", lineType, buffer);
         switch (lineType) {
@@ -128,6 +153,24 @@ void BehaviourController::loadFromFile(FILE * f) {
             case CON_RIGHT_ELBOW_BEND_Z:
                 sscanf(line, "%lf", &this->rightElbowBendZ);
                 break;
+            case CON_LEFT_HAND_BEND_X:
+                sscanf(line, "%lf", &this->leftHandBendX);
+                break;
+            case CON_RIGHT_HAND_BEND_X:
+                sscanf(line, "%lf", &this->rightHandBendX);
+                break;
+            case CON_LEFT_HAND_BEND_Y:
+                sscanf(line, "%lf", &this->leftHandBendY);
+                break;
+            case CON_RIGHT_HAND_BEND_Y:
+                sscanf(line, "%lf", &this->rightHandBendY);
+                break;
+            case CON_LEFT_HAND_BEND_Z:
+                sscanf(line, "%lf", &this->leftHandBendZ);
+                break;
+            case CON_RIGHT_HAND_BEND_Z:
+                sscanf(line, "%lf", &this->rightHandBendZ);
+                break;
             case CON_LEFT_SHOULDER_TWIST:
                 sscanf(line, "%lf", &this->leftShoulderTwist);
                 break;
@@ -145,6 +188,33 @@ void BehaviourController::loadFromFile(FILE * f) {
                 break;
             case CON_RIGHT_SHOULDER_SAGITTAL:
                 sscanf(line, "%lf", &this->rightShoulderSagittal);
+                break;
+            case CON_PELVIS_BEND_X:
+                sscanf(line, "%lf", &this->pelvisBendX);
+                break;
+            case CON_PELVIS_BEND_Y:
+                sscanf(line, "%lf", &this->pelvisBendY);
+                break;
+            case CON_PELVIS_BEND_Z:
+                sscanf(line, "%lf", &this->pelvisBendZ);
+                break;
+            case CON_TORSO_BEND_X:
+                sscanf(line, "%lf", &this->torsoBendX);
+                break;
+            case CON_TORSO_BEND_Y:
+                sscanf(line, "%lf", &this->torsoBendY);
+                break;
+            case CON_TORSO_BEND_Z:
+                sscanf(line, "%lf", &this->torsoBendZ);
+                break;
+            case CON_HEAD_BEND_X:
+                sscanf(line, "%lf", &this->headBendX);
+                break;
+            case CON_HEAD_BEND_Y:
+                sscanf(line, "%lf", &this->headBendY);
+                break;
+            case CON_HEAD_BEND_Z:
+                sscanf(line, "%lf", &this->headBendZ);
                 break;
             case CON_BEHAVIOUR_END:
                 return; //and... done
@@ -164,6 +234,43 @@ void BehaviourController::loadFromFile(FILE * f) {
 void BehaviourController::saveToFile(FILE * file) {
     //TODO: to be implemented
 }
+
+
+/**
+        this method gets called at every simulation time step
+ */
+void BehaviourController::simStepPlan(double /* dt */) {
+    lowLCon->updateSwingAndStanceReferences();
+    if (lowLCon->phi <= 0.01)
+        swingFootStartPos = lowLCon->swingFoot->getWorldCoordinates(bip->joints[lowLCon->swingAnkleIndex]->getChildJointPosition());
+
+    //compute desired swing foot location...
+    setDesiredSwingFootLocation();
+
+    //set some of these settings
+    //setUpperBodyPose(ubSagittalLean, ubCoronalLean, ubTwist);
+    setKneeBend(kneeBend);
+    setDuckWalkDegree((lowLCon->stance == LEFT_STANCE) ? (-duckWalk) : (duckWalk));
+    setDesiredHeading(desiredHeading);
+    setVelocities(velDSagittal, velDCoronal);
+
+    //adjust for panic mode or unplanned terrain...
+    adjustStepHeight();
+
+    setElbowAngles(leftElbowBendX, rightElbowBendX, leftElbowBendY, rightElbowBendY, leftElbowBendZ, rightElbowBendZ);
+    setHandAngles(leftHandBendX, rightHandBendX, leftHandBendY, rightHandBendY, leftHandBendZ, rightHandBendZ);
+
+    setShoulderAngles(leftShoulderTwist, rightShoulderTwist, leftShoulderCoronal, rightShoulderCoronal, leftShoulderSagittal, rightShoulderSagittal);
+    setPelvisTorsoAngles(pelvisBendX, pelvisBendY, pelvisBendZ, torsoBendX, torsoBendY, torsoBendZ);
+    setHeadAngles(headBendX, headBendY, headBendZ);
+
+    //and see if we're really in trouble...
+    if (shouldAbort()) {
+        cout << "aborting..." << endl;
+        onAbort();
+    }
+}
+
 
 /**
         ask for a heading...
@@ -191,8 +298,32 @@ void BehaviourController::setElbowAngles(double leftElbowAngleX, double rightElb
     tmpTraj = curState->getTrajectory("SWING_Elbow");
     if (tmpTraj != NULL) {
         tmpTraj->components[0]->offset = swingElbowAngleX;
-        tmpTraj->components[1]->offset = swingElbowAngleY * -1;
+        tmpTraj->components[1]->offset = swingElbowAngleY;// * -1;
         tmpTraj->components[2]->offset = swingElbowAngleZ;
+    }
+}
+
+void BehaviourController::setHandAngles(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ) {
+    double stanceHandAngleX = (lowLCon->stance == LEFT_STANCE) ? (leftHandAngleX) : (rightHandAngleX);
+    double swingHandAngleX = (lowLCon->stance == LEFT_STANCE) ? (rightHandAngleX) : (leftHandAngleX);
+    double stanceHandAngleY = (lowLCon->stance == LEFT_STANCE) ? (leftHandAngleY) : (rightHandAngleY);
+    double swingHandAngleY = (lowLCon->stance == LEFT_STANCE) ? (rightHandAngleY) : (leftHandAngleY);
+    double stanceHandAngleZ = (lowLCon->stance == LEFT_STANCE) ? (leftHandAngleZ) : (rightHandAngleZ);
+    double swingHandAngleZ = (lowLCon->stance == LEFT_STANCE) ? (rightHandAngleZ) : (leftHandAngleZ);
+
+    SimBiConState* curState = lowLCon->states[lowLCon->FSMStateIndex];
+    Trajectory* tmpTraj = curState->getTrajectory("STANCE_HandJoint");
+    if (tmpTraj != NULL) {
+        tmpTraj->components[0]->offset = stanceHandAngleX;
+        tmpTraj->components[1]->offset = stanceHandAngleY;
+        tmpTraj->components[2]->offset = stanceHandAngleZ;
+    }
+    tmpTraj = curState->getTrajectory("SWING_HandJoint");
+    if (tmpTraj != NULL) {
+        tmpTraj->components[0]->offset = swingHandAngleX;
+        tmpTraj->components[1]->offset = swingHandAngleY;// * -1;
+        tmpTraj->components[2]->offset = swingHandAngleZ;
     }
 }
 
@@ -212,12 +343,11 @@ void BehaviourController::setShoulderAngles(double leftTwist, double rightTwist,
         tmpTraj->components[0]->offset = stanceTwist;
         tmpTraj->components[1]->offset = stanceAdd;
         tmpTraj->components[2]->offset = stanceSwing;
-
     }
     tmpTraj = curState->getTrajectory("SWING_Shoulder");
     if (tmpTraj != NULL) {
         tmpTraj->components[0]->offset = swingTwist;
-        tmpTraj->components[1]->offset = swingAdd * -1;
+        tmpTraj->components[1]->offset = swingAdd;// * -1;
         tmpTraj->components[2]->offset = swingSwing;
     }
 }
@@ -230,27 +360,54 @@ void BehaviourController::setUpperBodyPose(double leanSagittal, double leanCoron
     SimBiConState* curState = lowLCon->states[lowLCon->getFSMState()];
     Trajectory* tmpTraj = curState->getTrajectory("root");
     if (tmpTraj != NULL) {
-        tmpTraj->components[2]->offset = leanSagittal;
-        tmpTraj->components[1]->offset = leanCoronal * sign;
-        tmpTraj->components[0]->offset = twist * sign * 0;
+        tmpTraj->components[0]->offset = leanSagittal;
+        tmpTraj->components[1]->offset = twist * sign * 0;
+        tmpTraj->components[2]->offset = leanCoronal * sign;
     }
     tmpTraj = curState->getTrajectory("pelvis_lowerback");
     if (tmpTraj != NULL) {
-        tmpTraj->components[2]->offset = leanSagittal * 1.5;
-        tmpTraj->components[1]->offset = leanCoronal * 1.5 * sign;
-        tmpTraj->components[0]->offset = twist * 1.5 * sign;
+        tmpTraj->components[0]->offset = leanSagittal * 1.5;
+        tmpTraj->components[1]->offset = twist * 1.5 * sign;
+        tmpTraj->components[2]->offset = leanCoronal * 1.5 * sign;
     }
     tmpTraj = curState->getTrajectory("lowerback_torso");
     if (tmpTraj != NULL) {
-        tmpTraj->components[2]->offset = leanSagittal * 2.5;
-        tmpTraj->components[1]->offset = leanCoronal * 2.5 * sign;
-        tmpTraj->components[0]->offset = twist * sign;
+        tmpTraj->components[0]->offset = leanSagittal * 2.5;
+        tmpTraj->components[1]->offset = twist * sign;
+        tmpTraj->components[2]->offset = leanCoronal * 2.5 * sign;
     }
     tmpTraj = curState->getTrajectory("torso_head");
     if (tmpTraj != NULL) {
-        tmpTraj->components[2]->offset = leanSagittal * 3.0;
-        tmpTraj->components[1]->offset = leanCoronal * 1 * sign;
-        tmpTraj->components[0]->offset = twist * 3.0 * sign;
+        tmpTraj->components[0]->offset = leanSagittal * 3.0;
+        tmpTraj->components[1]->offset = twist * 3.0 * sign;
+        tmpTraj->components[2]->offset = leanCoronal * 1 * sign;
+    }
+}
+
+void BehaviourController::setPelvisTorsoAngles(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ) {
+    SimBiConState* curState = lowLCon->states[lowLCon->getFSMState()];
+    Trajectory* tmpTraj = curState->getTrajectory("pelvis_lowerback");
+    if (tmpTraj != NULL) {
+        tmpTraj->components[0]->offset = pelvisAngleX;
+        tmpTraj->components[1]->offset = pelvisAngleY;
+        tmpTraj->components[2]->offset = pelvisAngleZ;
+    }
+    tmpTraj = curState->getTrajectory("lowerback_torso");
+    if (tmpTraj != NULL) {
+        tmpTraj->components[0]->offset = torsoAngleX;
+        tmpTraj->components[1]->offset = torsoAngleY;
+        tmpTraj->components[2]->offset = torsoAngleZ;
+    }
+}
+
+void BehaviourController::setHeadAngles(double headAngleX, double headAngleY, double headAngleZ) {
+    SimBiConState* curState = lowLCon->states[lowLCon->getFSMState()];
+    Trajectory* tmpTraj = curState->getTrajectory("torso_head");
+    if (tmpTraj != NULL) {
+        tmpTraj->components[0]->offset = headAngleX;
+        tmpTraj->components[1]->offset = headAngleY;
+        tmpTraj->components[2]->offset = headAngleZ;
     }
 }
 
@@ -259,11 +416,11 @@ void BehaviourController::setKneeBend(double v, bool swingAlso) {
     Trajectory* tmpTraj = curState->getTrajectory("root");
 
     tmpTraj = curState->getTrajectory("STANCE_Knee");
-    tmpTraj->components[0]->offset = v;
+    tmpTraj->components[0]->offset = v; // kneeAngleX
 
     if (swingAlso == true) {
         tmpTraj = curState->getTrajectory("SWING_Knee");
-        tmpTraj->components[0]->offset = v;
+        tmpTraj->components[0]->offset = v; // kneeAngleX
     }
 }
 
@@ -301,12 +458,42 @@ void BehaviourController::requestCoronalStepWidth(double corSW) {
 
 void BehaviourController::requestElbowBend(double leftElbowAngleX, double rightElbowAngleX, double leftElbowAngleY, 
                         double rightElbowAngleY, double leftElbowAngleZ, double rightElbowAngleZ) {
-    leftElbowBendX = leftElbowAngleX;
-    rightElbowBendX = rightElbowAngleX;
-    leftElbowBendY = leftElbowAngleY;
-    rightElbowBendY = rightElbowAngleY;
-    leftElbowBendZ = leftElbowAngleZ;
-    rightElbowBendZ = rightElbowAngleZ;
+    requestElbowAngles(std::make_pair(leftElbowAngleX, rightElbowAngleX),
+                std::make_pair(leftElbowAngleY, rightElbowAngleY), std::make_pair(leftElbowAngleZ, rightElbowAngleZ));
+}
+
+void BehaviourController::requestHandBend(double leftHandAngleX, double rightHandAngleX, double leftHandAngleY, 
+                        double rightHandAngleY, double leftHandAngleZ, double rightHandAngleZ) {
+    requestHandAngles(std::make_pair(leftHandAngleX, rightHandAngleX),
+                std::make_pair(leftHandAngleY, rightHandAngleY), std::make_pair(leftHandAngleZ, rightHandAngleZ));
+}
+
+void BehaviourController::requestShoulderBend(double leftShoulderAngleX, double rightShoulderAngleX, double leftShoulderAngleY, 
+                        double rightShoulderAngleY, double leftShoulderAngleZ, double rightShoulderAngleZ) {
+    requestShoulderAngles(std::make_pair(leftShoulderAngleX, rightShoulderAngleX),
+                std::make_pair(leftShoulderAngleY, rightShoulderAngleY), std::make_pair(leftShoulderAngleZ, rightShoulderAngleZ));
+}
+
+void BehaviourController::requestPelvisTorsoBend(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ, 
+                        double torsoAngleX, double torsoAngleY, double torsoAngleZ) {
+    pelvisBendX = pelvisAngleX;
+    pelvisBendY = pelvisAngleY;
+    pelvisBendZ = pelvisAngleZ;
+    torsoBendX = torsoAngleX;
+    torsoBendY = torsoAngleY;
+    torsoBendZ = torsoAngleZ;
+}
+
+void BehaviourController::requestPelvisBend(double pelvisAngleX, double pelvisAngleY, double pelvisAngleZ) {
+    pelvisBendX = pelvisAngleX;
+    pelvisBendY = pelvisAngleY;
+    pelvisBendZ = pelvisAngleZ;
+}
+
+void BehaviourController::requestHeadBend(double headAngleX, double headAngleY, double headAngleZ) {
+    headBendX = headAngleX;
+    headBendY = headAngleY;
+    headBendZ = headAngleZ;
 }
 
 void BehaviourController::adjustStepHeight() {
@@ -322,38 +509,6 @@ void BehaviourController::adjustStepHeight() {
     lowLCon->panicHeight = panicIntensity * 0.05;
 }
 
-/**
-        this method gets called at every simulation time step
- */
-void BehaviourController::simStepPlan(double /* dt */) {
-    lowLCon->updateSwingAndStanceReferences();
-    if (lowLCon->phi <= 0.01)
-        swingFootStartPos = lowLCon->swingFoot->getWorldCoordinates(bip->joints[lowLCon->swingAnkleIndex]->getChildJointPosition());
-
-    //compute desired swing foot location...
-    setDesiredSwingFootLocation();
-
-    //set some of these settings
-    setUpperBodyPose(ubSagittalLean, ubCoronalLean, ubTwist);
-    setKneeBend(kneeBend);
-    setDuckWalkDegree((lowLCon->stance == LEFT_STANCE) ? (-duckWalk) : (duckWalk));
-    setDesiredHeading(desiredHeading);
-    setVelocities(velDSagittal, velDCoronal);
-
-    //adjust for panic mode or unplanned terrain...
-    adjustStepHeight();
-
-    setElbowAngles(leftElbowBendX, rightElbowBendX, leftElbowBendY, rightElbowBendY, leftElbowBendZ, rightElbowBendZ);
-
-    setShoulderAngles(leftShoulderTwist, rightShoulderTwist, leftShoulderCoronal, rightShoulderCoronal, leftShoulderSagittal, rightShoulderSagittal);
-
-    //and see if we're really in trouble...
-    if (shouldAbort()) {
-        cout << "aborting..." << endl;
-        onAbort();
-    }
-}
-
 void BehaviourController::requestStepTime(double stepTime) {
     this->stepTime = stepTime;
 }
@@ -363,24 +518,58 @@ void BehaviourController::requestStepHeight(double stepHeight) {
 }
 
 void BehaviourController::requestElbowAngles(LeftRightDouble elbowBendX, LeftRightDouble elbowBendY, LeftRightDouble elbowBendZ) {
-    leftElbowBendX = elbowBendX.first;
-    rightElbowBendX = elbowBendX.second;
-    leftElbowBendY = elbowBendY.first;
-    rightElbowBendY = elbowBendY.second;
-    leftElbowBendZ = elbowBendZ.first;
-    rightElbowBendZ = elbowBendZ.second;
+    if(!isnan(elbowBendX.first)) leftElbowBendX = elbowBendX.first;
+    if(!isnan(elbowBendX.second)) rightElbowBendX = elbowBendX.second;
+    if(!isnan(elbowBendY.first)) leftElbowBendY = elbowBendY.first;
+    if(!isnan(elbowBendY.second)) rightElbowBendY = elbowBendY.second;
+    if(!isnan(elbowBendZ.first)) leftElbowBendZ = elbowBendZ.first;
+    if(!isnan(elbowBendZ.second)) rightElbowBendZ = elbowBendZ.second;
+}
+
+void BehaviourController::requestHandAngles(LeftRightDouble handBendX, LeftRightDouble handBendY, LeftRightDouble handBendZ) {
+    if(!isnan(handBendX.first)) leftHandBendX = handBendX.first;
+    if(!isnan(handBendX.second)) rightHandBendX = handBendX.second;
+    if(!isnan(handBendY.first)) leftHandBendY = handBendY.first;
+    if(!isnan(handBendY.second)) rightHandBendY = handBendY.second;
+    if(!isnan(handBendZ.first)) leftHandBendZ = handBendZ.first;
+    if(!isnan(handBendZ.second)) rightHandBendZ = handBendZ.second;
 }
 
 void BehaviourController::requestShoulderAngles(LeftRightDouble shoulderTwist, LeftRightDouble shoulderCoronal, LeftRightDouble shoulderSagittal) {
-    leftShoulderTwist = shoulderTwist.first;
-    rightShoulderTwist = shoulderTwist.second;
+    if(!isnan(shoulderTwist.first)) leftShoulderTwist = shoulderTwist.first;
+    if(!isnan(shoulderTwist.second)) rightShoulderTwist = shoulderTwist.second;
 
-    leftShoulderCoronal = shoulderCoronal.first;
-    rightShoulderCoronal = shoulderCoronal.second;
+    if(!isnan(shoulderCoronal.first)) leftShoulderCoronal = shoulderCoronal.first;
+    if(!isnan(shoulderCoronal.second)) rightShoulderCoronal = shoulderCoronal.second;
 
-    leftShoulderSagittal = shoulderSagittal.first;
-    rightShoulderSagittal = shoulderSagittal.second;
+    if(!isnan(shoulderSagittal.first)) leftShoulderSagittal = shoulderSagittal.first;
+    if(!isnan(shoulderSagittal.second)) rightShoulderSagittal = shoulderSagittal.second;
 }
+
+
+//double BehaviourController::getDesiredShoulderTwistL() { 
+//    printf("===**getShouldersL3: [%f, %f], [%f, %f], [%f, %f]!!\n", 
+//            leftShoulderTwist, rightShoulderTwist, 
+//            leftShoulderCoronal, rightShoulderCoronal, 
+//            leftShoulderSagittal, rightShoulderSagittal);
+//    return leftShoulderTwist; //, rightShoulderTwist); 
+//}
+//
+//std::pair<double, double> BehaviourController::getDesiredShoulderTwist() { 
+//    printf("===**getShoulders3*: [%f, %f], [%f, %f], [%f, %f]!!\n", 
+//            leftShoulderTwist, rightShoulderTwist, 
+//            leftShoulderCoronal, rightShoulderCoronal, 
+//            leftShoulderSagittal, rightShoulderSagittal);
+//    return std::make_pair(leftShoulderTwist, rightShoulderTwist); 
+//}
+//
+//std::pair<double, double> BehaviourController::getDesiredShoulderCoronal() { 
+//    return std::make_pair(leftShoulderCoronal, rightShoulderCoronal); 
+//}
+//
+//std::pair<double, double> BehaviourController::getDesiredShoulderSagittal() { 
+//    return std::make_pair(leftShoulderSagittal, rightShoulderSagittal); 
+//}
 
 /**
         this method gets called every time the controller transitions to a new state
