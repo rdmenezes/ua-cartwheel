@@ -1,0 +1,79 @@
+# Define a set of behaviours
+
+turnBehaviour
+
+#velocitySagittal 0.03
+kneeBend 0.05
+leftElbowBend 0.5
+rightElbowBend 0.5
+#stepHeight -0.07
+
+/behaviour
+
+durationTime 1
+transitionTime 0.5
+
+turnBehaviour
+
+sagittalLean 0.85
+velocitySagittal 0.03
+kneeBend 0.8
+leftElbowBend 0.5
+rightElbowBend 0.5
+#stepHeight -0.07
+leftElbowBend 0.6
+rightElbowBend 0.6
+
+leftShoulderTwist 0
+leftShoulderCoronal 0.2
+leftShoulderSagittal -1.5
+
+rightShoulderTwist 0
+rightShoulderCoronal 0.2
+rightShoulderSagittal -1.5
+
+/behaviour
+
+durationTime 0.5
+transitionTime 0.1
+
+#duckBehaviour
+turnBehaviour
+
+sagittalLean 0.4
+velocitySagittal 0.03
+kneeBend 0.4
+leftElbowBend 0.5
+rightElbowBend 0.5
+#stepHeight -0.07
+leftElbowBend 0.6
+rightElbowBend 0.6
+
+leftShoulderTwist 0
+leftShoulderCoronal 0.2
+leftShoulderSagittal -0.5
+
+rightShoulderTwist 0
+rightShoulderCoronal 0.2
+rightShoulderSagittal -0.5
+
+/behaviour
+
+durationTime 0.2
+transitionTime 0.05
+
+turnBehaviour
+
+sagittalLean 0
+velocitySagittal 0
+kneeBend 0.01
+leftElbowBend 0.5
+rightElbowBend 0.5
+#stepHeight -0.07
+leftElbowBend 0.5
+rightElbowBend 0.5
+
+/behaviour
+
+durationTime 0.5
+transitionTime 0.1

@@ -1,0 +1,11 @@
+#specify the rigid bodies that are to be loaded, as well as the controllers
+
+loadRBFile ../data/objects/flatGround.rbs
+#loadRBFile ../data/objects/dodgeBall.rbs
+loadRBFile ../data/objects/course/course.rbs
+loadRBFile ../data/characters/bigBird.rbs
+
+
+loadCompositeController ../data/controllers/bigBird/RL/HMV/compositeController.con
+
+

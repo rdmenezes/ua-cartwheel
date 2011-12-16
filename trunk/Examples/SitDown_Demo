@@ -1,0 +1,3 @@
+#! /bin/bash
+cd /home/alfredo/Desktop/CartWheel_DemosHuman/Demos/SitDown
+./interactControl

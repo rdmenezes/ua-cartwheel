@@ -1,0 +1,25 @@
+# Define a set of behaviours
+
+turnBehaviour
+
+#desiredHeading 0
+sagittalLean 0.2
+coronalLean 0
+twist 0
+duckWalk 0
+velocitySagittal 0.2
+velocityCoronal 0
+kneeBend 0.1
+coronalStepWidth 0
+leftElbowBend 0
+rightElbowBend 0
+leftShoulderTwist 0.1
+leftShoulderCoronal 0.2
+leftShoulderSagittal 0.1
+rightShoulderTwist -0.1
+rightShoulderCoronal 0.2
+rightShoulderSagittal 0.1
+#stepTime 0
+stepHeight -0.04
+
+/behaviour

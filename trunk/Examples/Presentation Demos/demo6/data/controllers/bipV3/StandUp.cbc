@@ -1,0 +1,8 @@
+# Define a set of behaviours
+
+#duckBehaviour
+turnBehaviour
+
+kneeBend 0.0
+
+/behaviour

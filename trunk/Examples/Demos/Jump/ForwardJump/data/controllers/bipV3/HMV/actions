@@ -1,0 +1,31 @@
+# 0 = backward walk
+0 -1 1 0
+
+# 1 = slow backward walk
+0 1 0.3 0
+
+# 2 = inplace walk
+1 -1 1 0
+
+# 3 = slow walk
+1 2 0.65 0
+
+# 4 = forward walk
+2 -1 1 0
+
+switchOnRightStance
+
+4 5
+5 4
+6 7
+7 6
+8 9
+9 8
+10 11
+11 10
+#12 14
+#14 12
+#13 15
+#15 13
+
+

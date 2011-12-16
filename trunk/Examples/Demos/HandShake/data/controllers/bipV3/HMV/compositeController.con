@@ -1,0 +1,86 @@
+
+synchronizeControllers
+
+#0
+#loadIKVMCController data/controllers/bipV3/Walking.sbc
+#loadIKVMCController data/controllers/bipV3/Standing2Swing.sbc
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/Default_1.cbc
+#loadBehaviourController data/controllers/bipV3/WaveHand.cbc
+
+
+#1
+#loadController data/controllers/bipV3/Standing2.sbc
+loadController data/controllers/bipV3/Falling.sbc
+#loadIKVMCController data/controllers/bipV3/StandingReal.sbc
+#loadBehaviourController data/controllers/bipV3/Standing.cbc
+##loadController data/controllers/bipV3/Standing3.sbc
+
+
+#2
+#loadController data/controllers/bipV3/FastJog.sbc
+loadController data/controllers/bipV3/Standing3.sbc
+
+#3
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/SitDown.cbc
+
+#4
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/StandUp.cbc
+
+#5
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/Push.cbc
+
+#6
+loadIKVMCController data/controllers/bipV3/Standing.sbc
+loadBehaviourController data/controllers/bipV3/Pull.cbc
+
+#7
+loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+loadBehaviourController data/controllers/bipV3/PickUp.cbc
+
+#8
+loadController data/controllers/bipV3/Jump.sbc
+#loadIKVMCController data/controllers/bipV3/ZeroGait2.sbc
+#loadBehaviourController data/controllers/bipV3/RaiseArms.cbc
+
+#9
+loadController data/controllers/bipV3/Kick.sbc
+
+
+#10
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/WaveLeftHand.cbc
+
+#11
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/WaveRightHand.cbc
+
+#12
+loadIKVMCController data/controllers/bipV3/Standing2.sbc
+loadBehaviourController data/controllers/bipV3/WaveBothHands.cbc
+
+#13
+loadController data/controllers/bipV3/Digging.sbc
+
+#14
+loadIKVMCController data/controllers/bipV3/Standing2Strong.sbc
+loadBehaviourController data/controllers/bipV3/Digging.cbc
+
+#15
+loadIKVMCController data/controllers/bipV3/Standing2Strong.sbc
+loadBehaviourController data/controllers/bipV3/ThrowBall.cbc
+
+#16
+loadController data/controllers/bipV3/Standing2.sbc
+
+
+
+
+#----------------------------------------------------------
+#original: [left]
+startingStance left
+loadCharacterState data/controllers/bipV3/WalkingState.rs
+

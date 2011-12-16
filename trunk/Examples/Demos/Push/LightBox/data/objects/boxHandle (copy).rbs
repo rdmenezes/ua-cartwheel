@@ -1,0 +1,37 @@
+A_RigidBody
+	name boxH
+	mesh data/models/BoxHandle.obj
+	mass 20
+	moi 0.2 0.2 0.2
+	colour 0.9 0.9 0.9 1
+	CDP_Box -0.5 0 -0.5 0.5 1 0.5
+	position 0 0.5 1
+	frictionCoefficient 1.8
+	restitutionCoefficient 0.35	
+/End
+
+A_RigidBody
+	name bHandle
+	mesh data/models/Handle.obj
+	mass 0.5
+	moi 0.2 0.2 0.2
+	colour 0.8 0 0 1
+	CDP_Capsule -0.5 0 0 0.5 0 0 0.05
+	position 0 1.35 -1.16
+	frictionCoefficient 1.8
+	restitutionCoefficient 0.35	
+/End
+
+ArticulatedFigure
+	root bHandle
+	
+	hingeJoint 1 0 0
+		name box_handle
+		parent bHandle
+		child boxH
+		jointPPos 0 0.4 0.5
+		jointCPos 0 1.35 -1.16
+		jointLimits -1.0 -0.5
+	/Joint	
+/ArticulatedFigure
+
