@@ -1,0 +1,9 @@
+# Define a set of behaviours
+
+#duckBehaviour
+turnBehaviour
+stepTime 1
+stepHeight -0.085
+
+
+/behaviour

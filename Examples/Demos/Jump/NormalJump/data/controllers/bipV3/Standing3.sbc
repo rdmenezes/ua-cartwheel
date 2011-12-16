@@ -1,0 +1,270 @@
+PDParams
+#        joint name              Kp      Kd      MaxTorque    ScaleX        ScaleY        ScaleZ
+    root	3000.000000	300.000000	10000.000000	1.000000	0.200000	1.000000
+    pelvis_lowerback	200.000000	30.000000	10000.000000	1.000000	0.200000	1.000000
+    lowerback_torso	200.000000	30.000000	10000.000000	1.000000	0.200000	1.000000
+    lHip	300.000000	30.000000	10000.000000	1.000000	0.660000	1.000000
+    rHip	300.000000	30.000000	10000.000000	1.000000	0.660000	1.000000
+    torso_head	200.000000	20.000000	10000.000000	1.000000	0.200000	1.000000
+    lShoulder	20.000000	5.000000	10000.000000	0.500000	1.000000	1.000000
+    rShoulder	20.000000	5.000000	10000.000000	0.300000	1.000000	1.000000
+    lKnee	300.000000	30.000000	10000.000000	1.000000	0.200000	1.000000
+    rKnee	300.000000	30.000000	10000.000000	1.000000	0.200000	1.000000
+    lElbow	5.000000	1.000000	10000.000000	0.200000	1.000000	1.000000
+    rElbow	5.000000	1.000000	10000.000000	0.200000	1.000000	1.000000
+    lAnkle	75.000000	10.000000	10000.000000	1.000000	0.200000	0.200000
+    rAnkle	75.000000	10.000000	10000.000000	1.000000	0.200000	0.200000
+    lToeJoint	10.000000	0.500000	10000.000000	1.000000	1.000000	1.000000
+    rToeJoint	10.000000	0.500000	10000.000000	1.000000	1.000000	1.000000
+/PDParams
+
+ConState 0
+	description State 0
+	nextState 0
+	time 1
+	stateStance same
+	
+	trajectory root	
+		component
+			rotationAxis 0.0 1.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component	
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+		
+	
+	trajectory SWING_Hip
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd 0  #X
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 -0.02  #X
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0  #Z
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.0008  #Z
+			/baseTrajectory
+		/component
+	/trajectory
+		
+	
+	trajectory STANCE_Hip
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd 0  #X
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 -0.02  #X
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0  #Z
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.0008  #Z
+			/baseTrajectory
+		/component
+	/trajectory
+	
+	
+	trajectory STANCE_Ankle
+		characterFrameRelative
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0			
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd 0  # X
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.072  # X
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0  # Z
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 -0.715
+			/baseTrajectory
+		/component
+	/trajectory
+	
+	
+	trajectory SWING_Ankle
+		characterFrameRelative
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0			
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd 0  # X
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.072  # X
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0   # Z
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 -0.715
+			/baseTrajectory
+		/component
+	/trajectory
+	
+			
+	trajectory STANCE_Knee
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0			
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd 0
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+
+		component
+			rotationAxis 0.0 0.0 1.0		
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0
+				cv 0
+			/feedback
+		/component
+	/trajectory
+	
+	
+	trajectory pelvis_lowerback
+		strengthTrajectory
+			0.0 1.0
+		/strengthTrajectory
+	characterFrameRelative
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0			
+			feedback linear
+				feedbackProjectionAxis 1.0 0.0 0.0
+				cd -0
+				cv -0
+			/feedback
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0			
+			feedback linear
+				feedbackProjectionAxis 0.0 0.0 1.0
+				cd 0
+				cv 0
+			/feedback
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	
+			
+	trajectory SWING_ToeJoint
+	/trajectory	
+	
+	trajectory STANCE_ToeJoint
+	/trajectory	
+	
+	trajectory lowerback_torso
+	/trajectory	
+	
+	trajectory torso_head
+		strengthTrajectory
+			0.0 4.0
+		/strengthTrajectory
+	/trajectory
+	
+	trajectory SWING_Shoulder
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 -1.6
+			/baseTrajectory
+		/component
+	/trajectory
+	
+	
+	trajectory STANCE_Shoulder
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 1.6
+			/baseTrajectory
+		/component
+	/trajectory
+/ConState
+
+startAtState 0
+startingStance left

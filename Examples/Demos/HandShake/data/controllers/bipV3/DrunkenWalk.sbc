@@ -1,0 +1,319 @@
+PDParams
+#	joint name	Kp	Kd	MaxTorque	ScaleX	ScaleY	ScaleZ
+	root	1000.0	200.0	200.0	1.0	1.0	1.0
+	pelvis_lowerback	75.0	17.0	100.0	1.0	1.0	1.0
+	lowerback_torso	75.0	17.0	100.0	1.0	1.0	1.0
+	torso_head	50.0	15.0	200.0	1.0	0.2	1.0
+	lShoulder	50.0	15.0	200.0	1.0	1.0	1.0
+	rShoulder	50.0	15.0	200.0	1.0	1.0	1.0
+	lElbow	50.0	15.0	200.0	0.2	1.0	1.0
+	rElbow	50.0	15.0	200.0	0.2	1.0	1.0
+	lHip	300.0	35.0	200.0	1.0	1.0	1.0
+	rHip	300.0	35.0	200.0	1.0	1.0	1.0
+	lKnee	300.0	35.0	1000.0	1.0	1.0	1.0
+	rKnee	300.0	35.0	1000.0	1.0	1.0	1.0
+	lAnkle	50.0	15.0	100.0	1.0	0.2	0.2
+	rAnkle	50.0	15.0	100.0	1.0	0.2	0.2
+	lToeJoint	2.0	0.2	100.0	1.0	1.0	1.0
+	rToeJoint	2.0	0.2	100.0	1.0	1.0	1.0
+/PDParams
+ConState 0
+	description State 0
+	nextState 0
+	time 0.84
+	stateStance reverse
+	trajectory root 
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				1.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				1.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory SWING_Hip 
+	/trajectory
+	trajectory SWING_Knee 
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory STANCE_Knee 
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.2
+				0.25 0.2
+				0.5 0.9875
+				0.75 0.2
+				1.0 0.2
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory SWING_Ankle 
+	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 1.19
+				0.25 0.8071875
+				0.5 0.315
+				0.75 -0.15326171875
+				1.0 -0.56
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory STANCE_Ankle 
+	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 -0.56
+				0.25 -0.1771875
+				0.5 0.315
+				0.75 0.78326171875
+				1.0 1.19
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory SWING_Shoulder 
+	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.4
+				0.25 0.4
+				0.5 0.4
+				0.75 0.4
+				1.0 0.4
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 -1.5
+				0.25 -0.856849024564
+				0.5 -1.5
+				0.75 -1.5
+				1.0 -1.5
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 -0.25
+				0.25 -0.140625
+				0.5 0.0
+				0.75 0.1337890625
+				1.0 0.25
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory STANCE_Shoulder 
+	characterFrameRelative
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.4
+				0.25 0.4
+				0.5 0.4
+				0.75 0.4
+				1.0 0.4
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 1.5
+				0.25 1.5
+				0.5 1.5
+				0.75 0.841261506347
+				1.0 1.5
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.25
+				0.25 0.140625
+				0.5 0.0
+				0.75 -0.1337890625
+				1.0 -0.25
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory STANCE_Elbow 
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 0.1
+				0.25 0.1
+				0.5 0.1
+				0.75 0.1
+				1.0 0.1
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory SWING_Elbow 
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance left
+			baseTrajectory
+				0.0 -0.1
+				0.25 -0.1
+				0.5 -0.1
+				0.75 -0.1
+				1.0 -0.1
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory pelvis_lowerback 
+	characterFrameRelative
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+				0.25 -0.338245685756
+				0.5 0.0
+				0.75 0.392858393573
+				1.0 -0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.562673316863
+				0.25 -0.0266145330645
+				0.5 -0.387208283918
+				0.75 0.00346308709372
+				1.0 0.562673316863
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory lowerback_torso 
+	characterFrameRelative
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+				0.25 -0.339825553389
+				0.5 0.0
+				0.75 0.356935318054
+				1.0 -0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.61823324355
+				0.25 -0.0516524962421
+				0.5 -0.462717152977
+				0.75 -0.0178491409028
+				1.0 0.61823324355
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory torso_head 
+	characterFrameRelative
+		component
+			rotationAxis 0.0 1.0 0.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 0.0 0.0 1.0
+			reverseTargetAngleOnStance right
+			baseTrajectory
+				0.0 0.0
+				0.25 0.0
+				0.5 0.0
+				0.75 0.0
+				1.0 -0.0
+			/baseTrajectory
+		/component
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+				0.25 0.0
+				0.5 0.0
+				0.75 0.0
+				1.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory SWING_ToeJoint 
+		strengthTrajectory
+			0.3 0.1
+			0.5 0.1
+			0.6 1.0
+		/strengthTrajectory
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+	trajectory STANCE_ToeJoint 
+		component
+			rotationAxis 1.0 0.0 0.0
+			baseTrajectory
+				0.0 0.0
+			/baseTrajectory
+		/component
+	/trajectory
+/ConState
+
+startAtState 0
+startingStance left

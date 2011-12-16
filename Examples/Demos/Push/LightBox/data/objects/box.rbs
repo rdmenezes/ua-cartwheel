@@ -1,0 +1,12 @@
+RigidBody
+	name dodgeBox
+	mesh data/models/box3.obj
+	mass 1
+	moi 0.2 0.2 0.2
+	colour 0.5 0.5 0.5 1
+	CDP_Box -0.2 -0.1 -0.2 0.1 0.2 0.1
+	position 0 0 0
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+/End
+

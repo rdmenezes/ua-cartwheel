@@ -1,0 +1,325 @@
+
+# Define the rigid bodies that will make up the character V3 - this is the same as the normal bip3d but has toes
+
+A_RigidBody
+	name pelvis2
+	mesh data/models/bipv3/pelvis.obj
+	colour 0.5 0.6 0.8 1	
+	mass 12.9
+	moi 0.0705 0.11 0.13
+	CDP_Capsule -0.05 -0.025 0 0.05 -0.025 0 0.07 
+	position 0 1.035 -1
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+	
+A_RigidBody
+	name lowerBack2
+	mesh data/models/bipv3/lowerBack.obj
+	colour 0.5 0.8 0.6 1 
+	mass 7.0
+	moi 0.1 0.08 0.15
+	CDP_Capsule 0 -0.05 0 0 0.015 0 0.08 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name torso2
+	mesh data/models/bipv3/torso.obj
+	colour 0.5 0.8 0.6 1 
+	mass 15.5
+	moi 0.21 0.14 0.31
+	CDP_Capsule 0 -0.05 0.03 0 0.07 0.03 0.12 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+	
+A_RigidBody
+	name head2
+	mesh data/models/bipv3/head.obj
+	colour 0.892 0.716 0.602 1 
+	mass 5.2
+	moi 0.04 0.02 0.042
+	CDP_Capsule 0 0.05 0 0 0.1 0 0.09 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+	
+A_RigidBody
+	name lUpperArm2
+	mesh data/models/bipv3/lUpperArm.obj
+	colour 0.5 0.8 0.6 1 
+	mass 2.2
+	moi 0.005 0.02 0.02
+	CDP_Capsule -0.13 0 0 0.08 0 0 0.04 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+	
+A_RigidBody
+	name lLowerArm2
+	mesh data/models/bipv3/lLowerArm.obj
+	colour 0.892 0.716 0.602 1 
+	mass 1.7
+	moi 0.0024 0.025 0.025
+	CDP_Capsule -0.2 0 0 0.07 0 0 0.04 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name rUpperArm2
+	mesh data/models/bipv3/rUpperArm.obj
+	colour 0.5 0.8 0.6 1 
+	mass 2.2
+	moi 0.005 0.02 0.02
+	CDP_Capsule 0.13 0 0 -0.08 0 0 0.04 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name rLowerArm2
+	mesh data/models/bipv3/rLowerArm.obj
+	colour 0.892 0.716 0.602 1 
+	mass 1.7
+	moi 0.0024 0.025 0.025
+	CDP_Capsule -0.07 0 0 0.2 0 0 0.04 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name lUpperLeg2
+	mesh data/models/bipv3/lUpperLeg.obj
+	colour 0.5 0.6 0.8 1 
+	mass 6.6
+	moi 0.15 0.022 0.15
+	CDP_Capsule 0 0.15 0 0 -0.19 0 0.05 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name lLowerLeg2
+	mesh data/models/bipv3/lLowerLeg.obj
+	colour 0.5 0.6 0.8 1 
+	mass 3.2
+	moi 0.055 0.007 0.055
+	CDP_Capsule 0 0.17 0 0 -0.22 0 0.05 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35 
+/End
+
+A_RigidBody
+	name rUpperLeg2
+	mesh data/models/bipv3/rUpperLeg.obj
+	colour 0.5 0.6 0.8 1 
+	mass 6.6
+	moi 0.15 0.022 0.15
+	CDP_Capsule 0 0.15 0 0 -0.19 0 0.05 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+/End
+
+A_RigidBody
+	name rLowerLeg2
+	mesh data/models/bipv3/rLowerLeg.obj
+	colour 0.5 0.6 0.8 1 
+	mass 3.2
+	moi 0.055 0.007 0.055
+	CDP_Capsule 0 0.17 0 0 -0.22 0 0.05 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+/End
+
+A_RigidBody
+	name lFoot2
+	mesh data/models/bipv3/lFoot.obj
+	colour 0.5 0.5 0.5 1 
+	mass 1.0
+	moi 0.007 0.008 0.002
+	CDP_Box -0.05 -0.04 -0.09 0.05 0.005 0.065  
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+	ODEGroundParameters 0.0005 0.2 
+/End
+
+A_RigidBody
+	name rFoot2
+	mesh data/models/bipv3/rFoot.obj
+	colour 0.5 0.5 0.5 1 
+	mass 1.0
+	moi 0.007 0.008 0.002
+	CDP_Box -0.05 -0.04 -0.09 0.05 0.005 0.065  
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+	ODEGroundParameters 0.0005 0.2 
+/End
+	
+A_RigidBody
+	name lToes2
+	mesh data/models/bipv3/lToes.obj
+	colour 0.5 0.5 0.5 1 
+	mass 0.2
+	moi 0.002 0.002 0.0005
+	CDP_Box -0.03 0.015 -0.035 0.03 -0.017 0.02 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+	ODEGroundParameters 0.0005 0.2 
+/End
+	
+A_RigidBody
+	name rToes2
+	mesh data/models/bipv3/rToes.obj
+	colour 0.5 0.5 0.5 1 
+	mass 0.2
+	moi 0.002 0.002 0.0005
+	CDP_Box -0.03 0.015 -0.035 0.03 -0.017 0.02 
+	frictionCoefficient 0.8
+	restitutionCoefficient 0.35
+	ODEGroundParameters 0.0005 0.2 
+/End
+	
+
+ArticulatedFigure
+	root pelvis2
+	
+	ballInSocketJoint 1 0 0 0 0 1
+		name pelvis_lowerback
+		parent pelvis2
+		child lowerBack2
+		jointPPos 0 0.07 -0.015
+		jointCPos 0 -0.09 -0.015
+		jointLimits -0.6 0.6 -0.6 0.6 -0.6 0.6
+	/Joint
+
+	ballInSocketJoint 1 0 0 0 0 1
+		name lowerback_torso
+		parent lowerBack2
+		child torso2
+		jointPPos 0 0.05 -0.015
+		jointCPos 0 -0.138 0.012
+		jointLimits -0.6 0.6 -0.6 0.6 -0.6 0.6
+	/Joint
+
+	ballInSocketJoint 1 0 0 0 0 1
+		name torso_head
+		parent torso2
+		child head2
+		jointPPos 0 0.16 0.00
+		jointCPos 0 -0.08 -0.03
+		jointLimits -0.6 0.6 -0.6 0.6 -0.6 0.6 
+	/Joint
+
+	ballInSocketJoint 0 0 1 1 0 0
+		name lShoulder
+		parent torso2
+		child lUpperArm2
+		jointPPos 0.16 0.095 0.02
+		jointCPos -0.13 0 0
+		jointLimits -100 100 -1.5 1.5 -100 100 
+	/Joint
+
+	ballInSocketJoint 0 0 1 1 0 0
+		name rShoulder
+		parent torso2
+		child rUpperArm2
+		jointPPos -0.16 0.095 0.02
+		jointCPos 0.13 0 0
+		jointLimits -100 100 -1.5 1.5 -100 100 
+	/Joint
+				
+	hingeJoint 0 1 0
+		name lElbow
+		parent lUpperArm2
+		child lLowerArm2
+		jointPPos 0.11 0 0
+		jointCPos -0.24 0 0
+		jointLimits -2.7 0 
+	/Joint
+
+	hingeJoint 0 -1 0
+		name rElbow
+		parent rUpperArm2
+		child rLowerArm2
+		jointPPos -0.11 0 0
+		jointCPos 0.24 0 0
+		jointLimits -2.7 0 
+	/Joint
+
+	ballInSocketJoint 1 0 0 0 0 1
+		name lHip
+		parent pelvis2
+		child lUpperLeg2
+		jointPPos 0.08 -0.03 -0.01
+		jointCPos 0 0.17 0
+		jointLimits -1.3 1.9 -1 1 -1 1 
+	/Joint
+
+	ballInSocketJoint 1 0 0 0 0 1
+		name rHip
+		parent pelvis2
+		child rUpperLeg2
+		jointPPos -0.08 -0.03 -0.01
+		jointCPos 0 0.17 0
+		jointLimits -1.3 1.9 -1 1 -1 1 
+	/Joint
+		
+	hingeJoint 1 0 0
+		name lKnee
+		parent lUpperLeg2
+		child lLowerLeg2
+		jointPPos 0 -0.23 0
+		jointCPos 0 0.22 0
+		jointLimits 0 2.5 
+	/Joint
+		
+	hingeJoint 1 0 0
+		name rKnee
+		parent rUpperLeg2
+		child rLowerLeg2
+		jointPPos 0 -0.23 0
+		jointCPos 0 0.22 0
+		jointLimits 0 2.5 
+	/Joint
+		
+
+	universalJoint 0 0 1 1 0 0
+		name lAnkle
+		parent lLowerLeg2
+		child lFoot2
+		jointPPos 0.01 -0.24 0.00
+		jointCPos 0.0 0.02 -0.03
+		jointLimits -0.75 0.75 -0.75 0.75
+	/Joint
+
+	universalJoint 0 0 -1 1 0 0
+		name rAnkle
+		parent rLowerLeg2
+		child rFoot2
+		jointPPos -0.01 -0.24 0.00
+		jointCPos 0.0 0.02 -0.03
+		jointLimits -0.75 0.75 -0.75 0.75 
+	/Joint
+		
+	hingeJoint 1 0 0
+		name lToeJoint
+		parent lFoot2
+		child lToes2
+		jointPPos 0 -0.02 0.055
+		jointCPos 0 0 -0.045
+		jointLimits -0.52 0.1 
+	/Joint
+		
+	hingeJoint 1 0 0
+		name rToeJoint
+		parent rFoot2
+		child rToes2
+		jointPPos 0 -0.02 0.055
+		jointCPos 0 0 -0.045
+		jointLimits -0.52 0.1 
+	/Joint
+	
+/ArticulatedFigure

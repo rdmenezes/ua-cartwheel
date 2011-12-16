@@ -1,0 +1,410 @@
+#Frame 0:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX -5.15149636689e-11
+    pelvisBendY -0
+    pelvisBendZ 0.0
+    torsoBendX -4.67870412582e-10
+    torsoBendY -3.53074871691e-19
+    torsoBendZ -1.81884586168e-29
+    headBendX 6.85610708744e-17
+    headBendY -2.86731416164e-25
+    headBendZ -1.48923903277e-34
+    rightElbowBendX 2.57987464595
+    rightElbowBendY 0.876964290526
+    rightElbowBendZ 2.58539876886
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY 2.92019763797e-17
+    leftElbowBendZ 3.03252095548e-25
+    rightHandBendX 0.0
+    rightHandBendY -1.11022313582e-16
+    rightHandBendZ -5.55110695243e-17
+    leftHandBendX 0.0
+    leftHandBendY 8.2718134569e-25
+    leftHandBendZ -3.06238961213e-32
+    rightShoulderTwist 3.834398107e-09
+    rightShoulderCoronal -0.113951848731
+    rightShoulderSagittal 1.2844663368
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.2
+transitionTime 0.2
+
+
+
+
+
+#Frame 2:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX -5.15149716266e-11
+    pelvisBendY -0.401602006213
+    pelvisBendZ -4.90165754538e-17
+    torsoBendX -4.67870412582e-10
+    torsoBendY -0
+    torsoBendZ 0.0
+    headBendX 6.85610708744e-17
+    headBendY -0
+    headBendZ 5.16987468392e-26
+    rightElbowBendX 2.59839363069
+    rightElbowBendY 0.581808532421
+    rightElbowBendZ -2.89935600651
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY 2.92019763797e-17
+    leftElbowBendZ 3.03252095548e-25
+    rightHandBendX 0.270115881685
+    rightHandBendY 2.77555693092e-16
+    rightHandBendZ -1.11022052144e-16
+    leftHandBendX 0.0
+    leftHandBendY 8.2718134569e-25
+    leftHandBendZ -2.77334563471e-32
+    rightShoulderTwist -0.837867713461
+    rightShoulderCoronal 0.172865733506
+    rightShoulderSagittal 0.471938077815
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.142857142857
+transitionTime 0.0714285714286
+
+
+
+
+#Frame 5:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX -0.491424702063
+    pelvisBendY -0.731615299915
+    pelvisBendZ 0.343399520281
+    torsoBendX -4.67870429149e-10
+    torsoBendY -0.000266119077698
+    torsoBendZ -1.36559048921e-14
+    headBendX 3.3520553138e-11
+    headBendY 0.349994365561
+    headBendZ 1.8958734363e-10
+    rightElbowBendX -2.62151800421
+    rightElbowBendY 0.576399634348
+    rightElbowBendZ -1.07612781145
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY 2.77556220286e-17
+    leftElbowBendZ -2.77556208322e-17
+    rightHandBendX -0.272969501491
+    rightHandBendY 0.000215149076067
+    rightHandBendZ 0.246132420982
+    leftHandBendX -5.55110695243e-17
+    leftHandBendY -2.77556220286e-17
+    leftHandBendZ 2.77556220286e-17
+    rightShoulderTwist -1.01685481079
+    rightShoulderCoronal 0.945206133807
+    rightShoulderSagittal 0.992669143955
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.142857142857
+transitionTime 0.0714285714286
+
+
+#Frame 6:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX -0.297336094143
+    pelvisBendY -0.610015405901
+    pelvisBendZ 0.2049074893
+    torsoBendX -4.67870429151e-10
+    torsoBendY -0.000266122568356
+    torsoBendZ -1.37108203839e-14
+    headBendX 3.35207816463e-11
+    headBendY 0.349997856219
+    headBendZ 1.8958927723e-10
+    rightElbowBendX -2.59020818811
+    rightElbowBendY 0.185903750133
+    rightElbowBendZ -1.10192600086
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY -2.77556220286e-17
+    leftElbowBendZ -1.79101522587e-30
+    rightHandBendX -0.0424239676019
+    rightHandBendY 0.105779040624
+    rightHandBendZ 0.216831123445
+    leftHandBendX 0.0
+    leftHandBendY 0.0
+    leftHandBendZ -2.77556220286e-17
+    rightShoulderTwist -1.19391909282
+    rightShoulderCoronal 0.292780081204
+    rightShoulderSagittal 0.206831551071
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.142857142857
+transitionTime 0.0714285714286
+
+
+#Frame 7:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX -4.81185634199e-05
+    pelvisBendY -0.425549668445
+    pelvisBendZ 3.09103563928e-05
+    torsoBendX -4.67870429151e-10
+    torsoBendY -0.000266122568356
+    torsoBendZ -1.37089005217e-14
+    headBendX 3.35205958491e-11
+    headBendY 0.349997856219
+    headBendZ 1.8958921352e-10
+    rightElbowBendX -2.55939312044
+    rightElbowBendY -0.204961772096
+    rightElbowBendZ -1.12794414742
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY 2.92056415712e-17
+    leftElbowBendZ -3.18726383236e-30
+    rightHandBendX 0.460984343132
+    rightHandBendY 0.303784052297
+    rightHandBendZ 0.139554895127
+    leftHandBendX -5.55110695243e-17
+    leftHandBendY -6.77625827416e-21
+    leftHandBendZ -1.01643961379e-20
+    rightShoulderTwist -0.70893911679
+    rightShoulderCoronal 0.578467801436
+    rightShoulderSagittal -0.585300656149
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.142857142857
+transitionTime 0.0714285714286
+
+
+#Frame 8:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 0.119487657611
+    pelvisBendY -0.361244440496
+    pelvisBendZ -0.0499228533319
+    torsoBendX -4.67870429151e-10
+    torsoBendY -0.000266122568356
+    torsoBendZ -1.37178017009e-14
+    headBendX 3.35207816463e-11
+    headBendY 0.349997856219
+    headBendZ 1.8958927723e-10
+    rightElbowBendX -2.32864686409
+    rightElbowBendY 0.53734886723
+    rightElbowBendZ -0.698942798016
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY 4.16334330429e-17
+    leftElbowBendZ -1.38777917664e-17
+    rightHandBendX 0.946376098989
+    rightHandBendY 0.412712538998
+    rightHandBendZ 0.0312446577047
+    leftHandBendX -5.55110695243e-17
+    leftHandBendY 1.3877793561e-17
+    leftHandBendZ 6.93888805386e-18
+    rightShoulderTwist -0.558087136902
+    rightShoulderCoronal 0.720179092107
+    rightShoulderSagittal -0.569232739266
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.042857142857
+transitionTime 0.0714285714286
+
+
+#Frame 9:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 0.249269341981
+    pelvisBendY -0.0389836727745
+    pelvisBendZ -0.0530316715186
+    torsoBendX 0.151687303509
+    torsoBendY 0.00662661129604
+    torsoBendZ -0.0072315530411
+    headBendX 3.35207816463e-11
+    headBendY 0.349997856219
+    headBendZ 1.8958927723e-10
+    rightElbowBendX -2.32852654904
+    rightElbowBendY 0.537789221445
+    rightElbowBendZ -0.698672360996
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY -5.55110695243e-17
+    leftElbowBendZ 1.21430560647e-17
+    rightHandBendX 1.22543047425
+    rightHandBendY 0.294942506993
+    rightHandBendZ -0.226788237541
+    leftHandBendX 3.46945275358e-18
+    leftHandBendY -5.55110695243e-17
+    leftHandBendZ -3.46945275358e-18
+    rightShoulderTwist 0.366506050797
+    rightShoulderCoronal 1.01263066803
+    rightShoulderSagittal 0.443179576349
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.142857142857
+transitionTime 0.0714285714286
+
+
+#Frame 10:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 0.325936083314
+    pelvisBendY -0.0348554685546
+    pelvisBendZ -0.0562888428175
+    torsoBendX 0.150230352529
+    torsoBendY 0.0724400094337
+    torsoBendZ -0.037930171462
+    headBendX 0.00221956224727
+    headBendY 0.308597933563
+    headBendZ 0.0391654501265
+    rightElbowBendX -2.31970926523
+    rightElbowBendY 0.593149465608
+    rightElbowBendZ -0.580868764231
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY -5.55110695243e-17
+    leftElbowBendZ 1.04083384146e-17
+    rightHandBendX 1.22195505567
+    rightHandBendY 0.165769543133
+    rightHandBendZ -0.295977452225
+    leftHandBendX -1.3877793561e-17
+    leftHandBendY -1.66533383106e-16
+    leftHandBendZ 2.08167165215e-17
+    rightShoulderTwist 0.51468248677
+    rightShoulderCoronal 1.06555112399
+    rightShoulderSagittal 0.609512397485
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.0742857142857
+transitionTime 0.0714285714286
+
+
+#Frame 11:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 0.39688195382
+    pelvisBendY -0.0307621012751
+    pelvisBendZ -0.0581894936668
+    torsoBendX 0.14001096729
+    torsoBendY 0.127955152763
+    torsoBendZ -0.0588493058233
+    headBendX 0.00444835112986
+    headBendY 0.223401752062
+    headBendZ 0.0784935076758
+    rightElbowBendX -2.25787707781
+    rightElbowBendY 0.648739541715
+    rightElbowBendZ -0.375465664564
+    leftElbowBendX -4.3105618267e-08
+    leftElbowBendY -1.66533383106e-16
+    leftElbowBendZ -1.38777832862e-17
+    rightHandBendX 1.19757916419
+    rightHandBendY 0.0589011188332
+    rightHandBendZ -0.30853555206
+    leftHandBendX -4.16334330429e-17
+    leftHandBendY 0.0
+    leftHandBendZ 0.0
+    rightShoulderTwist 0.663477549306
+    rightShoulderCoronal 1.11386393386
+    rightShoulderSagittal 0.776539106184
+    leftShoulderTwist 1.03846741428e-08
+    leftShoulderCoronal 5.19385550784e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.0742857142857
+transitionTime 0.0714285714286
+
+
+#Frame 12:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 0.492372020115
+    pelvisBendY 0.0785534254088
+    pelvisBendZ 0.00031220064492
+    torsoBendX 0.0658155960152
+    torsoBendY 0.0641838330528
+    torsoBendZ -0.0295195101769
+    headBendX 0.00223135360191
+    headBendY 0.0900619079992
+    headBendZ 0.0393733820646
+    rightElbowBendX -1.10586277669
+    rightElbowBendY 0.325412743871
+    rightElbowBendZ -0.144427364538
+    leftElbowBendX -2.16221859713e-08
+    leftElbowBendY -1.11022313582e-16
+    leftElbowBendZ 1.38777911605e-17
+    rightHandBendX 0.590187062832
+    rightHandBendY 0.0110141923098
+    rightHandBendZ -0.154764818686
+    leftHandBendX 1.3877793561e-17
+    leftHandBendY 0.0
+    leftHandBendZ 0.0
+    rightShoulderTwist 0.613492994727
+    rightShoulderCoronal 1.37965551147
+    rightShoulderSagittal 0.583138595876
+    leftShoulderTwist 5.20907477892e-09
+    leftShoulderCoronal 2.60528788104e-10
+    leftShoulderSagittal -1.57079632679
+/behaviour
+durationTime 0.072857142857
+transitionTime 0.0714285714286
+
+
+#Frame 13:
+turnBehaviour
+    stepTime 1
+    stepHeight 0.1
+
+    pelvisBendX 9.44404639573e-06
+    pelvisBendY 1.50671656324e-06
+    pelvisBendZ 6.00297776349e-09
+    torsoBendX 6.15617769751e-07
+    torsoBendY 6.14085370668e-07
+    torsoBendZ -2.82435782833e-07
+    headBendX 2.21395015615e-08
+    headBendY 7.91578374279e-07
+    headBendZ 3.76710137946e-07
+    rightElbowBendX -1.03863322056e-05
+    rightElbowBendY 3.19578512669e-06
+    rightElbowBendZ -1.33157978542e-06
+    leftElbowBendX -2.06868640251e-13
+    leftElbowBendY 3.38813786373e-21
+    leftElbowBendZ 3.23990705042e-23
+    rightHandBendX 5.56732106118e-06
+    rightHandBendY 4.6333255652e-08
+    rightHandBendZ -1.48072137148e-06
+    leftHandBendX -4.23516360301e-22
+    leftHandBendY 3.38813786373e-21
+    leftHandBendZ 5.67944101233e-23
+    rightShoulderTwist 1.17676381396e-05
+    rightShoulderCoronal 2.64628566499e-05
+    rightShoulderSagittal 1.5707841098
+    leftShoulderTwist 4.98390985212e-14
+    leftShoulderCoronal 2.49257451794e-15
+    leftShoulderSagittal -1.57079632679
+/behaviour
+
+

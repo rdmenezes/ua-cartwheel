@@ -1,0 +1,32 @@
+#Frame 1:
+turnBehaviour
+    stepTime 1
+    stepHeight -0.08
+
+    leftElbowBendX 2.9
+    leftElbowBendY 0.1
+    leftElbowBendZ -2.13
+    leftShoulderTwist -1.58
+    leftShoulderCoronal -1
+    leftShoulderSagittal -1.08
+    rightShoulderSagittal 1.5
+/behaviour
+durationTime 0.5
+transitionTime 0.2
+
+
+#Frame 2:
+turnBehaviour
+    stepTime 1
+    stepHeight -0.08
+
+    leftElbowBendX 2.9
+    leftElbowBendY -0.9
+    leftElbowBendZ -2.13
+    leftShoulderTwist -1.58
+    leftShoulderCoronal -1
+    leftShoulderSagittal -1.08
+    rightShoulderSagittal 1.5
+/behaviour
+durationTime 0.5
+transitionTime 0.2
