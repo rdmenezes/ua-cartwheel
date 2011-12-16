@@ -1,0 +1,44 @@
+To see some examples of animations, the Demos folder has some code files that when replaced by the main "interactControl.cpp" 
+they should execute such animations:
+- interactControl_Exchange.cpp: This show the animation of 2 characters, where first both of them grab an object 
+    from a box, one of them kicks the box and then both exchange objects to each other. 
+- interactControl_GiveObj.cpp: This show the animation of 2 characters, where first one of them grab an object 
+    from a box, kicks the box and then gives such object to the other person. 
+- interactControl_JumpBF.cpp: This show the human jump rotating Backwards or Forwards according to the code being activated (to jump rotating 
+    Backwards or Normally [with no rotation], the code from /Behaviors/Jump.cpp must be activated by uncommenting the lines that describe such jumps
+    and commenting the lines of the jump that was being used).
+- interactControl_JumpN.cpp: This makes the juman to jump normally over a box.
+- interactControl_Pull.cpp: The character goes toward an object grabs the handle and tries to pull it some distance backwards.
+- interactControl_Push.cpp: Shows how the character walking toward a big box and then start pushing it to some distance.
+- interactControl_SitDown.cpp: The human appears just in front of a box and just start executing the animation to sitdown in such box.
+- interactControl_ThrowCatch.cpp: Two humans appears on the scene, one of them grabs an object from a box, then kicks such box, gives the
+    object to another person in front of him and starts walking backwards, so the person that has the object tries to throw it toward the other
+    and then the person that is going to receive the object, moves the arm in order to catch it.
+
+
+To add any human in the scene and make it work with any specific behavior, do the following:
+- First to define and add the human to the scene, the following lines of code are needed inside of the 
+function makeWorld(---):
+    //Defining the human definition files and parameters
+    string name = "Human1";
+    string characterFile = "data/characters/bipV3.rbs";
+    string controllerFile = "data/controllers/bipV3/HMV/compositeController.con";
+    string actionFile = "data/controllers/bipV3/HMV/actions";
+    Math::Point3d humanPosition(0, 0.95, -2.2);
+    double heading = PI*0; //3.14;
+
+    //Adding the human
+    p_simulator->addHuman(name, characterFile, controllerFile, actionFile, humanPosition, heading);
+    Math::Point3d humanPosition2(-0.4, 1.0, -0.25);
+    p_simulator->addHuman("Human2", characterFile, controllerFile, actionFile, humanPosition2, 3.14);
+
+After that, in the function render(---) inside of the conditional that checks for options "if (nOpc == 0) {", in order to add any 
+behavior (for example: walk), the following line must be used:
+    g_simulator->doBehavior("Walk", "Human1", new Walk_Params(0, 4, 0.3, 3.14));
+
+The syntax for adding any other behavior to any character is the following (when adding 2 or more behaviors that starts at same time or while any
+other behavior is currently working, the simulator will try to automatically execute them in parallel if such attempted behavior allows it):
+    g_simulator->doBehavior("NameBehavior", "NameHuman", new NameBehavior_Params(InitTime, Duration, Other_BehaviorSpecificParams));
+    
+  
+To change the skin character to the original one, just rename the file "bipV3-.rbs" to "bipV3.rbs" from the folder /data/characters.
