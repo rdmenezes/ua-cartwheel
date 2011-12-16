@@ -1,5 +1,5 @@
 To see some examples of animations, the Demos folder has some code files that when replaced by the main "interactControl.cpp" 
-they should execute such animations:
+they should execute such animations (or directly run the executables from the "Examples" folder):
 - interactControl_Exchange.cpp: This show the animation of 2 characters, where first both of them grab an object 
     from a box, one of them kicks the box and then both exchange objects to each other. 
 - interactControl_GiveObj.cpp: This show the animation of 2 characters, where first one of them grab an object 
