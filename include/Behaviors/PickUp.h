@@ -1,12 +1,5 @@
-/* 
- * File:   PickUp.h
- * Author: alfredo
- *
- * Created on May 19, 2011, 2:42 PM
- */
-
-#ifndef PICKUP_H
-#define	PICKUP_H
+#ifndef PickUp_H
+#define	PickUp_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -44,5 +37,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* PICKUP_H */
+#endif
 

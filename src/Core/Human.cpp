@@ -26,7 +26,9 @@ namespace CartWheel {
         m_behaviour(behaviour),
         m_policy(policy),
         m_composite_controller(NULL),
-        bBusyBothHands(false) {
+        bBusyBothHands(false),
+        bBusyLeftHand(false),
+        bBusyRightHand(false) {
             if (NULL != m_behaviour) {
                 IKVMCController* ikvmccon = (dynamic_cast<IKVMCController*> (controller));
                 if (NULL != ikvmccon) {
@@ -46,7 +48,9 @@ namespace CartWheel {
         m_behaviour(NULL),
         m_policy(policy),
         m_composite_controller(controller),
-        bBusyBothHands(false) {
+        bBusyBothHands(false),
+        bBusyLeftHand(false),
+        bBusyRightHand(false) {
             m_humanIK = new HumanoidIKCharacter(m_character);
             vMinPos = vMaxPos = Vector3d(SimGlobals::nan);
         }
@@ -194,6 +198,8 @@ namespace CartWheel {
                     attachmentHandL->removeChildJoints();
                     ArticulatedRigidBody* attachmentHandR = m_character->getARBByName("rHand");
                     attachmentHandR->removeChildJoints();
+                    bBusyLeftHand = false;
+                    bBusyRightHand = false;
                 }
             } else {
                 std::string targetNameL = targetName;
@@ -269,6 +275,8 @@ namespace CartWheel {
                 m_grabbedBodies[targetName] = dynamic_cast<ArticulatedRigidBody*> (rigidBody);
                 body = m_grabbedBodies[targetName];
                 result = (NULL != body);
+                if (result==NULL)
+                    printf("Not object to grab was found by name %s.\n", targetName.c_str());
             }
 
             ArticulatedRigidBody* attachmentHand = NULL;
@@ -300,6 +308,7 @@ namespace CartWheel {
                         childPos.z += 0.08;
                         parentJointPos = Point3d(0.09, -0.04, 0);
                         childJointPos = Point3d(0, 0, 0);
+                        bBusyLeftHand = true;
                         break;
                     case right:
                         childPos.x += 0.045;
@@ -307,6 +316,7 @@ namespace CartWheel {
                         childPos.z += 0.08;
                         parentJointPos = Point3d(-0.09, -0.04, 0);
                         childJointPos = Point3d(0, 0, 0);
+                        bBusyRightHand = true;
                         break;
                 }
 
@@ -357,6 +367,8 @@ namespace CartWheel {
                 m_grabbedBodies[targetName] = dynamic_cast<ArticulatedRigidBody*> (rigidBody);
                 body = m_grabbedBodies[targetName];
                 result = (NULL != body);
+                if (result==NULL)
+                    printf("Not object to grab was found by name %s.\n", targetName.c_str());
             }
 
             ArticulatedRigidBody* attachmentHandL = m_character->getARBByName("lHand");
@@ -434,6 +446,17 @@ namespace CartWheel {
             }
         }
         
+        bool Human::getLeftHandBusy() {
+            return bBusyLeftHand;
+        }
+        
+        bool Human::getRightHandBusy() {
+            return bBusyRightHand;            
+        }
+        
+        bool Human::getBothHandsBusy() {
+            return bBusyBothHands;            
+        }
         
         bool Human::getFootTouchedGround() {            
             World& world = World::instance();

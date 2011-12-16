@@ -367,10 +367,29 @@ void RigidBody::addMeshObj(const char* objFilename, const Vector3d& offset, cons
 	meshes.push_back(tmpMesh);
 }
 
+
+/**
+        This method loads an OBJ mesh replacing any currently existing OBJ mesh
+*/
+void RigidBody::replaceMeshObj(const char* objFilename, const Vector3d& offset, const Vector3d& scale) {
+    //delete all the Obj Meshes
+    for (unsigned int i = 0; i < meshes.size(); i++) {
+        delete meshes[i];
+    }
+    meshes.clear();
+    GLMesh* tmpMesh;
+    tmpMesh = OBJReader::loadOBJFile(objFilename);
+    tmpMesh->offset( offset );
+    tmpMesh->scale( scale );
+    tmpMesh->computeNormals();
+    tmpMesh->dontUseTextureMapping();
+    meshes.push_back(tmpMesh);
+}
+
 /**
 	This method sets the colour of the last mesh loaded
 */
-void RigidBody::setColour( double r, double g, double b, double a ) {	
+void RigidBody::setColour( double r, double g, double b, double a ) {
 	if (meshes.size()>0)
 		meshes[meshes.size()-1]->setColour(r, g, b, a);
 }

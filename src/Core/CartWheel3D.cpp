@@ -91,6 +91,20 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
     string sFile = _path + characterFile;
     _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
     Character* ch = new Character(_world->getAF(_world->getAFCount() - 1));
+//    printf("AF: %s\n", _world->getAF(_world->getAFCount() - 1)->getName());
+    ArticulatedRigidBody* body = ch->getArticulatedRigidBody(4);
+    printf("Trying to get a Body\n");
+    if (body==NULL)
+        printf("Body not found\n");
+    else {
+        printf("Body found!!!\n");
+////        body->addMeshObj("data/models/bipv3/head.obj", Vector3d(0,0,0), Vector3d(0.5,2,0.5));
+//        body->replaceMeshObj("data/models/box3.obj");
+//        body->getMesh(0)->scale(Vector3d(0.06,0.06,0.06));
+//        body->getMesh(0)->computeNormals();
+//        body->setColour(1,0,0,1);
+//        body->setMass(-10);
+    }
 
     CompositeController* con = new CompositeController(ch, _oracle, controllerFile.c_str());
     ActionCollectionPolicy* policy = new ActionCollectionPolicy(con);
@@ -119,11 +133,11 @@ void CartWheel3D::addHuman(const string& name, const std::string& characterFile,
 //        printf("Joint: %s, Parent-Joint: %s, Pos: (%f, %f, %f)\n", ch->getJoint(i)->getName(), ch->getJoint(i)->getParent()->getName(), p2.x, p2.y, p2.z);
 //        printf("Joint: %s, Child-Joint: %s, Pos: (%f, %f, %f)\n\n", ch->getJoint(i)->getName(), ch->getJoint(i)->getChild()->getName(), p1.x, p1.y, p1.z);
 //    }
-//    printf("\n\n\nArticulated Rigid Bodies:\n");
-//    for(int i=0; i<ch->getArticulatedRigidBodyCount(); i++) {
-//        Vector3d p = ch->getArticulatedRigidBody(i)->getCMPosition();
-//        printf("ARB: %s, Pos: (%f, %f, %f)\n", ch->getArticulatedRigidBody(i)->getName(), p.x, p.y, p.z);
-//    }
+    printf("\n\n\nArticulated Rigid Bodies:\n");
+    for(int i=0; i<ch->getArticulatedRigidBodyCount(); i++) {
+        Vector3d p = ch->getArticulatedRigidBody(i)->getCMPosition();
+        printf("ARB: %s, Pos: (%f, %f, %f)\n", ch->getArticulatedRigidBody(i)->getName(), p.x, p.y, p.z);
+    }
 }
 
 void CartWheel3D::resetHumanPose(const std::string& name) {
@@ -174,6 +188,12 @@ void CartWheel3D::addObject(const string& name, const string& objFile, double ma
     _world->loadRBsFromFile(sFile.c_str(), _path.c_str(), name.c_str());
 
     RigidBody* rb = _world->getRB(_world->getRBCount() - 1);
+//    printf("renaming %s into %s\n", rb->getName(), name.c_str());
+//    RigidBody* rb2;
+//    if (_world->getRBCount()>1)
+//        rb2 = _world->getRB(_world->getRBCount() - 2);
+//        if (rb2!=NULL)
+//            printf("rb %s\n", rb2->getName());
     rb->setName(name.c_str());
 
     if (mass > 0) {
@@ -181,7 +201,8 @@ void CartWheel3D::addObject(const string& name, const string& objFile, double ma
     }
 }
 
-void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector3d& position, double rotation, double mass) {
+void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector3d& position, 
+        double rotation, double mass, double friction, double restitution) {
     string mesh = _path + "data/models/box3.obj";
     Vector3d offset = Vector3d(0, 0, 0);
 
@@ -198,8 +219,8 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
 
     body->addCollisionDetectionPrimitive(new BoxCDP(pos1, pos2, body));
 
-    body->setFrictionCoefficient(1.8);
-    body->setRestitutionCoefficient(0.35);
+    body->setFrictionCoefficient(friction);
+    body->setRestitutionCoefficient(restitution);
 
     body->setCMPosition(position);
     Vector3d y_axis(0, 1, 0);
@@ -219,12 +240,18 @@ void CartWheel3D::addBox(const string& name, const Vector3d& scale, const Vector
     //  }
 }
 
+void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass, 
+        double friction, double restitution) {
+    Vector3d position = Vector3d(0, 0, 0);
+    addBox(name, scale, position, 0.0, mass, friction, restitution);
+}
+
 void CartWheel3D::addBox(const string& name, const Vector3d& scale, double mass) {
     Vector3d position = Vector3d(0, 0, 0);
     addBox(name, scale, position, 0.0, mass);
 }
 
-void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass) {
+void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass, const Vector3d& color) {
     string mesh = _path + "data/models/sphere10x.obj";
     Vector3d offset = Vector3d(0, 0, 0);
 #if 1
@@ -236,7 +263,8 @@ void CartWheel3D::addBall(const string& name, const Vector3d& scale, double mass
     body->setName(name.c_str());
     body->setScale(scale);
     body->addMeshObj(mesh.c_str(), offset, scale);
-    body->setColour(0.1, 0, 0.8, 1);
+    body->setColour(color.x, color.y, color.z, 1);
+//    body->setColour(0.1, 0, 0.8, 1);
     body->setMass(mass);
     body->setMOI(Vector3d(0.2, 0.2, 0.2));
 
@@ -465,7 +493,16 @@ Physics::World* CartWheel3D::getWorld() {
 }
 
 Physics::RigidBody* CartWheel3D::getObjectByName(const std::string& name) {
+    if (_world->getRBByName(name.c_str())==NULL)
+        printf("Not object [CartWheel3D::getObjectByName] found by name %s.\n", name.c_str());
     return _world->getRBByName(name.c_str());
+}
+
+Physics::ArticulatedRigidBody* CartWheel3D::getARBObjectByName(const std::string& nameARB, const std::string& nameAF) {
+    if (_world->getARBByName(nameARB.c_str(), nameAF.c_str())==NULL)
+        printf("Not ARBobject [CartWheel3D::getARBObjectByName] found by name %s [from AF: %s].\n", 
+                nameARB.c_str(), nameAF.c_str());
+    return _world->getARBByName(nameARB.c_str(), nameAF.c_str());
 }
 
 void CartWheel3D::setHumanPosition(const std::string& name, const Math::Point3d& pos) {
@@ -500,7 +537,7 @@ void CartWheel3D::makeHumanGrabObject(const std::string& name, const std::string
 }
 
 void CartWheel3D::makeHumanThrowObject(const std::string& name, const std::string& targetName, const Math::Vector3d& velocity) {
-    _humans[name]->throwObject("ball1", velocity);
+    _humans[name]->throwObject(targetName, velocity);
 }
 
 void CartWheel3D::makeHumanDropObject(const std::string& name, const std::string& targetName) {

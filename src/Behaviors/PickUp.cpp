@@ -1,10 +1,3 @@
-/* 
- * File:   PickUp.cpp
- * Author: alfredo
- * 
- * Created on July 4, 2011, 2:56 PM
- */
-
 #include "Behaviors/PickUp.h"
 #include <Core/CartWheel3D.h>
 
@@ -36,6 +29,10 @@ void PickUp::runStep() {
         Physics::RigidBody* obj = cw->getObjectByName(sTargetObj.c_str());
                
         Point3d posObj = obj->getCMPosition();
+//        posObj.y += 0.05;
+//        posObj += 0.05;
+//        posObj.x += 0.05;
+//        posObj.z += 0.05;
 //        Point3d posObj = Point3d(0, 0.1, -1);
         Point3d posHuman;
         
@@ -74,7 +71,7 @@ void PickUp::runStep() {
         
         double distTarget = getDistXYZ(posObj, posHuman);
         bool heightReached = (bendOverK > 0.9) && (distTarget < 0.58);
-        if(heightReached || distTarget < 0.25) {  //closer: distTarget < 0.228         
+        if(heightReached || distTarget < 0.25) {  //closer: distTarget < 0.228        0.25     current:0.23
             printf("Distance: %f, Object Grabbing!!!\n", distTarget);
             if(strcmp(sHand.c_str(), "Left")==0)
                 cw->makeHumanGrabObject(humanName, sTargetObj.c_str(), Human::left);
@@ -87,13 +84,18 @@ void PickUp::runStep() {
             printf("Distance: %f, BendOver: %f\n", distTarget, bendOverK);
         }
     }
-//    if (bPickUpFinished) {
-////        human->setLock("lHand", false, true);
-////        human->setLock("rHand", false, true);
-////        human->setOrientationQ("lHand", human->getOrientationQ("lUpperArm"));
-////        human->setOrientationQ("rHand", human->getOrientationQ("rUpperArm"));
-//        bcontroller->requestHandBend(-1.5,1.5, 0,0, 0,0);
-//    }
+    if (bPickUpFinished) {
+//        human->setLock("lHand", true, true);
+//        human->setLock("rHand", true, true);
+        human->setLock("torso", true, true);
+//        human->setLock("lowerBack", true, true);
+        human->setLock("pelvis", true, true);
+//        printf("Velocity: %f, %f, %f\n", cw->getObjectByName("boxHandle2 boxH")->getCMVelocity().x, 
+//                cw->getObjectByName("boxHandle2 boxH")->getCMVelocity().y, 
+//                cw->getObjectByName("boxHandle2 boxH")->getCMVelocity().z);
+////        cw->getObjectByName("boxHandle2 boxH")->setCMVelocity(Vector3d(0,0,0));
+        cw->getObjectByName("ball1")->setCMVelocity(Vector3d(0,0,0));
+    }
 }
 
 void PickUp::onFinish() {
@@ -130,6 +132,8 @@ void PickUp::resetHumanAngles() {
     bcontroller->requestHeadBend(0, 0, 0);
     bcontroller->requestPelvisTorsoBend(0, 0, 0, 0, 0, 0);
     bcontroller->requestShoulderBend(0, 0, 0, 0, -1.5, 1.5);
+    human->setLock("lHand", true, true);
+    human->setLock("rHand", true, true);
     
     if(strcmp(sHand.c_str(), "Both")==0) {
         bcontroller->requestElbowBend(0, 0, -1, 1, 0, 0);

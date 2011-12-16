@@ -25,6 +25,12 @@
 #include <Behaviors/PickUp.h>
 #include <Behaviors/Dig.h>
 #include <Behaviors/Throw.h>
+#include <Behaviors/SitDown.h>
+#include <Behaviors/Jump.h>
+#include <Behaviors/GiveObj.h>
+#include <Behaviors/Falling.h>
+#include <Behaviors/Catch.h>
+#include <Behaviors/HandShake.h>
 
 
 namespace CartWheel { 

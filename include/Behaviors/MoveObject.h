@@ -1,12 +1,5 @@
-/* 
- * File:   MoveObject.h
- * Author: alfredo
- *
- * Created on Jun 27, 2011, 2:42 PM
- */
-
-#ifndef MOVEOBJECT_H
-#define	MOVEOBJECT_H
+#ifndef MoveObject_H
+#define	MoveObject_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -36,5 +29,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* MOVEOBJECT_H */
+#endif
 

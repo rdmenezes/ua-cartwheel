@@ -1,10 +1,3 @@
-/* 
- * File:   Kick.cpp
- * Author: alfredo
- * 
- * Created on June 8, 2011, 10:24 AM
- */
-
 #include "Behaviors/Kick.h"
 #include "Control/ActRecognizerInterface.h"
 #include <Core/CartWheel3D.h>

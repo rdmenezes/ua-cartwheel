@@ -1,15 +1,10 @@
-/* 
- * File:   Push.h
- * Author: alfredo
- *
- * Created on May 19, 2011, 3:09 PM
- */
-
-#ifndef PUSH_H
-#define	PUSH_H
+#ifndef Push_H
+#define	Push_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
+#include <Core/BehaviourController.h>
+#include <Core/Human.h>
 
 using namespace CartWheel::Behaviors;
 
@@ -17,7 +12,12 @@ namespace CartWheel {
     class CartWheel3D;
     namespace Behaviors {
 
-        class Push : public Behavior {            
+        class Push : public Behavior {
+        private:
+            int nFrame;
+            Core::Human* human;
+            Core::BehaviourController* bcontroller;
+            
         protected:
             virtual void runStep();
             virtual void onInit();
@@ -29,5 +29,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* PUSH_H */
+#endif
 

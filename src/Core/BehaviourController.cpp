@@ -248,7 +248,7 @@ void BehaviourController::simStepPlan(double /* dt */) {
     setDesiredSwingFootLocation();
 
     //set some of these settings
-    //setUpperBodyPose(ubSagittalLean, ubCoronalLean, ubTwist);
+//    setUpperBodyPose(ubSagittalLean, ubCoronalLean, ubTwist);
     setKneeBend(kneeBend);
     setDuckWalkDegree((lowLCon->stance == LEFT_STANCE) ? (-duckWalk) : (duckWalk));
     setDesiredHeading(desiredHeading);

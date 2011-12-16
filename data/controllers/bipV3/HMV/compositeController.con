@@ -11,8 +11,9 @@ loadBehaviourController data/controllers/bipV3/Default_1.cbc
 
 #1
 #loadController data/controllers/bipV3/Standing2.sbc
-loadIKVMCController data/controllers/bipV3/StandingReal.sbc
-loadBehaviourController data/controllers/bipV3/Standing.cbc
+loadController data/controllers/bipV3/Falling.sbc
+#loadIKVMCController data/controllers/bipV3/StandingReal.sbc
+#loadBehaviourController data/controllers/bipV3/Standing.cbc
 ##loadController data/controllers/bipV3/Standing3.sbc
 
 

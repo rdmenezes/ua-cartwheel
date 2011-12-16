@@ -1,12 +1,5 @@
-/* 
- * File:   Kick.h
- * Author: alfredo
- *
- * Created on June 8, 2011, 10:24 AM
- */
-
-#ifndef KICK_H
-#define	KICK_H
+#ifndef Kick_H
+#define	Kick_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -35,5 +28,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* KICK_H */
+#endif
 

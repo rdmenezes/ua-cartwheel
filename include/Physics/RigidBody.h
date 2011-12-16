@@ -246,6 +246,13 @@ public:
 	*/
 	void addMeshObj(const char* objFilename, const CartWheel::Math::Vector3d& offset = CartWheel::Math::Vector3d(0,0,0),
 			const CartWheel::Math::Vector3d& scale = CartWheel::Math::Vector3d(1,1,1) );
+        
+
+	/**
+		This method loads an OBJ mesh replacing any currently existing OBJ mesh
+	*/
+        void replaceMeshObj(const char* objFilename, const CartWheel::Math::Vector3d& offset = CartWheel::Math::Vector3d(0,0,0),
+			const CartWheel::Math::Vector3d& scale = CartWheel::Math::Vector3d(1,1,1) );
 
 	/**
 		This method sets the colour of the last mesh loaded
