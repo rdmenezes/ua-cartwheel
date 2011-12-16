@@ -39,7 +39,7 @@ namespace CartWheel {
             std::map<std::string, Physics::Joint*> m_grabJoints;
             std::map<std::string, Physics::ArticulatedRigidBody*> m_grabbedBodies;
             HumanoidIKCharacter* m_humanIK;
-            bool bBusyBothHands;
+            bool bBusyBothHands, bBusyLeftHand, bBusyRightHand;
             Vector3d vMinPos, vMaxPos;
             
 
@@ -93,6 +93,10 @@ namespace CartWheel {
             inline Vector3d getPosition(std::string sARB) {
                 return m_character->getARBByName(sARB.c_str())->getCMPosition();
             }
+            
+            bool getLeftHandBusy();
+            bool getRightHandBusy();
+            bool getBothHandsBusy();
             
             void getLeftArmIK(Point3d pTarget, Vector3d* vShoulder, Vector3d* vElbow, Vector3d* vHand);
             void getRightArmIK(Point3d pTarget, Vector3d* vShoulder, Vector3d* vElbow, Vector3d* vHand);

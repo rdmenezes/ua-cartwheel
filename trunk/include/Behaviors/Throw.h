@@ -1,12 +1,5 @@
-/* 
- * File:   Throw.h
- * Author: alfredo
- *
- * Created on Jun 26, 2011, 2:42 PM
- */
-
-#ifndef THROW_H
-#define	THROW_H
+#ifndef Throw_H
+#define	Throw_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -22,7 +15,8 @@ namespace CartWheel {
         class Throw : public Behavior {
         private:
             int nFrame;
-            std::string sHand;
+            std::string sHand, sObj;
+            Vector3d speed;
             Core::Human* human;
             Core::BehaviourController* bcontroller;
             
@@ -37,5 +31,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* THROW_H */
+#endif
 

@@ -1,10 +1,3 @@
-/* 
- * File:   MoveObject.cpp
- * Author: alfredo
- * 
- * Created on Jun 27, 2011, 2:56 PM
- */
-
 #include "Behaviors/MoveObject.h"
 #include <Core/CartWheel3D.h>
 

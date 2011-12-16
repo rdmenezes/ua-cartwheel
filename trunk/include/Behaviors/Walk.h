@@ -1,12 +1,5 @@
-/* 
- * File:   Standing.h
- * Author: alfredo
- *
- * Created on May 19, 2011, 2:42 PM
- */
-
-#ifndef WALK_H
-#define	WALK_H
+#ifndef Walk_H
+#define	Walk_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -37,5 +30,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* WALK_H */
+#endif
 

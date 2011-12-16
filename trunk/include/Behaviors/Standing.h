@@ -1,12 +1,5 @@
-/* 
- * File:   Standing.h
- * Author: alfredo
- *
- * Created on May 19, 2011, 2:42 PM
- */
-
-#ifndef STANDING_H
-#define	STANDING_H
+#ifndef Standing_H
+#define	Standing_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -21,6 +14,7 @@ namespace CartWheel {
         class Standing : public Behavior {  
         private:            
             Core::Human* human;
+            Core::BehaviourController* bcontroller;
             
         protected:
             virtual void runStep();
@@ -33,5 +27,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* STANDING_H */
+#endif
 

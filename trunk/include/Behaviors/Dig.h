@@ -1,12 +1,5 @@
-/* 
- * File:   Dig.h
- * Author: alfredo
- *
- * Created on June 8, 2011, 10:24 AM
- */
-
-#ifndef DIG_H
-#define	DIG_H
+#ifndef Dig_H
+#define	Dig_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -36,5 +29,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* DIG_H */
+#endif
 

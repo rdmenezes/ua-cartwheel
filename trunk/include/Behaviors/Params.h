@@ -1,12 +1,5 @@
-/* 
- * File:   Params.h
- * Author: alfredo
- *
- * Created on June 3, 2011, 12:37 AM
- */
-
-#ifndef PARAMS_H
-#define	PARAMS_H
+#ifndef Params_H
+#define	Params_H
 
 #include <string>
 #include <MathLib/Trajectory.h>
@@ -49,6 +42,14 @@ namespace CartWheel {
         class Standing_Params : public Params {
         public:
             Standing_Params(double startTime, double duration) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+            }
+        };
+        
+        class Falling_Params : public Params {
+        public:
+            Falling_Params(double startTime, double duration) {
                 Params::startTime = startTime;
                 Params::duration = duration;
             }
@@ -124,11 +125,15 @@ namespace CartWheel {
         class Throw_Params : public Params {
         public:
             std::string sHand;
+            std::string sObj;
+            Vector3d speed;
             
-            Throw_Params(double startTime, double duration, std::string hand) {
+            Throw_Params(double startTime, double duration, std::string hand, std::string obj, Vector3d speed) {
                 Params::startTime = startTime;
                 Params::duration = duration;
                 this->sHand = hand.c_str();
+                this->sObj = obj.c_str();
+                this->speed = speed;
             }
         };
         
@@ -144,8 +149,75 @@ namespace CartWheel {
                 this->sHand = hand;
             }
         };
+        
+        class Catch_Params : public Params {
+        public:
+            std::string sTargetObj;
+            std::string sHand;
+            
+            Catch_Params(double startTime, double duration, std::string sTargetObj, std::string hand) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sTargetObj = sTargetObj;
+                this->sHand = hand;
+            }
+        };
+        
+        class GiveObj_Params : public Params {
+        public:
+            std::string sTargetObj;
+            std::string sToHand;
+            std::string sToHuman;
+            
+            GiveObj_Params(double startTime, double duration, std::string toHuman, std::string sTargetObj, std::string toHand) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sToHuman = toHuman;
+                this->sTargetObj = sTargetObj;
+                this->sToHand = toHand;
+            }
+        };
+        
+        class HandShake_Params : public Params {
+        public:
+            std::string sFromHand;
+            std::string sToHand;
+            std::string sToHuman;
+            
+            HandShake_Params(double startTime, double duration, std::string fromHand, std::string toHuman, std::string toHand) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sFromHand = fromHand;
+                this->sToHuman = toHuman;
+                this->sToHand = toHand;
+            }
+        };
+        
+        class SitDown_Params : public Params {
+        public:
+            std::string sTargetObj;
+            
+            SitDown_Params(double startTime, double duration, std::string sTargetObj) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->sTargetObj = sTargetObj;
+            }
+        };
+        
+        class Jump_Params : public Params {
+        public:
+            std::string sDirection; //Front, Back, Left, Right
+            double strength;
+            
+            Jump_Params(double startTime, double duration, double strength, std::string sDirection) {
+                Params::startTime = startTime;
+                Params::duration = duration;
+                this->strength = strength;
+                this->sDirection = sDirection;
+            }
+        };
     }
 }
 
-#endif	/* PARAMS_H */
+#endif
 

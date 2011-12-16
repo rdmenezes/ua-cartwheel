@@ -85,8 +85,9 @@ namespace CartWheel {
 
         void addObject(const std::string& name, const std::string& objFile, double mass);
         void addBox(const std::string& name, const Math::Vector3d& scale, double mass);
-        void addBox(const std::string& name, const Math::Vector3d& scale, const Math::Vector3d& position, double rotation, double mass);
-        void addBall(const std::string& name, const Math::Vector3d& scale, double mass);
+        void addBox(const std::string& name, const Math::Vector3d& scale, double mass, double friction, double restitution);
+        void addBox(const std::string& name, const Math::Vector3d& scale, const Math::Vector3d& position, double rotation, double mass, double friction = 1.8, double restitution = 0.35);
+        void addBall(const std::string& name, const Math::Vector3d& scale, double mass, const Vector3d& color = Vector3d(0.1, 0, 0.8));
         void addBehaviorObject(const std::string& name, const std::string& objFile, const Math::Vector3d& scale, double mass, double friction, double restitution);
 
         /**
@@ -117,6 +118,7 @@ namespace CartWheel {
         // TODO: This will probably give an error because it's not const.
         Physics::World* getWorld();
         Physics::RigidBody* getObjectByName(const std::string& name);
+        Physics::ArticulatedRigidBody* getARBObjectByName(const std::string& nameARB, const std::string& nameAF);
         
         bool isBehaviorsDone();
         double getTotalSerialTime();

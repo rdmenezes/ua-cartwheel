@@ -1,10 +1,3 @@
-/* 
- * File:   WalkInPath.cpp
- * Author: alfredo
- * 
- * Created on Jun 24, 2011, 2:56 PM
- */
-
 #include "Behaviors/WalkInPath.h"
 #include <Core/CartWheel3D.h>
 

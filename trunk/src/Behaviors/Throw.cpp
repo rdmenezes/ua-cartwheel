@@ -1,10 +1,3 @@
-/* 
- * File:   Throw.cpp
- * Author: alfredo
- * 
- * Created on Jun 26, 2011, 2:56 PM
- */
-
 #include "Behaviors/Throw.h"
 #include <Core/CartWheel3D.h>
 
@@ -13,6 +6,8 @@ using namespace CartWheel;
 Throw::Throw(CartWheel3D* cw, std::string humanName, Throw_Params* params)
         : Behavior(cw, humanName, params!=NULL ? params->startTime : 0, params!=NULL ? params->duration : 0) {
     sHand = params->sHand.c_str();
+    sObj = params->sObj.c_str();
+    speed = params->speed;
     printf("1Waving hand: %s!!\n", sHand.c_str());
     this->cw->getHuman(humanName, &human);
     printf("2Waving hand: %s!!\n", sHand.c_str());
@@ -41,9 +36,11 @@ void Throw::runStep() {
 //        human->factorVelocity("pelvis", Vector3d(0.8,0.8,0.8));
         nFrame++;
         if (nFrame==3) {
-            printf("Throwing Fire!!!\n");
-            cw->makeHumanThrowObject("Human1", "ball1", Vector3d(1,1,3));
-        }        
+            printf("Throwing Fire2!!!\n");
+            cw->makeHumanThrowObject(humanName, sObj, speed);
+//            cw->makeHumanThrowObject(humanName, "ball2", Vector3d(0,1.5,-4.5));
+//            cw->makeHumanThrowObject(humanName, "ball1", Vector3d(1,0,-3));
+        }
     }
 }
 
@@ -53,13 +50,13 @@ void Throw::onFinish() {
     if(strcmp(sHand.c_str(), "Left")==0 || strcmp(sHand.c_str(), "Both")==0) {
         printf("---Finish Left\n");
         bcontroller->requestShoulderBend(0, nan, 0, nan, -1.5, nan);
-        bcontroller->requestElbowBend(0, nan, 0, nan, 0, nan);
+        bcontroller->requestElbowBend(0, 0, 0, 0, 0, 0);
     }
     //Right
     if(strcmp(sHand.c_str(), "Right")==0 || strcmp(sHand.c_str(), "Both")==0) {
         printf("---Finish Right\n");
         bcontroller->requestShoulderBend(nan, 0, nan, 0, nan, 1.5);
-        bcontroller->requestElbowBend(nan, 0, nan, nan, nan, 0);
+        bcontroller->requestElbowBend(0, 0, 0, 0, 0, 0);
     }
     human->getController()->setStance(LEFT_STANCE);
     cw->setController(humanName, 0);

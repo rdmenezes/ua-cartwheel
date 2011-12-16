@@ -1,12 +1,5 @@
-/* 
- * File:   WaveHand.h
- * Author: alfredo
- *
- * Created on Jun 26, 2011, 2:42 PM
- */
-
-#ifndef WAVEHAND_H
-#define	WAVEHAND_H
+#ifndef WaveHand_H
+#define	WaveHand_H
 
 #include <string>
 #include <Behaviors/Behavior.h>
@@ -37,5 +30,5 @@ namespace CartWheel {
     }
 }
 
-#endif	/* WALKINARC_H */
+#endif
 

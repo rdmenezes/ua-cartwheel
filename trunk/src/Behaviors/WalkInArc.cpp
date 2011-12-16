@@ -1,10 +1,3 @@
-/* 
- * File:   Standing.cpp
- * Author: alfredo
- * 
- * Created on May 19, 2011, 2:56 PM
- */
-
 #include "Behaviors/WalkInArc.h"
 #include <Core/CartWheel3D.h>
 
